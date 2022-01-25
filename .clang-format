@@ -1,0 +1,31 @@
+Language: Proto
+ColumnLimit: 80
+SpacesInContainerLiterals: false
+AllowShortFunctionsOnASingleLine: false
+---
+Language: JavaScript
+BasedOnStyle: Google
+ColumnLimit: 80
+---
+Language: Java
+BasedOnStyle: Google
+ColumnLimit: 80
+BreakStringLiterals: true
+BreakAfterJavaFieldAnnotations: false
+BraceWrapping:
+  AfterCaseLabel: true
+  AfterClass: true
+  AfterControlStatement: true
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterObjCDeclaration: true
+  AfterStruct: true
+  AfterUnion: true
+  AfterExternBlock: true
+  BeforeCatch: true
+  BeforeElse: true
+  IndentBraces: true
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false

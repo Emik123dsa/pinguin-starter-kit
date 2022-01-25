@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "projects": {
+    "api": "libs/api",
+    "common": "libs/common",
+    "config": "libs/config",
+    "core": "libs/core",
+    "dashboard": "libs/dashboard",
+    "environment": "libs/environment",
+    "error": "libs/error",
+    "home": "libs/home",
+    "jira-client": "apps/jira-client",
+    "jira-client-e2e": "apps/jira-client-e2e",
+    "schema": "libs/schema",
+    "shared": "libs/shared",
+    "theme": "libs/theme"
+  }
+}
