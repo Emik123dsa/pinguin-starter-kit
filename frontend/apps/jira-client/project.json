@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/jira-client",
         "index": "apps/jira-client/src/index.html",
@@ -18,7 +20,9 @@
           "apps/jira-client/src/favicon.ico",
           "apps/jira-client/src/assets"
         ],
-        "styles": ["apps/jira-client/src/styles.scss"],
+        "styles": [
+          "apps/jira-client/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -83,7 +87,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/jira-client"],
+      "outputs": [
+        "coverage/apps/jira-client"
+      ],
       "options": {
         "jestConfig": "apps/jira-client/jest.config.js",
         "passWithNoTests": true

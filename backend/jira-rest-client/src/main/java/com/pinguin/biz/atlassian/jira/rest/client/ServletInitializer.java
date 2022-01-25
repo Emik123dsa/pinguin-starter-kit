@@ -1,4 +1,4 @@
-package com.pinguin.atlassian.jira.rest.client;
+package com.pinguin.biz.atlassian.jira.rest.client;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

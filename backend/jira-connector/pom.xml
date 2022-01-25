@@ -8,11 +8,11 @@
 		<version>3.0.0-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.pinguin.atlassian</groupId>
-	<artifactId>jira-rest-client</artifactId>
+	<groupId>com.pinguin.biz</groupId>
+	<artifactId>jira-connector</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>jira-rest-client</name>
+	<name>jira-connector</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
