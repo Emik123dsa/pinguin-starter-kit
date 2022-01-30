@@ -4,29 +4,60 @@
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "ES2021",
+      "DOM"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@pinguin/api": ["libs/api/src/index.ts"],
-      "@pinguin/common": ["libs/common/src/index.ts"],
-      "@pinguin/config": ["libs/config/src/index.ts"],
-      "@pinguin/core": ["libs/core/src/index.ts"],
-      "@pinguin/dashboard": ["libs/dashboard/src/index.ts"],
-      "@pinguin/environment": ["libs/environment/src/index.ts"],
-      "@pinguin/error": ["libs/error/src/index.ts"],
-      "@pinguin/home": ["libs/home/src/index.ts"],
-      "@pinguin/schema": ["libs/schema/src/index.ts"],
-      "@pinguin/shared": ["libs/shared/src/index.ts"],
-      "@pinguin/theme": ["libs/theme/src/index.ts"]
+      "@pinguin/api": [
+        "libs/api/src/index.ts"
+      ],
+      "@pinguin/common": [
+        "libs/common/src/index.ts"
+      ],
+      "@pinguin/config": [
+        "libs/config/src/index.ts"
+      ],
+      "@pinguin/core": [
+        "libs/core/src/index.ts"
+      ],
+      "@pinguin/dashboard": [
+        "libs/dashboard/src/index.ts"
+      ],
+      "@pinguin/environment": [
+        "libs/environment/src/index.ts"
+      ],
+      "@pinguin/error": [
+        "libs/error/src/index.ts"
+      ],
+      "@pinguin/home": [
+        "libs/home/src/index.ts"
+      ],
+      "@pinguin/schema": [
+        "libs/schema/src/index.ts"
+      ],
+      "@pinguin/server": [
+        "libs/server/src/index.ts"
+      ],
+      "@pinguin/shared": [
+        "libs/shared/src/index.ts"
+      ],
+      "@pinguin/theme": [
+        "libs/theme/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

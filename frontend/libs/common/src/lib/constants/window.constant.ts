@@ -1,0 +1,1 @@
+export const CLIENT_WINDOW_CONSTANT = 'CLIENT_WINDOW';

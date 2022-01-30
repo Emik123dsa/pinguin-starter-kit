@@ -43,3 +43,7 @@ Thumbs.db
 # Yarn Releases
 .yarn/cache
 .yarn/install-state.gz
+
+# Bazel Dependencies
+.bazelrc.user
+bazel-out

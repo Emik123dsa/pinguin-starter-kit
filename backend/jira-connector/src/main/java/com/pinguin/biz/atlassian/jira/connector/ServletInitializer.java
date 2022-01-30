@@ -9,6 +9,6 @@ public class ServletInitializer extends SpringBootServletInitializer {
   protected SpringApplicationBuilder configure(
     SpringApplicationBuilder application
   ) {
-    return application.sources(JiraRestClientApplication.class);
+    return application.sources(JiraConnectorApplication.class);
   }
 }

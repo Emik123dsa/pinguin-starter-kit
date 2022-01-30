@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.base.app.json",
   "files": [],
   "include": [],
   "references": [
@@ -11,10 +11,11 @@
     },
     {
       "path": "./tsconfig.editor.json"
-    }
+    },
   ],
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -25,5 +26,5 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
 }
