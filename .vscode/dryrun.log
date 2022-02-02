@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/emil/pinguin-finally-finished/pinguin.ag'
+make: Leaving directory '/home/emil/pinguin-finally-finished/pinguin.ag'
+ 
+make: *** No targets.  Stop.
+ 
