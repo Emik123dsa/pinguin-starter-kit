@@ -5,9 +5,9 @@ import { WINDOW_PROVIDERS } from './providers';
 
 @NgModule({
   imports: [CommonModule],
-  exports: [CommonModule],
   declarations: [],
   providers: [WINDOW_PROVIDERS],
+  exports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CommonBaseModule {}

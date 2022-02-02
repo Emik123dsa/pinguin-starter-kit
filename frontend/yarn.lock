@@ -397,6 +397,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular/flex-layout@npm:^13.0.0-beta.37":
+  version: 13.0.0-beta.37
+  resolution: "@angular/flex-layout@npm:13.0.0-beta.37"
+  dependencies:
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/cdk": ^13.0.0
+    "@angular/common": ^13.0.0
+    "@angular/core": ^13.0.0
+    "@angular/platform-browser": ^13.0.0
+    rxjs: ^6.5.3 || ^7.4.0
+  checksum: a2996cdf0b7c63476dee7705629e0b2454ff3d8bed20ed78344cd806de3529b78039123e460ce395e015f628172e4b604cc43b8595bf7a5381aa4183a524d646
+  languageName: node
+  linkType: hard
+
 "@angular/forms@npm:~13.1.0":
   version: 13.1.3
   resolution: "@angular/forms@npm:13.1.3"
@@ -459,6 +474,20 @@ __metadata:
     "@angular/platform-browser": 13.1.3
     rxjs: ^6.5.3 || ^7.4.0
   checksum: 308a67c675153d858cdacde6fce11a6c53f5304f4c9db9754a82ba50de1b71aa822d0670a066a2cdd4636b3dc83ef92b7e74fa69b476638095b3f6e6ba5befab
+  languageName: node
+  linkType: hard
+
+"@angular/service-worker@npm:^13.2.0":
+  version: 13.2.0
+  resolution: "@angular/service-worker@npm:13.2.0"
+  dependencies:
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/common": 13.2.0
+    "@angular/core": 13.2.0
+  bin:
+    ngsw-config: ngsw-config.js
+  checksum: 6a527d223c424a0c974132bd869e8e6a259744e45fd3801e9baa6d421b8fed9ed52e6c6cf504cfec3eb360dbcc8750bd0cdd7afc23e9233060f4743a0a250c8d
   languageName: node
   linkType: hard
 
@@ -9142,6 +9171,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ngx-quicklink@npm:^0.2.7":
+  version: 0.2.7
+  resolution: "ngx-quicklink@npm:0.2.7"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    "@angular/common": ">=6.0.0"
+    "@angular/router": ">=6.0.0"
+  checksum: f26a96b159200c5333b9d50315aca029509ae09e0e657494088757552166f3297f59d3a11a2ac3b540c1b0b4d1f9279c64eb5c25d31d93b0d49d693fde954b31
+  languageName: node
+  linkType: hard
+
 "nice-napi@npm:^1.0.2":
   version: 1.0.2
   resolution: "nice-napi@npm:1.0.2"
@@ -9777,11 +9818,13 @@ __metadata:
     "@angular/compiler": ~13.1.0
     "@angular/compiler-cli": ~13.1.0
     "@angular/core": ~13.1.0
+    "@angular/flex-layout": ^13.0.0-beta.37
     "@angular/forms": ~13.1.0
     "@angular/language-service": ~13.1.0
     "@angular/platform-browser": ~13.1.0
     "@angular/platform-browser-dynamic": ~13.1.0
     "@angular/router": ~13.1.0
+    "@angular/service-worker": ^13.2.0
     "@bazel/angular": ^4.6.1
     "@bazel/bazelisk": ^1.11.0
     "@bazel/buildifier": ^4.2.5
@@ -9807,6 +9850,7 @@ __metadata:
     eslint-plugin-cypress: ^2.10.3
     jest: 27.2.3
     jest-preset-angular: 11.0.0
+    ngx-quicklink: ^0.2.7
     prettier: ^2.5.1
     rxjs: ~7.4.0
     string-format: ^2.0.0

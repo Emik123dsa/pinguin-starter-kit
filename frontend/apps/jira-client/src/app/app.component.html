@@ -1,1 +1,12 @@
- 
+<ng-template #app let-data>
+  <div>{{ data | json }}</div>
+</ng-template>
+
+<ng-container
+  [ngTemplateOutlet]="app"
+  [ngTemplateOutletContext]="{ $implicit: {} }"
+></ng-container>
+
+<ng-container *ngIf="true; then dataTemplate"> </ng-container>
+
+<ng-template #dataTemplate> 123</ng-template>

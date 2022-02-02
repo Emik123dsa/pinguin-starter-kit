@@ -4,4 +4,8 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   imports: [CommonModule],
 })
-export class DashboardModule {}
+export class DashboardModule {
+  public constructor() {
+    console.log('123');
+  }
+}
