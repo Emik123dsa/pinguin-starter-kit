@@ -1,12 +1,9 @@
 <ng-template #app let-data>
-  <div>{{ data | json }}</div>
+  <router-outlet [@routerAnimation]="" #outlet="outlet"></router-outlet>
 </ng-template>
 
+<!-- Provide any useful context to the app template. -->
 <ng-container
   [ngTemplateOutlet]="app"
-  [ngTemplateOutletContext]="{ $implicit: {} }"
+  [ngTemplateOutletContext]="{ $implicit: null }"
 ></ng-container>
-
-<ng-container *ngIf="true; then dataTemplate"> </ng-container>
-
-<ng-template #dataTemplate> 123</ng-template>

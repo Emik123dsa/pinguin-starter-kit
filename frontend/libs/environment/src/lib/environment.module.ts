@@ -1,10 +1,10 @@
 import { ModuleWithProviders, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { ClientEnvironmentOptions } from './interfaces';
+import { ClientEnvironmentOptions } from './environment.interface';
+
 import {
   ENVIRONMENT_PROVIDER,
   CLIENT_ENVIRONMENT_OPTIONS_PROVIDER,
-} from './providers';
-import { Environment } from './enums';
+} from './environment.providers';
 
 /**
  * Client Environment Module.
@@ -31,15 +31,12 @@ export class ClientEnvironmentModule {
    * @returns {ModuleWithProviders<ClientEnvironmentModule>}
    */
   public static forRoot(
-    options?: ClientEnvironmentOptions
+    options: ClientEnvironmentOptions
   ): ModuleWithProviders<ClientEnvironmentModule> {
-    const environment: Environment =
-      options?.environment as Readonly<Environment>;
-
     return {
       ngModule: ClientEnvironmentModule,
       providers: [
-        ENVIRONMENT_PROVIDER(environment),
+        ENVIRONMENT_PROVIDER(options.environment),
         CLIENT_ENVIRONMENT_OPTIONS_PROVIDER(options),
       ],
     };

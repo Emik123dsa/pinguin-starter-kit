@@ -1,11 +1,15 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-import { ClientEnvironment, Environment } from '@pinguin/environment';
+import {
+  ClientEnvironment,
+  ClientEnvironmentOptions,
+} from '@pinguin/environment';
 
-export const environment: ClientEnvironment = {
+// ClientEnvironmentOptions as an environment for development only.
+export const environment: ClientEnvironmentOptions = {
   production: false,
-  environment: Environment.Development,
+  environment: ClientEnvironment.Development,
 };
 
 /*
@@ -15,4 +19,4 @@ export const environment: ClientEnvironment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-import 'zone.js/plugins/zone-error'; // Included with Angular CLI.
+// import 'zone.js/plugins/zone-error'; // Included with Angular CLI.

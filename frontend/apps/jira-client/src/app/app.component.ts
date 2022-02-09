@@ -1,12 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { ClientEnvironment, ENVIRONMENT } from '@pinguin/environment';
-import { ClientWindow, WINDOW } from '@pinguin/common';
-import {
-  ActivatedRoute,
-  ActivatedRouteSnapshot,
-  Route,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'pinguin-root',

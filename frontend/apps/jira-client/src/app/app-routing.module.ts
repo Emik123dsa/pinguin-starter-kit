@@ -25,7 +25,7 @@ const routes: Routes = [
   {
     path: 'error',
     data: {
-      title: 404,
+      title: 'Error',
       preload: false,
     },
     loadChildren: () =>
