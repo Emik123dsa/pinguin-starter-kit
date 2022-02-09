@@ -18,12 +18,16 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/jira-client/src/favicon.ico",
-          "apps/jira-client/src/assets"
+          "apps/jira-client/src/assets",
+          "apps/jira-client/src/manifest.webmanifest",
+          "apps/jira-client/src/manifest.webmanifest"
         ],
         "styles": [
           "apps/jira-client/src/styles.scss"
         ],
-        "scripts": []
+        "scripts": [],
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/jira-client/ngsw-config.json"
       },
       "configurations": {
         "production": {

@@ -1,8 +1,14 @@
-import { Component } from '@angular/core';
+import { VERSION } from '@pinguin/core';
+import { Component, Version } from '@angular/core';
 
 @Component({
-  selector: 'pinguin-root',
+  selector: 'pinguin-jira-client-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {}
+export class AppComponent {
+  /**
+   * Version  of app component.
+   */
+  public version: Version = VERSION;
+}

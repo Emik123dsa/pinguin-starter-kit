@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { QuicklinkStrategy } from 'ngx-quicklink';
+import { QuicklinkStrategy, QuicklinkModule } from 'ngx-quicklink';
+
 import { environment } from '../environments/environment';
 
 const routes: Routes = [

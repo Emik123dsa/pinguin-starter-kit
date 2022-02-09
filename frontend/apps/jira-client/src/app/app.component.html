@@ -1,9 +1,10 @@
-<ng-template #app let-data>
-  <router-outlet [@routerAnimation]="" #outlet="outlet"></router-outlet>
+<ng-template #app let-version>
+  <!-- TODO: [@routerAnimation]="" -->
+  <router-outlet #outlet="outlet"></router-outlet>
 </ng-template>
 
 <!-- Provide any useful context to the app template. -->
 <ng-container
   [ngTemplateOutlet]="app"
-  [ngTemplateOutletContext]="{ $implicit: null }"
+  [ngTemplateOutletContext]="{ $implicit: version }"
 ></ng-container>

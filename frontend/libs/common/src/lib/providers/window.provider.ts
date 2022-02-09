@@ -81,7 +81,7 @@ const BROWSER_WINDOW_PROVIDER: ClassProvider = {
  * @throws {UnknownPlatformException} if platformId is not defined in the browser environment.
  * @returns {*}
  */
-function WINDOW_FACTORY(
+function windowProviderFactory(
   windowRef: WindowRef,
   platformId: object
 ): ClientWindow {
@@ -111,7 +111,7 @@ function WINDOW_FACTORY(
  */
 const WINDOW_PROVIDER: FactoryProvider = {
   provide: WINDOW,
-  useFactory: WINDOW_FACTORY,
+  useFactory: windowProviderFactory,
   deps: [WindowRef, PLATFORM_ID],
   multi: false,
 };

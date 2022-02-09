@@ -11,9 +11,12 @@
     "home": "libs/home",
     "jira-client": "apps/jira-client",
     "jira-client-e2e": "apps/jira-client-e2e",
+    "pwa": "apps/pwa",
+    "pwa-e2e": "apps/pwa-e2e",
     "schema": "libs/schema",
     "server": "libs/server",
     "shared": "libs/shared",
+    "single-spa": "libs/single-spa",
     "theme": "libs/theme"
   }
 }

@@ -1,6 +1,6 @@
 import { FactoryProvider, ValueProvider } from '@angular/core';
-import { ClientEnvironmentOptions } from './environment.interface';
-import { ClientEnvironment } from './environment.enum';
+import { ClientEnvironmentOptions } from './environment.interfaces';
+import { ClientEnvironment } from './environment.enums';
 import { ENVIRONMENT, CLIENT_ENVIRONMENT_OPTIONS } from './environment.tokens';
 
 /**

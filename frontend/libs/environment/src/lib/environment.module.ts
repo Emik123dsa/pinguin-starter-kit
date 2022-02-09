@@ -1,5 +1,5 @@
 import { ModuleWithProviders, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { ClientEnvironmentOptions } from './environment.interface';
+import { ClientEnvironmentOptions } from './environment.interfaces';
 
 import {
   ENVIRONMENT_PROVIDER,

@@ -1,21 +1,18 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { DashboardLayoutComponent } from './containers/dashboard-layout/dashboard-layout.component';
-// import { RoadmapsComponent } from './containers/roadmaps/roadmaps.component';
-// import { RoadmapsPageComponent } from './roadmaps-page/roadmaps-page.component';
-// import { CampaignRoadmapComponent } from './campaign-roadmap/campaign-roadmap.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { SharedModule } from '@pinguin/shared';
+
+import { RoadmapsPageComponent } from './containers/roadmaps-page/roadmaps-page.component';
+import { CampaignRoadmapComponent } from './components/campaign-roadmap/campaign-roadmap.component';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [SharedModule, DashboardRoutingModule],
   declarations: [
     DashboardLayoutComponent,
-    // RoadmapsComponent,
-    // RoadmapsPageComponent,
-    // CampaignRoadmapComponent
+    RoadmapsPageComponent,
+    CampaignRoadmapComponent,
   ],
 })
-export class DashboardModule {
-  public constructor() {
-    console.log(' ');
-  }
-}
+export class DashboardModule {}

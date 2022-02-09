@@ -1,0 +1,28 @@
+{
+  "projectType": "library",
+  "root": "libs/single-spa",
+  "sourceRoot": "libs/single-spa/src",
+  "prefix": "pinguin",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/single-spa"
+      ],
+      "options": {
+        "jestConfig": "libs/single-spa/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/single-spa/src/**/*.ts",
+          "libs/single-spa/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
