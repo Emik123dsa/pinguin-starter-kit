@@ -16,6 +16,7 @@ import { VERSION } from '@pinguin/core';
 export const environment: ClientEnvironmentOptions = {
   production: false,
   environment: ClientEnvironment.Development,
+  hotModuleReplacement: false,
   baseDomain: 'localhost',
   app: {
     id: format('pinguin-app-{full}', VERSION),

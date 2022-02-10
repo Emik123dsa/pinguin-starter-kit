@@ -17,7 +17,7 @@ let containerUniqueId = 0;
   host: {
     'class': 'pinguin-container',
     '[attr.id]': 'id',
-    '[class.pinguin-container-server]': 'isServer',
+    '[class.pinguin-container-server]': '_isServer',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,7 +26,7 @@ export class ContainerComponent {
   /**
    * Determines whether server is.
    */
-  public isServer!: boolean;
+  protected _isServer!: boolean;
 
   /**
    * Container id of container component.
@@ -49,6 +49,6 @@ export class ContainerComponent {
    * @memberof ContainerComponent
    */
   public constructor(private readonly _platform: Platform) {
-    this.isServer = !this._platform.isBrowser;
+    this._isServer = !this._platform.isBrowser;
   }
 }

@@ -48,6 +48,8 @@ export interface ClientWebSocketOptions extends ClientConnectOptions {
 // Define client environment options as a global interface.
 export interface ClientEnvironmentOptions {
   production: boolean;
+  hotModuleReplacement: boolean;
+
   environment: ClientEnvironment;
 
   // Client application properties.

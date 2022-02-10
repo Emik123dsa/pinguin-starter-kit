@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SharedModule } from '@pinguin/shared';
 
 import { DashboardLayoutComponent } from './dashboard-layout.component';
 
@@ -8,9 +9,9 @@ describe('DashboardLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardLayoutComponent ]
-    })
-    .compileComponents();
+      imports: [SharedModule],
+      declarations: [DashboardLayoutComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
