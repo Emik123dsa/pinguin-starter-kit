@@ -30,12 +30,16 @@ export class ClientRestApiConfig extends ClientRestApiConfigRef {
   }
 }
 
+function clientRestApiConfigProviderFactory(
+  options: ClientEnvironmentOptions,
+): ClientRestApiConfigRef {
+  return new ClientRestApiConfig(options.api);
+}
+
 // FactoryProvider for client rest api config.
 export const CLIENT_REST_API_CONFIG_PROVIDER: FactoryProvider = {
   provide: ClientRestApiConfigRef,
-  useFactory: (options: ClientEnvironmentOptions) => {
-    return new ClientRestApiConfig(options.api);
-  },
+  useFactory: clientRestApiConfigProviderFactory,
   deps: [CLIENT_ENVIRONMENT_OPTIONS],
   multi: false,
 };

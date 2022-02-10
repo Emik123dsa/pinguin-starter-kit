@@ -1,7 +1,3 @@
-import packageJson from 'package.json';
-
-import format from 'string-format';
-
 import { VERSION } from '@pinguin/core';
 
 import {
@@ -16,7 +12,7 @@ export const environment: ClientEnvironmentOptions = {
   hotModuleReplacement: false,
   baseDomain: location.hostname,
   app: {
-    id: format('pinguin-app-{full}', VERSION),
+    id: 'pinguin-app-%s-production'.replace('%s', VERSION.full),
     name: 'pinguin-jira-client',
     version: VERSION,
   },
@@ -52,6 +48,6 @@ export const environment: ClientEnvironmentOptions = {
     serializer: (data) => JSON.stringify(data),
     deserializer: (event: MessageEvent) => JSON.parse(event.data),
   },
-  packages: [packageJson],
+  packages: [],
   runtimePlugins: [],
 };

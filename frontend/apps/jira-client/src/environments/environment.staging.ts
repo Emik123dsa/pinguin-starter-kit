@@ -1,3 +1,5 @@
+import packageJson from '../../package.json';
+
 import { VERSION } from '@pinguin/core';
 import {
   ClientEnvironment,
@@ -11,7 +13,7 @@ export const environment: ClientEnvironmentOptions = {
   hotModuleReplacement: false,
   baseDomain: 'localhost',
   app: {
-    id: 'pinguin-app-id',
+    id: 'pinguin-app-%s-staging'.replace('%s', VERSION.full),
     name: 'pinguin-jira-client',
     version: VERSION,
   },

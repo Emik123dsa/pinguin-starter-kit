@@ -15,8 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@environment": ["apps/jira-client/src/environments/environment.ts"],
-      "@pinguin-jira-client": ["apps/jira-client/src/app/index.ts"],
+      "@pinguin/animations": ["libs/animations/src/index.ts"],
       "@pinguin/api": ["libs/api/src/index.ts"],
       "@pinguin/common": ["libs/common/src/index.ts"],
       "@pinguin/config": ["libs/config/src/index.ts"],

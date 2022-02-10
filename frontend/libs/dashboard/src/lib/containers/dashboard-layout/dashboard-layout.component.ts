@@ -1,9 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  OnInit,
   ViewEncapsulation,
 } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
+import { routeAnimations } from '@pinguin/animations';
 
 @Component({
   selector: 'pinguin-dashboard-layout',
@@ -15,11 +17,18 @@ import {
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [routeAnimations],
 })
-export class DashboardLayoutComponent implements OnInit {
-  // constructor() { }
-
-  ngOnInit(): void {
-    console.log('init');
+export class DashboardLayoutComponent {
+  /**
+   * Prepare router outlet from
+   * activated `routeData` animation.
+   *
+   * @param  {RouterOutlet} outlet
+   * @return
+   * @memberof AppComponent
+   */
+  public prepareDashboardRoute(outlet: RouterOutlet) {
+    return outlet?.activatedRouteData?.['animation'];
   }
 }

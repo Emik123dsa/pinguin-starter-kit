@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { QuicklinkStrategy, QuicklinkModule } from 'ngx-quicklink';
+import { StringUtils } from '@pinguin/common';
+import { QuicklinkStrategy } from 'ngx-quicklink';
 
 import { environment } from '../environments/environment';
 
@@ -24,13 +25,13 @@ const routes: Routes = [
       import('@pinguin/dashboard').then((module) => module.DashboardModule),
   },
   {
-    path: 'error',
+    path: StringUtils.EMPTY,
     data: {
       title: 'Error',
       preload: false,
     },
     loadChildren: () =>
-      import('@pinguin/error').then((module) => module.ErrorModule),
+      import('@pinguin/error').then((module) => module.ClientErrorModule),
   },
   {
     path: '**',
@@ -47,7 +48,7 @@ const routes: Routes = [
       anchorScrolling: 'enabled',
       initialNavigation: 'enabledNonBlocking',
       paramsInheritanceStrategy: 'always',
-      enableTracing: environment.production,
+      enableTracing: Object.is(environment.production, false),
       preloadingStrategy: QuicklinkStrategy,
       relativeLinkResolution: 'legacy',
     }),

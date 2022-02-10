@@ -1,5 +1,19 @@
-<p>error-layout works!</p>
-
-<main role="cell">
-  <router-outlet #outlet="outlet"></router-outlet>
-</main>
+<div
+  fxFlexFill
+  fxLayout="column"
+  fxLayoutWrap="wrap"
+  fxLayoutAlign="center start"
+>
+  <header role="contentinfo"></header>
+  <main role="cell">
+    <div [@routeAnimations]="prepareClientErrorRoute(outlet)">
+      <router-outlet
+        #outlet="outlet"
+        (detach)="handleDetachEvent($event)"
+        (activate)="handleActivateEvent($event)"
+        (deactivate)="handleDeactivateEvent($event)"
+      ></router-outlet>
+    </div>
+  </main>
+  <footer role="contentinfo"></footer>
+</div>

@@ -10,5 +10,5 @@ export enum ClientEnvironment {
   Staging = 'staging',
   Test = 'test',
   Provision = 'provision',
-  HotModuleReplacement = 'hmr',
+  HMR = 'hmr',
 }

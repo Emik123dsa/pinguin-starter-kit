@@ -26,7 +26,7 @@ import { WINDOW } from '../tokens';
 export abstract class WindowRef {
   public getNativeWindow(): ClientWindow {
     throw new ReferenceError(
-      format('{name} was not implemented or created yet', WindowRef)
+      format('{name} was not implemented or created yet', WindowRef),
     );
   }
 }
@@ -57,7 +57,7 @@ export class BrowserWindowRef extends WindowRef {
    * @override
    * @returns {ClientWindow}
    */
-  public override getNativeWindow(): Readonly<ClientWindow> {
+  public override getNativeWindow(): ClientWindow {
     return window;
   }
 }
@@ -83,7 +83,7 @@ const BROWSER_WINDOW_PROVIDER: ClassProvider = {
  */
 function windowProviderFactory(
   windowRef: WindowRef,
-  platformId: object
+  platformId: object,
 ): ClientWindow {
   switch (true) {
     case isPlatformBrowser(platformId):
@@ -98,8 +98,8 @@ function windowProviderFactory(
       throw new UnknownPlatformException(
         format(
           'platform: {0} was not found in the client environment',
-          platformId
-        )
+          platformId,
+        ),
       );
   }
 }

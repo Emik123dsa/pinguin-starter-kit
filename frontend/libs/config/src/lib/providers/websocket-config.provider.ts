@@ -29,7 +29,7 @@ export class ClientWebSocketConfig extends ClientWebSocketConfigRef {
    * Message event deserializer of client web socket config.
    */
   private readonly MESSAGE_EVENT_DESERIALIZER = (
-    event: MessageEvent
+    event: MessageEvent,
   ): Optional<string> => JSON.parse(event.data);
 
   public override getConnectionPool(): number {
@@ -55,12 +55,16 @@ export class ClientWebSocketConfig extends ClientWebSocketConfigRef {
   }
 }
 
+function clientWebSocketConfigProviderFactory(
+  options: ClientEnvironmentOptions,
+): ClientWebSocketConfigRef {
+  return new ClientWebSocketConfig(options.websocket);
+}
+
 // FactoryProvider for client websocket config.
 export const CLIENT_WEBSOCKET_CONFIG_PROVIDER: FactoryProvider = {
   provide: ClientWebSocketConfigRef,
-  useFactory: (options: ClientEnvironmentOptions) => {
-    return new ClientWebSocketConfig(options.websocket);
-  },
+  useFactory: clientWebSocketConfigProviderFactory,
   deps: [CLIENT_ENVIRONMENT_OPTIONS],
   multi: false,
 };

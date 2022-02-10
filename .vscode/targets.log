@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Feb  2 21:29:44 2022
+# Make data base, printed on Thu Feb 10 12:35:06 2022
 
 # Variables
 
@@ -23,7 +23,7 @@ NO_AT_BRIDGE = 1
 # environment
 UUID = 3740e022-2053-4b02-bc42-a301bd150f94
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-72edf275-cd15-4536-b718-53df59921418.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-8d0b34c9-2fcb-43a8-9e5a-e3a68209f55d.sock
 # environment
 LC_NAME = ru_RU.UTF-8
 # environment
@@ -91,7 +91,7 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-XXXXXXz6c9NR/agent.904
+SSH_AUTH_SOCK = /tmp/ssh-XXXXXXwxo1lT/agent.881
 # default
 .SHELLFLAGS := -c
 # environment
@@ -111,13 +111,13 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 1343
+VSCODE_PID = 105876
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/emil-h310ms220:@/tmp/.ICE-unix/853,unix/emil-h310ms220:/tmp/.ICE-unix/853
+SESSION_MANAGER = local/emil-h310ms220:@/tmp/.ICE-unix/830,unix/emil-h310ms220:/tmp/.ICE-unix/830
 # automatic
 *F = $(notdir $*)
 # environment
@@ -199,7 +199,7 @@ MAKE_VERSION := 4.3
 # environment
 LC_MEASUREMENT = ru_RU.UTF-8
 # environment
-SSH_AGENT_PID = 905
+SSH_AGENT_PID = 882
 # environment
 _ = /usr/bin/make
 # environment
@@ -299,6 +299,6 @@ all:
 # strcache performance: lookups = 34 / hit rate = 11%
 # hash-table stats:
 # Load=30/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Wed Feb  2 21:29:44 2022
+# Finished Make data base on Thu Feb 10 12:35:07 2022
 
  

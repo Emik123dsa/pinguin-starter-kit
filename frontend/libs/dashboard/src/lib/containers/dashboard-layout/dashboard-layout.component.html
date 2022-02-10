@@ -1,5 +1,14 @@
-<p>dashboard-layout works!</p>
-
-<main role="cell">
-  <router-outlet #outlet="outlet"></router-outlet>
-</main>
+<div
+  fxFlexFill
+  fxLayout="column"
+  fxLayoutWrap="wrap"
+  fxLayoutAlign="center start"
+>
+  <header role="contentinfo"></header>
+  <main role="cell">
+    <div [@routeAnimations]="prepareDashboardRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+  </main>
+  <footer role="contentinfo"></footer>
+</div>

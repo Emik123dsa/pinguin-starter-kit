@@ -1,8 +1,7 @@
-import format from 'string-format';
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-import packageJson from 'package.json';
+import packageJson from '../../package.json';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {
@@ -15,11 +14,11 @@ import { VERSION } from '@pinguin/core';
 // ClientEnvironmentOptions as an environment for development only.
 export const environment: ClientEnvironmentOptions = {
   production: false,
-  environment: ClientEnvironment.HotModuleReplacement,
+  environment: ClientEnvironment.HMR,
   hotModuleReplacement: true,
   baseDomain: 'localhost',
   app: {
-    id: format('pinguin-app-{full}', VERSION),
+    id: 'pinguin-app-%s-hmr'.replace('%s', VERSION.full),
     name: 'pinguin-jira-client',
     version: VERSION,
   },
@@ -56,7 +55,7 @@ export const environment: ClientEnvironmentOptions = {
     deserializer: (event: MessageEvent) => JSON.parse(event.data),
   },
   runtimePlugins: [StoreDevtoolsModule.instrument()],
-  packages: [packageJson.dependencies],
+  packages: [],
 };
 
 /*

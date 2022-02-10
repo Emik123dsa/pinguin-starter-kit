@@ -1,3 +1,5 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ErrorLayoutComponent } from './error-layout.component';
@@ -8,9 +10,9 @@ describe('ErrorLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorLayoutComponent ]
-    })
-    .compileComponents();
+      imports: [BrowserAnimationsModule, RouterTestingModule],
+      declarations: [ErrorLayoutComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

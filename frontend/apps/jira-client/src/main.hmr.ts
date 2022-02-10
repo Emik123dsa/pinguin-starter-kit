@@ -1,7 +1,7 @@
 import { NgModuleRef, ApplicationRef } from '@angular/core';
 import { createNewHosts } from '@angularclass/hmr';
 
-export const hmrBootstrap = <T>(
+export const bootstrapModule = <T>(
   module: any,
   bootstrap: () => Promise<void | NgModuleRef<T>>,
 ) => {

@@ -10,6 +10,7 @@ const routes: Routes = [
     data: {
       title: 'Dashboard',
       depth: 1,
+      animation: 'DashboardLayout',
       roles: [],
     },
     children: [
@@ -19,7 +20,7 @@ const routes: Routes = [
         data: {
           title: 'Campaign Roadmap',
           depth: 2,
-          animation: 'RoadmapsPage',
+          animation: 'DashboardRoadmapsPage',
         },
       },
       {

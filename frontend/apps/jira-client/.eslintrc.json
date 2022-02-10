@@ -24,7 +24,9 @@
             "prefix": "pinguin",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "no-array-constructor": "off",
+        "@typescript-eslint/no-array-constructor": ["off"]
       }
     },
     {

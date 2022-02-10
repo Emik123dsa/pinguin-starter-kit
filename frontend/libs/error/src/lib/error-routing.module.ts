@@ -11,6 +11,7 @@ const routes: Routes = [
       title: 'Error',
       depth: 1,
       roles: null,
+      animation: 'ClientErrorLayout',
     },
     children: [
       {
@@ -22,6 +23,11 @@ const routes: Routes = [
           animation: 'NotFoundPage',
         },
       },
+      {
+        path: '**',
+        pathMatch: 'full',
+        redirectTo: '404',
+      },
     ],
   },
 ];
@@ -30,4 +36,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ErrorRoutingModule {}
+export class ClientErrorRoutingModule {}

@@ -1,10 +1,24 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { VERSION } from '@pinguin/core';
-import { Component, Version } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  TemplateRef,
+  Version,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { routeAnimations } from '@pinguin/animations';
 
 @Component({
   selector: 'pinguin-jira-client-root',
+  exportAs: 'pinguinJiraClientRoot',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [routeAnimations],
 })
 export class AppComponent {
   /**

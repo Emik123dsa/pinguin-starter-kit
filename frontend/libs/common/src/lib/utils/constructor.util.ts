@@ -1,6 +1,7 @@
-export type Constructor<T> = new (...args: unknown[]) => T;
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export type Constructor<T> = new (...args: any[]) => T;
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export type PlainConstructor = { new (...args: unknown[]): {} };
+export type PlainObjectLiteralConstructor = { new (...args: any[]): {} };
 
-export type AbstractConstruct<T> = abstract new (...args: unknown[]) => T;
+export type AbstractConstructor<T> = abstract new (...args: unknown[]) => T;

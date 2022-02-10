@@ -5,7 +5,7 @@
  * @interface ObjectLiteral
  * @typedef {ObjectLiteral}
  */
-export interface PlainObjectLiteral<T = unknown> {
+export interface PlainObjectLiteral {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: T;
+  [key: string]: any;
 }

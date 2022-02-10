@@ -33,12 +33,16 @@ export class ClientApplicationConfig extends ClientApplicationConfigRef {
   }
 }
 
+function clientAppConfigProviderFactory(
+  options: ClientEnvironmentOptions,
+): ClientApplicationConfigRef {
+  return new ClientApplicationConfig(options.app);
+}
+
 // FactoryProvider for client app config.
 export const CLIENT_APP_CONFIG_PROVIDER: FactoryProvider = {
   provide: ClientApplicationConfigRef,
-  useFactory: (options: ClientEnvironmentOptions) => {
-    return new ClientApplicationConfig(options.app);
-  },
+  useFactory: clientAppConfigProviderFactory,
   deps: [CLIENT_ENVIRONMENT_OPTIONS],
   multi: false,
 };

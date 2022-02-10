@@ -1,9 +1,6 @@
-import format from 'string-format';
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-import packageJson from 'package.json';
-
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {
   ClientEnvironment,
@@ -19,7 +16,7 @@ export const environment: ClientEnvironmentOptions = {
   hotModuleReplacement: false,
   baseDomain: 'localhost',
   app: {
-    id: format('pinguin-app-{full}', VERSION),
+    id: 'pinguin-app-%s'.replace('%s', VERSION.full),
     name: 'pinguin-jira-client',
     version: VERSION,
   },
@@ -31,10 +28,8 @@ export const environment: ClientEnvironmentOptions = {
       prefix: 'api',
       version: 'v1',
     },
-
     retryAttempts: 3,
     errorAttempts: 1,
-
     queryParamMap: new Map([['proxy', 'true']]),
     headerMap: new Map([
       ['Accept', 'application/json; charset=UTF-8'],
@@ -42,7 +37,6 @@ export const environment: ClientEnvironmentOptions = {
     ]),
   },
   websocket: {
-    connectionPool: 1,
     baseUrl: {
       scheme: 'ws',
       hostname: 'localhost',
@@ -50,13 +44,14 @@ export const environment: ClientEnvironmentOptions = {
       prefix: 'stream',
       version: 'v1',
     },
+    connectionPool: 1,
     reconnectAttempts: 10,
     reconnectInterval: 1000,
     serializer: (data): string => JSON.stringify(data),
     deserializer: (event: MessageEvent) => JSON.parse(event.data),
   },
   runtimePlugins: [StoreDevtoolsModule.instrument()],
-  packages: [packageJson.dependencies],
+  packages: [],
 };
 
 /*
