@@ -2,6 +2,9 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { PlainObjectLiteral } from '@pinguin/common';
+
 import {
   ClientEnvironment,
   ClientEnvironmentOptions,
@@ -47,8 +50,9 @@ export const environment: ClientEnvironmentOptions = {
     connectionPool: 1,
     reconnectAttempts: 10,
     reconnectInterval: 1000,
-    serializer: (data): string => JSON.stringify(data),
-    deserializer: (event: MessageEvent) => JSON.parse(event.data),
+    serializer: (data: PlainObjectLiteral) => JSON.stringify(data),
+    deserializer: (event: MessageEvent): PlainObjectLiteral =>
+      JSON.parse(event.data),
   },
   runtimePlugins: [StoreDevtoolsModule.instrument()],
   packages: [],

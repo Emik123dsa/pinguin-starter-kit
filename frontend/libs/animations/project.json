@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/animations",
+  "sourceRoot": "libs/animations/src",
+  "prefix": "pinguin",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/animations"],
+      "options": {
+        "jestConfig": "libs/animations/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/animations/src/**/*.ts",
+          "libs/animations/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

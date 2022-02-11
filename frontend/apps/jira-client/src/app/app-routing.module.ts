@@ -48,7 +48,7 @@ const routes: Routes = [
       anchorScrolling: 'enabled',
       initialNavigation: 'enabledNonBlocking',
       paramsInheritanceStrategy: 'always',
-      enableTracing: Object.is(environment.production, false),
+      // enableTracing: Object.is(environment.production, false),
       preloadingStrategy: QuicklinkStrategy,
       relativeLinkResolution: 'legacy',
     }),

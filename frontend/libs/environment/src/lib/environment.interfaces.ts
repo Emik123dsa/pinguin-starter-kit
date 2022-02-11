@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
+import { PlainObjectLiteral } from '@pinguin/common';
+
 import { ModuleWithProviders, Type, Version } from '@angular/core';
 
 import { ClientEnvironment } from './environment.enums';
@@ -41,8 +43,8 @@ export interface ClientWebSocketOptions extends ClientConnectOptions {
   connectionPool: number;
   reconnectAttempts?: number;
   reconnectInterval?: number;
-  serializer?: (data: unknown) => Optional<string>;
-  deserializer?: (event: MessageEvent) => Optional<string>;
+  serializer?: (data: PlainObjectLiteral) => Optional<string>;
+  deserializer?: (event: MessageEvent) => Optional<PlainObjectLiteral>;
 }
 
 // Define client environment options as a global interface.

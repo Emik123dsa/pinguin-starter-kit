@@ -1,3 +1,4 @@
+import { PlainObjectLiteral } from '@pinguin/common';
 import { ClientWebSocketOptions } from '@pinguin/environment';
 
 import { AbstractConnection } from './abstract-connection-ref';
@@ -12,7 +13,7 @@ export abstract class ClientWebSocketConfigRef extends AbstractConnection<Client
 
   public abstract getReconnectInterval(): number;
 
-  public abstract getSerializer(): (data: unknown) => Optional<string>;
+  public abstract getSerializer(): (data: PlainObjectLiteral) => Optional<string>;
 
   public abstract getDeserializer(): (event: MessageEvent) => Optional<string>;
 }
