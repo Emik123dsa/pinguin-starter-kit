@@ -2,7 +2,7 @@ import { inject, InjectionToken } from '@angular/core';
 import { ClientRestApiConfigRef } from '@pinguin/config';
 
 function baseRestApiUrlProviderFactory(): string {
-  const apiConfiggRef: ClientRestApiConfigRefstring = inject(ClientRestApiConfigRef);
+  const apiConfigRef: ClientRestApiConfigRef = inject(ClientRestApiConfigRef);
   const { href: baseApiUrl } = apiConfigRef.getBaseUrl();
   return baseApiUrl;
 }
