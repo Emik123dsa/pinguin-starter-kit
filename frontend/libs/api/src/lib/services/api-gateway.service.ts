@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
  *
  * ```typescript
  * class Service {
- * constructor(private readonly apiGatewayService: ApiGatewayService) {}
+ *  constructor(private readonly apiGatewayService: ApiGatewayService) {}
  * }
  * ```
  * @export

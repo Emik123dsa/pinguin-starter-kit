@@ -1,6 +1,6 @@
 import { FactoryProvider, ValueProvider } from '@angular/core';
-import { ClientEnvironmentOptions } from './environment.interfaces';
-import { ClientEnvironment } from './environment.enums';
+import { ClientEnvironmentOptions } from './environment.interface';
+import { ClientEnvironment } from './environment.enum';
 import { ENVIRONMENT, CLIENT_ENVIRONMENT_OPTIONS } from './environment.tokens';
 
 /**
@@ -10,9 +10,9 @@ import { ENVIRONMENT, CLIENT_ENVIRONMENT_OPTIONS } from './environment.tokens';
  * @returns {FactoryProvider}
  */
 export const ENVIRONMENT_PROVIDER: (
-  environment: ClientEnvironment
+  environment: ClientEnvironment,
 ) => FactoryProvider = (
-  environment: Readonly<ClientEnvironment>
+  environment: Readonly<ClientEnvironment>,
 ): FactoryProvider => ({
   provide: ENVIRONMENT,
   useFactory: () => environment,
@@ -27,7 +27,7 @@ export const ENVIRONMENT_PROVIDER: (
  * @returns {FactoryProvider}
  */
 export const CLIENT_ENVIRONMENT_OPTIONS_PROVIDER: (
-  options?: ClientEnvironmentOptions
+  options?: ClientEnvironmentOptions,
 ) => ValueProvider = (options?: ClientEnvironmentOptions): ValueProvider => ({
   provide: CLIENT_ENVIRONMENT_OPTIONS,
   useValue: options,

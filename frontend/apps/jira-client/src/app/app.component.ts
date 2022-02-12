@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { routeAnimations } from '@pinguin/animations';
-import { ClientWebSocketConfigRef } from '@pinguin/config';
+
 import { WINDOW } from '@pinguin/common';
 
 @Component({

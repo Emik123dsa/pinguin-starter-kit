@@ -1,1 +1,1 @@
-export * from './rest-api.options.interface';
+export * from './rest-api-options.interface';

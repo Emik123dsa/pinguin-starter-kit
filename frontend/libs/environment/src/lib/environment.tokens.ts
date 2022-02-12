@@ -3,8 +3,8 @@ import {
   ENVIRONMENT_CONSTANT,
   ENVIRONMENT_OPTIONS_CONSTANT,
 } from './environment.constants';
-import { ClientEnvironment } from './environment.enums';
-import { ClientEnvironmentOptions } from './environment.interfaces';
+import { ClientEnvironment } from './environment.enum';
+import { ClientEnvironmentOptions } from './environment.interface';
 
 /**
  * Client Environment Options Token.

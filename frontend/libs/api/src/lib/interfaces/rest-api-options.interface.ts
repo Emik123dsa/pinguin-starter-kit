@@ -1,4 +1,4 @@
-import { ClientConnectionOptions } from '@pinguin/common';
+import { ClientConnectionOptions, PlainObjectLiteral } from '@pinguin/common';
 
 export interface ClientRestApiOptions extends ClientConnectionOptions {
   headerMap: Map<string, string>;
@@ -8,4 +8,6 @@ export interface ClientRestApiOptions extends ClientConnectionOptions {
   // otherwise they could be override in the service context.
   retryAttempts?: number;
   errorAttempts?: number;
+
+  serializer?: (data: PlainObjectLiteral) => Optional<string>;
 }

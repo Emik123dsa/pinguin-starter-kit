@@ -1,9 +1,10 @@
-import { ClientConnectionOptions, StringUtils } from '@pinguin/common';
+import { StringUtils } from '../utils';
+import { ClientConnectionOptions } from './client-connection.interface';
 
 /**
  * Abstract connect options.
  */
-export abstract class AbstractConnectionOptions<
+export abstract class AbstractConnectionConfig<
   T extends ClientConnectionOptions,
 > {
   /**

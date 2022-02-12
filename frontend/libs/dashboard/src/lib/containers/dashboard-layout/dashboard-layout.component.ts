@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  OnInit,
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
@@ -21,11 +22,6 @@ import { ApiGatewayService } from '@pinguin/api';
   animations: [routeAnimations],
 })
 export class DashboardLayoutComponent {
-
-  public constructor(private readonly apiGatewayService: ApiGatewayService) {
-
-  }
-
   /**
    * Prepare router outlet from
    * activated `routeData` animation.

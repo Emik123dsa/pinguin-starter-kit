@@ -1,10 +1,13 @@
-import { ClientApplicationOptions } from './../../../config/src/lib/interfaces/app.options.interface';
-import { ClientRestApiOptions } from './../../../api/src/lib/interfaces/rest-api.options.interface';
-import { ClientWebSocketOptions } from '@pinguin/config';
+import { ModuleWithProviders, Type } from '@angular/core';
+import { ClientRestApiOptions } from '@pinguin/api';
+
+import { ClientApplicationOptions } from '@pinguin/config';
+
+import { ClientWebSocketOptions } from '@pinguin/websocket';
+
 /* eslint-disable @typescript-eslint/ban-types */
 
-import { ModuleWithProviders, Type } from '@angular/core';
-import { ClientEnvironment } from './environment.enums';
+import { ClientEnvironment } from './environment.enum';
 
 // Define client environment options as a global interface.
 export interface ClientEnvironmentOptions {
@@ -18,7 +21,10 @@ export interface ClientEnvironmentOptions {
 
   baseDomain: Optional<string>;
 
+  // Provide REST api client module.
   api: ClientRestApiOptions;
+
+  // Provide WebSocket client module.
   websocket: ClientWebSocketOptions;
 
   packages?: Array<object>;

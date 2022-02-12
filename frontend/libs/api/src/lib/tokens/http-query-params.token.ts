@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { inject, InjectionToken } from '@angular/core';
-import { ClientRestApiConfigRef } from '@pinguin/config';
+import { ClientRestApiConfigRef } from '../rest-api.config-ref';
 
 function baseApiHttpRequestQueryParamsProviderFactory(): HttpParams {
   const apiConfigRef: ClientRestApiConfigRef = inject(ClientRestApiConfigRef);

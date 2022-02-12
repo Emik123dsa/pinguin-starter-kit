@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StringUtils } from '@pinguin/common';
-import { DASHBOARD_MODULE_INITIALIZER } from '@pinguin/core';
+import { DASHBOARD_MODULE_INITIALIZER } from '@pinguin/dashboard';
 
 import { QuicklinkStrategy } from 'ngx-quicklink';
 

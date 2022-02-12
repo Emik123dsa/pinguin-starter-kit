@@ -1,8 +1,10 @@
 import { FactoryProvider } from '@angular/core';
 import { PlainObjectLiteral } from '@pinguin/common';
+
+import { ClientWebSocketOptions } from '../interfaces';
+
 import {
   ClientEnvironmentOptions,
-  ClientWebSocketOptions,
   CLIENT_ENVIRONMENT_OPTIONS,
 } from '@pinguin/environment';
 import { ClientWebSocketConfigRef } from '../websocket.config-ref';
@@ -14,10 +16,12 @@ export function clientWebSocketOptionsFactory(
   return {
     reconnectAttempts: 1,
     reconnectInterval: 1000,
-    serializer: (data: PlainObjectLiteral): Optional<string> =>
-      JSON.stringify(data),
-    deserializer: (event: MessageEvent): Optional<PlainObjectLiteral> =>
-      JSON.parse(event.data),
+    serializer(data: PlainObjectLiteral): Optional<string> {
+      return JSON.stringify(data);
+    },
+    deserializer(event: MessageEvent): Optional<PlainObjectLiteral> {
+      return JSON.parse(event.data);
+    },
     ...options,
   };
 }
@@ -26,12 +30,6 @@ export function clientWebSocketOptionsFactory(
  * Client web socket config ref.
  */
 export class ClientWebSocketConfig extends ClientWebSocketConfigRef {
-  public constructor(options: ClientWebSocketOptions) {
-    const configOptions: ClientWebSocketOptions =
-      clientWebSocketOptionsFactory(options);
-    super(configOptions);
-  }
-
   public override getConnectionPool(): number {
     return this.options.connectionPool;
   }
@@ -62,7 +60,10 @@ export class ClientWebSocketConfig extends ClientWebSocketConfigRef {
 function clientWebSocketConfigProviderFactory(
   options: ClientEnvironmentOptions,
 ): ClientWebSocketConfigRef {
-  return new ClientWebSocketConfig(options.websocket);
+  const webSocketOptions: ClientWebSocketOptions =
+    clientWebSocketOptionsFactory(options.websocket);
+
+  return new ClientWebSocketConfig(webSocketOptions);
 }
 
 // FactoryProvider for client websocket config.

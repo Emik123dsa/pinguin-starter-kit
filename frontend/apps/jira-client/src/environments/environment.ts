@@ -26,11 +26,11 @@ export const environment: ClientEnvironmentOptions = {
   },
   api: {
     baseUrl: {
-      scheme: 'http',
-      hostname: 'localhost',
-      port: 80,
-      prefix: 'api',
-      version: 'v1',
+      scheme: 'https',
+      hostname: '61ee5f30d593d20017dbad98.mockapi.io',
+      port: 443,
+      prefix: 'pinguin',
+      version: 'api',
     },
     retryAttempts: 3,
     errorAttempts: 1,

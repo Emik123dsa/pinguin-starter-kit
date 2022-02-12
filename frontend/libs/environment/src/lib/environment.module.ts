@@ -1,5 +1,5 @@
 import { ModuleWithProviders, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { ClientEnvironmentOptions } from './environment.interfaces';
+import { ClientEnvironmentOptions } from './environment.interface';
 
 import {
   ENVIRONMENT_PROVIDER,
@@ -31,7 +31,7 @@ export class ClientEnvironmentModule {
    * @returns {ModuleWithProviders<ClientEnvironmentModule>}
    */
   public static forRoot(
-    options: ClientEnvironmentOptions
+    options: ClientEnvironmentOptions,
   ): ModuleWithProviders<ClientEnvironmentModule> {
     return {
       ngModule: ClientEnvironmentModule,

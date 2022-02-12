@@ -1,10 +1,10 @@
-import { PlainObjectLiteral } from '@pinguin/common';
+import { AbstractConnectionConfig, PlainObjectLiteral } from '@pinguin/common';
 import { ClientWebSocketOptions } from './interfaces';
 
 /**
  * Client web socket config ref.
  */
-export abstract class ClientWebSocketConfigRef extends AbstractConnection<ClientWebSocketOptions> {
+export abstract class ClientWebSocketConfigRef extends AbstractConnectionConfig<ClientWebSocketOptions> {
   public abstract getConnectionPool(): number;
 
   public abstract getReconnectAttempts(): number;

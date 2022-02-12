@@ -1,11 +1,11 @@
 import { HttpContextToken } from '@angular/common/http';
-import { ClientRestApiOptions } from './interfaces';
-import { AbstractConnectionOptions } from './connections';
+import type { ClientRestApiOptions } from './interfaces';
+import { AbstractConnectionConfig, PlainObjectLiteral } from '@pinguin/common';
 
 /**
  * Client rest api config ref.
  */
-export abstract class ClientRestApiConfigRef extends AbstractConnectionOptions<ClientRestApiOptions> {
+export abstract class ClientRestApiConfigRef extends AbstractConnectionConfig<ClientRestApiOptions> {
   public abstract getHeaderMap(): Map<string, string>;
 
   public abstract getQueryParamMap(): Map<string, string>;
@@ -15,4 +15,9 @@ export abstract class ClientRestApiConfigRef extends AbstractConnectionOptions<C
   public abstract getRetryAttempts(): HttpContextToken<number>;
 
   public abstract getErrorAttempts(): HttpContextToken<number>;
+
+  // Set default serializer for writing request body.
+  public abstract getSerializer(): (
+    data: PlainObjectLiteral,
+  ) => Optional<string>;
 }

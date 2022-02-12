@@ -1,9 +1,10 @@
 import { FactoryProvider, Version } from '@angular/core';
 import {
-  ClientApplicationOptions,
   ClientEnvironmentOptions,
   CLIENT_ENVIRONMENT_OPTIONS,
 } from '@pinguin/environment';
+
+import { ClientApplicationOptions } from '../interfaces';
 import { ClientApplicationConfigRef } from '../app.config-ref';
 
 /**
