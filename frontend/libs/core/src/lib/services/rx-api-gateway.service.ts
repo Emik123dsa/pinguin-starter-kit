@@ -1,8 +1,13 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpParams,
+  HttpStatusCode,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiGatewayService } from '@pinguin/api';
+import { ApiGatewayErrorException, ApiGatewayService } from '@pinguin/api';
 import { PlainObjectLiteral } from '@pinguin/common';
-import { catchError, Observable, OperatorFunction } from 'rxjs';
+import { catchError, Observable, OperatorFunction, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +21,22 @@ export class RxApiGatewayService extends ApiGatewayService {
    */
   public constructor(private readonly httpClient: HttpClient) {
     super();
+  }
+
+  protected handleHttpClientError<T>(
+    error: HttpErrorResponse & T,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    caught?: Observable<T>,
+  ) {
+    return throwError(() => {
+      if (
+        error.ok &&
+        Object.is(error.statusText, 'OK') &&
+        Object.is(error.status, HttpStatusCode.Ok)
+      ) {
+        throw error;
+      } else return new ApiGatewayErrorException(error.message);
+    });
   }
 
   public override get<T>(

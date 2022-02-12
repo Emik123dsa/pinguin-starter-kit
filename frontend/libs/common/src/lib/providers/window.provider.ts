@@ -10,7 +10,8 @@ import {
   PLATFORM_ID,
   Provider,
 } from '@angular/core';
-import format from 'string-format';
+
+import * as format from 'string-format';
 import { UnknownPlatformException } from '../exceptions';
 import { ClientWindow } from '../interfaces';
 import { WINDOW } from '../tokens';

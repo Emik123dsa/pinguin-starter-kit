@@ -1,10 +1,11 @@
-import packageJson from '../../package.json';
-
 import { VERSION } from '@pinguin/core';
+
 import {
   ClientEnvironment,
   ClientEnvironmentOptions,
 } from '@pinguin/environment';
+
+import { StringUtils } from '@pinguin/common';
 
 // ClientEnvironmentOptions as an environment for development only.
 export const environment: ClientEnvironmentOptions = {
@@ -13,7 +14,7 @@ export const environment: ClientEnvironmentOptions = {
   hotModuleReplacement: false,
   baseDomain: 'localhost',
   app: {
-    id: 'pinguin-app-%s-staging'.replace('%s', VERSION.full),
+    id: StringUtils.format('pinguin-staging-{full}', VERSION.full),
     name: 'pinguin-jira-client',
     version: VERSION,
   },

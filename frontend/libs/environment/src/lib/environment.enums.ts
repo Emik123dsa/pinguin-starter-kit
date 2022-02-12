@@ -8,7 +8,7 @@ export enum ClientEnvironment {
   Development = 'development',
   Production = 'production',
   Staging = 'staging',
-  Test = 'test',
+  Testing = 'testing',
   Provision = 'provision',
   HMR = 'hmr',
 }

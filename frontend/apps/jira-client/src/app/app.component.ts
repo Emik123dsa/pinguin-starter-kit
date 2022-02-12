@@ -3,6 +3,7 @@ import { VERSION } from '@pinguin/core';
 import {
   ChangeDetectionStrategy,
   Component,
+  Inject,
   TemplateRef,
   Version,
   ViewChild,
@@ -11,6 +12,7 @@ import {
 import { RouterOutlet } from '@angular/router';
 import { routeAnimations } from '@pinguin/animations';
 import { ClientWebSocketConfigRef } from '@pinguin/config';
+import { WINDOW } from '@pinguin/common';
 
 @Component({
   selector: 'pinguin-jira-client-root',
@@ -26,8 +28,4 @@ export class AppComponent {
    * Version  of app component.
    */
   public version: Version = VERSION;
-
-  public constructor(
-    private readonly webSocketConfigRef: ClientWebSocketConfigRef
-  ) {}
 }

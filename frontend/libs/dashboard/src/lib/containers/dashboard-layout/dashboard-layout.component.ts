@@ -6,6 +6,7 @@ import {
 import { RouterOutlet } from '@angular/router';
 
 import { routeAnimations } from '@pinguin/animations';
+import { ApiGatewayService } from '@pinguin/api';
 
 @Component({
   selector: 'pinguin-dashboard-layout',
@@ -20,6 +21,11 @@ import { routeAnimations } from '@pinguin/animations';
   animations: [routeAnimations],
 })
 export class DashboardLayoutComponent {
+
+  public constructor(private readonly apiGatewayService: ApiGatewayService) {
+
+  }
+
   /**
    * Prepare router outlet from
    * activated `routeData` animation.

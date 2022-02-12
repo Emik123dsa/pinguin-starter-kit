@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/websocket",
+  "sourceRoot": "libs/websocket/src",
+  "prefix": "pinguin",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/websocket"],
+      "options": {
+        "jestConfig": "libs/websocket/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/websocket/src/**/*.ts",
+          "libs/websocket/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

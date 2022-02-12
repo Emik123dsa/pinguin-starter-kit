@@ -1,5 +1,6 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SharedModule } from '@pinguin/shared';
 
 import { DashboardLayoutComponent } from './dashboard-layout.component';
 
@@ -9,7 +10,7 @@ describe('DashboardLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SharedModule],
+      imports: [BrowserAnimationsModule, RouterTestingModule],
       declarations: [DashboardLayoutComponent],
     }).compileComponents();
   });

@@ -28,7 +28,12 @@
       "@pinguin/server": ["libs/server/src/index.ts"],
       "@pinguin/shared": ["libs/shared/src/index.ts"],
       "@pinguin/single-spa": ["libs/single-spa/src/index.ts"],
-      "@pinguin/theme": ["libs/theme/src/index.ts"]
+      "@pinguin/testing": ["libs/testing/src/index.ts"],
+      "@pinguin/theme": ["libs/theme/src/index.ts"],
+      "@pinguin/themes": ["libs/themes/src/index.ts"],
+      "@pinguin/ui-forms": ["libs/ui-forms/src/index.ts"],
+      "@pinguin/ui-overlay": ["libs/ui-overlay/src/index.ts"],
+      "@pinguin/websocket": ["libs/websocket/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

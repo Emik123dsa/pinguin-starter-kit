@@ -18,7 +18,7 @@ const routes: Routes = [
         path: '404',
         component: NotFoundPageComponent,
         data: {
-          title: 'Error | 404',
+          title: '404 | Not Found',
           depth: 2,
           animation: 'NotFoundPage',
         },

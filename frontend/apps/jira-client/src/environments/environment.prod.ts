@@ -1,3 +1,4 @@
+import { StringUtils } from '@pinguin/common';
 import { VERSION } from '@pinguin/core';
 
 import {
@@ -12,7 +13,7 @@ export const environment: ClientEnvironmentOptions = {
   hotModuleReplacement: false,
   baseDomain: location.hostname,
   app: {
-    id: 'pinguin-app-%s-production'.replace('%s', VERSION.full),
+    id: StringUtils.format('pinguin-production-{full}', VERSION.full),
     name: 'pinguin-jira-client',
     version: VERSION,
   },

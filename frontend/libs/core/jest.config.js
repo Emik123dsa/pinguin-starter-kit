@@ -1,6 +1,7 @@
 module.exports = {
   displayName: 'core',
   preset: '../../jest.preset.js',
+  testRunner: 'jest-jasmine2',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {

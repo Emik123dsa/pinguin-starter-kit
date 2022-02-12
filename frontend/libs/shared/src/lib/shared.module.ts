@@ -6,6 +6,8 @@ import { ContainerComponent } from './components/container/container.component';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FooterLayoutComponent } from './layouts/footer/footer.component';
+import { HeaderLayoutComponent } from './layouts/header/header.component';
 
 @NgModule({
   imports: [
@@ -36,7 +38,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
       mediaTriggerAutoRestore: true,
     }),
   ],
-  declarations: [WrapperLayoutComponent, ContainerComponent],
+  declarations: [
+    WrapperLayoutComponent,
+    ContainerComponent,
+    HeaderLayoutComponent,
+    FooterLayoutComponent,
+  ],
   providers: [],
   exports: [
     //  Provide common module.
@@ -60,7 +67,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     // Provide components and layouts.
     WrapperLayoutComponent,
     ContainerComponent,
+    HeaderLayoutComponent,
+    FooterLayoutComponent,
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })
-export class SharedModule {}
+export class ClientSharedModule {}

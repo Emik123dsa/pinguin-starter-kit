@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 
-import { DashboardLayoutComponent } from './containers/dashboard-layout/dashboard-layout.component';
-import { DashboardRoutingModule } from './dashboard-routing.module';
-import { SharedModule } from '@pinguin/shared';
+import { ClientSharedModule } from '@pinguin/shared';
 
-import { RoadmapsPageComponent } from './containers/roadmaps-page/roadmaps-page.component';
-import { CampaignRoadmapComponent } from './components/campaign-roadmap/campaign-roadmap.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardLayoutComponent } from './containers/dashboard-layout';
+import { RoadmapsPageComponent } from './containers/roadmaps-page';
+import { CampaignRoadmapComponent } from './components/campaign-roadmap';
 
 @NgModule({
-  imports: [SharedModule, DashboardRoutingModule],
+  imports: [ClientSharedModule, DashboardRoutingModule],
   declarations: [
     DashboardLayoutComponent,
     RoadmapsPageComponent,
     CampaignRoadmapComponent,
   ],
+  providers: [],
 })
 export class DashboardModule {}

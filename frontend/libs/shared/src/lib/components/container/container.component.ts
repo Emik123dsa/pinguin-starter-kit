@@ -8,8 +8,6 @@ import {
 
 import { Platform } from '@angular/cdk/platform';
 
-let containerUniqueId = 0;
-
 @Component({
   selector: 'pinguin-container',
   templateUrl: './container.component.html',
@@ -23,15 +21,17 @@ let containerUniqueId = 0;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContainerComponent {
+  public static nextUniqueId = 0;
+
   /**
    * Determines whether server is.
    */
-  protected _isServer!: boolean;
+  protected readonly _isServer!: boolean;
 
   /**
    * Container id of container component.
    */
-  private _uniqueId = `pinguin-container-${containerUniqueId++}`;
+  private _uniqueId = `pinguin-container-${ContainerComponent.nextUniqueId++}`;
 
   @Input()
   public set id(value: string) {

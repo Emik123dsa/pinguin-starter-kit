@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/ui-overlay",
+  "sourceRoot": "libs/ui-overlay/src",
+  "prefix": "pinguin",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ui-overlay"],
+      "options": {
+        "jestConfig": "libs/ui-overlay/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ui-overlay/src/**/*.ts",
+          "libs/ui-overlay/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

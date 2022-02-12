@@ -1,4 +1,4 @@
-import format from 'string-format';
+import * as format from 'string-format';
 
 export abstract class ServerService {
   /**
@@ -10,7 +10,7 @@ export abstract class ServerService {
    */
   public ngServerInit(): void {
     throw new ReferenceError(
-      format('{name} was not implemented', ServerService)
+      format('{name} was not implemented', ServerService),
     );
   }
 }

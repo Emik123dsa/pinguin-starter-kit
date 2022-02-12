@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StringUtils } from '@pinguin/common';
-import { QuicklinkStrategy } from 'ngx-quicklink';
+import { DASHBOARD_MODULE_INITIALIZER } from '@pinguin/core';
 
-import { environment } from '../environments/environment';
+import { QuicklinkStrategy } from 'ngx-quicklink';
 
 const routes: Routes = [
   {
@@ -21,6 +21,7 @@ const routes: Routes = [
       title: 'Dashboard',
       preload: true,
     },
+    canLoad: [DASHBOARD_MODULE_INITIALIZER],
     loadChildren: () =>
       import('@pinguin/dashboard').then((module) => module.DashboardModule),
   },

@@ -1,4 +1,4 @@
-import format from 'string-format';
+import * as format from 'string-format';
 
 export abstract class BrowserService {
   /**
@@ -10,7 +10,7 @@ export abstract class BrowserService {
    */
   public ngBrowserInit(): void {
     throw new ReferenceError(
-      format('{name} was not implemented', BrowserService)
+      format('{name} was not implemented', BrowserService),
     );
   }
 }

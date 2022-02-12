@@ -16,6 +16,10 @@
     "server": "libs/server",
     "shared": "libs/shared",
     "single-spa": "libs/single-spa",
-    "theme": "libs/theme"
+    "testing": "libs/testing",
+    "themes": "libs/themes",
+    "ui-forms": "libs/ui-forms",
+    "ui-overlay": "libs/ui-overlay",
+    "websocket": "libs/websocket"
   }
 }

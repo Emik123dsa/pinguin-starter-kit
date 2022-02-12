@@ -1,51 +1,10 @@
+import { ClientApplicationOptions } from './../../../config/src/lib/interfaces/app.options.interface';
+import { ClientRestApiOptions } from './../../../api/src/lib/interfaces/rest-api.options.interface';
+import { ClientWebSocketOptions } from '@pinguin/config';
 /* eslint-disable @typescript-eslint/ban-types */
-import { PlainObjectLiteral } from '@pinguin/common';
 
-import { ModuleWithProviders, Type, Version } from '@angular/core';
-
+import { ModuleWithProviders, Type } from '@angular/core';
 import { ClientEnvironment } from './environment.enums';
-
-export interface ClientApplicationOptions {
-  id: string;
-  name: string;
-  version: Version;
-}
-
-export interface ClientBaseUrlOptions {
-  scheme: 'http' | 'https' | 'ws' | 'wss';
-  hostname: string;
-  port: number;
-  prefix?: string;
-  version?: string;
-}
-
-export interface ClientOAuthOptions {
-  clientId: Optional<string>;
-  clientSecret: Optional<string>;
-  accessToken: Optional<string>;
-}
-
-export interface ClientConnectOptions {
-  baseUrl: ClientBaseUrlOptions;
-}
-
-export interface ClientRestApiOptions extends ClientConnectOptions {
-  headerMap: Map<string, string>;
-  queryParamMap: Map<string, string>;
-
-  // Set default attempts for API requests,
-  // otherwise they could be override in the service context.
-  retryAttempts?: number;
-  errorAttempts?: number;
-}
-
-export interface ClientWebSocketOptions extends ClientConnectOptions {
-  connectionPool: number;
-  reconnectAttempts?: number;
-  reconnectInterval?: number;
-  serializer?: (data: PlainObjectLiteral) => Optional<string>;
-  deserializer?: (event: MessageEvent) => Optional<PlainObjectLiteral>;
-}
 
 // Define client environment options as a global interface.
 export interface ClientEnvironmentOptions {

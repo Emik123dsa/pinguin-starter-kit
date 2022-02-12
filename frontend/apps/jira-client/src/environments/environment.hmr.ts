@@ -10,6 +10,7 @@ import {
 } from '@pinguin/environment';
 
 import { VERSION } from '@pinguin/core';
+import { StringUtils } from '@pinguin/common';
 
 // ClientEnvironmentOptions as an environment for development only.
 export const environment: ClientEnvironmentOptions = {
@@ -18,7 +19,7 @@ export const environment: ClientEnvironmentOptions = {
   hotModuleReplacement: true,
   baseDomain: 'localhost',
   app: {
-    id: 'pinguin-app-%s-hmr'.replace('%s', VERSION.full),
+    id: StringUtils.format('pinguin-HMR-{full}', VERSION.full),
     name: 'pinguin-jira-client',
     version: VERSION,
   },

@@ -1,10 +1,11 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { PlainObjectLiteral } from '@pinguin/common';
-
+import { PlainObjectLiteral, StringUtils } from '@pinguin/common';
+StringUtils;
 import {
   ClientEnvironment,
   ClientEnvironmentOptions,
@@ -19,7 +20,7 @@ export const environment: ClientEnvironmentOptions = {
   hotModuleReplacement: false,
   baseDomain: 'localhost',
   app: {
-    id: 'pinguin-app-%s'.replace('%s', VERSION.full),
+    id: StringUtils.format('pinguin-{full}', VERSION.full),
     name: 'pinguin-jira-client',
     version: VERSION,
   },

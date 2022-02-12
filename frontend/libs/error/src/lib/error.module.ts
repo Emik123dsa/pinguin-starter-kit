@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
-import { SharedModule } from '@pinguin/shared';
+import { ClientSharedModule } from '@pinguin/shared';
 
 import { ClientErrorRoutingModule } from './error-routing.module';
 
@@ -9,7 +9,7 @@ import { NotFoundPageComponent } from './containers/not-found-page/not-found-pag
 
 @NgModule({
   declarations: [ErrorLayoutComponent, NotFoundPageComponent],
-  imports: [SharedModule, ClientErrorRoutingModule],
+  imports: [ClientSharedModule, ClientErrorRoutingModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ClientErrorModule {}
