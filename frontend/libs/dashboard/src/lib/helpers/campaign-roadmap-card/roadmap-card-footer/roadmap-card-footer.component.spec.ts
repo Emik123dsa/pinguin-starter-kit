@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubmittingOverlayComponent } from './submitting-overlay.component';
+import { RoadmapCardFooterComponent } from './roadmap-card-footer.component';
 
-describe('SubmittingOverlayComponent', () => {
-  let component: SubmittingOverlayComponent;
-  let fixture: ComponentFixture<SubmittingOverlayComponent>;
+describe('RoadmapCardFooterComponent', () => {
+  let component: RoadmapCardFooterComponent;
+  let fixture: ComponentFixture<RoadmapCardFooterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SubmittingOverlayComponent ]
+      declarations: [ RoadmapCardFooterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SubmittingOverlayComponent);
+    fixture = TestBed.createComponent(RoadmapCardFooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

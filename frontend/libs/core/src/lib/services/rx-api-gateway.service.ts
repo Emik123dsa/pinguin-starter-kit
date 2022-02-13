@@ -1,11 +1,17 @@
 import {
+  HttpBackend,
   HttpClient,
   HttpErrorResponse,
   HttpParams,
   HttpStatusCode,
 } from '@angular/common/http';
 
-import { Inject, Injectable, Self } from '@angular/core';
+import {
+  Inject,
+  Injectable,
+  Optional as OptionalInject,
+  Self,
+} from '@angular/core';
 
 import { catchError, Observable, OperatorFunction, throwError } from 'rxjs';
 
@@ -34,6 +40,10 @@ export class RxApiGatewayService extends ApiGatewayService {
    */
   public constructor(
     private readonly httpClient: HttpClient,
+    // Inject optionally `HttpBackend` for initialize `HttpClient` without interceptors.
+    @Self()
+    @OptionalInject()
+    private readonly httpBackend: HttpBackend,
     @Self()
     @Inject(ENVIRONMENT)
     private readonly environment: ClientEnvironment,

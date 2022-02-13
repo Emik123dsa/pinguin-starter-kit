@@ -9,6 +9,9 @@ import {
   exportAs: 'pinguinLayoutHeader',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  host: {
+    'class': 'pinguin-layout-header',
+  },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

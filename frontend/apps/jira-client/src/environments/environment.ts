@@ -51,11 +51,19 @@ export const environment: ClientEnvironmentOptions = {
     connectionPool: 1,
     reconnectAttempts: 10,
     reconnectInterval: 1000,
-    serializer: (data: PlainObjectLiteral) => JSON.stringify(data),
-    deserializer: (event: MessageEvent): PlainObjectLiteral =>
-      JSON.parse(event.data),
+    // Override default serializer and deserializer for WebSocket handlers:
+    // # Examples:
+    // serializer: (data: PlainObjectLiteral) => JSON.stringify(data),
+    // deserializer: (event: MessageEvent): PlainObjectLiteral =>
+    //   JSON.parse(event.data),
   },
-  runtimePlugins: [StoreDevtoolsModule.instrument()],
+  runtimePlugins: [
+    StoreDevtoolsModule.instrument({
+      name: StoreDevtoolsModule.name,
+      logOnly: true,
+      autoPause: true,
+    }),
+  ],
   packages: [],
 };
 

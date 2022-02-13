@@ -90,8 +90,6 @@ export class ApiGatewayRequestInterceptor implements HttpInterceptor {
       baseApiUrl = request.url;
     }
 
-    console.log(baseApiUrl);
-
     // Clone base http request to override current http handler.
     const baseHttpRequest: HttpRequest<unknown> = request.clone({
       url: baseApiUrl,

@@ -12,13 +12,13 @@ import {
   imports: [],
   providers: [CLIENT_REST_API_CONFIG_PROVIDER],
 })
-export class ClientApiModule {
+export class ClientRestApiModule {
   public static forRoot(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     options: ClientRestApiOptions = {} as ClientRestApiOptions,
-  ): ModuleWithProviders<ClientApiModule> {
+  ): ModuleWithProviders<ClientRestApiModule> {
     return {
-      ngModule: ClientApiModule,
+      ngModule: ClientRestApiModule,
       providers: [BASE_API_GATEWAY_REQUEST_PROVIDER],
     };
   }

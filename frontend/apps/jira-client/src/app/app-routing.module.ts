@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Route, RouterModule, Routes, UrlSegment } from '@angular/router';
 import { StringUtils } from '@pinguin/common';
-import { DASHBOARD_MODULE_INITIALIZER } from '@pinguin/dashboard';
+import { DASHBOARD_MODULE_INITIALIZER } from '@pinguin/core';
 
 import { QuicklinkStrategy } from 'ngx-quicklink';
 
@@ -53,6 +53,15 @@ const routes: Routes = [
       preloadingStrategy: QuicklinkStrategy,
       relativeLinkResolution: 'legacy',
     }),
+  ],
+  providers: [
+    {
+      provide: 'DASHBOARD_MODULE_INITIALIZER',
+      useValue: (route: Route, segments: UrlSegment[]) => {
+        console.log('COOL');
+        return true;
+      },
+    },
   ],
   exports: [RouterModule],
 })

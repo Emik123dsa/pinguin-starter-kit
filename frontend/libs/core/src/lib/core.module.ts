@@ -6,16 +6,18 @@ import {
 
 import { CommonModule } from '@angular/common';
 
-import { API_GATEWAY_REQUEST_PROVIDERS } from './providers';
+import { ClientRestApiModule } from '@pinguin/api';
 
-import { ClientApiModule } from '@pinguin/api';
-
-import { DASHBOARD_MODULE_INITIALIZER_PROVIDER } from '@pinguin/dashboard';
+import {
+  API_GATEWAY_REQUEST_PROVIDERS,
+  DASHBOARD_MODULE_INITIALIZER_PROVIDER,
+} from './providers';
+import { CoreStoreModule } from './store';
 
 @NgModule({
-  imports: [CommonModule, ClientApiModule.forRoot()],
+  imports: [CommonModule, ClientRestApiModule.forRoot(), CoreStoreModule],
   providers: [API_GATEWAY_REQUEST_PROVIDERS],
-  exports: [CommonModule, ClientApiModule],
+  exports: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CoreModule {

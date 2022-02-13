@@ -4,11 +4,11 @@
   fxLayoutWrap="wrap"
   fxLayoutAlign="center start"
 >
-  <header role="contentinfo"></header>
+  <pinguin-layout-header></pinguin-layout-header>
   <main role="cell">
     <div [@routeAnimations]="prepareDashboardRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>
     </div>
   </main>
-  <footer role="contentinfo"></footer>
+  <pinguin-layout-footer></pinguin-layout-footer>
 </div>
