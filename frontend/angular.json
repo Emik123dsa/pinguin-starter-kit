@@ -18,6 +18,7 @@
     "single-spa": "libs/single-spa",
     "testing": "libs/testing",
     "themes": "libs/themes",
+    "ui-card": "libs/ui-card",
     "ui-forms": "libs/ui-forms",
     "ui-overlay": "libs/ui-overlay",
     "websocket": "libs/websocket"

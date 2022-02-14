@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RoadmapCardHeaderComponent } from './roadmap-card-header.component';
+import { UiCardFooterComponent } from './card-footer.component';
 
-describe('RoadmapCardHeaderComponent', () => {
-  let component: RoadmapCardHeaderComponent;
-  let fixture: ComponentFixture<RoadmapCardHeaderComponent>;
+describe('UiCardFooterComponent', () => {
+  let component: UiCardFooterComponent;
+  let fixture: ComponentFixture<UiCardFooterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RoadmapCardHeaderComponent ]
+      declarations: [ UiCardFooterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RoadmapCardHeaderComponent);
+    fixture = TestBed.createComponent(UiCardFooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

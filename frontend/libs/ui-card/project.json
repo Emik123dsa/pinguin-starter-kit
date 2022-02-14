@@ -1,14 +1,14 @@
 {
   "projectType": "library",
-  "root": "libs/schema",
-  "sourceRoot": "libs/schema/src",
+  "root": "libs/ui-card",
+  "sourceRoot": "libs/ui-card/src",
   "prefix": "pinguin",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/schema"],
+      "outputs": ["coverage/libs/ui-card"],
       "options": {
-        "jestConfig": "libs/schema/jest.config.js",
+        "jestConfig": "libs/ui-card/jest.config.js",
         "passWithNoTests": true
       }
     },
@@ -16,8 +16,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/schema/src/**/*.ts",
-          "libs/schema/src/**/*.html"
+          "libs/ui-card/src/**/*.ts",
+          "libs/ui-card/src/**/*.html"
         ]
       }
     }

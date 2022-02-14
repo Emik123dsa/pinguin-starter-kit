@@ -8,6 +8,7 @@ import { ClientEnvironmentOptions } from './environment.interface';
 
 /**
  * Client Environment Options Token.
+ * Using with `@SkipSelf` decorator whether environment is enabled.
  *
  * @type {InjectionToken<ClientEnvironmentOptions>}
  */
@@ -22,6 +23,7 @@ export const CLIENT_ENVIRONMENT_OPTIONS: InjectionToken<ClientEnvironmentOptions
 
 /**
  * Client Environment Token.
+ * Using with `@SkipSelf` decorator whether environment is enabled.
  *
  * @type {InjectionToken<ClientEnvironment>}
  */

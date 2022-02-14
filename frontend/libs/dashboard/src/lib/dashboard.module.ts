@@ -8,15 +8,11 @@ import { DashboardLayoutComponent } from './containers/dashboard-layout';
 import { RoadmapsPageComponent } from './containers/roadmaps-page';
 import { CampaignRoadmapComponent } from './components/campaign-roadmap';
 
-// Provide any helpers modules.
-import { CampaignRoadmapCardModule } from './helpers/campaign-roadmap-card/campaign-roadmap-card.module';
+// Provide UI modules.
+import { UiCardModule } from '@pinguin/ui-card';
 
 @NgModule({
-  imports: [
-    ClientSharedModule,
-    DashboardRoutingModule,
-    CampaignRoadmapCardModule,
-  ],
+  imports: [ClientSharedModule, DashboardRoutingModule, UiCardModule],
   declarations: [
     DashboardLayoutComponent,
     RoadmapsPageComponent,
@@ -27,5 +23,7 @@ import { CampaignRoadmapCardModule } from './helpers/campaign-roadmap-card/campa
 export class DashboardModule {
   public constructor() {
     // Constructs dashboard client module.
+    // TODO: should be implemented store$ initialization in constructor?
+    // Currently invoked in the `canLoad` hook.
   }
 }
