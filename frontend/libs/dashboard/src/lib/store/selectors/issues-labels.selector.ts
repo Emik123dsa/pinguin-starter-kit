@@ -12,7 +12,7 @@ import { IssuesLabelsEntity } from '../../models';
 import { IssuesLabelsEntityState } from '../models';
 import { issuesLabelsEntityAdapter } from '../state';
 
-import { issuesLabelsEntityState } from './issues.selector';
+import { selectIssuesLabelsEntityState } from './issues.selector';
 
 export const issuesLabelsEntitySelectors: EntitySelectors<
   IssuesLabelsEntity,
@@ -23,15 +23,18 @@ export const issuesLabelsSelector: MemoizedSelector<
   object,
   IssuesLabelsEntityState,
   DefaultProjectorFn<IssuesLabelsEntityState>
-> = createSelector(issuesLabelsEntityState, (state) => state.issuesLabels);
+> = createSelector(
+  selectIssuesLabelsEntityState,
+  (state) => state.issuesLabels,
+);
 
-export const issuesLabelsAll: MemoizedSelector<
+export const selectIssuesLabelsAll: MemoizedSelector<
   object,
   IssuesLabelsEntity[],
   DefaultProjectorFn<IssuesLabelsEntity[]>
 > = createSelector(issuesLabelsSelector, issuesLabelsEntitySelectors.selectAll);
 
-export const issuesLabelsEntities: MemoizedSelector<
+export const selectIssuesLabelsEntities: MemoizedSelector<
   object,
   Dictionary<IssuesLabelsEntity>,
   DefaultProjectorFn<Dictionary<IssuesLabelsEntity>>
@@ -40,13 +43,13 @@ export const issuesLabelsEntities: MemoizedSelector<
   issuesLabelsEntitySelectors.selectEntities,
 );
 
-export const issuesLabelsIds: MemoizedSelector<
+export const selectIssuesLabelsIds: MemoizedSelector<
   object,
   string[] | number[],
   DefaultProjectorFn<string[] | number[]>
 > = createSelector(issuesLabelsSelector, issuesLabelsEntitySelectors.selectIds);
 
-export const issuesLabelsTotal: MemoizedSelector<
+export const selectIssuesLabelsTotal: MemoizedSelector<
   object,
   number,
   DefaultProjectorFn<number>

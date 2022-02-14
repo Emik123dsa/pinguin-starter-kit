@@ -1,4 +1,9 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  NgModule,
+  Renderer2,
+  RendererFactory2,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -24,4 +29,16 @@ import { CoreRouterStateSerializer } from './serializers';
   declarations: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class CoreStoreModule {}
+export class CoreStoreModule {
+  public constructor(private readonly renderFactory: RendererFactory2) {
+    const render = renderFactory.createRenderer(window, null);
+
+    render.listen(window, 'online', () => {
+      console.log('ONLINE');
+    });
+
+    render.listen(window, 'offline', () => {
+      console.log('OFFLINE');
+    });
+  }
+}

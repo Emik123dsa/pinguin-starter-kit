@@ -29,8 +29,9 @@ function coreModuleInitializerFactory(): (
   store: Store<CoreEntityState>,
 ) => boolean {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  return (store: Store<CoreEntityState>): boolean => {
+  return (store?: Store<CoreEntityState>): boolean => {
     // TODO: enable 'WebSocketStoreModule', maybe enable some remote services configs.
+
     return true;
   };
 }
@@ -52,6 +53,13 @@ export class CoreModule {
     private readonly internalModule?: CoreModule,
   ) {}
 
+  /**
+   * Provide initialization providers inside of the `forRoot` method.
+   *
+   * @public
+   * @static
+   * @returns {ModuleWithProviders<CoreModule>}
+   */
   public static forRoot(): ModuleWithProviders<CoreModule> {
     // Module initializers, will load only if the conditions from `canLoad`
     // seems to be valuable.
