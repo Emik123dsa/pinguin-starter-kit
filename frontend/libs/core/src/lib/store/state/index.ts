@@ -1,1 +1,1 @@
-export * from './core-store.state';
+export * from './core.state';

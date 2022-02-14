@@ -13,12 +13,13 @@ const routes: Routes = [
       animation: 'DashboardLayout',
       roles: [],
     },
+
     children: [
       {
         path: 'roadmaps',
         component: RoadmapsPageComponent,
         data: {
-          title: 'Campaign Roadmap',
+          title: 'Roadmaps',
           depth: 2,
           animation: 'DashboardRoadmapsPage',
         },

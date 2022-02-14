@@ -59,7 +59,7 @@ export const environment: ClientEnvironmentOptions = {
   },
   runtimePlugins: [
     StoreDevtoolsModule.instrument({
-      name: StoreDevtoolsModule.name,
+      name: 'pinguin-jira-client',
       logOnly: true,
       autoPause: true,
     }),
