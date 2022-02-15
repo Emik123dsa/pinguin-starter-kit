@@ -85,8 +85,9 @@ export class RxApiGatewayService extends ApiGatewayService {
         }
       }
 
+      const fallbackErrorCode = 'Unknown Api Gateway Error Exception';
       // Throw any api gateway error exception.
-      return error.error || 'Unknown Request Error Exception';
+      return error.error || fallbackErrorCode;
     });
   }
 

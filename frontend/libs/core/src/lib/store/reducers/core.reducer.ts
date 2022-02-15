@@ -3,7 +3,6 @@ import { routerReducer } from '@ngrx/router-store';
 
 import { CoreEntityState } from '../models';
 import { CoreEntityActions } from '../actions';
-import { initialCoreEntityState } from '../state';
 import { issuesEntityReducer } from './issues.reducer';
 
 import { ISSUES_FEATURE_KEY, ROUTER_FEATURE_KEY } from '../constants';

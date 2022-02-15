@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ClientEnvironmentModule } from '@pinguin/environment';
 import { ClientConfigModule } from '@pinguin/config';
-import { ClientApiModule } from '@pinguin/api';
+import { ClientRestApiModule } from '@pinguin/api';
 
 import { environment } from './mocks';
 
@@ -11,13 +13,15 @@ import { environment } from './mocks';
     CommonModule,
     ClientEnvironmentModule.forRoot(environment),
     ClientConfigModule.forRoot(),
-    ClientApiModule,
+    HttpClientTestingModule,
+    ClientRestApiModule,
   ],
   exports: [
     CommonModule,
     ClientEnvironmentModule,
     ClientConfigModule,
-    ClientApiModule,
+    HttpClientTestingModule,
+    ClientRestApiModule,
   ],
 })
 export class ClientTestingModule {}

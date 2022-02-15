@@ -1,13 +1,15 @@
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CanLoad, Route, UrlSegment } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { ApiGatewayService } from '@pinguin/api';
 import { Store } from '@ngrx/store';
+
+import { selectIssuesLabelsIds } from '../store';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardModuleService implements CanLoad {
+  public constructor(private readonly store: Store) {}
   /**
    * Check out whether `note-labels` are being available,
    * before application will be mounted.
@@ -21,6 +23,10 @@ export class DashboardModuleService implements CanLoad {
     route: Route,
     segments: UrlSegment[],
   ): Observable<boolean> | Promise<boolean> | boolean {
+    this.store.select(selectIssuesLabelsIds).subscribe((data) => {
+      console.log(data);
+    });
+
     return true;
   }
 }

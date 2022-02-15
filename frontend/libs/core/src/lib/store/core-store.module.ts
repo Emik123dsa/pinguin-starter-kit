@@ -18,15 +18,14 @@ import { CoreRouterStateSerializer } from './serializers';
 import { IssuesFieldsEffects, IssuesLabelsEffects } from './effects';
 
 import { CORE_ENTITY_ROOT_REDUCER } from './core.tokens';
-import { coreEntityRootStoreConfig } from './core.providers';
+import { coreEntityRootConfig } from './core.providers';
 
 @NgModule({
   imports: [
     // Common module for reactive component module.
     CommonStoreModule,
-
-    // Provide core store reducers.
-    StoreModule.forRoot(CORE_ENTITY_ROOT_REDUCER, coreEntityRootStoreConfig),
+    // Provide core store reducers for initialization.
+    StoreModule.forRoot(CORE_ENTITY_ROOT_REDUCER, coreEntityRootConfig),
     EffectsModule.forRoot(
       new Array<Type<unknown>>(IssuesLabelsEffects, IssuesFieldsEffects),
     ),
@@ -40,17 +39,24 @@ import { coreEntityRootStoreConfig } from './core.providers';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CoreStoreModule {
+  /**
+   * TODO: handle any internal browser events,
+   * will be refactored to the `common` module.
+   *
+   * # Example:
+   * ```typescript
+   * const render = renderFactory.createRenderer(window, null);
+   * render.listen(window, 'online', () => {
+   *   console.log('ONLINE');
+   * });
+   * render.listen(window, 'offline', () => {
+   *   console.log('OFFLINE');
+   * });
+   * ```
+   */
   public constructor(
     @SkipSelf()
     @Optional()
     private readonly internalModule?: CoreStoreModule,
-  ) {
-    // const render = renderFactory.createRenderer(window, null);
-    // render.listen(window, 'online', () => {
-    //   console.log('ONLINE');
-    // });
-    // render.listen(window, 'offline', () => {
-    //   console.log('OFFLINE');
-    // });
-  }
+  ) {}
 }
