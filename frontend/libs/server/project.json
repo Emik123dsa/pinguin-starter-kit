@@ -5,14 +5,20 @@
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/server/**/*.ts"]
+        "lintFilePatterns": [
+          "libs/server/**/*.ts"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/server"],
+      "outputs": [
+        "coverage/libs/server"
+      ],
       "options": {
         "jestConfig": "libs/server/jest.config.js",
         "passWithNoTests": true

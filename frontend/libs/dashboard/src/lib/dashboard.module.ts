@@ -12,14 +12,13 @@ import { CampaignRoadmapComponent } from './components/campaign-roadmap';
 // Provide UI modules.
 import { UiCardModule } from '@pinguin/ui-card';
 import { DashboardStoreModule } from './store';
-import { Store } from '@ngrx/store';
-import { IssuesEntityState } from './store';
+
 import { ActivatedRoute } from '@angular/router';
 
 @NgModule({
   imports: [
     ClientSharedModule,
-    DashboardStoreModule,
+    DashboardStoreModule.forRoot(),
     DashboardRoutingModule,
     UiCardModule,
   ],

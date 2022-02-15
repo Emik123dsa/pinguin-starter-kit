@@ -1,1 +1,1 @@
-export * from './core-router-state.serializer';
+export * from './router.serializer';

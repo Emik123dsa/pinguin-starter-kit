@@ -1,1 +1,2 @@
-export * from './window.constant';
+export * from './window.constants';
+ 

@@ -1,44 +1,56 @@
 import {
   CUSTOM_ELEMENTS_SCHEMA,
   NgModule,
-  Renderer2,
-  RendererFactory2,
+  Optional,
+  SkipSelf,
+  Type,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { ReactiveComponentModule } from '@ngrx/component';
+
+import { CommonStoreModule } from '@pinguin/common';
+
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
-import { CORE_ROUTER_STATE_KEY } from './constants';
-import { getCoreReducer } from './reducers';
+import { ROUTER_FEATURE_KEY } from './constants';
 import { CoreRouterStateSerializer } from './serializers';
+import { IssuesFieldsEffects, IssuesLabelsEffects } from './effects';
+
+import { CORE_ENTITY_ROOT_REDUCER } from './core.tokens';
+import { coreEntityRootStoreConfig } from './core.providers';
 
 @NgModule({
   imports: [
     // Common module for reactive component module.
-    CommonModule,
-    ReactiveComponentModule,
-    StoreModule.forRoot(getCoreReducer()),
-    EffectsModule.forRoot(),
+    CommonStoreModule,
+
+    // Provide core store reducers.
+    StoreModule.forRoot(CORE_ENTITY_ROOT_REDUCER, coreEntityRootStoreConfig),
+    EffectsModule.forRoot(
+      new Array<Type<unknown>>(IssuesLabelsEffects, IssuesFieldsEffects),
+    ),
     StoreRouterConnectingModule.forRoot({
-      stateKey: CORE_ROUTER_STATE_KEY,
+      stateKey: ROUTER_FEATURE_KEY,
       serializer: CoreRouterStateSerializer,
     }),
   ],
+  providers: [IssuesLabelsEffects, IssuesFieldsEffects],
   declarations: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CoreStoreModule {
-  public constructor(private readonly renderFactory: RendererFactory2) {
-    const render = renderFactory.createRenderer(window, null);
-
-    render.listen(window, 'online', () => {
-      console.log('ONLINE');
-    });
-
-    render.listen(window, 'offline', () => {
-      console.log('OFFLINE');
-    });
+  public constructor(
+    @SkipSelf()
+    @Optional()
+    private readonly internalModule?: CoreStoreModule,
+  ) {
+    // const render = renderFactory.createRenderer(window, null);
+    // render.listen(window, 'online', () => {
+    //   console.log('ONLINE');
+    // });
+    // render.listen(window, 'offline', () => {
+    //   console.log('OFFLINE');
+    // });
   }
 }

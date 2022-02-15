@@ -1,6 +1,8 @@
-import { routerReducer } from '@ngrx/router-store';
-import { CoreEntityState } from '../models';
+import { initialIssuesEntityState } from './issues.state';
+import { RouterReducerState, CoreEntityState } from '../models';
+import { ISSUES_FEATURE_KEY, ROUTER_FEATURE_KEY } from '../constants';
 
 export const initialCoreEntityState: CoreEntityState = {
-  router: routerReducer,
+  [ROUTER_FEATURE_KEY]: Object.create(null) as RouterReducerState,
+  [ISSUES_FEATURE_KEY]: initialIssuesEntityState,
 };

@@ -1,15 +1,24 @@
-import { ActionReducerMap } from '@ngrx/store';
+import { ActionReducerMap, RootStoreConfig } from '@ngrx/store';
+import { routerReducer } from '@ngrx/router-store';
 
 import { CoreEntityState } from '../models';
 import { CoreEntityActions } from '../actions';
 import { initialCoreEntityState } from '../state';
+import { issuesEntityReducer } from './issues.reducer';
 
-const coreReducer: ActionReducerMap<CoreEntityState, CoreEntityActions> =
-  initialCoreEntityState;
+import { ISSUES_FEATURE_KEY, ROUTER_FEATURE_KEY } from '../constants';
 
-export function getCoreReducer(): ActionReducerMap<
+export const coreEntityReducer: ActionReducerMap<
+  CoreEntityState,
+  CoreEntityActions
+> = {
+  [ROUTER_FEATURE_KEY]: routerReducer,
+  [ISSUES_FEATURE_KEY]: issuesEntityReducer,
+};
+
+export function coreEntityRootReducerFactory(): ActionReducerMap<
   CoreEntityState,
   CoreEntityActions
 > {
-  return coreReducer;
+  return coreEntityReducer;
 }

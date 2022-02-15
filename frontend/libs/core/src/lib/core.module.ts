@@ -5,8 +5,9 @@ import {
   Optional as OptionalInject,
   SkipSelf,
 } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
+
+import { Store } from '@ngrx/store';
 
 import { ClientRestApiModule } from '@pinguin/api';
 
@@ -16,6 +17,7 @@ import {
   CORE_MODULE_INITIALIZER_PROVIDER,
   DASHBOARD_MODULE_INITIALIZER_PROVIDER,
 } from './providers';
+
 import { CORE_MODULE_INITIALIZER } from './tokens';
 
 /**

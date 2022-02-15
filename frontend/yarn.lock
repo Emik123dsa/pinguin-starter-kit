@@ -19325,6 +19325,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ui-card@workspace:libs/ui-card":
+  version: 0.0.0-use.local
+  resolution: "ui-card@workspace:libs/ui-card"
+  languageName: unknown
+  linkType: soft
+
+"ui-forms@workspace:libs/ui-forms":
+  version: 0.0.0-use.local
+  resolution: "ui-forms@workspace:libs/ui-forms"
+  languageName: unknown
+  linkType: soft
+
+"ui-overlay@workspace:libs/ui-overlay":
+  version: 0.0.0-use.local
+  resolution: "ui-overlay@workspace:libs/ui-overlay"
+  languageName: unknown
+  linkType: soft
+
 "uid-number@npm:0.0.6":
   version: 0.0.6
   resolution: "uid-number@npm:0.0.6"

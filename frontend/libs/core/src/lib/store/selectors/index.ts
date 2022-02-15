@@ -1,1 +1,1 @@
-export * from './core-router-state.selector';
+export * from './router.selectors';

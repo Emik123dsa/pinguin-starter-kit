@@ -1,19 +1,32 @@
-import { NgModule } from '@angular/core';
-import { Store, StoreModule } from '@ngrx/store';
+import { NgModule, ModuleWithProviders } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { getIssuesReducer } from './reducers';
-import { ISSUES_FEATURE_KEY } from './constants';
-import { IssuesLabelsEffects, IssuesFieldsEffects } from './effects';
-import { IssuesEntityState } from './models';
+import { DASHBOARD_FEATURE_KEY } from './dashboard.constants';
+import {
+  DASHBOARD_FEATURE_CONFIG,
+  DASHBOARD_FEATURE_REDUCER,
+} from './dashboard.tokens';
+import { DASHBOARD_FEATURE_CONFIG_PROVIDER } from './dashboard.providers';
 
 @NgModule({
   imports: [
-    StoreModule.forFeature(ISSUES_FEATURE_KEY, getIssuesReducer),
-    EffectsModule.forFeature([IssuesLabelsEffects, IssuesFieldsEffects]),
+    StoreModule.forFeature(
+      DASHBOARD_FEATURE_KEY,
+      DASHBOARD_FEATURE_REDUCER,
+      DASHBOARD_FEATURE_CONFIG,
+    ),
+    EffectsModule.forFeature([]),
   ],
-  providers: [IssuesLabelsEffects, IssuesFieldsEffects],
+  providers: [],
 })
 export class DashboardStoreModule {
-  public constructor(public readonly store: Store<IssuesEntityState>) {}
+  public constructor() {}
+
+  public static forRoot(): ModuleWithProviders<DashboardStoreModule> {
+    return {
+      ngModule: DashboardStoreModule,
+      providers: [DASHBOARD_FEATURE_CONFIG_PROVIDER],
+    };
+  }
 }

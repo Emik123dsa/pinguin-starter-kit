@@ -14,7 +14,7 @@ export const environment: ClientEnvironmentOptions = {
   hotModuleReplacement: false,
   baseDomain: 'localhost',
   app: {
-    id: StringUtils.format('pinguin-staging-{full}', VERSION.full),
+    id: StringUtils.format('pinguin-staging-{full}', VERSION),
     name: 'pinguin-jira-client',
     version: VERSION,
   },
