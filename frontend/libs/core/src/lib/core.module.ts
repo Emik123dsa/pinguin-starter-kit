@@ -39,9 +39,8 @@ function coreModuleInitializerFactory(): (
 }
 
 @NgModule({
-  imports: [CommonModule, ClientRestApiModule.forRoot(), CoreStoreModule],
+  imports: [CommonModule, CoreStoreModule],
   providers: [
-    API_GATEWAY_REQUEST_PROVIDERS,
     CORE_MODULE_INITIALIZER_PROVIDER,
     DASHBOARD_MODULE_INITIALIZER_PROVIDER,
   ],
@@ -68,6 +67,7 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
+        API_GATEWAY_REQUEST_PROVIDERS,
         {
           provide: CORE_MODULE_INITIALIZER,
           useFactory: coreModuleInitializerFactory,

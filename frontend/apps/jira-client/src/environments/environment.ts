@@ -4,7 +4,7 @@
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { PlainObjectLiteral, StringUtils } from '@pinguin/common';
+import { StringUtils } from '@pinguin/common';
 StringUtils;
 import {
   ClientEnvironment,
@@ -12,6 +12,12 @@ import {
 } from '@pinguin/environment';
 
 import { VERSION } from '@pinguin/core';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+
+import {
+  InMemoryRestApiDataService,
+  inMemoryRestApiOptionsFactory,
+} from '@pinguin/memory-storage';
 
 // ClientEnvironmentOptions as an environment for development only.
 export const environment: ClientEnvironmentOptions = {
@@ -20,17 +26,20 @@ export const environment: ClientEnvironmentOptions = {
   hotModuleReplacement: false,
   baseDomain: 'localhost',
   app: {
-    id: StringUtils.format('pinguin-{full}', VERSION),
-    name: 'pinguin-jira-client',
+    id: StringUtils.format('pinguin-{name}-client-{full}', {
+      ...VERSION,
+      name: ClientEnvironment.Development,
+    }),
+    name: 'pinguin-client',
     version: VERSION,
   },
   api: {
     baseUrl: {
-      scheme: 'https',
-      hostname: '61ee5f30d593d20017dbad98.mockapi.io',
-      port: 443,
-      prefix: 'pinguin',
-      version: 'api',
+      scheme: 'http',
+      hostname: 'localhost',
+      port: 80,
+      prefix: 'api',
+      version: 'v1',
     },
     retryAttempts: 3,
     errorAttempts: 1,
@@ -39,6 +48,10 @@ export const environment: ClientEnvironmentOptions = {
       ['Accept', 'application/json; charset=UTF-8'],
       ['Content-Type', 'application/json; charset=UTF-8'],
     ]),
+
+    // Override default serializer for rest api handlers:
+    // # Examples:
+    // serializer: (data: PlainObjectLiteral) => JSON.stringify(data),
   },
   websocket: {
     baseUrl: {
@@ -57,14 +70,26 @@ export const environment: ClientEnvironmentOptions = {
     // deserializer: (event: MessageEvent): PlainObjectLiteral =>
     //   JSON.parse(event.data),
   },
+  packages: [],
   runtimePlugins: [
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryRestApiDataService,
+      inMemoryRestApiOptionsFactory({
+        // TODO: implement environment injection tokens.
+        // Currently memory config will be used default by `memory-storage` library.
+      }),
+    ),
+
     StoreDevtoolsModule.instrument({
-      name: 'pinguin-jira-client',
+      name: StringUtils.format(
+        'pinguin-{0}-client',
+        ClientEnvironment.Development,
+      ),
       logOnly: true,
+      serialize: true,
       autoPause: true,
     }),
   ],
-  packages: [],
 };
 
 /*

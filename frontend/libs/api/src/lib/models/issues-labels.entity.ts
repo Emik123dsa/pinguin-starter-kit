@@ -25,4 +25,14 @@ export class IssuesLabelsEntity {
   public getName() {
     return this.name;
   }
+
+  /**
+   * Clone `issues-labels` entity.
+   *
+   * @public
+   * @returns {IssuesLabelsEntity}
+   */
+  public clone(): IssuesLabelsEntity {
+    return new IssuesLabelsEntity(this.getId(), this.getName());
+  }
 }

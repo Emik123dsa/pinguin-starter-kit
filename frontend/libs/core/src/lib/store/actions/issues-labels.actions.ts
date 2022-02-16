@@ -23,10 +23,12 @@ const loadIssuesLabelsAllSuccess: ActionCreator<
 
 const loadIssuesLabelsAllFailure: ActionCreator<
   IssuesLabelsActionTypes.LoadIssuesLabelsAllFailure,
-  (props: IssuesEntity) => IssuesEntity & TypedAction<IssuesLabelsActionTypes>
+  (props: { error: unknown }) => {
+    error: unknown;
+  } & TypedAction<IssuesLabelsActionTypes.LoadIssuesLabelsAllFailure>
 > = createAction(
   IssuesLabelsActionTypes.LoadIssuesLabelsAllFailure,
-  props<OmitThisParameter<IssuesEntity>>(),
+  props<{ error: unknown }>(),
 );
 
 const issuesLabelsActions = union({

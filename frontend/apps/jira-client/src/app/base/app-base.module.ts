@@ -18,6 +18,7 @@ import { AppComponent } from '../app.component';
 import { AppRoutingModule } from '../app-routing.module';
 
 import { environment } from '../../environments/environment';
+import { ClientRestApiModule } from '@pinguin/api';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,10 +39,11 @@ import { environment } from '../../environments/environment';
     AppRoutingModule,
 
     // Shared modules.
-    ClientSharedModule,
+    ClientSharedModule.forRoot(),
 
     // Provide core module.
     CoreModule.forRoot(),
+    ClientRestApiModule.forRoot(),
 
     // Provide ui modules.
     UiFormsModule,

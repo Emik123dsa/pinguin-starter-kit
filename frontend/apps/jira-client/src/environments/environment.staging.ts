@@ -6,6 +6,7 @@ import {
 } from '@pinguin/environment';
 
 import { StringUtils } from '@pinguin/common';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // ClientEnvironmentOptions as an environment for development only.
 export const environment: ClientEnvironmentOptions = {
@@ -14,17 +15,20 @@ export const environment: ClientEnvironmentOptions = {
   hotModuleReplacement: false,
   baseDomain: 'localhost',
   app: {
-    id: StringUtils.format('pinguin-staging-{full}', VERSION),
-    name: 'pinguin-jira-client',
+    id: StringUtils.format('pinguin-{name}-client-{full}', {
+      ...VERSION,
+      name: ClientEnvironment.Staging,
+    }),
+    name: 'pinguin-client',
     version: VERSION,
   },
   api: {
     baseUrl: {
-      scheme: 'http',
-      hostname: 'localhost',
-      port: 80,
-      prefix: 'api',
-      version: 'v1',
+      scheme: 'https',
+      hostname: '61ee5f30d593d20017dbad98.mockapi.io',
+      port: 443,
+      prefix: 'pinguin',
+      version: 'api',
     },
     queryParamMap: new Map([['proxy', 'true']]),
     headerMap: new Map([
@@ -48,5 +52,12 @@ export const environment: ClientEnvironmentOptions = {
     serializer: (data) => JSON.stringify(data),
     deserializer: (event: MessageEvent) => JSON.parse(event.data),
   },
-  runtimePlugins: [],
+  runtimePlugins: [
+    StoreDevtoolsModule.instrument({
+      name: StringUtils.format('pinguin-{0}-client', ClientEnvironment.Staging),
+      logOnly: false,
+      serialize: false,
+      autoPause: false,
+    }),
+  ],
 };

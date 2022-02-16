@@ -1,6 +1,5 @@
-import { inject, ModuleWithProviders, NgModule } from '@angular/core';
-import { PlainObjectLiteral } from '@pinguin/common';
-import { CLIENT_ENVIRONMENT_OPTIONS } from '@pinguin/environment';
+import { ModuleWithProviders, NgModule } from '@angular/core';
+
 import { ClientRestApiOptions } from './interfaces';
 
 import {

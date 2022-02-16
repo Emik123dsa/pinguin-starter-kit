@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RouterTestingModule } from '@angular/router/testing';
-import { ClientSharedModule } from '@pinguin/shared';
+import { ClientSharedModule.forRoot() } from '@pinguin/shared';
 import { of } from 'rxjs';
 import { TestScheduler } from 'rxjs/testing';
 
@@ -18,7 +18,7 @@ describe('NotFoundPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ClientSharedModule, RouterTestingModule],
+      imports: [ClientSharedModule.forRoot(), RouterTestingModule],
       declarations: [NotFoundPageComponent],
     }).compileComponents();
 

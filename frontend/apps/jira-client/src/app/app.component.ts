@@ -15,7 +15,7 @@ import { routeAnimations } from '@pinguin/animations';
 import { WINDOW } from '@pinguin/common';
 
 @Component({
-  selector: 'pinguin-jira-client-root',
+  selector: 'pinguin-client-root',
   exportAs: 'pinguinJiraClientRoot',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

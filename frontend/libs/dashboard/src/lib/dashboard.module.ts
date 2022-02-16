@@ -17,7 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @NgModule({
   imports: [
-    ClientSharedModule,
+    ClientSharedModule.forRoot(),
     DashboardStoreModule.forRoot(),
     DashboardRoutingModule,
     UiCardModule,
@@ -34,8 +34,5 @@ export class DashboardModule {
     // Constructs dashboard client module.
     // TODO: should be implemented store$ initialization in constructor?
     // Currently invoked in the `canLoad` hook.
-    this.route.data.subscribe((data) => {
-      console.log(data);
-    });
   }
 }

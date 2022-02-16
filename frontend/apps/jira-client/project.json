@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/jira-client",
         "index": "apps/jira-client/src/index.html",
@@ -21,9 +19,7 @@
           "apps/jira-client/src/assets",
           "apps/jira-client/src/manifest.webmanifest"
         ],
-        "styles": [
-          "apps/jira-client/src/styles.scss"
-        ],
+        "styles": ["apps/jira-client/src/styles.scss"],
         "scripts": [],
         "serviceWorker": true,
         "ngswConfigPath": "apps/jira-client/ngsw-config.json"
@@ -65,6 +61,14 @@
               "with": "apps/jira-client/src/environments/environment.hmr.ts"
             }
           ]
+        },
+        "mock": {
+          "fileReplacements": [
+            {
+              "replace": "apps/jira-client/src/environments/environment.ts",
+              "with": "apps/jira-client/src/environments/environment.mock.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -84,6 +88,9 @@
           "browserTarget": "jira-client:build:hmr",
           "hmr": true,
           "proxyConfig": "apps/jira-client/proxy.conf.json"
+        },
+        "mock": {
+          "browserTarget": "jira-client:build:mock"
         }
       },
       "defaultConfiguration": "development"
@@ -105,9 +112,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/jira-client"
-      ],
+      "outputs": ["coverage/apps/jira-client"],
       "options": {
         "jestConfig": "apps/jira-client/jest.config.js",
         "passWithNoTests": true

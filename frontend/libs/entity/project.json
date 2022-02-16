@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/entity",
+  "sourceRoot": "libs/entity/src",
+  "prefix": "pinguin",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/entity"],
+      "options": {
+        "jestConfig": "libs/entity/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/entity/src/**/*.ts",
+          "libs/entity/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

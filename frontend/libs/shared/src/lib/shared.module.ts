@@ -1,4 +1,4 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { ModuleWithProviders, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { WrapperLayoutComponent } from './layouts/wrapper/wrapper.component';
@@ -72,4 +72,11 @@ import { HeaderLayoutComponent } from './layouts/header/header.component';
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })
-export class ClientSharedModule {}
+export class ClientSharedModule {
+  public static forRoot(): ModuleWithProviders<ClientSharedModule> {
+    return {
+      ngModule: ClientSharedModule,
+      providers: [],
+    };
+  }
+}

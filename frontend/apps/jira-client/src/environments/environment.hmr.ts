@@ -19,8 +19,11 @@ export const environment: ClientEnvironmentOptions = {
   hotModuleReplacement: true,
   baseDomain: 'localhost',
   app: {
-    id: StringUtils.format('pinguin-hot-module-replacement-{full}', VERSION),
-    name: 'pinguin-jira-client',
+    id: StringUtils.format('pinguin-{name}-client-{full}', {
+      ...VERSION,
+      name: ClientEnvironment.HMR,
+    }),
+    name: 'pinguin-client',
     version: VERSION,
   },
   api: {
@@ -55,14 +58,15 @@ export const environment: ClientEnvironmentOptions = {
     serializer: (data): string => JSON.stringify(data),
     deserializer: (event: MessageEvent) => JSON.parse(event.data),
   },
+  packages: [],
   runtimePlugins: [
     StoreDevtoolsModule.instrument({
-      name: StoreDevtoolsModule.name,
+      name: StringUtils.format('pinguin-{0}-client', ClientEnvironment.HMR),
       logOnly: true,
+      serialize: true,
       autoPause: true,
     }),
   ],
-  packages: [],
 };
 
 /*

@@ -129,7 +129,7 @@ const defaultColorPalette = {
 module.exports = {
   mode: 'jit',
 
-  important: 'pinguin-jira-client-root',
+  important: 'pinguin-client-root',
 
   content: createGlobPatternsForDependencies(
     path.join(__dirname, 'apps/*/**/*.{ts,html}'),

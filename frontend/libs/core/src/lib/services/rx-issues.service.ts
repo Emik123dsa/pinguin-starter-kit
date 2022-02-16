@@ -6,6 +6,8 @@ import {
   IssuesService,
 } from '@pinguin/api';
 
+import { Observable, of } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -28,8 +30,14 @@ export class RxIssuesService extends IssuesService {
    * @abstract
    * @returns {Array<IssuesLabelsEntity>}
    */
-  public override findAllLabels(): Array<IssuesLabelsEntity> {
-    return [];
+  public override findAllLabels(): Observable<Array<IssuesLabelsEntity>> {
+    return of(
+      new Array<IssuesLabelsEntity>(
+        new IssuesLabelsEntity(1, 'Frontend'),
+        new IssuesLabelsEntity(1, 'Backend'),
+        new IssuesLabelsEntity(1, 'Security'),
+      ),
+    );
   }
 
   /**
@@ -39,7 +47,7 @@ export class RxIssuesService extends IssuesService {
    * @abstract
    * @returns {Array<IssuesLabelsEntity>}
    */
-  public override findAllFields(): Array<IssuesFieldsEntity> {
-    return [];
+  public override findAllFields(): Observable<Array<IssuesFieldsEntity>> {
+    return of([]);
   }
 }

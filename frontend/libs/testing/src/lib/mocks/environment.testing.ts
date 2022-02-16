@@ -19,7 +19,7 @@ export const environment: ClientEnvironmentOptions = {
   baseDomain: 'localhost',
   app: {
     id: 'pinguin-testing',
-    name: 'pinguin-jira-client',
+    name: 'pinguin-client',
     version: VERSION,
   },
   api: {

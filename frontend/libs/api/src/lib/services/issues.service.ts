@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { IssuesFieldsEntity, IssuesLabelsEntity } from '../models';
 
 /**
@@ -18,7 +19,7 @@ export abstract class IssuesService {
    * @abstract
    * @returns {Array<IssuesLabelsEntity>}
    */
-  public abstract findAllLabels(): Array<IssuesLabelsEntity>;
+  public abstract findAllLabels(): Observable<Array<IssuesLabelsEntity>>;
 
   /**
    * GET /api/v1/issues/{issueId}?/fields : get all labels of issues entity.
@@ -27,5 +28,5 @@ export abstract class IssuesService {
    * @abstract
    * @returns {Array<IssuesLabelsEntity>}
    */
-  public abstract findAllFields(): Array<IssuesFieldsEntity>;
+  public abstract findAllFields(): Observable<Array<IssuesFieldsEntity>>;
 }

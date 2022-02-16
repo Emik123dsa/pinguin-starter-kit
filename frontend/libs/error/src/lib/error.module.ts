@@ -9,7 +9,7 @@ import { NotFoundPageComponent } from './containers/not-found-page/not-found-pag
 
 @NgModule({
   declarations: [ErrorLayoutComponent, NotFoundPageComponent],
-  imports: [ClientSharedModule, ClientErrorRoutingModule],
+  imports: [ClientSharedModule.forRoot(), ClientErrorRoutingModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ClientErrorModule {}
