@@ -23,7 +23,7 @@ export const issuesLabelsEntityReducer: ActionReducer<IssuesLabelsEntityState> =
       (state, { issuesLabels }: Pick<IssuesEntity, 'issuesLabels'>) =>
         issuesLabelsEntityAdapter.addMany(
           issuesLabels as Array<IssuesLabelsEntity>,
-          { ...state, loading: false, loaded: true, error: false },
+          { ...state, loading: false, loaded: true, error: null },
         ),
     ),
 

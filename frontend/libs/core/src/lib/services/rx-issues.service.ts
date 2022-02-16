@@ -34,8 +34,8 @@ export class RxIssuesService extends IssuesService {
     return of(
       new Array<IssuesLabelsEntity>(
         new IssuesLabelsEntity(1, 'Frontend'),
-        new IssuesLabelsEntity(1, 'Backend'),
-        new IssuesLabelsEntity(1, 'Security'),
+        new IssuesLabelsEntity(2, 'Security'),
+        new IssuesLabelsEntity(3, 'Backend'),
       ),
     );
   }

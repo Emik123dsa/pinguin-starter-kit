@@ -19,7 +19,7 @@ export const issuesLabelsEntityAdapter: EntityAdapter<IssuesLabelsEntity> =
 
 export const initialIssuesLabelsEntityState: IssuesLabelsEntityState =
   issuesLabelsEntityAdapter.getInitialState({
-    selectedIssueLabelId: -1,
+    selectedIssueLabelId: null,
     loaded: false,
     loading: false,
     error: null,

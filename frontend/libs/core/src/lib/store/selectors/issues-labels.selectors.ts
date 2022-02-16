@@ -12,48 +12,83 @@ import { IssuesLabelsEntity } from '@pinguin/api';
 import { IssuesLabelsEntityState } from '../models';
 import { issuesLabelsEntityAdapter } from '../state';
 
-import { selectIssuesLabelsEntityState } from './issues.selectors';
+import { selectIssuesEntityState } from './issues.selectors';
 
 export const issuesLabelsEntitySelectors: EntitySelectors<
   IssuesLabelsEntity,
   EntityState<IssuesLabelsEntity>
 > = issuesLabelsEntityAdapter.getSelectors();
 
-export const issuesLabelsSelector: MemoizedSelector<
+export const issuesLabelsEntityState: MemoizedSelector<
   object,
   IssuesLabelsEntityState,
   DefaultProjectorFn<IssuesLabelsEntityState>
-> = createSelector(
-  selectIssuesLabelsEntityState,
-  (state) => state.issuesLabels,
-);
+> = createSelector(selectIssuesEntityState, (state) => state.issuesLabels);
 
-export const selectIssuesLabelsAll: MemoizedSelector<
+const getSelectedIssueLabelId = (state: IssuesLabelsEntityState) =>
+  state.selectedIssueLabelId;
+
+export const selectCurrentIssueLabelId: MemoizedSelector<
+  object,
+  Optional<number> | undefined,
+  DefaultProjectorFn<Optional<number> | undefined>
+> = createSelector(issuesLabelsEntityState, getSelectedIssueLabelId);
+
+export const selectIsIssuesLabelsLoaded: MemoizedSelector<
+  object,
+  boolean,
+  DefaultProjectorFn<boolean>
+> = createSelector(issuesLabelsEntityState, (state) => state.loaded);
+
+export const selectIsIssuesLabelsLoading: MemoizedSelector<
+  object,
+  boolean,
+  DefaultProjectorFn<boolean>
+> = createSelector(issuesLabelsEntityState, (state) => state.loading);
+
+export const selectAllIssuesLabels: MemoizedSelector<
   object,
   IssuesLabelsEntity[],
   DefaultProjectorFn<IssuesLabelsEntity[]>
-> = createSelector(issuesLabelsSelector, issuesLabelsEntitySelectors.selectAll);
+> = createSelector(
+  issuesLabelsEntityState,
+  issuesLabelsEntitySelectors.selectAll,
+);
 
-export const selectIssuesLabelsEntities: MemoizedSelector<
+export const selectIssueLabelEntities: MemoizedSelector<
   object,
   Dictionary<IssuesLabelsEntity>,
   DefaultProjectorFn<Dictionary<IssuesLabelsEntity>>
 > = createSelector(
-  issuesLabelsSelector,
+  issuesLabelsEntityState,
   issuesLabelsEntitySelectors.selectEntities,
 );
 
-export const selectIssuesLabelsIds: MemoizedSelector<
+export const selectIssueLabelIds: MemoizedSelector<
   object,
   string[] | number[],
   DefaultProjectorFn<string[] | number[]>
-> = createSelector(issuesLabelsSelector, issuesLabelsEntitySelectors.selectIds);
+> = createSelector(
+  issuesLabelsEntityState,
+  issuesLabelsEntitySelectors.selectIds,
+);
 
-export const selectIssuesLabelsTotal: MemoizedSelector<
+export const selectIssueLabelTotal: MemoizedSelector<
   object,
   number,
   DefaultProjectorFn<number>
 > = createSelector(
-  issuesLabelsSelector,
+  issuesLabelsEntityState,
   issuesLabelsEntitySelectors.selectTotal,
+);
+
+export const selectCurrentIssueLabel: MemoizedSelector<
+  object,
+  IssuesLabelsEntity | undefined,
+  DefaultProjectorFn<IssuesLabelsEntity | undefined>
+> = createSelector(
+  selectIssueLabelEntities,
+  selectCurrentIssueLabelId,
+  (issueLabelEntities, issueLabelId) =>
+    issueLabelEntities && issueLabelEntities[issueLabelId as number],
 );

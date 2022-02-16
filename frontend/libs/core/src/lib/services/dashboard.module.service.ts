@@ -1,14 +1,28 @@
-import { first, mapTo, Observable, of, tap, withLatestFrom } from 'rxjs';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import {
+  first,
+  map,
+  mapTo,
+  catchError,
+  Observable,
+  of,
+  skipWhile,
+  tap,
+  withLatestFrom,
+} from 'rxjs';
 import { CanLoad, Route, UrlSegment } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import {
-  selectIssuesLabelsTotal,
-  selectIssuesLabelsEntities,
+  selectIssueLabelTotal,
+  selectIsIssuesLabelsLoading,
+  selectCurrentIssueLabel,
   CoreEntityState,
 } from '../store';
 import { IssuesLabelsEntityActions } from '../store/actions';
+import { IssuesLabelsActionTypes } from '../store/constants';
+import { TypedAction } from '@ngrx/store/src/models';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +31,7 @@ export class DashboardModuleService implements CanLoad {
   public constructor(private readonly store: Store<CoreEntityState>) {}
   /**
    * Check out whether `note-labels` are being available,
-   * before application will be mounted.
+   * before lazy module will be mounted.
    *
    * @public
    * @param {Route} route
@@ -28,18 +42,17 @@ export class DashboardModuleService implements CanLoad {
     route: Route,
     segments: UrlSegment[],
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.store.select(selectIssuesLabelsTotal).pipe(
-      tap(() =>
-        this.store.dispatch(IssuesLabelsEntityActions.loadIssuesLabelsAll()),
-      ),
-
-      withLatestFrom(this.store.select(selectIssuesLabelsEntities)),
-
-      tap((data) => {
-        console.log(data);
+    return this.store.select(selectIsIssuesLabelsLoading).pipe(
+      tap((): void => {
+        const action: TypedAction<IssuesLabelsActionTypes> =
+          IssuesLabelsEntityActions.loadIssuesLabelsAll();
+        return this.store.dispatch(action);
       }),
+      skipWhile((loading: boolean) => loading),
       first(),
-      mapTo(true),
+      withLatestFrom(this.store.select(selectIssueLabelTotal)),
+      map(([, issueLabelTotal]: [boolean, number]) => !!issueLabelTotal),
+      catchError(() => of(false)),
     );
   }
 }
