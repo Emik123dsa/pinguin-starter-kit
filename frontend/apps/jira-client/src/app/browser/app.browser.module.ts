@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 import { AppBaseModule } from '../base';
 import { AppComponent } from '../app.component';
 
-import { APP_BROWSER_PROVIDER } from './app.browser.providers';
+import { APP_BROWSER_PROVIDERS } from './app.browser.providers';
 
 @NgModule({
   imports: [
@@ -21,7 +21,7 @@ import { APP_BROWSER_PROVIDER } from './app.browser.providers';
       registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  providers: [APP_BROWSER_PROVIDER],
+  providers: [APP_BROWSER_PROVIDERS],
   schemas: [],
   bootstrap: [AppComponent],
 })

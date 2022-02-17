@@ -1,14 +1,15 @@
 <div
-  fxFlexFill
   fxLayout="column"
   fxLayoutWrap="wrap"
+  [fxLayoutGap]="0"
   fxLayoutAlign="center start"
 >
-  <pinguin-layout-header></pinguin-layout-header>
-  <main role="cell">
+  <pinguin-layout-header fxFlex="auto"></pinguin-layout-header>
+  <main role="cell" fxFlex fxFlexFill>
     <div [@routeAnimations]="prepareDashboardRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>
     </div>
   </main>
-  <pinguin-layout-footer></pinguin-layout-footer>
+
+  <pinguin-layout-footer r fxFlex="auto"></pinguin-layout-footer>
 </div>

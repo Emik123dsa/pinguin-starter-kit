@@ -61,6 +61,7 @@ export const environment: ClientEnvironmentOptions = {
       prefix: 'stream',
       version: 'v1',
     },
+    typeKey: 'type',
     connectionPool: 1,
     reconnectAttempts: 10,
     reconnectInterval: 1000,
