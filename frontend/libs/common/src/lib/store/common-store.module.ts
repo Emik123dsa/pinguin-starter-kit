@@ -14,10 +14,7 @@ import { ReactiveComponentModule } from '@ngrx/component';
 import { WINDOW } from '../tokens';
 
 import { COMMON_FEATURE_KEY } from './common.constants';
-import {
-  COMMON_FEATURE_CONFIG,
-  COMMON_FEATURE_REDUCER,
-} from './common.tokens';
+import { COMMON_FEATURE_CONFIG, COMMON_FEATURE_REDUCER } from './common.tokens';
 import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({

@@ -1,9 +1,20 @@
 import { NgModule } from '@angular/core';
-import { Route, RouterModule, Routes, UrlSegment } from '@angular/router';
-import { StringUtils } from '@pinguin/common';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+import { StringUtils } from '@pinguin/utils';
 import { DASHBOARD_MODULE_INITIALIZER } from '@pinguin/core';
 
 import { QuicklinkStrategy } from 'ngx-quicklink';
+
+const routingConfig: ExtraOptions = {
+  scrollOffset: [0, 0],
+  scrollPositionRestoration: 'enabled',
+  anchorScrolling: 'enabled',
+  initialNavigation: 'enabledNonBlocking',
+  paramsInheritanceStrategy: 'always',
+  // enableTracing: Object.is(environment.production, false),
+  preloadingStrategy: QuicklinkStrategy,
+  relativeLinkResolution: 'legacy',
+};
 
 const routes: Routes = [
   {
@@ -13,7 +24,9 @@ const routes: Routes = [
       preload: false,
     },
     loadChildren: () =>
-      import('@pinguin/home').then((module) => module.HomeModule),
+      import('@pinguin/feature-home').then(
+        (module) => module.FeatureHomeModule,
+      ),
   },
   {
     path: 'dashboard',
@@ -23,7 +36,9 @@ const routes: Routes = [
     },
     canLoad: [DASHBOARD_MODULE_INITIALIZER],
     loadChildren: () =>
-      import('@pinguin/dashboard').then((module) => module.DashboardModule),
+      import('@pinguin/feature-dashboard').then(
+        (module) => module.FeatureDashboardModule,
+      ),
   },
   {
     path: StringUtils.EMPTY,
@@ -32,7 +47,9 @@ const routes: Routes = [
       preload: false,
     },
     loadChildren: () =>
-      import('@pinguin/error').then((module) => module.ClientErrorModule),
+      import('@pinguin/feature-errors').then(
+        (module) => module.FeatureErrorsModule,
+      ),
   },
   {
     path: '**',
@@ -42,27 +59,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, {
-      scrollOffset: [0, 0],
-      scrollPositionRestoration: 'enabled',
-      anchorScrolling: 'enabled',
-      initialNavigation: 'enabledNonBlocking',
-      paramsInheritanceStrategy: 'always',
-      // enableTracing: Object.is(environment.production, false),
-      preloadingStrategy: QuicklinkStrategy,
-      relativeLinkResolution: 'legacy',
-    }),
-  ],
-  providers: [
-    {
-      provide: 'DASHBOARD_MODULE_INITIALIZER',
-      useValue: (route: Route, segments: UrlSegment[]) => {
-        console.log('COOL');
-        return true;
-      },
-    },
-  ],
+  imports: [RouterModule.forRoot(routes, routingConfig)],
+  providers: [],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -17,25 +17,31 @@ import { ROUTER_FEATURE_KEY } from './constants';
 import { CoreRouterStateSerializer } from './serializers';
 import { IssuesFieldsEffects, IssuesLabelsEffects } from './effects';
 
-import { CORE_ENTITY_ROOT_REDUCER } from './core.tokens';
-import { coreEntityRootConfig } from './core.providers';
+import { CORE_ENTITY_ROOT_REDUCER } from './core-store.tokens';
+import { coreEntityRootConfig } from './core-store.providers';
 
 @NgModule({
+  declarations: [],
   imports: [
     // Common module for reactive component module.
     CommonStoreModule,
+
     // Provide core store reducers for initialization.
     StoreModule.forRoot(CORE_ENTITY_ROOT_REDUCER, coreEntityRootConfig),
     EffectsModule.forRoot(
       new Array<Type<unknown>>(IssuesLabelsEffects, IssuesFieldsEffects),
     ),
+    // Provide store router connecting module.
     StoreRouterConnectingModule.forRoot({
       stateKey: ROUTER_FEATURE_KEY,
-      serializer: CoreRouterStateSerializer,
+      serializer: CoreRouterStateSerializer, // DefaultRouterStateSerializer
     }),
   ],
-  providers: [IssuesLabelsEffects, IssuesFieldsEffects],
-  declarations: [],
+  providers: [
+    CoreRouterStateSerializer,
+    IssuesLabelsEffects,
+    IssuesFieldsEffects,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CoreStoreModule {

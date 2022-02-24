@@ -1,0 +1,9 @@
+@mixin block($spacing: 0) {
+  @apply block;
+}
+
+:host ::ng-deep {
+  pinguin-client-root {
+    @include block();
+  }
+}

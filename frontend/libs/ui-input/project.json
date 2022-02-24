@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/ui-input",
+  "sourceRoot": "libs/ui-input/src",
+  "prefix": "pinguin",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ui-input"],
+      "options": {
+        "jestConfig": "libs/ui-input/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ui-input/src/**/*.ts",
+          "libs/ui-input/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

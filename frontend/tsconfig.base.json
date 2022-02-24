@@ -15,28 +15,46 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@pinguin-client/*": ["apps/jira-client/src/app/*"],
+      "@pinguin-runtime/environment": [
+        "apps/jira-client/src/environments/environment.ts"
+      ],
+      "@pinguin-runtime/mock-environment": [
+        "apps/jira-client/src/environments/environment.mock.ts"
+      ],
+      "@pinguin-runtime/prod-environment": [
+        "apps/jira-client/src/environments/environment.prod.ts"
+      ],
+      "@pinguin-runtime/staging-environment": [
+        "apps/jira-client/src/environments/environment.staging.ts"
+      ],
       "@pinguin/animations": ["libs/animations/src/index.ts"],
       "@pinguin/api": ["libs/api/src/index.ts"],
       "@pinguin/common": ["libs/common/src/index.ts"],
       "@pinguin/config": ["libs/config/src/index.ts"],
       "@pinguin/core": ["libs/core/src/index.ts"],
-      "@pinguin/dashboard": ["libs/dashboard/src/index.ts"],
       "@pinguin/entity": ["libs/entity/src/index.ts"],
-      "@pinguin/environment": ["libs/environment/src/index.ts"],
-      "@pinguin/error": ["libs/error/src/index.ts"],
-      "@pinguin/home": ["libs/home/src/index.ts"],
+      "@pinguin/environments": ["libs/environments/src/index.ts"],
+      "@pinguin/feature-dashboard": ["libs/feature-dashboard/src/index.ts"],
+      "@pinguin/feature-errors": ["libs/feature-errors/src/index.ts"],
+      "@pinguin/feature-home": ["libs/feature-home/src/index.ts"],
+      "@pinguin/forms": ["libs/forms/src/index.ts"],
+      "@pinguin/grpc-web-gateway": ["libs/grpc-web-gateway/src/index.ts"],
       "@pinguin/memory-storage": ["libs/memory-storage/src/index.ts"],
-      "@pinguin/schema": ["libs/schema/src/index.ts"],
+      "@pinguin/schemas": ["libs/schemas/src/index.ts"],
       "@pinguin/server": ["libs/server/src/index.ts"],
       "@pinguin/shared": ["libs/shared/src/index.ts"],
       "@pinguin/single-spa": ["libs/single-spa/src/index.ts"],
       "@pinguin/storage": ["libs/storage/src/index.ts"],
       "@pinguin/testing": ["libs/testing/src/index.ts"],
       "@pinguin/theme": ["libs/theme/src/index.ts"],
-      "@pinguin/themes": ["libs/themes/src/index.ts"],
+      "@pinguin/ui-button": ["libs/ui-button/src/index.ts"],
+      "@pinguin/ui-button-toggle": ["libs/ui-button-toggle/src/index.ts"],
       "@pinguin/ui-card": ["libs/ui-card/src/index.ts"],
       "@pinguin/ui-forms": ["libs/ui-forms/src/index.ts"],
+      "@pinguin/ui-input": ["libs/ui-input/src/index.ts"],
       "@pinguin/ui-overlay": ["libs/ui-overlay/src/index.ts"],
+      "@pinguin/utils": ["libs/utils/src/index.ts"],
       "@pinguin/websocket": ["libs/websocket/src/index.ts"]
     }
   },

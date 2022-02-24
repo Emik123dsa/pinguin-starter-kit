@@ -1,4 +1,5 @@
-import { ClientConnectionOptions, PlainObjectLiteral } from '@pinguin/common';
+import { PlainObjectLiteral } from '@pinguin/utils';
+import { ClientConnectionOptions } from '@pinguin/common';
 
 export interface ClientWebSocketOptions extends ClientConnectionOptions {
   typeKey?: string;

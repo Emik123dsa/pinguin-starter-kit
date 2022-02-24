@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-import { environment } from '../../environments/environment';
+import { environment } from '@pinguin-runtime/environment';
 
-import { AppBaseModule } from '../base';
-import { AppComponent } from '../app.component';
+import { AppBaseModule } from '@pinguin-client/base';
+import { AppComponent } from '@pinguin-client/app.component';
 
 import { APP_BROWSER_PROVIDERS } from './app.browser.providers';
 

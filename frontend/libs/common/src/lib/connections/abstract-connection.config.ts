@@ -1,4 +1,4 @@
-import { StringUtils } from '../utils';
+import { StringUtils } from '@pinguin/utils';
 import { ClientConnectionOptions } from './client-connection.interface';
 
 /**

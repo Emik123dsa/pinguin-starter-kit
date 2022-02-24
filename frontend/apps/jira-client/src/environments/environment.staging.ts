@@ -3,9 +3,9 @@ import { VERSION } from '@pinguin/core';
 import {
   ClientEnvironment,
   ClientEnvironmentOptions,
-} from '@pinguin/environment';
+} from '@pinguin/environments';
 
-import { StringUtils } from '@pinguin/common';
+import { StringUtils } from '@pinguin/utils';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // ClientEnvironmentOptions as an environment for development only.
@@ -55,6 +55,7 @@ export const environment: ClientEnvironmentOptions = {
   runtimePlugins: [
     StoreDevtoolsModule.instrument({
       name: StringUtils.format('pinguin-{0}-client', ClientEnvironment.Staging),
+      maxAge: 20,
       logOnly: false,
       serialize: false,
       autoPause: false,

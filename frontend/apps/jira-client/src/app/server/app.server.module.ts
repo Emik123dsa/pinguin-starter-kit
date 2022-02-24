@@ -6,8 +6,8 @@ import {
   ServerTransferStateModule,
 } from '@angular/platform-server';
 
-import { AppBaseModule } from '../base';
-import { AppComponent } from '../app.component';
+import { AppBaseModule } from '@pinguin-client/base';
+import { AppComponent } from '@pinguin-client/app.component';
 
 @NgModule({
   declarations: [],

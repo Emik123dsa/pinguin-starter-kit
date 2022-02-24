@@ -1,13 +1,20 @@
-import { ModuleWithProviders, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { WrapperLayoutComponent } from './layouts/wrapper/wrapper.component';
-import { ContainerComponent } from './components/container/container.component';
-import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { ModuleWithProviders, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+
+// Provide shared layouts.
+import { WrapperLayoutComponent } from './layouts/wrapper/wrapper.component';
 import { FooterLayoutComponent } from './layouts/footer/footer.component';
 import { HeaderLayoutComponent } from './layouts/header/header.component';
+
+// Provide shared components.
+import { ContainerComponent } from './components/container/container.component';
+
+// Provide shared directives modules.
+import { BrowserEventsModule } from './directives/events/browser-events.module';
 
 @NgModule({
   imports: [
@@ -37,6 +44,8 @@ import { HeaderLayoutComponent } from './layouts/header/header.component';
       serverLoaded: true,
       mediaTriggerAutoRestore: true,
     }),
+
+    BrowserEventsModule,
   ],
   declarations: [
     WrapperLayoutComponent,
@@ -69,13 +78,15 @@ import { HeaderLayoutComponent } from './layouts/header/header.component';
     ContainerComponent,
     HeaderLayoutComponent,
     FooterLayoutComponent,
+
+    BrowserEventsModule,
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })
-export class ClientSharedModule {
-  public static forRoot(): ModuleWithProviders<ClientSharedModule> {
+export class SharedModule {
+  public static forRoot(): ModuleWithProviders<SharedModule> {
     return {
-      ngModule: ClientSharedModule,
+      ngModule: SharedModule,
       providers: [],
     };
   }

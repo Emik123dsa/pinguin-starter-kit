@@ -1,4 +1,5 @@
-import { ClientConnectionOptions, PlainObjectLiteral } from '@pinguin/common';
+import { PlainObjectLiteral } from '@pinguin/utils';
+import { ClientConnectionOptions } from '@pinguin/common';
 
 export interface ClientRestApiOptions extends ClientConnectionOptions {
   headerMap: Map<string, string>;

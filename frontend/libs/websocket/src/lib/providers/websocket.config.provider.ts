@@ -1,12 +1,11 @@
 import { FactoryProvider } from '@angular/core';
-import { PlainObjectLiteral } from '@pinguin/common';
-
+import { PlainObjectLiteral } from '@pinguin/utils';
 import { ClientWebSocketOptions } from '../interfaces';
 
 import {
   ClientEnvironmentOptions,
   CLIENT_ENVIRONMENT_OPTIONS,
-} from '@pinguin/environment';
+} from '@pinguin/environments';
 import { ClientWebSocketConfigRef } from '../websocket.config-ref';
 
 // clientWebSocketOptionsFactory for providing fallback config.

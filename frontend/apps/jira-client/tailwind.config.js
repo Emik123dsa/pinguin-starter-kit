@@ -144,10 +144,10 @@ module.exports = {
 
   darkMode: 'class',
 
-  whitelist: ['dark-scheme'],
+  whitelist: ['dark-theme'],
 
   theme: {
-    darkSelector: '.dark-scheme',
+    darkSelector: '.dark-theme',
 
     screens: {
       sm: { 'min': '640px', 'max': '767px' },

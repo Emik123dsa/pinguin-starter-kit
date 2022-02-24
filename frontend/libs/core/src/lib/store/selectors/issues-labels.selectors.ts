@@ -34,13 +34,13 @@ export const selectCurrentIssueLabelId: MemoizedSelector<
   DefaultProjectorFn<Optional<number> | undefined>
 > = createSelector(issuesLabelsEntityState, getSelectedIssueLabelId);
 
-export const selectIsIssuesLabelsLoaded: MemoizedSelector<
+export const selectIssuesLabelsLoaded: MemoizedSelector<
   object,
   boolean,
   DefaultProjectorFn<boolean>
 > = createSelector(issuesLabelsEntityState, (state) => state.loaded);
 
-export const selectIsIssuesLabelsLoading: MemoizedSelector<
+export const selectIssuesLabelsLoading: MemoizedSelector<
   object,
   boolean,
   DefaultProjectorFn<boolean>

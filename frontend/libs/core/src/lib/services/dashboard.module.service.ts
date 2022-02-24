@@ -16,7 +16,7 @@ import { Store } from '@ngrx/store';
 
 import {
   selectIssueLabelTotal,
-  selectIsIssuesLabelsLoading,
+  selectIssuesLabelsLoading,
   selectCurrentIssueLabel,
   CoreEntityState,
 } from '../store';
@@ -29,6 +29,7 @@ import { TypedAction } from '@ngrx/store/src/models';
 })
 export class DashboardModuleService implements CanLoad {
   public constructor(private readonly store: Store<CoreEntityState>) {}
+
   /**
    * Check out whether `note-labels` are being available,
    * before lazy module will be mounted.
@@ -42,10 +43,10 @@ export class DashboardModuleService implements CanLoad {
     route: Route,
     segments: UrlSegment[],
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.store.select(selectIsIssuesLabelsLoading).pipe(
+    return this.store.select(selectIssuesLabelsLoading).pipe(
       tap((): void => {
         const action: TypedAction<IssuesLabelsActionTypes> =
-          IssuesLabelsEntityActions.loadIssuesLabelsAll();
+          IssuesLabelsEntityActions.loadAllIssuesLabels();
         return this.store.dispatch(action);
       }),
       skipWhile((loading: boolean) => loading),

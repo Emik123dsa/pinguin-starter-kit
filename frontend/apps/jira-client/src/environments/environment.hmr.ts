@@ -7,10 +7,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {
   ClientEnvironment,
   ClientEnvironmentOptions,
-} from '@pinguin/environment';
+} from '@pinguin/environments';
 
 import { VERSION } from '@pinguin/core';
-import { StringUtils } from '@pinguin/common';
+import { StringUtils } from '@pinguin/utils';
 
 // ClientEnvironmentOptions as an environment for development only.
 export const environment: ClientEnvironmentOptions = {
@@ -67,6 +67,7 @@ export const environment: ClientEnvironmentOptions = {
   runtimePlugins: [
     StoreDevtoolsModule.instrument({
       name: StringUtils.format('pinguin-{0}-client', ClientEnvironment.HMR),
+      maxAge: 20,
       logOnly: true,
       serialize: true,
       autoPause: true,

@@ -1,4 +1,4 @@
-import { PlainObjectLiteral } from '@pinguin/common';
+import { PlainObjectLiteral } from '@pinguin/utils';
 import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 

@@ -5,38 +5,38 @@ import { IssuesEntity } from '../models';
 
 import { IssuesFieldsActionTypes } from '../constants';
 
-const loadIssuesFieldsAll: ActionCreator<
+const loadAllIssuesFields: ActionCreator<
   IssuesFieldsActionTypes,
   () => TypedAction<IssuesFieldsActionTypes>
 > = createAction<IssuesFieldsActionTypes>(
-  IssuesFieldsActionTypes.LoadIssuesFieldsAll,
+  IssuesFieldsActionTypes.LoadAllIssuesFields,
 );
 
-const loadIssuesFieldsAllSuccess: ActionCreator<
-  IssuesFieldsActionTypes.LoadIssuesFieldsAllSuccess,
+const loadAllIssuesFieldsSuccess: ActionCreator<
+  IssuesFieldsActionTypes.LoadAllIssuesFieldsSuccess,
   (
     props: Pick<IssuesEntity, 'issuesFields'>,
   ) => Pick<IssuesEntity, 'issuesFields'> & TypedAction<IssuesFieldsActionTypes>
 > = createAction(
-  IssuesFieldsActionTypes.LoadIssuesFieldsAllSuccess,
+  IssuesFieldsActionTypes.LoadAllIssuesFieldsSuccess,
   props<Pick<IssuesEntity, 'issuesFields'>>(),
 );
 
-const loadIssuesFieldsAllFailure: ActionCreator<
-  IssuesFieldsActionTypes.LoadIssuesFieldsAllFailure,
+const loadAllIssuesFieldsFailure: ActionCreator<
+  IssuesFieldsActionTypes.LoadAllIssuesFieldsFailure,
   (
     props: IssuesEntity,
   ) => IssuesEntity &
-    TypedAction<IssuesFieldsActionTypes.LoadIssuesFieldsAllFailure>
+    TypedAction<IssuesFieldsActionTypes.LoadAllIssuesFieldsFailure>
 > = createAction(
-  IssuesFieldsActionTypes.LoadIssuesFieldsAllFailure,
+  IssuesFieldsActionTypes.LoadAllIssuesFieldsFailure,
   props<OmitThisParameter<IssuesEntity>>(),
 );
 
 const issuesFieldsActions = union({
-  loadIssuesFieldsAll,
-  loadIssuesFieldsAllSuccess,
-  loadIssuesFieldsAllFailure,
+  loadAllIssuesFields,
+  loadAllIssuesFieldsSuccess,
+  loadAllIssuesFieldsFailure,
 });
 
 /**
@@ -47,16 +47,16 @@ const issuesFieldsActions = union({
  * @typedef {IssuesFieldsActions}
  */
 export class IssuesFieldsEntityActions {
-  static get loadIssuesFieldsAll() {
-    return loadIssuesFieldsAll;
+  static get loadAllIssuesFields() {
+    return loadAllIssuesFields;
   }
 
-  static get loadIssuesFieldsAllSuccess() {
-    return loadIssuesFieldsAllSuccess;
+  static get loadAllIssuesFieldsSuccess() {
+    return loadAllIssuesFieldsSuccess;
   }
 
-  static get loadIssuesFieldsAllFailure() {
-    return loadIssuesFieldsAllFailure;
+  static get loadAllIssuesFieldsFailure() {
+    return loadAllIssuesFieldsFailure;
   }
 }
 

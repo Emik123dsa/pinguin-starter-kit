@@ -35,16 +35,16 @@ export class IssuesLabelsEffects {
   }
 
   /**
-   * loadIssuesLabelsAll stream for loading labels fields.
+   * loadAllIssuesLabels stream for loading labels fields.
    *
    * @type {(Observable<Action> & CreateEffectMetadata)}
    */
-  loadIssuesLabelsAll$: Observable<Action> & CreateEffectMetadata =
+  loadAllIssuesLabels$: Observable<Action> & CreateEffectMetadata =
     createEffect(
       (): Observable<Action> =>
         this.actions$.pipe(
           ofType<TypedAction<IssuesLabelsActionTypes>>(
-            IssuesLabelsEntityActions.loadIssuesLabelsAll,
+            IssuesLabelsEntityActions.loadAllIssuesLabels,
           ),
           map((action: TypedAction<IssuesLabelsActionTypes>) => action),
           fetch({
@@ -57,7 +57,7 @@ export class IssuesLabelsEffects {
             run: (action: TypedAction<IssuesLabelsActionTypes>) => {
               return this.issuesService.findAllLabels().pipe(
                 map((issuesLabels) =>
-                  IssuesLabelsEntityActions.loadIssuesLabelsAllSuccess({
+                  IssuesLabelsEntityActions.loadAllIssuesLabelsSuccess({
                     issuesLabels,
                   }),
                 ),
@@ -67,7 +67,7 @@ export class IssuesLabelsEffects {
               action: TypedAction<IssuesLabelsActionTypes>,
               error: unknown,
             ) =>
-              IssuesLabelsEntityActions.loadIssuesLabelsAllFailure({
+              IssuesLabelsEntityActions.loadAllIssuesLabelsFailure({
                 error: { error, action },
               }),
           }),

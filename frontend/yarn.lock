@@ -4492,9 +4492,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pinguin/environment@workspace:libs/environment":
+"@pinguin/environments@workspace:libs/environments":
   version: 0.0.0-use.local
-  resolution: "@pinguin/environment@workspace:libs/environment"
+  resolution: "@pinguin/environments@workspace:libs/environments"
   languageName: unknown
   linkType: soft
 
@@ -8130,6 +8130,13 @@ __metadata:
     object-keys: ^1.1.1
     regexp.prototype.flags: ^1.2.0
   checksum: f92686f2c5bcdf714a75a5fa7a9e47cb374a8ec9307e717b8d1ce61f56a75aaebf5619c2a12b8087a705b5a2f60d0292c35f8b58cb1f72e3268a3a15cab9f78d
+  languageName: node
+  linkType: hard
+
+"deep-freeze-strict@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "deep-freeze-strict@npm:1.1.1"
+  checksum: b601e226c873464e35f3667a632963c1e8281f6bb4016d0fbbd8ef60fd51f0c9dcf79fadd745d1597b463f2c25ea0f213599559606c29df8c7e941394cb80f9a
   languageName: node
   linkType: hard
 
@@ -14005,6 +14012,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ngrx-store-freeze@npm:^0.2.4":
+  version: 0.2.4
+  resolution: "ngrx-store-freeze@npm:0.2.4"
+  dependencies:
+    deep-freeze-strict: ^1.1.1
+  peerDependencies:
+    "@ngrx/store": ">=4.0.0"
+  checksum: 55e211176c7c80a14523ad122cf006d5dedbf4b643a53fd60124eb73f86a018ade047fabcdc566eba7a13a14677b8442f56da6759e8563f7f5b8eaf36f169ddb
+  languageName: node
+  linkType: hard
+
 "ngx-quicklink@npm:^0.2.7":
   version: 0.2.7
   resolution: "ngx-quicklink@npm:0.2.7"
@@ -15213,6 +15231,7 @@ __metadata:
     lerna: ^4.0.0
     lint-staged: ^12.3.3
     ng-packagr: ^13.0.0
+    ngrx-store-freeze: ^0.2.4
     ngx-quicklink: ^0.2.7
     postcss: ^8.4.6
     postcss-at-rules-variables: ^0.3.0
@@ -19895,12 +19914,6 @@ __metadata:
 "ui-card@workspace:libs/ui-card":
   version: 0.0.0-use.local
   resolution: "ui-card@workspace:libs/ui-card"
-  languageName: unknown
-  linkType: soft
-
-"ui-forms@workspace:libs/ui-forms":
-  version: 0.0.0-use.local
-  resolution: "ui-forms@workspace:libs/ui-forms"
   languageName: unknown
   linkType: soft
 

@@ -4,12 +4,12 @@
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { StringUtils } from '@pinguin/common';
+import { StringUtils } from '@pinguin/utils';
 StringUtils;
 import {
   ClientEnvironment,
   ClientEnvironmentOptions,
-} from '@pinguin/environment';
+} from '@pinguin/environments';
 
 import { VERSION } from '@pinguin/core';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -17,6 +17,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import {
   InMemoryRestApiDataService,
   inMemoryRestApiOptionsFactory,
+  InMemoryStorageModule,
 } from '@pinguin/memory-storage';
 
 // ClientEnvironmentOptions as an environment for development only.
@@ -73,22 +74,38 @@ export const environment: ClientEnvironmentOptions = {
   },
   packages: [],
   runtimePlugins: [
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryRestApiDataService,
-      inMemoryRestApiOptionsFactory({
-        // TODO: implement environment injection tokens.
-        // Currently memory config will be used default by `memory-storage` library.
-      }),
-    ),
-
+    InMemoryStorageModule,
     StoreDevtoolsModule.instrument({
       name: StringUtils.format(
         'pinguin-{0}-client',
         ClientEnvironment.Development,
       ),
+      maxAge: 120,
       logOnly: true,
-      serialize: true,
-      autoPause: true,
+      serialize: {
+        options: {
+          undefined: true,
+        },
+        // replacer: (key, value) => {
+        //   if (value instanceof Router) {
+        //     return undefined;
+        //   }
+        //   if (
+        //     key === 'router' &&
+        //     typeof value !== 'undefined' &&
+        //     typeof value !== 'function'
+        //   ) {
+        //     return {
+        //       url: value.state.url,
+        //       params: value.state.params,
+        //       queryParams: value.state.queryParams,
+        //     };
+        //   }
+
+        //   return value;
+        // },
+      },
+      autoPause: false,
     }),
   ],
 };

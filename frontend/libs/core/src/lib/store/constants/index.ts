@@ -1,5 +1,5 @@
 // Provide all `core` constants state keys.
-export * from './core.constants';
+export * from './core-store.constants';
 
 // Provide issues actions types.
 export * from './issues-fields-action.types';

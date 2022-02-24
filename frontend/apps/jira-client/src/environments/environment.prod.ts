@@ -1,10 +1,10 @@
-import { StringUtils } from '@pinguin/common';
+import { StringUtils } from '@pinguin/utils';
 import { VERSION } from '@pinguin/core';
 
 import {
   ClientEnvironment,
   ClientEnvironmentOptions,
-} from '@pinguin/environment';
+} from '@pinguin/environments';
 
 // ClientEnvironmentOptions as an environment for development only.
 export const environment: ClientEnvironmentOptions = {

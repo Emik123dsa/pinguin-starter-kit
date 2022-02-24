@@ -14,17 +14,19 @@ import { RouterStateSerializer } from '@ngrx/router-store';
  * @interface CoreRouterStateSnapshot
  * @typedef {CoreRouterStateSnapshot}
  */
-export interface CoreRouterStateSnapshot {
+export interface SerializedCoreRouterStateSnapshot {
+  root?: any; //ActivatedRouteSnapshot;
   url: string;
+  routeConfig?: any;
   params: Params;
   queryParams: Params;
   data?: Data;
 }
 
-@Injectable({ providedIn: 'root' })
-export class CoreRouterStateSerializer
-  implements RouterStateSerializer<CoreRouterStateSnapshot>
-{
+@Injectable({
+  providedIn: 'root',
+})
+export class CoreRouterStateSerializer extends RouterStateSerializer<SerializedCoreRouterStateSnapshot> {
   /**
    * Override default serializer config.
    *
@@ -32,8 +34,10 @@ export class CoreRouterStateSerializer
    * @param {RouterStateSnapshot} state
    * @returns {CoreRouterStateSnapshot}
    */
-  public serialize(state: RouterStateSnapshot): CoreRouterStateSnapshot {
-    const { url, root }: RouterStateSnapshot = state;
+  public override serialize(
+    routerState: RouterStateSnapshot,
+  ): SerializedCoreRouterStateSnapshot {
+    const { url, root }: RouterStateSnapshot = routerState;
 
     const queryParams: Params = Object.is(root.queryParams, null)
       ? Object.create(null)
@@ -53,6 +57,6 @@ export class CoreRouterStateSerializer
       ? Object.create(null)
       : route.params;
 
-    return { url, params, queryParams, data };
+    return { root, url, params, queryParams };
   }
 }

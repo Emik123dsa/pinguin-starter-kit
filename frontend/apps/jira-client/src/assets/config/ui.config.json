@@ -1,3 +1,5 @@
 {
-  "prefers-color-scheme": "light"
+  "prefers-color-scheme": "light",
+  "prefers-dark-theme-color": "black",
+  "prefers-light-theme-color": "white"
 }

@@ -4,16 +4,17 @@ import {
   DefaultProjectorFn,
   MemoizedSelector,
 } from '@ngrx/store';
+import { ROUTER_FEATURE_KEY } from '../constants';
 
-import type { CoreRouterStateSnapshot } from '../serializers';
+import type { SerializedCoreRouterStateSnapshot } from '../serializers';
 
 export const selectRouter: MemoizedSelector<
   object,
-  RouterReducerState<CoreRouterStateSnapshot>,
-  DefaultProjectorFn<RouterReducerState<CoreRouterStateSnapshot>>
-> = createFeatureSelector<RouterReducerState<CoreRouterStateSnapshot>>(
-  'router',
-);
+  RouterReducerState<SerializedCoreRouterStateSnapshot>,
+  DefaultProjectorFn<RouterReducerState<SerializedCoreRouterStateSnapshot>>
+> = createFeatureSelector<
+  RouterReducerState<SerializedCoreRouterStateSnapshot>
+>(ROUTER_FEATURE_KEY);
 
 export const {
   selectCurrentRoute,

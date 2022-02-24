@@ -12,7 +12,7 @@ export const issuesLabelsEntityReducer: ActionReducer<IssuesLabelsEntityState> =
   createReducer<IssuesLabelsEntityState>(
     initialIssuesLabelsEntityState,
 
-    on(IssuesLabelsEntityActions.loadIssuesLabelsAll, (state) => {
+    on(IssuesLabelsEntityActions.loadAllIssuesLabels, (state) => {
       return issuesLabelsEntityAdapter.setAll(new Array<IssuesLabelsEntity>(), {
         ...state,
         loading: true,
@@ -20,7 +20,7 @@ export const issuesLabelsEntityReducer: ActionReducer<IssuesLabelsEntityState> =
     }),
 
     on(
-      IssuesLabelsEntityActions.loadIssuesLabelsAllSuccess,
+      IssuesLabelsEntityActions.loadAllIssuesLabelsSuccess,
       (state, { issuesLabels }: Pick<IssuesEntity, 'issuesLabels'>) => {
         return issuesLabelsEntityAdapter.addMany(
           issuesLabels as Array<IssuesLabelsEntity>,
@@ -30,7 +30,7 @@ export const issuesLabelsEntityReducer: ActionReducer<IssuesLabelsEntityState> =
     ),
 
     on(
-      IssuesLabelsEntityActions.loadIssuesLabelsAllFailure,
+      IssuesLabelsEntityActions.loadAllIssuesLabelsFailure,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       (state, { error }: Pick<IssuesLabelsEntityState, 'error'>) => {
         return issuesLabelsEntityAdapter.removeAll({

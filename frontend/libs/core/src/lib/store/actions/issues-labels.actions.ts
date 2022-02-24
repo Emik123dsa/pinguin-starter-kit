@@ -4,37 +4,37 @@ import { createAction, props, ActionCreator, union } from '@ngrx/store';
 import { IssuesEntity } from '../models';
 import { IssuesLabelsActionTypes } from '../constants';
 
-const loadIssuesLabelsAll: ActionCreator<
+const loadAllIssuesLabels: ActionCreator<
   IssuesLabelsActionTypes,
   () => TypedAction<IssuesLabelsActionTypes>
 > = createAction<IssuesLabelsActionTypes>(
-  IssuesLabelsActionTypes.LoadIssuesLabelsAll,
+  IssuesLabelsActionTypes.LoadAllIssuesLabels,
 );
 
-const loadIssuesLabelsAllSuccess: ActionCreator<
-  IssuesLabelsActionTypes.LoadIssuesLabelsAllSuccess,
+const loadAllIssuesLabelsSuccess: ActionCreator<
+  IssuesLabelsActionTypes.LoadAllIssuesLabelsSuccess,
   (
     props: Pick<IssuesEntity, 'issuesLabels'>,
   ) => Pick<IssuesEntity, 'issuesLabels'> & TypedAction<IssuesLabelsActionTypes>
 > = createAction(
-  IssuesLabelsActionTypes.LoadIssuesLabelsAllSuccess,
+  IssuesLabelsActionTypes.LoadAllIssuesLabelsSuccess,
   props<Pick<IssuesEntity, 'issuesLabels'>>(),
 );
 
-const loadIssuesLabelsAllFailure: ActionCreator<
-  IssuesLabelsActionTypes.LoadIssuesLabelsAllFailure,
+const loadAllIssuesLabelsFailure: ActionCreator<
+  IssuesLabelsActionTypes.LoadAllIssuesLabelsFailure,
   (props: { error: unknown }) => {
     error: unknown;
-  } & TypedAction<IssuesLabelsActionTypes.LoadIssuesLabelsAllFailure>
+  } & TypedAction<IssuesLabelsActionTypes.LoadAllIssuesLabelsFailure>
 > = createAction(
-  IssuesLabelsActionTypes.LoadIssuesLabelsAllFailure,
+  IssuesLabelsActionTypes.LoadAllIssuesLabelsFailure,
   props<{ error: unknown }>(),
 );
 
 const issuesLabelsActions = union({
-  loadIssuesLabelsAll,
-  loadIssuesLabelsAllSuccess,
-  loadIssuesLabelsAllFailure,
+  loadAllIssuesLabels,
+  loadAllIssuesLabelsSuccess,
+  loadAllIssuesLabelsFailure,
 });
 
 /**
@@ -45,15 +45,15 @@ const issuesLabelsActions = union({
  * @typedef {IssuesFieldsActions}
  */
 export class IssuesLabelsEntityActions {
-  static get loadIssuesLabelsAll() {
-    return loadIssuesLabelsAll;
+  static get loadAllIssuesLabels() {
+    return loadAllIssuesLabels;
   }
 
-  static get loadIssuesLabelsAllSuccess() {
-    return loadIssuesLabelsAllSuccess;
+  static get loadAllIssuesLabelsSuccess() {
+    return loadAllIssuesLabelsSuccess;
   }
-  static get loadIssuesLabelsAllFailure() {
-    return loadIssuesLabelsAllFailure;
+  static get loadAllIssuesLabelsFailure() {
+    return loadAllIssuesLabelsFailure;
   }
 }
 

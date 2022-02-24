@@ -1,6 +1,8 @@
+import { PlainObjectLiteral } from '@pinguin/utils';
 import { HttpContextToken } from '@angular/common/http';
+import { AbstractConnectionConfig } from '@pinguin/common';
+
 import type { ClientRestApiOptions } from './interfaces';
-import { AbstractConnectionConfig, PlainObjectLiteral } from '@pinguin/common';
 
 /**
  * Client rest api config ref.

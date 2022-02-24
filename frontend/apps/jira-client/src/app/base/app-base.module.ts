@@ -6,48 +6,40 @@ import { QuicklinkModule } from 'ngx-quicklink';
 
 import { CoreModule } from '@pinguin/core';
 import { ClientCommonModule } from '@pinguin/common';
-import { ClientSharedModule } from '@pinguin/shared';
-import { ClientEnvironmentModule } from '@pinguin/environment';
+import { SharedModule } from '@pinguin/shared';
+import { RuntimeEnvironmentModule } from '@pinguin/environments';
 import { ClientConfigModule } from '@pinguin/config';
-import { UiOverlayModule } from '@pinguin/ui-overlay';
-import { UiFormsModule } from '@pinguin/ui-forms';
+
+import { environment } from '@pinguin-runtime/environment';
+
+import { AppComponent } from '@pinguin-client/app.component';
+import { AppRoutingModule } from '@pinguin-client/app-routing.module';
 
 import { APP_BASE_PROVIDERS } from './app-base.providers';
-
-import { AppComponent } from '../app.component';
-import { AppRoutingModule } from '../app-routing.module';
-
-import { environment } from '../../environments/environment';
-import { ClientRestApiModule } from '@pinguin/api';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: environment.app.id }),
 
-    // Environment module for application.
-    ClientEnvironmentModule.forRoot(environment),
+    // Provide environment runtime module for application.
+    RuntimeEnvironmentModule.forRoot(environment),
 
-    // Configuration module.
+    // Provide configuration client module.
     ClientConfigModule.forRoot(),
 
-    // Common module.
+    // Provide common client module.
     ClientCommonModule.forRoot(),
 
-    // Routing modules.
+    // Provide routing client modules.
     QuicklinkModule,
     AppRoutingModule,
 
-    // Shared modules.
-    ClientSharedModule.forRoot(),
+    // Provide shared client modules.
+    SharedModule.forRoot(),
 
-    // Provide core module.
+    // Provide core essential module.
     CoreModule.forRoot(),
-    ClientRestApiModule.forRoot(),
-
-    // Provide ui modules.
-    UiFormsModule,
-    UiOverlayModule,
   ],
   providers: [APP_BASE_PROVIDERS],
   exports: [],

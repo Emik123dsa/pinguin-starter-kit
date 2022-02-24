@@ -21,10 +21,8 @@ import {
   ClientRestApiConfigRef,
   UnknownApiErrorException,
 } from '@pinguin/api';
-
-import { PlainObjectLiteral } from '@pinguin/common';
-
-import { ClientEnvironment, ENVIRONMENT } from '@pinguin/environment';
+import { PlainObjectLiteral } from '@pinguin/utils';
+import { ClientEnvironment, ENVIRONMENT } from '@pinguin/environments';
 
 @Injectable({
   providedIn: 'root',

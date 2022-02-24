@@ -1,11 +1,6 @@
 export enum IssuesLabelsActionTypes {
   // Load all issues fields labels action types.
-  LoadIssuesLabelsAll = '[Issues Labels/API] Load Issues Labels All',
-  LoadIssuesLabelsAllSuccess = '[Issues Labels/API] Load Issues Labels All Success',
-  LoadIssuesLabelsAllFailure = '[Issues Labels/API] Load Issues Labels All Failure',
-
-  // Load exactly once delivered action type.
-  LoadIssuesLabelOneById = '[Issues Labels/API] Load Issues Label One By Id',
-  LoadIssuesLabelOneByIdSuccess = '[Issues Labels/API] Load Issues Label One By Id Success',
-  LoadIssuesLabelOneByIdFailure = '[Issues Labels/API] Load Issues Label One By Id Failure',
+  LoadAllIssuesLabels = '[Issues Labels/API] Load All Issues Labels',
+  LoadAllIssuesLabelsSuccess = '[Issues Labels/API] Load All Issues Labels Success',
+  LoadAllIssuesLabelsFailure = '[Issues Labels/API] Load All Issues Labels Failure',
 }

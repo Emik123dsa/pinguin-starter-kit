@@ -1,10 +1,12 @@
 import { HttpContextToken } from '@angular/common/http';
 import { FactoryProvider } from '@angular/core';
-import { PlainObjectLiteral } from '@pinguin/common';
+
+import { PlainObjectLiteral } from '@pinguin/utils';
+
 import {
   ClientEnvironmentOptions,
   CLIENT_ENVIRONMENT_OPTIONS,
-} from '@pinguin/environment';
+} from '@pinguin/environments';
 
 import { ClientRestApiOptions } from '../interfaces';
 import { ClientRestApiConfigRef } from '../rest-api.config-ref';
@@ -56,7 +58,8 @@ export class ClientRestApiConfig extends ClientRestApiConfigRef {
   /**
    * Override default serialization for request body.
    *
-   * #Example:
+   * # Example factory for serialization:
+   *
    * ```typescript
    *  function factory(
    *    options: ClientRestApiOptions,

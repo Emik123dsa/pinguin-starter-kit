@@ -1,0 +1,7 @@
+{
+  "name": "@pinguin/environments",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "packageManager": "yarn@3.1.1",
+  "license": "MIT"
+}

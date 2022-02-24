@@ -4,13 +4,13 @@
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { StringUtils } from '@pinguin/common';
+import { StringUtils } from '@pinguin/utils';
 
 StringUtils;
 import {
   ClientEnvironment,
   ClientEnvironmentOptions,
-} from '@pinguin/environment';
+} from '@pinguin/environments';
 
 import { VERSION } from '@pinguin/core';
 import {
@@ -80,6 +80,7 @@ export const environment: ClientEnvironmentOptions = {
     ),
     StoreDevtoolsModule.instrument({
       name: StringUtils.format('pinguin-{0}-client', ClientEnvironment.Mock),
+      maxAge: 20,
       logOnly: false,
       serialize: false,
       autoPause: false,

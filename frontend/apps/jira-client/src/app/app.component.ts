@@ -3,20 +3,15 @@ import { VERSION } from '@pinguin/core';
 import {
   ChangeDetectionStrategy,
   Component,
-  Inject,
-  TemplateRef,
   Version,
-  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { routeAnimations } from '@pinguin/animations';
 
-import { WINDOW } from '@pinguin/common';
+import { routeAnimations } from '@pinguin/animations';
 
 @Component({
   selector: 'pinguin-client-root',
-  exportAs: 'pinguinJiraClientRoot',
+  exportAs: 'pinguinClientRoot',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None,

@@ -12,7 +12,7 @@ const APP_BROWSER_SERVICE_PROVIDER: ClassProvider = {
 
 const APP_BROWSER_BASE_HREF_PROVIDER: ValueProvider = {
   provide: APP_BASE_HREF,
-  useValue: location.href,
+  useValue: '/',
   multi: false,
 };
 

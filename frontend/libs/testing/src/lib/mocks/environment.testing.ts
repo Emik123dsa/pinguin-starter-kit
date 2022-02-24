@@ -9,7 +9,7 @@ import {
   ClientEnvironment,
   ClientEnvironmentOptions,
   ClientWebSocketOptions,
-} from '@pinguin/environment';
+} from '@pinguin/environments';
 
 // ClientEnvironmentOptions as an environment for development only.
 export const environment: ClientEnvironmentOptions = {

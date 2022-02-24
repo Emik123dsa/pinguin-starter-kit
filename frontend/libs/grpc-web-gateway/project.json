@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/grpc-web-gateway",
+  "sourceRoot": "libs/grpc-web-gateway/src",
+  "prefix": "pinguin",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/grpc-web-gateway"],
+      "options": {
+        "jestConfig": "libs/grpc-web-gateway/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/grpc-web-gateway/src/**/*.ts",
+          "libs/grpc-web-gateway/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

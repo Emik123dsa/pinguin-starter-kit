@@ -1,0 +1,27 @@
+<div
+  fxLayout="column"
+  fxLayoutWrap="wrap"
+  fxLayoutGap="0"
+  fxLayoutAlign="center start"
+>
+  <pinguin-layout-header
+    fxFlex="auto"
+    class="layout-header dashboard-layout-header"
+  ></pinguin-layout-header>
+
+  <main
+    fxFlex
+    fxFlexFill
+    role="cell"
+    class="layout-content dashboard-layout-content"
+  >
+    <div [@routeAnimations]="prepareDashboardRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+  </main>
+
+  <pinguin-layout-footer
+    fxFlex="auto"
+    class="footer dashboard-layout-footer"
+  ></pinguin-layout-footer>
+</div>

@@ -22,7 +22,7 @@ import {
 // browserInitializerProviderFactory provider for factory.
 export function browserInitializerProviderFactory(
   browserService: BrowserService,
-  platformId: object
+  platformId: object,
 ): () => Observable<unknown> | Promise<unknown> | void {
   return (): void => {
     switch (true) {
