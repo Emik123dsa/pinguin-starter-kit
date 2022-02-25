@@ -39,7 +39,7 @@
       "@pinguin/feature-errors": ["libs/feature-errors/src/index.ts"],
       "@pinguin/feature-home": ["libs/feature-home/src/index.ts"],
       "@pinguin/forms": ["libs/forms/src/index.ts"],
-      "@pinguin/grpc-gateway": ["libs/grpc-gateway/src/index.ts"],
+      "@pinguin/grpc-web": ["libs/grpc-web/src/index.ts"],
       "@pinguin/memory-storage": ["libs/memory-storage/src/index.ts"],
       "@pinguin/schemas": ["libs/schemas/src/index.ts"],
       "@pinguin/server": ["libs/server/src/index.ts"],
