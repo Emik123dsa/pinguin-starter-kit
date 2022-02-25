@@ -23,12 +23,37 @@ import {
 import { IssuesLabelsEntityActions } from '../store/actions';
 import { IssuesLabelsActionTypes } from '../store/constants';
 import { TypedAction } from '@ngrx/store/src/models';
+import { DashboardModuleFacade } from '../facades';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardModuleService implements CanLoad {
-  public constructor(private readonly store: Store<CoreEntityState>) {}
+  /**
+   * Issue label total amount.
+   *
+   * @type {!Observable<number>}
+   */
+  issueLabelTotal$!: Observable<number>;
+
+  /**
+   * Issues labels loading state.
+   *
+   * @type {!Observable<boolean>}
+   */
+  issuesLabelsLoading$!: Observable<boolean>;
+
+  /**
+   * Creates an instance of DashboardModuleService.
+   *
+   * @constructor
+   * @public
+   * @param {DashboardModuleFacade} facade
+   */
+  public constructor(private readonly facade: DashboardModuleFacade) {
+    this.issueLabelTotal$ = this.facade.issueLabelTotal$;
+    this.issuesLabelsLoading$ = this.facade.issuesLabelsLoading$;
+  }
 
   /**
    * Check out whether `note-labels` are being available,
@@ -43,15 +68,11 @@ export class DashboardModuleService implements CanLoad {
     route: Route,
     segments: UrlSegment[],
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.store.select(selectIssuesLabelsLoading).pipe(
-      tap((): void => {
-        const action: TypedAction<IssuesLabelsActionTypes> =
-          IssuesLabelsEntityActions.loadAllIssuesLabels();
-        return this.store.dispatch(action);
-      }),
+    return this.issuesLabelsLoading$.pipe(
+      tap((): void => this.facade.loadAllIssuesLabels()),
       skipWhile((loading: boolean) => loading),
       first(),
-      withLatestFrom(this.store.select(selectIssueLabelTotal)),
+      withLatestFrom(this.issueLabelTotal$),
       map(([, issueLabelTotal]: [boolean, number]) => !!issueLabelTotal),
       catchError(() => of(false)),
     );

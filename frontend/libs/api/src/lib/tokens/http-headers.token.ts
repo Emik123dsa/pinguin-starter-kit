@@ -1,6 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { inject, InjectionToken } from '@angular/core';
-import { ClientRestApiConfigRef } from '../rest-api.config-ref';
+import { ClientRestApiConfigRef } from '../classes';
 
 function baseApiHttpRequestHeadersProviderFactory(): HttpHeaders {
   const apiConfigRef: ClientRestApiConfigRef = inject(ClientRestApiConfigRef);

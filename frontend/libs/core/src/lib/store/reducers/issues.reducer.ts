@@ -9,8 +9,8 @@ import { issuesLabelsEntityReducer } from './issues-labels.reducer';
 export const issuesEntityReducer: ActionReducer<IssuesEntityState> =
   combineReducers<IssuesEntityState>(
     {
-      issuesLabels: issuesLabelsEntityReducer,
-      issuesFields: issuesFieldsEntityReducer,
+      labels: issuesLabelsEntityReducer,
+      fields: issuesFieldsEntityReducer,
     },
     initialIssuesEntityState,
   );

@@ -1,5 +1,5 @@
 import { inject, InjectionToken } from '@angular/core';
-import { ClientRestApiConfigRef } from '../rest-api.config-ref';
+import { ClientRestApiConfigRef } from '../classes';
 
 function baseRestApiUrlProviderFactory(): string {
   const apiConfigRef: ClientRestApiConfigRef = inject(ClientRestApiConfigRef);

@@ -4,14 +4,14 @@
 @mixin color($theme) {
   $color-config: material-ui.get-color-config($theme);
 
-  $primary-palette: map.get($color-config, 'primary');
-  $accent-palette: map.get($color-config, 'accent');
-  $warn-palette: map.get($color-config, 'warn');
+  $primary-palette: map.get($color-config, primary);
+  $accent-palette: map.get($color-config, accent);
+  $warn-palette: map.get($color-config, warn);
 
-  $foreground-palette: map.get($color-config, 'foreground');
-  $background-palette: map.get($color-config, 'background');
+  $foreground-palette: map.get($color-config, foreground);
+  $background-palette: map.get($color-config, background);
 
-  //   Whether it was provided dark theme.
+  // Whether it was provided dark theme.
   $is-dark-theme: map.get($color-config, 'is-dark');
 
   body,
@@ -22,16 +22,25 @@
 
 @mixin typography($theme) {
   $typography-config: material-ui.get-typography-config($theme);
+
   $font-family: material-ui.font-family($typography-config);
+  $font-weight: material-ui.font-weight($typography-config);
+  $font-size: material-ui.font-size($typography-config);
+  $line-height: material-ui.line-height($typography-config);
+  $letter-spacing: material-ui.letter-spacing($typography-config);
 
   body,
   html {
+    font-size: $font-size !important;
     font-family: $font-family !important;
+    font-weight: $font-weight !important;
+    line-height: $line-height !important;
+    letter-spacing: $letter-spacing !important;
   }
 }
 
-@mixin _density() {
-  // Density for input state.
+@mixin _density($theme: null) {
+  // Density for theme state.
 }
 
 @mixin theme($theme: null) {

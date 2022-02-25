@@ -21,9 +21,9 @@ export const issuesLabelsEntityReducer: ActionReducer<IssuesLabelsEntityState> =
 
     on(
       IssuesLabelsEntityActions.loadAllIssuesLabelsSuccess,
-      (state, { issuesLabels }: Pick<IssuesEntity, 'issuesLabels'>) => {
+      (state, { labels }: Pick<IssuesEntity, 'labels'>) => {
         return issuesLabelsEntityAdapter.addMany(
-          issuesLabels as Array<IssuesLabelsEntity>,
+          labels as Array<IssuesLabelsEntity>,
           { ...state, loading: false, loaded: true, error: null },
         );
       },

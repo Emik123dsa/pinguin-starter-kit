@@ -10,8 +10,8 @@ import { IssuesLabelsEntityState } from './issues-labels.model';
  * @typedef {IssuesEntity}
  */
 export interface IssuesEntity {
-  issuesLabels: IssuesLabelsEntity | Array<IssuesLabelsEntity>;
-  issuesFields: IssuesFieldsEntity | Array<IssuesFieldsEntity>;
+  labels: IssuesLabelsEntity | Array<IssuesLabelsEntity>;
+  fields: IssuesFieldsEntity | Array<IssuesFieldsEntity>;
 }
 
 /**
@@ -22,6 +22,6 @@ export interface IssuesEntity {
  * @typedef {IssuesEntity}
  */
 export interface IssuesEntityState {
-  issuesLabels: IssuesLabelsEntityState;
-  issuesFields: IssuesFieldsEntityState;
+  labels: IssuesLabelsEntityState;
+  fields: IssuesFieldsEntityState;
 }

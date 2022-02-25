@@ -1,4 +1,4 @@
 {
-  "name": "ui-card",
+  "name": "@pinguin/ui-card",
   "packageManager": "yarn@3.1.1"
 }

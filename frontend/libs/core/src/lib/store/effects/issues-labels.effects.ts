@@ -56,9 +56,9 @@ export class IssuesLabelsEffects {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             run: (action: TypedAction<IssuesLabelsActionTypes>) => {
               return this.issuesService.findAllLabels().pipe(
-                map((issuesLabels) =>
+                map((labels) =>
                   IssuesLabelsEntityActions.loadAllIssuesLabelsSuccess({
-                    issuesLabels,
+                    labels,
                   }),
                 ),
               );

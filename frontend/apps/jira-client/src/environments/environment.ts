@@ -12,13 +12,8 @@ import {
 } from '@pinguin/environments';
 
 import { VERSION } from '@pinguin/core';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import {
-  InMemoryRestApiDataService,
-  inMemoryRestApiOptionsFactory,
-  InMemoryStorageModule,
-} from '@pinguin/memory-storage';
+import { InMemoryStorageModule } from '@pinguin/memory-storage';
 
 // ClientEnvironmentOptions as an environment for development only.
 export const environment: ClientEnvironmentOptions = {

@@ -14,11 +14,11 @@ const loadAllIssuesLabels: ActionCreator<
 const loadAllIssuesLabelsSuccess: ActionCreator<
   IssuesLabelsActionTypes.LoadAllIssuesLabelsSuccess,
   (
-    props: Pick<IssuesEntity, 'issuesLabels'>,
-  ) => Pick<IssuesEntity, 'issuesLabels'> & TypedAction<IssuesLabelsActionTypes>
+    props: Pick<IssuesEntity, 'labels'>,
+  ) => Pick<IssuesEntity, 'labels'> & TypedAction<IssuesLabelsActionTypes>
 > = createAction(
   IssuesLabelsActionTypes.LoadAllIssuesLabelsSuccess,
-  props<Pick<IssuesEntity, 'issuesLabels'>>(),
+  props<Pick<IssuesEntity, 'labels'>>(),
 );
 
 const loadAllIssuesLabelsFailure: ActionCreator<

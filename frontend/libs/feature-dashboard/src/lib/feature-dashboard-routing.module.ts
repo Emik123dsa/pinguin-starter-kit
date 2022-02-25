@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './containers/dashboard-layout/dashboard-layout.component';
-import { RoadmapsPageComponent } from './containers/roadmaps-page/roadmaps-page.component';
+import { RoadmapsPageComponent } from './containers/roadmap-page/roadmap-page.component';
 
 const routes: Routes = [
   {

@@ -57,6 +57,6 @@ export class CoreRouterStateSerializer extends RouterStateSerializer<SerializedC
       ? Object.create(null)
       : route.params;
 
-    return { root, url, params, queryParams };
+    return { url, params, queryParams };
   }
 }

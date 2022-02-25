@@ -6,8 +6,7 @@ import { SharedModule } from '@pinguin/shared';
 
 // Provide components and containers components.
 import { DashboardLayoutComponent } from './containers/dashboard-layout';
-import { RoadmapsPageComponent } from './containers/roadmaps-page';
-import { CampaignRoadmapComponent } from './components/campaign-roadmap';
+import { RoadmapPageComponent } from './containers/roadmap-page';
 
 import { DashboardStoreModule } from './store';
 
@@ -15,9 +14,15 @@ import { DashboardStoreModule } from './store';
 import { UiCardModule } from '@pinguin/ui-card';
 import { UiInputModule } from '@pinguin/ui-input';
 import { UiButtonModule } from '@pinguin/ui-button';
-import { UiOverlayModule } from '@pinguin/ui-overlay';
+import { UiOverlaysModule } from '@pinguin/ui-overlays';
 
+// Provide feature routing module.
 import { FeatureDashboardRoutingModule } from './feature-dashboard-routing.module';
+
+// Provide locale components.
+import { IssueCardFormComponent } from './components/issue-card-form';
+import { IssueCardListComponent } from './components/issue-card-list';
+import { IssuesRoadmapComponent } from './components/issues-roadmap';
 
 @NgModule({
   imports: [
@@ -29,12 +34,14 @@ import { FeatureDashboardRoutingModule } from './feature-dashboard-routing.modul
     UiCardModule,
     UiButtonModule,
     UiInputModule,
-    UiOverlayModule,
+    UiOverlaysModule,
   ],
   declarations: [
     DashboardLayoutComponent,
-    RoadmapsPageComponent,
-    CampaignRoadmapComponent,
+    RoadmapPageComponent,
+    IssuesRoadmapComponent,
+    IssueCardFormComponent,
+    IssueCardListComponent,
   ],
   providers: [],
 })

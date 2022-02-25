@@ -15,11 +15,11 @@ const loadAllIssuesFields: ActionCreator<
 const loadAllIssuesFieldsSuccess: ActionCreator<
   IssuesFieldsActionTypes.LoadAllIssuesFieldsSuccess,
   (
-    props: Pick<IssuesEntity, 'issuesFields'>,
-  ) => Pick<IssuesEntity, 'issuesFields'> & TypedAction<IssuesFieldsActionTypes>
+    props: Pick<IssuesEntity, 'fields'>,
+  ) => Pick<IssuesEntity, 'fields'> & TypedAction<IssuesFieldsActionTypes>
 > = createAction(
   IssuesFieldsActionTypes.LoadAllIssuesFieldsSuccess,
-  props<Pick<IssuesEntity, 'issuesFields'>>(),
+  props<Pick<IssuesEntity, 'fields'>>(),
 );
 
 const loadAllIssuesFieldsFailure: ActionCreator<

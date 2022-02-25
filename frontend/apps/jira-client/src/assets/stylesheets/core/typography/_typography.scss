@@ -1,0 +1,50 @@
+@use '@angular/material' as material-ui;
+
+$default-typography-level: mat.define-typography-level(
+  $font-family: Montserrat,
+  $font-weight: 400,
+  $font-size: 1rem,
+  $line-height: 1,
+  $letter-spacing: normal,
+);
+
+$default-typography-config: material-ui.define-typography-config(
+  $font-family: Montserrat,
+  $font-weight: 400,
+  $font-size: 1rem,
+  $line-height: 1,
+  $letter-spacing: normal,
+  $display-4:
+    material-ui.define-typography-level(
+      112px,
+      112px,
+      300,
+      $letter-spacing: -0.05em
+    ),
+  $display-3:
+    material-ui.define-typography-level(
+      56px,
+      56px,
+      400,
+      $letter-spacing: -0.02em
+    ),
+  $display-2:
+    material-ui.define-typography-level(
+      45px,
+      48px,
+      400,
+      $letter-spacing: -0.005em
+    ),
+  $display-1: material-ui.define-typography-level(34px, 40px, 400),
+  $headline: material-ui.define-typography-level(20px, 27px, 500),
+  $title: material-ui.define-typography-level(20px, 27px, 400),
+  $subheading-1: material-ui.define-typography-level(15px, 17px, 400),
+  $subheading-2: material-ui.define-typography-level(16px, 21px, 500),
+  $body-1: material-ui.define-typography-level(16px, 21px, 400),
+  $body-2: material-ui.define-typography-level(16px, 25px, 500),
+  $caption: material-ui.define-typography-level(14px, 21px, 400),
+  $button: material-ui.define-typography-level(16px, 21px, 400),
+  $input: material-ui.define-typography-level(inherit, 1.125, 400),
+);
+
+@include material-ui.all-component-typographies($typography-config);

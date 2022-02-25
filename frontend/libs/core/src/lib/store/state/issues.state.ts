@@ -9,6 +9,6 @@ import { initialIssuesFieldsEntityState } from './issues-fields.state';
  * @type {IssuesEntityState}
  */
 export const initialIssuesEntityState: IssuesEntityState = {
-  issuesLabels: initialIssuesLabelsEntityState,
-  issuesFields: initialIssuesFieldsEntityState,
+  labels: initialIssuesLabelsEntityState,
+  fields: initialIssuesFieldsEntityState,
 };

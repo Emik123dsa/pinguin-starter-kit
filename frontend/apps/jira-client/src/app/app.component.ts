@@ -18,9 +18,11 @@ import { routeAnimations } from '@pinguin/animations';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [routeAnimations],
 })
-export class AppComponent {
+export class AppComponent  {
   /**
    * Version  of app component.
    */
   public version: Version = VERSION;
+
+  
 }

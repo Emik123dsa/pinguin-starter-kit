@@ -4498,6 +4498,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@pinguin/ui-issue-card@workspace:libs/ui-issue-card":
+  version: 0.0.0-use.local
+  resolution: "@pinguin/ui-issue-card@workspace:libs/ui-issue-card"
+  languageName: unknown
+  linkType: soft
+
+"@pinguin/ui-overlays@workspace:libs/ui-overlays":
+  version: 0.0.0-use.local
+  resolution: "@pinguin/ui-overlays@workspace:libs/ui-overlays"
+  languageName: unknown
+  linkType: soft
+
 "@protobufjs/aspromise@npm:^1.1.1, @protobufjs/aspromise@npm:^1.1.2":
   version: 1.1.2
   resolution: "@protobufjs/aspromise@npm:1.1.2"
@@ -19910,18 +19922,6 @@ __metadata:
   checksum: cf88574ec8af4d69368142a3f9fb83ac11b1344a117dff08890fcf99ed12c782c810f02e71a0c2a7e8666ea6225894f1c171cbd90e1a1fe4b2c4a198f8ad61a3
   languageName: node
   linkType: hard
-
-"ui-card@workspace:libs/ui-card":
-  version: 0.0.0-use.local
-  resolution: "ui-card@workspace:libs/ui-card"
-  languageName: unknown
-  linkType: soft
-
-"ui-overlay@workspace:libs/ui-overlay":
-  version: 0.0.0-use.local
-  resolution: "ui-overlay@workspace:libs/ui-overlay"
-  languageName: unknown
-  linkType: soft
 
 "uid-number@npm:0.0.6":
   version: 0.0.6

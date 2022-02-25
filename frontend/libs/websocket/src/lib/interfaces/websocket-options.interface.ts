@@ -2,8 +2,8 @@ import { PlainObjectLiteral } from '@pinguin/utils';
 import { ClientConnectionOptions } from '@pinguin/common';
 
 export interface ClientWebSocketOptions extends ClientConnectionOptions {
-  typeKey?: string;
   connectionPool: number;
+  typeKey?: string;
   reconnectAttempts?: number;
   reconnectInterval?: number;
   serializer?: (data: PlainObjectLiteral) => Optional<string>;

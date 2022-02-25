@@ -23,7 +23,7 @@ export const issuesLabelsEntityState: MemoizedSelector<
   object,
   IssuesLabelsEntityState,
   DefaultProjectorFn<IssuesLabelsEntityState>
-> = createSelector(selectIssuesEntityState, (state) => state.issuesLabels);
+> = createSelector(selectIssuesEntityState, (state) => state.labels);
 
 const getSelectedIssueLabelId = (state: IssuesLabelsEntityState) =>
   state.selectedIssueLabelId;

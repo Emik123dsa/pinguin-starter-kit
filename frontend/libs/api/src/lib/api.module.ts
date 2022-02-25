@@ -9,7 +9,7 @@ import {
 
 @NgModule({
   imports: [],
-  providers: [CLIENT_REST_API_CONFIG_PROVIDER],
+  providers: [],
 })
 export class ClientRestApiModule {
   public static forRoot(
@@ -18,7 +18,10 @@ export class ClientRestApiModule {
   ): ModuleWithProviders<ClientRestApiModule> {
     return {
       ngModule: ClientRestApiModule,
-      providers: [BASE_API_GATEWAY_REQUEST_PROVIDER],
+      providers: [
+        BASE_API_GATEWAY_REQUEST_PROVIDER,
+        CLIENT_REST_API_CONFIG_PROVIDER,
+      ],
     };
   }
 }

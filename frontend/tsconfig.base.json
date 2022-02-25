@@ -53,7 +53,7 @@
       "@pinguin/ui-card": ["libs/ui-card/src/index.ts"],
       "@pinguin/ui-forms": ["libs/ui-forms/src/index.ts"],
       "@pinguin/ui-input": ["libs/ui-input/src/index.ts"],
-      "@pinguin/ui-overlay": ["libs/ui-overlay/src/index.ts"],
+      "@pinguin/ui-overlays": ["libs/ui-overlays/src/index.ts"],
       "@pinguin/utils": ["libs/utils/src/index.ts"],
       "@pinguin/websocket": ["libs/websocket/src/index.ts"]
     }

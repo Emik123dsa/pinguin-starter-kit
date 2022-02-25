@@ -5,7 +5,7 @@ import {
 } from '@pinguin/environments';
 
 import { ClientApplicationOptions } from '../interfaces';
-import { ClientApplicationConfigRef } from '../app.config-ref';
+import { ClientApplicationConfigRef } from '../classes/app-config.ref';
 
 /**
  * Client application config.

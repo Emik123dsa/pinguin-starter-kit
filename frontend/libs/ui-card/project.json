@@ -6,9 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/ui-card"
-      ],
+      "outputs": ["coverage/libs/ui-card"],
       "options": {
         "jestConfig": "libs/ui-card/jest.config.js",
         "passWithNoTests": true

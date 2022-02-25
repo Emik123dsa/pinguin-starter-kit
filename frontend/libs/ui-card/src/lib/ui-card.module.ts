@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// Provide ui-card module.
+// Provide ui-card.module.
 import { UiCardComponent } from './ui-card.component';
 
 // Provide ui-card components.

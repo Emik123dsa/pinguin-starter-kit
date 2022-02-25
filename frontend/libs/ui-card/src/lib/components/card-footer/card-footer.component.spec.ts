@@ -8,9 +8,8 @@ describe('UiCardFooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UiCardFooterComponent ]
-    })
-    .compileComponents();
+      declarations: [UiCardFooterComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
