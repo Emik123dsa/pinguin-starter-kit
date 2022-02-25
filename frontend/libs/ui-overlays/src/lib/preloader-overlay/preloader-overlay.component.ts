@@ -5,4 +5,4 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './preloader-overlay.component.html',
   styleUrls: ['./preloader-overlay.component.scss'],
 })
-export class PreloaderOverlayComponent implements OnInit {}
+export class PreloaderOverlayComponent {}

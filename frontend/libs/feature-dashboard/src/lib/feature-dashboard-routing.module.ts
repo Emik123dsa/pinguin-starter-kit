@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardLayoutComponent } from './containers/dashboard-layout/dashboard-layout.component';
-import { RoadmapsPageComponent } from './containers/roadmap-page/roadmap-page.component';
+import { DashboardLayoutComponent } from './containers/dashboard-layout';
+import { RoadmapPageComponent } from './containers/roadmap-page';
 
 const routes: Routes = [
   {
@@ -16,18 +16,18 @@ const routes: Routes = [
 
     children: [
       {
-        path: 'roadmaps',
-        component: RoadmapsPageComponent,
+        path: 'roadmap',
+        component: RoadmapPageComponent,
         data: {
-          title: 'Roadmaps',
+          title: 'Roadmap',
           depth: 2,
-          animation: 'DashboardRoadmapsPage',
+          animation: 'DashboardPageRoadmap',
         },
       },
       {
         path: '**',
         pathMatch: 'full',
-        redirectTo: 'roadmaps',
+        redirectTo: 'roadmap',
       },
     ],
   },

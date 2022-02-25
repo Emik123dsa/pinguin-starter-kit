@@ -12,7 +12,7 @@
     "feature-errors": "libs/feature-errors",
     "feature-home": "libs/feature-home",
     "forms": "libs/forms",
-    "grpc-web-gateway": "libs/grpc-web-gateway",
+    "grpc-gateway": "libs/grpc-gateway",
     "jira-client": "apps/jira-client",
     "jira-client-e2e": "apps/jira-client-e2e",
     "memory-storage": "libs/memory-storage",
