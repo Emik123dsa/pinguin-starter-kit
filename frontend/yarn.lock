@@ -4498,15 +4498,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pinguin/ui-issue-card@workspace:libs/ui-issue-card":
+"@pinguin/overlay@workspace:libs/overlay":
   version: 0.0.0-use.local
-  resolution: "@pinguin/ui-issue-card@workspace:libs/ui-issue-card"
+  resolution: "@pinguin/overlay@workspace:libs/overlay"
   languageName: unknown
   linkType: soft
 
-"@pinguin/ui-overlays@workspace:libs/ui-overlays":
+"@pinguin/ui-card@workspace:libs/ui-card":
   version: 0.0.0-use.local
-  resolution: "@pinguin/ui-overlays@workspace:libs/ui-overlays"
+  resolution: "@pinguin/ui-card@workspace:libs/ui-card"
   languageName: unknown
   linkType: soft
 

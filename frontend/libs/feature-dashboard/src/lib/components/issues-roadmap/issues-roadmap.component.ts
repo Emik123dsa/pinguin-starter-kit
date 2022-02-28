@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,7 +7,7 @@ import {
 } from '@angular/core';
 import { Dictionary } from '@ngrx/entity';
 import { IssuesFieldsEntity, IssuesLabelsEntity } from '@pinguin/api';
-import { Observable } from 'rxjs';
+
 import { IssuesRoadmapFacade } from '../../facades';
 
 @Component({
@@ -49,7 +50,7 @@ export class IssuesRoadmapComponent implements OnInit {
    *
    * @public
    */
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.issuesFieldEntities$ = this.facade.issuesFieldEntities$;
     this.issuesLabelEntities$ = this.facade.issuesLabelEntities$;
   }

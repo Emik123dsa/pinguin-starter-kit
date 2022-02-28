@@ -27,6 +27,8 @@
     "ui-button-toggle": "libs/ui-button-toggle",
     "ui-card": "libs/ui-card",
     "ui-input": "libs/ui-input",
+    "ui-snack-bar": "libs/ui-snack-bar",
+    "ui-toolbar": "libs/ui-toolbar",
     "utils": "libs/utils",
     "websocket": "libs/websocket"
   }

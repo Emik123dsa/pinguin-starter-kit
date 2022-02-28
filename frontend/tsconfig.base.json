@@ -54,6 +54,8 @@
       "@pinguin/ui-card": ["libs/ui-card/src/index.ts"],
       "@pinguin/ui-forms": ["libs/ui-forms/src/index.ts"],
       "@pinguin/ui-input": ["libs/ui-input/src/index.ts"],
+      "@pinguin/ui-snack-bar": ["libs/ui-snack-bar/src/index.ts"],
+      "@pinguin/ui-toolbar": ["libs/ui-toolbar/src/index.ts"],
       "@pinguin/utils": ["libs/utils/src/index.ts"],
       "@pinguin/websocket": ["libs/websocket/src/index.ts"]
     }
