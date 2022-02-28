@@ -1,1 +1,1 @@
-export * from './dashboard-layout.effects';
+export * from './roadmap-page.effects';

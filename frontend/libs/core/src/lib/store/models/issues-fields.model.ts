@@ -3,7 +3,8 @@ import { IssuesFieldsEntity } from '@pinguin/api';
 
 export interface IssuesFieldsEntityState
   extends EntityState<IssuesFieldsEntity> {
-  selectedIssueFieldId?: number;
+  selectedIssueFieldId?: Optional<number>;
+  loading: boolean;
   loaded: boolean;
-  error?: Optional<string>;
+  error?: Optional<Error | string | unknown>;
 }

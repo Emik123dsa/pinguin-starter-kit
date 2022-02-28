@@ -1,1 +1,1 @@
-export * from './app-config.ref';
+export * from './app.config.ref';

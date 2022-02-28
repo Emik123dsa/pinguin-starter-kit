@@ -4,9 +4,7 @@ import { IssuesLabelsEntity } from '@pinguin/api';
 export interface IssuesLabelsEntityState
   extends EntityState<IssuesLabelsEntity> {
   selectedIssueLabelId?: Optional<number>;
-
   loaded: boolean;
   loading: boolean;
-
-  error?: Optional<unknown>;
+  error?: Optional<Error | string | unknown>;
 }

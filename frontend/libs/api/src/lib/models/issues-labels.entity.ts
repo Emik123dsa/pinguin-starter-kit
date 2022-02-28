@@ -33,6 +33,6 @@ export class IssuesLabelsEntity {
    * @returns {IssuesLabelsEntity}
    */
   public clone(): IssuesLabelsEntity {
-    return new IssuesLabelsEntity(this.getId(), this.getName());
+    return new IssuesLabelsEntity(this.id, this.name);
   }
 }

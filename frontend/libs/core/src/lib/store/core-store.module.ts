@@ -9,13 +9,18 @@ import {
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { CommonStoreModule } from '@pinguin/common';
-
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import {
+  NavigationActionTiming,
+  StoreRouterConnectingModule,
+} from '@ngrx/router-store';
 
 import { ROUTER_FEATURE_KEY } from './constants';
 import { CoreRouterStateSerializer } from './serializers';
-import { IssuesFieldsEffects, IssuesLabelsEffects } from './effects';
+import {
+  IssuesFieldsEffects,
+  IssuesLabelsEffects,
+  RouterEffects,
+} from './effects';
 
 import { CORE_ENTITY_ROOT_REDUCER } from './core-store.tokens';
 import { coreEntityRootConfig } from './core-store.providers';
@@ -23,25 +28,29 @@ import { coreEntityRootConfig } from './core-store.providers';
 @NgModule({
   declarations: [],
   imports: [
-    // Common module for reactive component module.
-    CommonStoreModule,
-
     // Provide core store reducers for initialization.
     StoreModule.forRoot(CORE_ENTITY_ROOT_REDUCER, coreEntityRootConfig),
     EffectsModule.forRoot(
-      new Array<Type<unknown>>(IssuesLabelsEffects, IssuesFieldsEffects),
+      new Array<Type<unknown>>(
+        RouterEffects,
+        IssuesLabelsEffects,
+        IssuesFieldsEffects,
+      ),
     ),
     // Provide store router connecting module.
     StoreRouterConnectingModule.forRoot({
       stateKey: ROUTER_FEATURE_KEY,
-      serializer: CoreRouterStateSerializer, // DefaultRouterStateSerializer
+      navigationActionTiming: NavigationActionTiming.PreActivation,
+      serializer: CoreRouterStateSerializer,
     }),
   ],
   providers: [
     CoreRouterStateSerializer,
+    RouterEffects,
     IssuesLabelsEffects,
     IssuesFieldsEffects,
   ],
+
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CoreStoreModule {

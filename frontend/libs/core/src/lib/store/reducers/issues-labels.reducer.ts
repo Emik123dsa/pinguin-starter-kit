@@ -6,13 +6,12 @@ import {
   issuesLabelsEntityAdapter,
 } from '../state';
 import { IssuesLabelsEntityState, IssuesEntity } from '../models';
-import { IssuesLabelsEntityActions } from '../actions';
+import { IssuesLabelsActions } from '../actions';
 
 export const issuesLabelsEntityReducer: ActionReducer<IssuesLabelsEntityState> =
   createReducer<IssuesLabelsEntityState>(
     initialIssuesLabelsEntityState,
-
-    on(IssuesLabelsEntityActions.loadAllIssuesLabels, (state) => {
+    on(IssuesLabelsActions.loadAllIssuesLabels, (state) => {
       return issuesLabelsEntityAdapter.setAll(new Array<IssuesLabelsEntity>(), {
         ...state,
         loading: true,
@@ -20,7 +19,7 @@ export const issuesLabelsEntityReducer: ActionReducer<IssuesLabelsEntityState> =
     }),
 
     on(
-      IssuesLabelsEntityActions.loadAllIssuesLabelsSuccess,
+      IssuesLabelsActions.loadAllIssuesLabelsSuccess,
       (state, { labels }: Pick<IssuesEntity, 'labels'>) => {
         return issuesLabelsEntityAdapter.addMany(
           labels as Array<IssuesLabelsEntity>,
@@ -30,7 +29,7 @@ export const issuesLabelsEntityReducer: ActionReducer<IssuesLabelsEntityState> =
     ),
 
     on(
-      IssuesLabelsEntityActions.loadAllIssuesLabelsFailure,
+      IssuesLabelsActions.loadAllIssuesLabelsFailure,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       (state, { error }: Pick<IssuesLabelsEntityState, 'error'>) => {
         return issuesLabelsEntityAdapter.removeAll({

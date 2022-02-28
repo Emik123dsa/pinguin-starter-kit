@@ -6,7 +6,7 @@ import {
   IssuesService,
 } from '@pinguin/api';
 
-import { Observable, of } from 'rxjs';
+import { debounceTime, delay, Observable, of, throttle } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -48,6 +48,25 @@ export class RxIssuesService extends IssuesService {
    * @returns {Array<IssuesLabelsEntity>}
    */
   public override findAllFields(): Observable<Array<IssuesFieldsEntity>> {
-    return of([]);
+    return of(
+      new Array<IssuesFieldsEntity>(
+        new IssuesFieldsEntity(
+          1,
+          'Quick try on DB',
+          'One morning, when Gregor Samsa woke from troubled dreams.',
+          [1, 3],
+          1641164400,
+          1641164400,
+        ),
+        new IssuesFieldsEntity(
+          2,
+          'Quick try on DB',
+          'One morning, when Gregor Samsa woke from troubled dreams.',
+          [1, 3],
+          1641164400,
+          1641164400,
+        ),
+      ),
+    );
   }
 }

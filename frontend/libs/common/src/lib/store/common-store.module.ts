@@ -21,16 +21,20 @@ import { EffectsModule } from '@ngrx/effects';
   imports: [
     // Common module for reactive component module.
     CommonModule,
+
+    // Reactive component module.
     ReactiveComponentModule,
+
     StoreModule.forFeature(
       COMMON_FEATURE_KEY,
       COMMON_FEATURE_REDUCER,
       COMMON_FEATURE_CONFIG,
     ),
+
     EffectsModule.forFeature(),
   ],
   declarations: [],
-  exports: [CommonModule, ReactiveComponentModule, StoreModule],
+  exports: [CommonModule, ReactiveComponentModule, StoreModule, EffectsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CommonStoreModule {

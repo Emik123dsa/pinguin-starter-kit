@@ -13,7 +13,7 @@ import { fetch } from '@nrwl/angular';
 import { IssuesService } from '@pinguin/api';
 
 import { IssuesLabelsActionTypes } from '../constants';
-import { IssuesActions, IssuesLabelsEntityActions } from '../actions';
+import { IssuesTypeActions, IssuesLabelsActions } from '../actions';
 
 @Injectable({
   providedIn: 'root',
@@ -24,11 +24,11 @@ export class IssuesLabelsEffects {
    *
    * @constructor
    * @public
-   * @param {Actions<IssuesActions>} actions$
+   * @param {Actions<IssuesTypeActions>} actions$
    * @param {IssuesService} issuesService
    */
   public constructor(
-    private readonly actions$: Actions<IssuesActions>,
+    private readonly actions$: Actions<IssuesTypeActions>,
     private readonly issuesService: IssuesService,
   ) {
     // Whether `IssuesLabelsEffects` was initialized successfully.
@@ -44,7 +44,7 @@ export class IssuesLabelsEffects {
       (): Observable<Action> =>
         this.actions$.pipe(
           ofType<TypedAction<IssuesLabelsActionTypes>>(
-            IssuesLabelsEntityActions.loadAllIssuesLabels,
+            IssuesLabelsActions.loadAllIssuesLabels,
           ),
           map((action: TypedAction<IssuesLabelsActionTypes>) => action),
           fetch({
@@ -57,17 +57,18 @@ export class IssuesLabelsEffects {
             run: (action: TypedAction<IssuesLabelsActionTypes>) => {
               return this.issuesService.findAllLabels().pipe(
                 map((labels) =>
-                  IssuesLabelsEntityActions.loadAllIssuesLabelsSuccess({
+                  IssuesLabelsActions.loadAllIssuesLabelsSuccess({
                     labels,
                   }),
                 ),
               );
             },
+
             onError: (
               action: TypedAction<IssuesLabelsActionTypes>,
               error: unknown,
             ) =>
-              IssuesLabelsEntityActions.loadAllIssuesLabelsFailure({
+              IssuesLabelsActions.loadAllIssuesLabelsFailure({
                 error: { error, action },
               }),
           }),

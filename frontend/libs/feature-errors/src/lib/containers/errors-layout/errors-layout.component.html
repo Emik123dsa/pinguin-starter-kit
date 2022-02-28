@@ -6,7 +6,7 @@
 >
   <header role="contentinfo"></header>
   <main role="cell">
-    <div [@routeAnimations]="prepareClientErrorRoute(outlet)">
+    <div [@routeAnimation]="prepareOutletRoute(outlet)">
       <router-outlet
         #outlet="outlet"
         (detach)="handleDetachEvent($event)"

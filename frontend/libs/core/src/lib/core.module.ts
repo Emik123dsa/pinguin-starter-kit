@@ -1,4 +1,3 @@
-import { Store } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
 
 import {
@@ -8,6 +7,8 @@ import {
   Optional as OptionalInject,
   SkipSelf,
 } from '@angular/core';
+
+import { CommonStoreModule } from '@pinguin/common';
 
 import { CommonModule } from '@angular/common';
 import { StringUtils } from '@pinguin/utils';

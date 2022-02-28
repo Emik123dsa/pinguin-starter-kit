@@ -4,14 +4,15 @@ import {
   ModuleWithProviders,
   NgModule,
 } from '@angular/core';
+import { CommonStoreModule } from './store';
 
 import { WINDOW_PROVIDERS } from './providers';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, CommonStoreModule],
   declarations: [],
   providers: [],
-  exports: [CommonModule],
+  exports: [CommonModule, CommonStoreModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ClientCommonModule {

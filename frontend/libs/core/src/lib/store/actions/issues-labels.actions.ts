@@ -44,7 +44,7 @@ const issuesLabelsActions = union({
  * @class IssuesFieldsActions
  * @typedef {IssuesFieldsActions}
  */
-export class IssuesLabelsEntityActions {
+export class IssuesLabelsActions {
   static get loadAllIssuesLabels() {
     return loadAllIssuesLabels;
   }
@@ -63,4 +63,4 @@ export class IssuesLabelsEntityActions {
  * @export
  * @typedef {IssuesFieldsActions}
  */
-export type IssuesLabelsActions = typeof issuesLabelsActions;
+export type IssuesLabelsTypeActions = typeof issuesLabelsActions;

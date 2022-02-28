@@ -11,6 +11,8 @@ export const issuesFieldsEntityAdapter: EntityAdapter<IssuesFieldsEntity> =
 
 export const initialIssuesFieldsEntityState: IssuesFieldsEntityState =
   issuesFieldsEntityAdapter.getInitialState({
+    selectedIssueFieldId: null,
     loaded: false,
+    loading: false,
     error: undefined,
   });

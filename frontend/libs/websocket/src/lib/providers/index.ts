@@ -1,1 +1,1 @@
-export * from './websocket-config.provider';
+export * from './websocket.config.provider';

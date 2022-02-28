@@ -5,12 +5,11 @@ export const DASHBOARD_FEATURE_CONFIG = new InjectionToken<
   StoreConfig<unknown>
 >('DASHBOARD_FEATURE_CONFIG');
 
-export const DASHBOARD_FEATURE_REDUCER = new InjectionToken(
-  'DASHBOARD_FEATURE_REDUCER',
-  {
-    providedIn: 'root',
-    factory: (): ActionReducerMap<unknown> => {
-      return {};
-    },
+export const DASHBOARD_FEATURE_REDUCER = new InjectionToken<
+  ActionReducerMap<unknown>
+>('DASHBOARD_FEATURE_REDUCER', {
+  providedIn: 'root',
+  factory: (): ActionReducerMap<unknown> => {
+    return {};
   },
-);
+});

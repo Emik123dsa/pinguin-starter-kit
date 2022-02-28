@@ -8,10 +8,9 @@ const routes: Routes = [
     path: '',
     component: ErrorsLayoutComponent,
     data: {
-      title: 'Error',
+      title: '404',
       depth: 1,
       roles: null,
-      animation: 'ClientErrorLayout',
     },
     children: [
       {
@@ -19,7 +18,7 @@ const routes: Routes = [
         component: NotFoundPageComponent,
         data: {
           title: '404 | Not Found',
-          depth: 2,
+          depth: 3,
           animation: 'NotFoundPage',
         },
       },

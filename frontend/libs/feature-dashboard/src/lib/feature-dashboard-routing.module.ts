@@ -9,7 +9,6 @@ const routes: Routes = [
     component: DashboardLayoutComponent,
     data: {
       title: 'Dashboard',
-      depth: 1,
       animation: 'DashboardLayout',
       roles: [],
     },
@@ -18,10 +17,11 @@ const routes: Routes = [
       {
         path: 'roadmap',
         component: RoadmapPageComponent,
+
         data: {
           title: 'Roadmap',
           depth: 2,
-          animation: 'DashboardPageRoadmap',
+          animation: 'DashboardRoadmapPage',
         },
       },
       {

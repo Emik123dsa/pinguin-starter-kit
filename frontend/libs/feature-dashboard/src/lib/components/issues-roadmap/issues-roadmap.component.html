@@ -1,1 +1,4 @@
-<div id="issues-roadmap" role="contentinfo" aria-label="issues-roadmap"></div>
+<div id="issues-roadmap" role="contentinfo" aria-label="issues-roadmap">
+  <ng-container *ngIf="issuesLabelEntities$ | ngrxPush as issuesLabelEntities">
+  </ng-container>
+</div>

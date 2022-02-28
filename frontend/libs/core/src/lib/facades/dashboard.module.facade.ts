@@ -2,29 +2,27 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
 
-import { CoreModule } from '../core.module';
-
 import {
   CoreEntityState,
   IssuesLabelsActionTypes,
-  selectIssueLabelTotal,
+  selectIssuesLabelTotal,
   selectIssuesLabelsLoading,
-  IssuesLabelsEntityActions,
+  IssuesLabelsActions,
 } from '../store';
 
 @Injectable({
-  providedIn: CoreModule,
+  providedIn: 'root',
 })
 export class DashboardModuleFacade {
-  issueLabelTotal$ = this.store.select(selectIssueLabelTotal);
+  public issuesLabelTotal$ = this.store.select(selectIssuesLabelTotal);
 
-  issuesLabelsLoading$ = this.store.select(selectIssuesLabelsLoading);
+  public issuesLabelsLoading$ = this.store.select(selectIssuesLabelsLoading);
 
   public constructor(private readonly store: Store<CoreEntityState>) {}
 
   public loadAllIssuesLabels() {
     const action: TypedAction<IssuesLabelsActionTypes> =
-      IssuesLabelsEntityActions.loadAllIssuesLabels();
+      IssuesLabelsActions.loadAllIssuesLabels();
 
     return this.store.dispatch(action);
   }

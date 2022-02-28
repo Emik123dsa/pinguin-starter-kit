@@ -24,13 +24,12 @@ const loadAllIssuesFieldsSuccess: ActionCreator<
 
 const loadAllIssuesFieldsFailure: ActionCreator<
   IssuesFieldsActionTypes.LoadAllIssuesFieldsFailure,
-  (
-    props: IssuesEntity,
-  ) => IssuesEntity &
-    TypedAction<IssuesFieldsActionTypes.LoadAllIssuesFieldsFailure>
+  (props: { error: unknown }) => {
+    error: unknown;
+  } & TypedAction<IssuesFieldsActionTypes.LoadAllIssuesFieldsFailure>
 > = createAction(
   IssuesFieldsActionTypes.LoadAllIssuesFieldsFailure,
-  props<OmitThisParameter<IssuesEntity>>(),
+  props<{ error: unknown }>(),
 );
 
 const issuesFieldsActions = union({
@@ -46,7 +45,7 @@ const issuesFieldsActions = union({
  * @class IssuesFieldsActions
  * @typedef {IssuesFieldsActions}
  */
-export class IssuesFieldsEntityActions {
+export class IssuesFieldsActions {
   static get loadAllIssuesFields() {
     return loadAllIssuesFields;
   }
@@ -66,4 +65,4 @@ export class IssuesFieldsEntityActions {
  * @export
  * @typedef {IssuesFieldsActions}
  */
-export type IssuesFieldsActions = typeof issuesFieldsActions;
+export type IssuesFieldsTypeActions = typeof issuesFieldsActions;

@@ -75,7 +75,7 @@ export const environment: ClientEnvironmentOptions = {
         'pinguin-{0}-client',
         ClientEnvironment.Development,
       ),
-      maxAge: 120,
+      maxAge: 25,
       logOnly: true,
       serialize: {
         options: {
@@ -100,6 +100,12 @@ export const environment: ClientEnvironmentOptions = {
         //   return value;
         // },
       },
+      features: {
+        pause: false,
+        lock: true,
+        persist: true,
+      },
+
       autoPause: false,
     }),
   ],

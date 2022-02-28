@@ -41,6 +41,7 @@
       "@pinguin/forms": ["libs/forms/src/index.ts"],
       "@pinguin/grpc-web": ["libs/grpc-web/src/index.ts"],
       "@pinguin/memory-storage": ["libs/memory-storage/src/index.ts"],
+      "@pinguin/overlay": ["libs/overlay/src/index.ts"],
       "@pinguin/schemas": ["libs/schemas/src/index.ts"],
       "@pinguin/server": ["libs/server/src/index.ts"],
       "@pinguin/shared": ["libs/shared/src/index.ts"],
@@ -53,7 +54,6 @@
       "@pinguin/ui-card": ["libs/ui-card/src/index.ts"],
       "@pinguin/ui-forms": ["libs/ui-forms/src/index.ts"],
       "@pinguin/ui-input": ["libs/ui-input/src/index.ts"],
-      "@pinguin/ui-overlays": ["libs/ui-overlays/src/index.ts"],
       "@pinguin/utils": ["libs/utils/src/index.ts"],
       "@pinguin/websocket": ["libs/websocket/src/index.ts"]
     }

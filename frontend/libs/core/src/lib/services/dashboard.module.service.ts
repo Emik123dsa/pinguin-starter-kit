@@ -9,20 +9,15 @@ import {
   skipWhile,
   tap,
   withLatestFrom,
+  filter,
+  take,
+  pipe,
+  buffer,
+  distinctUntilChanged,
 } from 'rxjs';
 import { CanLoad, Route, UrlSegment } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 
-import {
-  selectIssueLabelTotal,
-  selectIssuesLabelsLoading,
-  selectCurrentIssueLabel,
-  CoreEntityState,
-} from '../store';
-import { IssuesLabelsEntityActions } from '../store/actions';
-import { IssuesLabelsActionTypes } from '../store/constants';
-import { TypedAction } from '@ngrx/store/src/models';
 import { DashboardModuleFacade } from '../facades';
 
 @Injectable({
@@ -34,7 +29,7 @@ export class DashboardModuleService implements CanLoad {
    *
    * @type {!Observable<number>}
    */
-  issueLabelTotal$!: Observable<number>;
+  issuesLabelTotal$!: Observable<number>;
 
   /**
    * Issues labels loading state.
@@ -50,8 +45,8 @@ export class DashboardModuleService implements CanLoad {
    * @public
    * @param {DashboardModuleFacade} facade
    */
-  public constructor(private readonly facade: DashboardModuleFacade) {
-    this.issueLabelTotal$ = this.facade.issueLabelTotal$;
+  public constructor(public readonly facade: DashboardModuleFacade) {
+    this.issuesLabelTotal$ = facade.issuesLabelTotal$;
     this.issuesLabelsLoading$ = this.facade.issuesLabelsLoading$;
   }
 
@@ -66,14 +61,14 @@ export class DashboardModuleService implements CanLoad {
    */
   public canLoad(
     route: Route,
-    segments: UrlSegment[],
+    segments: Array<UrlSegment>,
   ): Observable<boolean> | Promise<boolean> | boolean {
     return this.issuesLabelsLoading$.pipe(
-      tap((): void => this.facade.loadAllIssuesLabels()),
-      skipWhile((loading: boolean) => loading),
+      skipWhile((labelsLoading: boolean) => labelsLoading),
       first(),
-      withLatestFrom(this.issueLabelTotal$),
-      map(([, issueLabelTotal]: [boolean, number]) => !!issueLabelTotal),
+      tap((): void => this.facade.loadAllIssuesLabels()),
+      withLatestFrom(this.issuesLabelTotal$),
+      map(([, labelTotal]: [boolean, number]) => !!labelTotal),
       catchError(() => of(false)),
     );
   }

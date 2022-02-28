@@ -5,13 +5,13 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { routeAnimations } from '@pinguin/animations';
+import { routeAnimation } from '@pinguin/animations';
 
 @Component({
   selector: 'pinguin-errors-layout',
   templateUrl: './errors-layout.component.html',
   styleUrls: ['./errors-layout.component.scss'],
-  animations: [routeAnimations],
+  animations: [routeAnimation],
   host: { 'class': 'pinguin-errors-layout' },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -58,7 +58,7 @@ export class ErrorsLayoutComponent {
    * @return
    * @memberof AppComponent
    */
-  public prepareClientErrorRoute(outlet: RouterOutlet) {
-    return outlet?.activatedRouteData?.['animation'];
+  public prepareOutletRoute(outlet: RouterOutlet) {
+    return outlet?.activatedRouteData?.['depth'];
   }
 }

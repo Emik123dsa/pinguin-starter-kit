@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { routeAnimations } from '@pinguin/animations';
+import { routeAnimation } from '@pinguin/animations';
 
 @Component({
   selector: 'pinguin-client-root',
@@ -16,13 +16,11 @@ import { routeAnimations } from '@pinguin/animations';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [routeAnimations],
+  animations: [routeAnimation],
 })
-export class AppComponent  {
+export class AppComponent {
   /**
    * Version  of app component.
    */
   public version: Version = VERSION;
-
-  
 }

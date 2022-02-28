@@ -1,7 +1,42 @@
-<section id="roadmap-page" role="contentinfo" class="page roadmap-issues-page">
+<section id="roadmap-page" role="contentinfo" class="roadmap-issues-page">
   <pinguin-layout-wrapper class="roadmap-issues-wrapper">
-    <pinguin-container class="roadmap-issues-container">
-      <pinguin-issues-roadmap></pinguin-issues-roadmap>
-    </pinguin-container>
+    <ng-container
+      *ngIf="
+        issuesFieldsLoading$ | ngrxPush as issuesFieldsLoading;
+        else issuesFieldsTemplate
+      "
+      [ngTemplateOutlet]="issuesFieldsLoadingTemplate"
+      [ngTemplateOutletContext]="{ $implicit: issuesFieldsLoading }"
+    >
+    </ng-container>
   </pinguin-layout-wrapper>
 </section>
+
+<ng-template #issuesFieldsTemplate>
+  <pinguin-container class="roadmap-issues-container">
+    <ng-container
+      *ngrxLet="
+        issuesFieldsValidated$;
+        let issuesFieldsValidated;
+        let issuesFieldsError = $error;
+        let issuesFieldsComplete = $complete
+      "
+    >
+      <ng-container *ngIf="issuesFieldsValidated">
+        <pinguin-issues-roadmap
+          *ngIf="!issuesFieldsError && !issuesFieldsComplete"
+        ></pinguin-issues-roadmap>
+      </ng-container>
+
+      <!-- Whether any issues fields error found in template. -->
+      <ng-container *ngIf="issuesFieldsError"></ng-container>
+
+      <!-- Whether issues fields complete in template. -->
+      <ng-container *ngIf="issuesFieldsComplete"></ng-container>
+    </ng-container>
+  </pinguin-container>
+</ng-template>
+
+<ng-template #issuesFieldsLoadingTemplate let-loading>
+  <span>{{ loading | json }}</span>
+</ng-template>

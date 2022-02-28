@@ -16,6 +16,7 @@
     "jira-client": "apps/jira-client",
     "jira-client-e2e": "apps/jira-client-e2e",
     "memory-storage": "libs/memory-storage",
+    "overlay": "libs/overlay",
     "schemas": "libs/schemas",
     "server": "libs/server",
     "shared": "libs/shared",
@@ -26,7 +27,6 @@
     "ui-button-toggle": "libs/ui-button-toggle",
     "ui-card": "libs/ui-card",
     "ui-input": "libs/ui-input",
-    "ui-overlays": "libs/ui-overlays",
     "utils": "libs/utils",
     "websocket": "libs/websocket"
   }

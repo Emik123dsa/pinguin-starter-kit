@@ -1,8 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  OnInit,
   ViewEncapsulation,
 } from '@angular/core';
+import { Dictionary } from '@ngrx/entity';
+import { IssuesFieldsEntity, IssuesLabelsEntity } from '@pinguin/api';
+import { Observable } from 'rxjs';
+import { IssuesRoadmapFacade } from '../../facades';
 
 @Component({
   selector: 'pinguin-issues-roadmap',
@@ -13,4 +18,39 @@ import {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IssuesRoadmapComponent {}
+export class IssuesRoadmapComponent implements OnInit {
+  /**
+   * Issues Label Entities from the `Store`.
+   *
+   * @public
+   * @type {!Observable<Dictionary<IssuesLabelsEntity>>}
+   */
+  public issuesLabelEntities$!: Observable<Dictionary<IssuesLabelsEntity>>;
+
+  /**
+   * Issues Field Entities from the `Store`.
+   *
+   * @public
+   * @type {!Observable<Dictionary<IssuesFieldsEntity>>}
+   */
+  public issuesFieldEntities$!: Observable<Dictionary<IssuesFieldsEntity>>;
+
+  /**
+   * Creates an instance of IssuesRoadmapComponent.
+   *
+   * @constructor
+   * @public
+   * @param {IssuesRoadmapFacade} facade
+   */
+  public constructor(private readonly facade: IssuesRoadmapFacade) {}
+
+  /**
+   * Initialize issues fields entities.
+   *
+   * @public
+   */
+  public ngOnInit() {
+    this.issuesFieldEntities$ = this.facade.issuesFieldEntities$;
+    this.issuesLabelEntities$ = this.facade.issuesLabelEntities$;
+  }
+}

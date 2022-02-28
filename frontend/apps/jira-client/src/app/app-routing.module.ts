@@ -20,7 +20,6 @@ const routes: Routes = [
   {
     path: 'home',
     data: {
-      title: 'Home',
       preload: false,
     },
     loadChildren: () =>
@@ -31,7 +30,6 @@ const routes: Routes = [
   {
     path: 'dashboard',
     data: {
-      title: 'Dashboard',
       preload: true,
     },
     canLoad: [DASHBOARD_MODULE_INITIALIZER],
@@ -43,7 +41,6 @@ const routes: Routes = [
   {
     path: StringUtils.EMPTY,
     data: {
-      title: 'Error',
       preload: false,
     },
     loadChildren: () =>

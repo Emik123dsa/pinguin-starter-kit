@@ -55,7 +55,7 @@ export const selectAllIssuesLabels: MemoizedSelector<
   issuesLabelsEntitySelectors.selectAll,
 );
 
-export const selectIssueLabelEntities: MemoizedSelector<
+export const selectIssuesLabelEntities: MemoizedSelector<
   object,
   Dictionary<IssuesLabelsEntity>,
   DefaultProjectorFn<Dictionary<IssuesLabelsEntity>>
@@ -64,7 +64,7 @@ export const selectIssueLabelEntities: MemoizedSelector<
   issuesLabelsEntitySelectors.selectEntities,
 );
 
-export const selectIssueLabelIds: MemoizedSelector<
+export const selectIssuesLabelIds: MemoizedSelector<
   object,
   string[] | number[],
   DefaultProjectorFn<string[] | number[]>
@@ -73,7 +73,7 @@ export const selectIssueLabelIds: MemoizedSelector<
   issuesLabelsEntitySelectors.selectIds,
 );
 
-export const selectIssueLabelTotal: MemoizedSelector<
+export const selectIssuesLabelTotal: MemoizedSelector<
   object,
   number,
   DefaultProjectorFn<number>
@@ -87,7 +87,7 @@ export const selectCurrentIssueLabel: MemoizedSelector<
   IssuesLabelsEntity | undefined,
   DefaultProjectorFn<IssuesLabelsEntity | undefined>
 > = createSelector(
-  selectIssueLabelEntities,
+  selectIssuesLabelEntities,
   selectCurrentIssueLabelId,
   (issueLabelEntities, issueLabelId) =>
     issueLabelEntities && issueLabelEntities[issueLabelId as number],

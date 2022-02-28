@@ -1,10 +1,10 @@
 import {
-  IssuesFieldsEntityActions,
   IssuesFieldsActions,
+  IssuesFieldsTypeActions,
 } from './issues-fields.actions';
 import {
-  IssuesLabelsEntityActions,
   IssuesLabelsActions,
+  IssuesLabelsTypeActions,
 } from './issues-labels.actions';
 
 /**
@@ -14,7 +14,8 @@ import {
  * @class IssuesFieldsActions
  * @typedef {IssuesFieldsActions}
  */
-export type IssuesEntityActions = IssuesFieldsEntityActions &
-  IssuesLabelsEntityActions;
+export type IssuesActions = IssuesFieldsActions & IssuesLabelsActions;
 
-export type IssuesActions = IssuesFieldsActions | IssuesLabelsActions;
+export type IssuesTypeActions =
+  | IssuesFieldsTypeActions
+  | IssuesLabelsTypeActions;

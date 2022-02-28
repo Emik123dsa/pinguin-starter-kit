@@ -1,2 +1,2 @@
-export * from './route.animations';
-export * from './slide-in.animation';
+export * from './route.animation';
+export * from './slide.animation';
