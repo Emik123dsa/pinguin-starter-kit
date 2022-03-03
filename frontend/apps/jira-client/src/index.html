@@ -8,7 +8,7 @@
 -->
 <!DOCTYPE html>
 <!-- HINT: (prefers-color-scheme: light) -->
-<html lang="en" dir="ltr" class="day light-scheme">
+<html lang="en" dir="ltr" class="online day light-scheme">
   <head>
     <meta charset="utf-8" />
     <!-- Pinguin -->
@@ -21,25 +21,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta
       name="viewport"
-      content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width"
+      content="user-scalable=no,initial-scale=1.0,maximum-scale=2.0,width=device-width,shrink-to-fit=no"
     />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="color-scheme" content="var(--prefers-color-scheme)" />
     <meta
       name="theme-color"
       media="(prefers-color-scheme: dark)"
-      content="var(--prefers-dark-theme-color)"
+      content="var(--prefers-theme-color)"
     />
     <meta
       name="theme-color"
       media="(prefers-color-scheme: light)"
-      content="var(--prefers-light-theme-color)"
+      content="var(--prefers-theme-color)"
     />
   </head>
   <body class="theme light-theme">
-    <pinguin-client-root
-      class="mat-app-background mat-typography"
-    ></pinguin-client-root>
+    <div class="mat-app-background mat-typography">
+      <pinguin-client-root></pinguin-client-root>
+    </div>
     <noscript
       >Please enable JavaScript to continue using this application.</noscript
     >

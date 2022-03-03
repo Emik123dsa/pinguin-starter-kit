@@ -1,3 +1,3 @@
 @forward 'base/tailwindcss-base' as tailwindcss-base-*;
-@forward 'base/tailwindcss-components';
-@forward 'base/tailwindcss-components';
+@forward 'components/tailwindcss-components' as tailwindcss-components-*;
+@forward 'utilities/tailwindcss-utilities' as tailwindcss-utilities-*;

@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs';
-import { IssuesFieldsEntity, IssuesLabelsEntity } from '../models';
+import { IssuesFieldEntity, IssuesLabelEntity } from '../models';
 
 /**
  * Reactive issues service for entities:
- * 1) {@link IssuesFieldsEntity},
- * 2) {@link IssuesLabelsEntity}.
+ * 1) {@link IssuesFieldEntity},
+ * 2) {@link IssuesLabelEntity}.
  *
  * @export
  * @abstract
@@ -17,16 +17,16 @@ export abstract class IssuesService {
    *
    * @public
    * @abstract
-   * @returns {Array<IssuesLabelsEntity>}
+   * @returns {Array<IssuesLabelEntity>}
    */
-  public abstract findAllLabels(): Observable<Array<IssuesLabelsEntity>>;
+  public abstract findAllLabels(): Observable<Array<IssuesLabelEntity>>;
 
   /**
    * GET /api/v1/issues/{issueId}?/fields : get all labels of issues entity.
    *
    * @public
    * @abstract
-   * @returns {Array<IssuesLabelsEntity>}
+   * @returns {Array<IssuesLabelEntity>}
    */
-  public abstract findAllFields(): Observable<Array<IssuesFieldsEntity>>;
+  public abstract findAllFields(): Observable<Array<IssuesFieldEntity>>;
 }

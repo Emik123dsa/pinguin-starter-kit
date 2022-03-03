@@ -23,6 +23,7 @@ export const environment: ClientEnvironmentOptions = {
   production: false,
   environment: ClientEnvironment.Mock,
   hotModuleReplacement: false,
+  baseHref: '/',
   baseDomain: 'localhost',
   app: {
     id: StringUtils.format('pinguin-{name}-client-{full}', {

@@ -7,7 +7,7 @@ import {
   MemoizedSelector,
 } from '@ngrx/store';
 
-import { IssuesFieldsEntity } from '@pinguin/api';
+import { IssuesFieldEntity } from '@pinguin/api';
 
 import { IssuesFieldsEntityState } from '../models';
 import { issuesFieldsEntityAdapter } from '../state';
@@ -15,8 +15,8 @@ import { issuesFieldsEntityAdapter } from '../state';
 import { selectIssuesEntityState } from './issues.selectors';
 
 export const issuesFieldsEntitySelectors: EntitySelectors<
-  IssuesFieldsEntity,
-  EntityState<IssuesFieldsEntity>
+  IssuesFieldEntity,
+  EntityState<IssuesFieldEntity>
 > = issuesFieldsEntityAdapter.getSelectors();
 
 export const issuesFieldsEntityState: MemoizedSelector<
@@ -48,8 +48,8 @@ export const selectIssuesFieldsLoading: MemoizedSelector<
 
 export const selectAllIssuesFields: MemoizedSelector<
   object,
-  IssuesFieldsEntity[],
-  DefaultProjectorFn<IssuesFieldsEntity[]>
+  IssuesFieldEntity[],
+  DefaultProjectorFn<IssuesFieldEntity[]>
 > = createSelector(
   issuesFieldsEntityState,
   issuesFieldsEntitySelectors.selectAll,
@@ -57,8 +57,8 @@ export const selectAllIssuesFields: MemoizedSelector<
 
 export const selectIssuesFieldEntities: MemoizedSelector<
   object,
-  Dictionary<IssuesFieldsEntity>,
-  DefaultProjectorFn<Dictionary<IssuesFieldsEntity>>
+  Dictionary<IssuesFieldEntity>,
+  DefaultProjectorFn<Dictionary<IssuesFieldEntity>>
 > = createSelector(
   issuesFieldsEntityState,
   issuesFieldsEntitySelectors.selectEntities,
@@ -84,8 +84,8 @@ export const selectIssuesFieldTotal: MemoizedSelector<
 
 export const selectCurrentIssueField: MemoizedSelector<
   object,
-  IssuesFieldsEntity | undefined,
-  DefaultProjectorFn<IssuesFieldsEntity | undefined>
+  IssuesFieldEntity | undefined,
+  DefaultProjectorFn<IssuesFieldEntity | undefined>
 > = createSelector(
   selectIssuesFieldEntities,
   selectCurrentIssueFieldId,

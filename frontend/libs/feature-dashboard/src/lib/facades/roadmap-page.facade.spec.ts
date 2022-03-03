@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { RoadmapPageFacade } from './roadmap-page.facade';
-describe('IssuesRoadmapFacade', () => {
+describe('RoadmapPageFacade', () => {
   let facade: RoadmapPageFacade;
 
   beforeEach(() => {

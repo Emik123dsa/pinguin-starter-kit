@@ -7,12 +7,9 @@ import {
   selectIssuesFieldsLoaded,
   selectIssuesFieldsLoading,
   selectIssuesFieldTotal,
-  selectIssuesLabelsLoading,
-  selectIssuesLabelTotal,
 } from '@pinguin/core';
 import { Observable } from 'rxjs';
 
-// observableNumber$; let n; let e = $error, let c = $complete
 @Injectable({
   providedIn: 'root',
 })
@@ -35,7 +32,7 @@ export class RoadmapPageFacade {
    * @readonly
    * @type {Observable<boolean>}
    */
-  public issuesFieldsLoaded$: Observable<boolean> = this.store.select(
+  public issuesFieldsLoaded$: Observable<boolean> = this.store.select<boolean>(
     selectIssuesFieldsLoaded,
   );
 
@@ -45,7 +42,7 @@ export class RoadmapPageFacade {
    * @protected
    * @type {Observable<number>}
    */
-  public issuesFieldTotal$: Observable<number> = this.store.select(
+  public issuesFieldTotal$: Observable<number> = this.store.select<number>(
     selectIssuesFieldTotal,
   );
 

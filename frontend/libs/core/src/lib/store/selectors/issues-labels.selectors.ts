@@ -7,7 +7,7 @@ import {
   MemoizedSelector,
 } from '@ngrx/store';
 
-import { IssuesLabelsEntity } from '@pinguin/api';
+import { IssuesLabelEntity } from '@pinguin/api';
 
 import { IssuesLabelsEntityState } from '../models';
 import { issuesLabelsEntityAdapter } from '../state';
@@ -15,8 +15,8 @@ import { issuesLabelsEntityAdapter } from '../state';
 import { selectIssuesEntityState } from './issues.selectors';
 
 export const issuesLabelsEntitySelectors: EntitySelectors<
-  IssuesLabelsEntity,
-  EntityState<IssuesLabelsEntity>
+  IssuesLabelEntity,
+  EntityState<IssuesLabelEntity>
 > = issuesLabelsEntityAdapter.getSelectors();
 
 export const issuesLabelsEntityState: MemoizedSelector<
@@ -48,8 +48,8 @@ export const selectIssuesLabelsLoading: MemoizedSelector<
 
 export const selectAllIssuesLabels: MemoizedSelector<
   object,
-  IssuesLabelsEntity[],
-  DefaultProjectorFn<IssuesLabelsEntity[]>
+  IssuesLabelEntity[],
+  DefaultProjectorFn<IssuesLabelEntity[]>
 > = createSelector(
   issuesLabelsEntityState,
   issuesLabelsEntitySelectors.selectAll,
@@ -57,8 +57,8 @@ export const selectAllIssuesLabels: MemoizedSelector<
 
 export const selectIssuesLabelEntities: MemoizedSelector<
   object,
-  Dictionary<IssuesLabelsEntity>,
-  DefaultProjectorFn<Dictionary<IssuesLabelsEntity>>
+  Dictionary<IssuesLabelEntity>,
+  DefaultProjectorFn<Dictionary<IssuesLabelEntity>>
 > = createSelector(
   issuesLabelsEntityState,
   issuesLabelsEntitySelectors.selectEntities,
@@ -84,8 +84,8 @@ export const selectIssuesLabelTotal: MemoizedSelector<
 
 export const selectCurrentIssueLabel: MemoizedSelector<
   object,
-  IssuesLabelsEntity | undefined,
-  DefaultProjectorFn<IssuesLabelsEntity | undefined>
+  IssuesLabelEntity | undefined,
+  DefaultProjectorFn<IssuesLabelEntity | undefined>
 > = createSelector(
   selectIssuesLabelEntities,
   selectCurrentIssueLabelId,

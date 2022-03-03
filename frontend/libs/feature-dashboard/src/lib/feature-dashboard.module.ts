@@ -20,9 +20,11 @@ import { UiButtonModule } from '@pinguin/ui-button';
 import { FeatureDashboardRoutingModule } from './feature-dashboard-routing.module';
 
 // Provide locale components.
-import { IssueCardFormComponent } from './components/issue-card-form';
-import { IssueCardListComponent } from './components/issue-card-list';
 import { IssuesRoadmapComponent } from './components/issues-roadmap';
+import { IssuesCardFormComponent } from './components/issues-card-form';
+import { IssuesCardListComponent } from './components/issues-card-list';
+import { IssuesFieldsTableComponent } from './components/issues-fields-table';
+import { IssuesLabelsTableComponent } from './components/issues-labels-table';
 
 // Register all of the layer-facades.
 import { IssuesRoadmapFacade } from './facades';
@@ -41,11 +43,18 @@ import { IssuesRoadmapFacade } from './facades';
     UiInputModule,
   ],
   declarations: [
+    // Provide containers.
     DashboardLayoutComponent,
     RoadmapPageComponent,
+
+    // Provide components of containers.
     IssuesRoadmapComponent,
-    IssueCardFormComponent,
-    IssueCardListComponent,
+
+    IssuesCardFormComponent,
+    IssuesCardListComponent,
+
+    IssuesFieldsTableComponent,
+    IssuesLabelsTableComponent,
   ],
   providers: [IssuesRoadmapFacade],
 })

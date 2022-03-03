@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -22,7 +22,7 @@ import { APP_BROWSER_PROVIDERS } from './app.browser.providers';
     }),
   ],
   providers: [APP_BROWSER_PROVIDERS],
-  schemas: [],
+  schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent],
 })
 export class AppBrowserModule {}

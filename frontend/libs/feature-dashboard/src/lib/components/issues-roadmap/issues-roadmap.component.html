@@ -1,4 +1,49 @@
-<div id="issues-roadmap" role="contentinfo" aria-label="issues-roadmap">
-  <ng-container *ngIf="issuesLabelEntities$ | ngrxPush as issuesLabelEntities">
-  </ng-container>
+<div id="issues-roadmap" aria-labelledby="issues-roadmap" role="table">
+  <div class="issues-roadmap-content-wrapper">
+    <div class="issues-roadmap-container" role="rowgroup">
+      <div class="issues-labels-wrapper" role="rowheader">
+        <ng-container
+          *ngrxLet="
+            issuesLabelEntities$ as issuesLabelEntities;
+            let issuesLabelsError = $error;
+            let issuesLabelsComplete = $complete
+          "
+        >
+          <div id="issues-label-entities-table" class="issues-labels-table">
+            <pinguin-issues-labels-table
+              [issuesLabels]="issuesLabelEntities"
+              *ngIf="!issuesLabelsError && !issuesLabelsComplete"
+            ></pinguin-issues-labels-table>
+          </div>
+
+          <!-- Unhandled issues label errors container. -->
+          <ng-container *ngIf="issuesLabelsError"></ng-container>
+
+          <!-- Unhandled issues labels completed container. -->
+          <ng-container *ngIf="issuesLabelsComplete"></ng-container>
+        </ng-container>
+      </div>
+      <div class="issues-fields-wrapper" role="row">
+        <ng-container
+          *ngrxLet="
+            issuesFieldEntities$ as issuesFieldEntities;
+            let issuesFieldsError = $error;
+            let issuesFieldsComplete = $complete
+          "
+        >
+          <div id="issues-field-entities-table" class="issues-fields-table">
+            <pinguin-issues-fields-table
+              *ngIf="!issuesFieldsError && !issuesFieldsComplete"
+            ></pinguin-issues-fields-table>
+          </div>
+
+          <!-- Unhandled issues label errors container. -->
+          <ng-container *ngIf="issuesFieldsError"></ng-container>
+
+          <!-- Unhandled issues fields completed container. -->
+          <ng-container *ngIf="issuesFieldsComplete"></ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
 </div>

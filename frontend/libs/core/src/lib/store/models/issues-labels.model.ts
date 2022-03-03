@@ -1,8 +1,7 @@
 import { EntityState } from '@ngrx/entity';
-import { IssuesLabelsEntity } from '@pinguin/api';
+import { IssuesLabelEntity } from '@pinguin/api';
 
-export interface IssuesLabelsEntityState
-  extends EntityState<IssuesLabelsEntity> {
+export interface IssuesLabelsEntityState extends EntityState<IssuesLabelEntity> {
   selectedIssueLabelId?: Optional<number>;
   loaded: boolean;
   loading: boolean;

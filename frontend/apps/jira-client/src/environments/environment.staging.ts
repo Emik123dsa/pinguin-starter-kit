@@ -13,6 +13,7 @@ export const environment: ClientEnvironmentOptions = {
   production: true,
   environment: ClientEnvironment.Staging,
   hotModuleReplacement: false,
+  baseHref: '/',
   baseDomain: 'localhost',
   app: {
     id: StringUtils.format('pinguin-{name}-client-{full}', {

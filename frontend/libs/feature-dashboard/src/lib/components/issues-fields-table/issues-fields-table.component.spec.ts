@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IssueCardListComponent } from './issue-card-list.component';
+import { IssuesFieldsTableComponent } from './issues-fields-table.component';
 
-describe('IssueCardListComponent', () => {
-  let component: IssueCardListComponent;
-  let fixture: ComponentFixture<IssueCardListComponent>;
+describe('IssuesFieldsTableComponent', () => {
+  let component: IssuesFieldsTableComponent;
+  let fixture: ComponentFixture<IssuesFieldsTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IssueCardListComponent ]
+      declarations: [ IssuesFieldsTableComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IssueCardListComponent);
+    fixture = TestBed.createComponent(IssuesFieldsTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

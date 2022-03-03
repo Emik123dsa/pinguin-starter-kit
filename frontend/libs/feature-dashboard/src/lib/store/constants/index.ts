@@ -1,1 +1,1 @@
-export * from './roadmap-page.action.types';
+export * from './roadmap-page-action.types';

@@ -1,0 +1,26 @@
+# 0.0.0-PLACEHOLDER (2022-03-02)
+
+
+### Features
+
+* added cards and working on store ([f0143fa](https://github.com/Emik123dsa/pinguin.ag/commit/f0143fa43921d8436be9dc9e9d04c11926f2dbd5))
+* added error interceptor ([9a43f29](https://github.com/Emik123dsa/pinguin.ag/commit/9a43f295f8b15e6c2ebad330bb8235723c29c511))
+* added issues fields store, working on websocket? ([5527db3](https://github.com/Emik123dsa/pinguin.ag/commit/5527db3b30e8269c31e340764823f09ee736b216))
+* added router selectors ([a88b1b5](https://github.com/Emik123dsa/pinguin.ag/commit/a88b1b5abd0e3f694d47a814da0e9f21afce57de))
+* added serializers for rest api, working on websocket ([d19a9d3](https://github.com/Emik123dsa/pinguin.ag/commit/d19a9d39575ae4a9fad9714fbc15a37f84ef4970))
+* added some environments ([adafa65](https://github.com/Emik123dsa/pinguin.ag/commit/adafa658a824fb75e7161749e2b08e56579113c1))
+* added some features ([fadfd0a](https://github.com/Emik123dsa/pinguin.ag/commit/fadfd0aa1b22b79eb6262dc80fd794c00c766415))
+* added some updated ([de72f04](https://github.com/Emik123dsa/pinguin.ag/commit/de72f045ec65e7f0d0d7a84d90bd1fb6ebb93051))
+* added ui components ([cc4259a](https://github.com/Emik123dsa/pinguin.ag/commit/cc4259a5c7ca8b1bbcb34beac4c3ec42e26f5412))
+* huge refactoring ([62c38bc](https://github.com/Emik123dsa/pinguin.ag/commit/62c38bc99a5f57f822e66c0a06f5191fa6b677f0))
+* migrations to berry ([789a7e2](https://github.com/Emik123dsa/pinguin.ag/commit/789a7e2dffc76f7c78c1c8a4687f95d743b266d0))
+* migrations to berry ([4ccd185](https://github.com/Emik123dsa/pinguin.ag/commit/4ccd18551abe582e28f0b824bd13c776afe1a3e0))
+* refactor ([d35259c](https://github.com/Emik123dsa/pinguin.ag/commit/d35259c2fbeee37d3514d2fb2afe0b5002fdba49))
+* refactoring, small changes ([12eb4d7](https://github.com/Emik123dsa/pinguin.ag/commit/12eb4d7abb119a2becaa9da493744aa98e21d60b))
+* rewriting tokens options and modals ([edb9c31](https://github.com/Emik123dsa/pinguin.ag/commit/edb9c31b4f276812dfb2040e88aa6e3c2496a565))
+* ui libs refactoring, separated modules? ([bcc0d5f](https://github.com/Emik123dsa/pinguin.ag/commit/bcc0d5f69bc7b16f574cb86711b0ceacca26c54b))
+* updated config, shared and single-spa libs ([d64e0ee](https://github.com/Emik123dsa/pinguin.ag/commit/d64e0eefaf7a247f47e9f04873a6afab75c09b29))
+* updated frontend ([08671af](https://github.com/Emik123dsa/pinguin.ag/commit/08671af4d8acd9643229cca92985f7f0a419e4d5))
+* updated utils and configs ([1fa3e7d](https://github.com/Emik123dsa/pinguin.ag/commit/1fa3e7dfd843e24ddc1c6fc9bb212649e54bfa7d))
+* working on rx service ([25774b8](https://github.com/Emik123dsa/pinguin.ag/commit/25774b8eabfd721b08c76125843a889b4b81be21))
+* working with ngrx ([0aa2d08](https://github.com/Emik123dsa/pinguin.ag/commit/0aa2d08c004042a0df98bacd043435ed72ed160b))

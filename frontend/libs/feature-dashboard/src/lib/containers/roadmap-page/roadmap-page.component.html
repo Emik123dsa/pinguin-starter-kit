@@ -1,5 +1,5 @@
-<section id="roadmap-page" role="contentinfo" class="roadmap-issues-page">
-  <pinguin-layout-wrapper class="roadmap-issues-wrapper">
+<section id="roadmap-page" role="contentinfo" class="roadmap-page">
+  <pinguin-layout-wrapper class="roadmap-content-wrapper">
     <ng-container
       *ngIf="
         issuesFieldsLoading$ | ngrxPush as issuesFieldsLoading;
@@ -13,7 +13,7 @@
 </section>
 
 <ng-template #issuesFieldsTemplate>
-  <pinguin-container class="roadmap-issues-container">
+  <pinguin-container class="roadmap-container">
     <ng-container
       *ngrxLet="
         issuesFieldsValidated$;

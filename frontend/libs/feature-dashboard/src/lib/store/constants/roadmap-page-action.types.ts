@@ -5,5 +5,5 @@
  * @enum {number}
  */
 export enum RoadmapPageActionTypes {
-  InitIssuesRoadmapPage = '[Issues Roadmap/Page] Init Issues Roadmap',
+  InitIssuesRoadmap = '[Issues Roadmap/Page] Init Roadmap',
 }

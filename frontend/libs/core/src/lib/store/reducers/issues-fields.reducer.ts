@@ -1,5 +1,5 @@
 import { ActionReducer, createReducer, on } from '@ngrx/store';
-import { IssuesFieldsEntity } from '@pinguin/api';
+import { IssuesFieldEntity } from '@pinguin/api';
 
 import { IssuesFieldsActions } from '../actions';
 import { IssuesEntity, IssuesFieldsEntityState } from '../models';
@@ -8,7 +8,7 @@ import {
   issuesFieldsEntityAdapter,
 } from '../state';
 
-export const issuesFieldsEntityReducer: ActionReducer<IssuesFieldsEntityState> =
+export const IssuesFieldEntityReducer: ActionReducer<IssuesFieldsEntityState> =
   createReducer<IssuesFieldsEntityState>(
     initialIssuesFieldsEntityState,
 
@@ -16,7 +16,7 @@ export const issuesFieldsEntityReducer: ActionReducer<IssuesFieldsEntityState> =
       IssuesFieldsActions.loadAllIssuesFields,
       (state: IssuesFieldsEntityState) => {
         return issuesFieldsEntityAdapter.setAll(
-          new Array<IssuesFieldsEntity>(),
+          new Array<IssuesFieldEntity>(),
           {
             ...state,
             loading: true,
@@ -31,10 +31,12 @@ export const issuesFieldsEntityReducer: ActionReducer<IssuesFieldsEntityState> =
         state: IssuesFieldsEntityState,
         { fields }: Pick<IssuesEntity, 'fields'>,
       ) => {
-        return issuesFieldsEntityAdapter.addMany(
-          fields as Array<IssuesFieldsEntity>,
-          { ...state, loading: false, loaded: true, error: null },
-        );
+        return issuesFieldsEntityAdapter.addMany(fields, {
+          ...state,
+          loading: false,
+          loaded: true,
+          error: null,
+        });
       },
     ),
 

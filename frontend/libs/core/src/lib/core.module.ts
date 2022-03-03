@@ -8,17 +8,12 @@ import {
   SkipSelf,
 } from '@angular/core';
 
-import { CommonStoreModule } from '@pinguin/common';
-
 import { CommonModule } from '@angular/common';
 import { StringUtils } from '@pinguin/utils';
-
 import { ClientRestApiModule } from '@pinguin/api';
-
 import { ClientWebSocketModule } from '@pinguin/websocket';
 
 import { CoreStoreModule } from './store';
-
 import {
   API_GATEWAY_REQUEST_PROVIDERS,
   CORE_MODULE_PROVIDERS,
@@ -77,8 +72,8 @@ export class CoreModule {
     // Will be defined as a `Singleton` module in project runtime.
     if (this.internalModule) {
       const fallbackValue: string = StringUtils.format(
-        'has been already initialized as a module',
-        CoreModule.name,
+        '{name} has been already initialized as a module',
+        CoreModule,
       );
 
       throw new ReferenceError(fallbackValue);

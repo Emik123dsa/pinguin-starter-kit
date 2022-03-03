@@ -13,7 +13,7 @@ import { RoadmapPageFacade } from '../../facades';
   exportAs: 'pinguinRoadmapPage',
   templateUrl: './roadmap-page.component.html',
   styleUrls: ['./roadmap-page.component.scss'],
-  host: { 'class': 'pinguin-roadmap-page' },
+  host: { 'class': 'pinguin-issues-roadmap-page' },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

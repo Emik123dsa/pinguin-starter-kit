@@ -6,7 +6,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { Dictionary } from '@ngrx/entity';
-import { IssuesFieldsEntity, IssuesLabelsEntity } from '@pinguin/api';
+import { IssuesFieldEntity, IssuesLabelEntity } from '@pinguin/api';
 
 import { IssuesRoadmapFacade } from '../../facades';
 
@@ -24,17 +24,17 @@ export class IssuesRoadmapComponent implements OnInit {
    * Issues Label Entities from the `Store`.
    *
    * @public
-   * @type {!Observable<Dictionary<IssuesLabelsEntity>>}
+   * @type {!Observable<Dictionary<IssuesLabelEntity>>}
    */
-  public issuesLabelEntities$!: Observable<Dictionary<IssuesLabelsEntity>>;
+  public issuesLabelEntities$!: Observable<Dictionary<IssuesLabelEntity>>;
 
   /**
    * Issues Field Entities from the `Store`.
    *
    * @public
-   * @type {!Observable<Dictionary<IssuesFieldsEntity>>}
+   * @type {!Observable<Dictionary<IssuesFieldEntity>>}
    */
-  public issuesFieldEntities$!: Observable<Dictionary<IssuesFieldsEntity>>;
+  public issuesFieldEntities$!: Observable<Dictionary<IssuesFieldEntity>>;
 
   /**
    * Creates an instance of IssuesRoadmapComponent.

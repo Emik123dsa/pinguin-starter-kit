@@ -1,5 +1,6 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { ClassProvider, Provider, ValueProvider } from '@angular/core';
+import { environment } from '@pinguin-runtime/environment';
 import { BrowserService } from '@pinguin/common';
 import { AppBrowserService } from './app.browser.service';
 
@@ -12,7 +13,7 @@ const APP_BROWSER_SERVICE_PROVIDER: ClassProvider = {
 
 const APP_BROWSER_BASE_HREF_PROVIDER: ValueProvider = {
   provide: APP_BASE_HREF,
-  useValue: '/',
+  useValue: environment.baseHref,
   multi: false,
 };
 

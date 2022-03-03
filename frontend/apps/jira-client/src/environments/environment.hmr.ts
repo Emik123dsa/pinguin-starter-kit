@@ -17,6 +17,7 @@ export const environment: ClientEnvironmentOptions = {
   production: false,
   environment: ClientEnvironment.HMR,
   hotModuleReplacement: true,
+  baseHref: '/',
   baseDomain: 'localhost',
   app: {
     id: StringUtils.format('pinguin-{name}-client-{full}', {

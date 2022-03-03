@@ -1,6 +1,7 @@
 <div
   fxLayout="column"
   fxLayoutWrap="wrap"
+  fxFlexFill
   fxLayoutGap="0"
   fxLayoutAlign="center start"
 >
@@ -9,12 +10,7 @@
     class="layout-header dashboard-layout-header"
   ></pinguin-layout-header>
 
-  <main
-    fxFlex
-    fxFlexFill
-    role="cell"
-    class="layout-content dashboard-layout-content"
-  >
+  <main fxFlex role="cell" class="layout-content dashboard-layout-content">
     <div [@routeAnimation]="prepareOutletRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>
     </div>

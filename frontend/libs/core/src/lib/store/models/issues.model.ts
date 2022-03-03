@@ -1,4 +1,4 @@
-import { IssuesLabelsEntity, IssuesFieldsEntity } from '@pinguin/api';
+import { IssuesLabelEntity, IssuesFieldEntity } from '@pinguin/api';
 import { IssuesFieldsEntityState } from './issues-fields.model';
 import { IssuesLabelsEntityState } from './issues-labels.model';
 
@@ -10,8 +10,8 @@ import { IssuesLabelsEntityState } from './issues-labels.model';
  * @typedef {IssuesEntity}
  */
 export interface IssuesEntity {
-  labels: IssuesLabelsEntity | Array<IssuesLabelsEntity>;
-  fields: IssuesFieldsEntity | Array<IssuesFieldsEntity>;
+  labels: Array<IssuesLabelEntity>;
+  fields: Array<IssuesFieldEntity>;
 }
 
 /**

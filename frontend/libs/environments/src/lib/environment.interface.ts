@@ -19,6 +19,8 @@ export interface ClientEnvironmentOptions {
   // Client application properties.
   app: ClientApplicationOptions;
 
+  // Base browser static variables.
+  baseHref: string;
   baseDomain: Optional<string>;
 
   // Provide REST api client module.

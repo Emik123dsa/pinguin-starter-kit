@@ -1,13 +1,21 @@
 /**
+ * Issues field entities.
+ *
+ * @export
+ * @typedef {IssuesFieldEntities}
+ */
+export type IssuesFieldEntities = Array<IssuesFieldEntity>;
+
+/**
  * Issues fields entity.
  *
  * @export
- * @class IssuesFieldsEntity
- * @typedef {IssuesFieldsEntity}
+ * @class IssuesFieldEntity
+ * @typedef {IssuesFieldEntity}
  */
-export class IssuesFieldsEntity {
+export class IssuesFieldEntity {
   /**
-   * Creates an instance of IssuesFieldsEntity.
+   * Creates an instance of IssuesFieldEntity.
    *
    * @constructor
    * @public
@@ -22,7 +30,7 @@ export class IssuesFieldsEntity {
     private id: number,
     private title: string,
     private summary: string,
-    private labels: Array<number>,
+    private labelIds: Array<number>,
     private startDate: number,
     private endDate: number,
   ) {}
@@ -39,8 +47,8 @@ export class IssuesFieldsEntity {
     return this.summary;
   }
 
-  public getLabels(): Array<number> {
-    return this.labels;
+  public getLabelIds(): Array<number> {
+    return this.labelIds;
   }
 
   public getStartDate(): number {
@@ -55,14 +63,14 @@ export class IssuesFieldsEntity {
    * Clone `issues-fields` entity.
    *
    * @public
-   * @returns {IssuesFieldsEntity}
+   * @returns {IssuesFieldEntity}
    */
-  public clone(): IssuesFieldsEntity {
-    return new IssuesFieldsEntity(
+  public clone(): IssuesFieldEntity {
+    return new IssuesFieldEntity(
       this.id,
       this.title,
       this.summary,
-      this.labels,
+      this.labelIds,
       this.startDate,
       this.endDate,
     );

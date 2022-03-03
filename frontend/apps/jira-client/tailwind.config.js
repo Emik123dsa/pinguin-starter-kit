@@ -19,26 +19,7 @@ const defaultPrimaryColors = {
   dark: 'var(--color-primary-dark)',
   light: 'var(--color-primary-light)',
 
-  DEFAULT: 'var(--color-primary-50)',
-};
-
-const defaultSecondaryColors = {
-  50: 'var(--color-secondary-50)',
-  100: 'var(--color-secondary-100)',
-  200: 'var(--color-secondary-200)',
-  300: 'var(--color-secondary-300)',
-  400: 'var(--color-secondary-400)',
-  500: 'var(--color-secondary-500)',
-  600: 'var(--color-secondary-600)',
-  700: 'var(--color-secondary-700)',
-  800: 'var(--color-secondary-800)',
-  900: 'var(--color-secondary-900)',
-
-  // Provide darken and lighten schemes.
-  dark: 'var(--color-secondary-dark)',
-  light: 'var(--color-secondary-light)',
-
-  DEFAULT: 'var(--color-secondary-50)',
+  DEFAULT: 'var(--color-primary-500)',
 };
 
 const defaultAccentColors = {
@@ -57,7 +38,7 @@ const defaultAccentColors = {
   dark: 'var(--color-accent-dark)',
   light: 'var(--color-accent-light)',
 
-  DEFAULT: 'var(--color-secondary-50)',
+  DEFAULT: 'var(--color-secondary-500)',
 };
 
 const defaultWarnColors = {
@@ -76,7 +57,7 @@ const defaultWarnColors = {
   dark: 'var(--color-warn-dark)',
   light: 'var(--color-warn-light)',
 
-  DEFAULT: 'var(--color-warn-50)',
+  DEFAULT: 'var(--color-warn-500)',
 };
 
 const defaultBackgroundColors = {
@@ -95,7 +76,7 @@ const defaultBackgroundColors = {
   darken: 'var(--color-background-darken)',
   lighten: 'var(--color-background-lighten)',
 
-  DEFAULT: 'var(--color-background-50)',
+  DEFAULT: 'var(--color-background-500)',
 };
 
 const defaultForegroundColors = {
@@ -114,14 +95,17 @@ const defaultForegroundColors = {
   darken: 'var(--color-foreground-darken)',
   lighten: 'var(--color-foreground-lighten)',
 
-  DEFAULT: 'var(--color-foreground-50)',
+  DEFAULT: 'var(--color-foreground-500)',
 };
 
 const defaultColorPalette = {
+  // Primary theme palette.
   primary: defaultPrimaryColors,
-  secondary: defaultSecondaryColors,
+  // Secondary theme palette.
   accent: defaultAccentColors,
+  // Error theme palette.
   warn: defaultWarnColors,
+  // UI background/foreground theme-palettes.
   background: defaultBackgroundColors,
   foreground: defaultForegroundColors,
 };
@@ -197,20 +181,36 @@ module.exports = {
 
     variables: {
       DEFAULT: {
+        prefers: {
+          // Override runtime `prefers-color-scheme`:
+          'color-scheme': 'light',
+          'theme-color': 'white',
+        },
         color: {
           primary: {
             50: '#653E00',
             100: '#773000',
             200: '#881B00',
-            300: '#990000',
+            300: '#B8446D',
             400: '#A92239',
-            500: '#B8446D',
+            500: '#990000',
             600: '#C6669A',
             700: '#D488C0',
             800: '#E1AADD',
             900: '#E9CCEE',
           },
-          secondary: {},
+          secondary: {
+            50: '#FAFAFA',
+            100: '#F5F5F5',
+            200: '#EEEEEE',
+            300: '#E0E0E0',
+            400: '#BDBDBD',
+            500: '#9E9E9E',
+            600: '#757575',
+            700: '#616161',
+            800: '#424242',
+            900: '#212121',
+          },
         },
       },
     },

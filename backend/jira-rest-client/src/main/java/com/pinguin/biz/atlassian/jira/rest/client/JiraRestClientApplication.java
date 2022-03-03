@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JiraRestClientApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JiraRestClientApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(JiraRestClientApplication.class, args);
+  }
 }

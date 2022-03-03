@@ -1,13 +1,21 @@
 /**
+ * Issues label entities.
+ *
+ * @export
+ * @typedef {IssuesLabelEntities}
+ */
+export type IssuesLabelEntities = Array<IssuesLabelEntity>;
+
+/**
  * Issues labels entity.
  *
  * @export
- * @class IssuesLabelsEntity
- * @typedef {IssuesLabelsEntity}
+ * @class IssuesLabelEntity
+ * @typedef {IssuesLabelEntity}
  */
-export class IssuesLabelsEntity {
+export class IssuesLabelEntity {
   /**
-   * Creates an instance of IssuesLabelsEntity.
+   * Creates an instance of IssuesLabelEntity.
    *
    * @constructor
    * @public
@@ -30,9 +38,9 @@ export class IssuesLabelsEntity {
    * Clone `issues-labels` entity.
    *
    * @public
-   * @returns {IssuesLabelsEntity}
+   * @returns {IssuesLabelEntity}
    */
-  public clone(): IssuesLabelsEntity {
-    return new IssuesLabelsEntity(this.id, this.name);
+  public clone(): IssuesLabelEntity {
+    return new IssuesLabelEntity(this.id, this.name);
   }
 }

@@ -1,27 +1,20 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { APP_BASE_HREF } from '@angular/common';
-import { Inject, Injectable, Optional } from '@angular/core';
+import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { ActivatedRouteSnapshot } from '@angular/router';
-import {
-  Actions,
-  createEffect,
-  CreateEffectMetadata,
-  ofType,
-} from '@ngrx/effects';
+import { Actions, createEffect, CreateEffectMetadata } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-import { DataPersistence, fetch, navigation } from '@nrwl/angular';
-import { IssuesService } from '@pinguin/api';
+import { DataPersistence } from '@nrwl/angular';
 import {
   CoreEntityState,
   IssuesFieldsActions,
   RouterActions,
 } from '@pinguin/core';
-import { StringUtils } from '@pinguin/utils';
-import { mapTo, Observable, switchMapTo } from 'rxjs';
 
-import { RoadmapPageComponent } from '../../containers/roadmap-page';
-import { RoadmapPageActions, RoadmapPageTypeActions } from '../actions';
-import { RoadmapPageActionTypes } from '../constants';
+import { Observable } from 'rxjs';
+
+import { RoadmapPageActions } from '../actions';
+import { RoadmapPageComponent } from '../../containers/roadmap-page/roadmap-page.component';
 
 @Injectable({
   providedIn: 'root',
@@ -36,11 +29,11 @@ export class RoadmapPageEffects {
    * @param {IssuesService} issuesService
    */
   public constructor(
-    private readonly actions$: Actions,
-    private readonly dataPersistence: DataPersistence<CoreEntityState>,
     @Optional()
     @Inject(APP_BASE_HREF)
-    private readonly baseUrl: string,
+    private readonly redirectUri: string,
+    private readonly actions$: Actions,
+    private readonly dataPersistence: DataPersistence<CoreEntityState>,
   ) {
     // Whether `DashboardLayoutEffects` was initialized successfully.
   }
@@ -56,7 +49,7 @@ export class RoadmapPageEffects {
         return RoadmapPageActions.initIssuesRoadmap();
       },
       onError: (route: ActivatedRouteSnapshot, error: unknown) => {
-        return RouterActions.navigateByUrl({ url: this.baseUrl });
+        return RouterActions.navigateByUrl({ url: this.redirectUri });
       },
     }),
   );

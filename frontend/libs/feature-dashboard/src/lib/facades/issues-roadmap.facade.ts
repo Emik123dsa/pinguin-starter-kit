@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Dictionary } from '@ngrx/entity';
 import { Store } from '@ngrx/store';
-import { IssuesFieldsEntity, IssuesLabelsEntity } from '@pinguin/api';
+import { IssuesFieldEntity, IssuesLabelEntity } from '@pinguin/api';
 import {
   CoreEntityState,
   selectIssuesFieldEntities,
@@ -13,11 +13,30 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class IssuesRoadmapFacade {
-  public issuesLabelEntities$: Observable<Dictionary<IssuesLabelsEntity>> =
-    this.store.select(selectIssuesLabelEntities);
+  /**
+   * Issues label entities from the `Store` adapter.
+   *
+   * @public
+   * @type {Observable<Dictionary<IssuesLabelEntity>>}
+   */
+  public issuesLabelEntities$: Observable<Dictionary<IssuesLabelEntity>> =
+    this.store.select<Dictionary<IssuesLabelEntity>>(selectIssuesLabelEntities);
 
-  public issuesFieldEntities$: Observable<Dictionary<IssuesFieldsEntity>> =
-    this.store.select(selectIssuesFieldEntities);
+  /**
+   * Issues field entities from the `Store` adapter.
+   *
+   * @public
+   * @type {Observable<Dictionary<IssuesFieldEntity>>}
+   */
+  public issuesFieldEntities$: Observable<Dictionary<IssuesFieldEntity>> =
+    this.store.select<Dictionary<IssuesFieldEntity>>(selectIssuesFieldEntities);
 
+  /**
+   * Creates an instance of IssuesRoadmapFacade.
+   *
+   * @constructor
+   * @public
+   * @param {Store<CoreEntityState>} store
+   */
   public constructor(private readonly store: Store<CoreEntityState>) {}
 }

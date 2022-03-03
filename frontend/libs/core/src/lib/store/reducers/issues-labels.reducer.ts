@@ -1,4 +1,4 @@
-import { IssuesLabelsEntity } from '@pinguin/api';
+import { IssuesLabelEntity } from '@pinguin/api';
 import { createReducer, ActionReducer, on } from '@ngrx/store';
 
 import {
@@ -8,11 +8,11 @@ import {
 import { IssuesLabelsEntityState, IssuesEntity } from '../models';
 import { IssuesLabelsActions } from '../actions';
 
-export const issuesLabelsEntityReducer: ActionReducer<IssuesLabelsEntityState> =
+export const IssuesLabelEntityReducer: ActionReducer<IssuesLabelsEntityState> =
   createReducer<IssuesLabelsEntityState>(
     initialIssuesLabelsEntityState,
     on(IssuesLabelsActions.loadAllIssuesLabels, (state) => {
-      return issuesLabelsEntityAdapter.setAll(new Array<IssuesLabelsEntity>(), {
+      return issuesLabelsEntityAdapter.setAll(new Array<IssuesLabelEntity>(), {
         ...state,
         loading: true,
       });
@@ -21,10 +21,12 @@ export const issuesLabelsEntityReducer: ActionReducer<IssuesLabelsEntityState> =
     on(
       IssuesLabelsActions.loadAllIssuesLabelsSuccess,
       (state, { labels }: Pick<IssuesEntity, 'labels'>) => {
-        return issuesLabelsEntityAdapter.addMany(
-          labels as Array<IssuesLabelsEntity>,
-          { ...state, loading: false, loaded: true, error: null },
-        );
+        return issuesLabelsEntityAdapter.addMany(labels, {
+          ...state,
+          loading: false,
+          loaded: true,
+          error: null,
+        });
       },
     ),
 

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import {
   ApiGatewayService,
-  IssuesFieldsEntity,
-  IssuesLabelsEntity,
+  IssuesFieldEntity,
+  IssuesLabelEntities,
   IssuesService,
+  IssuesLabelEntity,
+  IssuesFieldEntities,
 } from '@pinguin/api';
 
-import { debounceTime, delay, Observable, of, throttle } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -28,14 +30,14 @@ export class RxIssuesService extends IssuesService {
    *
    * @public
    * @abstract
-   * @returns {Array<IssuesLabelsEntity>}
+   * @returns {Array<IssuesLabelEntity>}
    */
-  public override findAllLabels(): Observable<Array<IssuesLabelsEntity>> {
+  public override findAllLabels(): Observable<IssuesLabelEntities> {
     return of(
-      new Array<IssuesLabelsEntity>(
-        new IssuesLabelsEntity(1, 'Frontend'),
-        new IssuesLabelsEntity(2, 'Security'),
-        new IssuesLabelsEntity(3, 'Backend'),
+      new Array<IssuesLabelEntity>(
+        new IssuesLabelEntity(1, 'Frontend'),
+        new IssuesLabelEntity(2, 'Security'),
+        new IssuesLabelEntity(3, 'Backend'),
       ),
     );
   }
@@ -45,12 +47,12 @@ export class RxIssuesService extends IssuesService {
    *
    * @public
    * @abstract
-   * @returns {Array<IssuesLabelsEntity>}
+   * @returns {Array<IssuesLabelEntity>}
    */
-  public override findAllFields(): Observable<Array<IssuesFieldsEntity>> {
+  public override findAllFields(): Observable<IssuesFieldEntities> {
     return of(
-      new Array<IssuesFieldsEntity>(
-        new IssuesFieldsEntity(
+      new Array<IssuesFieldEntity>(
+        new IssuesFieldEntity(
           1,
           'Quick try on DB',
           'One morning, when Gregor Samsa woke from troubled dreams.',
@@ -58,7 +60,7 @@ export class RxIssuesService extends IssuesService {
           1641164400,
           1641164400,
         ),
-        new IssuesFieldsEntity(
+        new IssuesFieldEntity(
           2,
           'Quick try on DB',
           'One morning, when Gregor Samsa woke from troubled dreams.',

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { DashboardLayoutComponent } from './containers/dashboard-layout';
-import { RoadmapPageComponent } from './containers/roadmap-page';
+import { RoadmapPageComponent } from './containers/roadmap-page/roadmap-page.component';
 
 const routes: Routes = [
   {
@@ -12,22 +13,25 @@ const routes: Routes = [
       animation: 'DashboardLayout',
       roles: [],
     },
-
     children: [
       {
-        path: 'roadmap',
-        component: RoadmapPageComponent,
-
-        data: {
-          title: 'Roadmap',
-          depth: 2,
-          animation: 'DashboardRoadmapPage',
-        },
+        path: 'issues',
+        children: [
+          {
+            path: 'roadmap',
+            component: RoadmapPageComponent,
+            data: {
+              title: 'Issues Roadmap',
+              // TODO: implement depth of animation: 2,
+              animation: 'IssuesRoadmapPage',
+            },
+          },
+        ],
       },
       {
         path: '**',
         pathMatch: 'full',
-        redirectTo: 'roadmap',
+        redirectTo: 'issues/roadmap?pageType=issues',
       },
     ],
   },

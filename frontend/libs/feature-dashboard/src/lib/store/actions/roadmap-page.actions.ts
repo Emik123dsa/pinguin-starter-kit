@@ -6,7 +6,7 @@ const initIssuesRoadmap: ActionCreator<
   RoadmapPageActionTypes,
   () => TypedAction<RoadmapPageActionTypes>
 > = createAction<RoadmapPageActionTypes>(
-  RoadmapPageActionTypes.InitIssuesRoadmapPage,
+  RoadmapPageActionTypes.InitIssuesRoadmap,
 );
 
 const roadmapPageActions = union({
