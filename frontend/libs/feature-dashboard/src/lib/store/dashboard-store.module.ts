@@ -11,8 +11,6 @@ import {
 
 import { DASHBOARD_FEATURE_CONFIG_PROVIDER } from './dashboard-store.providers';
 
-import { RoadmapPageEffects } from './effects';
-
 @NgModule({
   imports: [
     CommonStoreModule,
@@ -21,10 +19,10 @@ import { RoadmapPageEffects } from './effects';
       DASHBOARD_FEATURE_REDUCER,
       DASHBOARD_FEATURE_CONFIG,
     ),
-    EffectsModule.forFeature(new Array<Type<unknown>>(RoadmapPageEffects)),
+    EffectsModule.forFeature(new Array<Type<unknown>>()),
   ],
   exports: [CommonStoreModule],
-  providers: [RoadmapPageEffects],
+  providers: [],
 })
 export class DashboardStoreModule {
   public static forRoot(): ModuleWithProviders<DashboardStoreModule> {

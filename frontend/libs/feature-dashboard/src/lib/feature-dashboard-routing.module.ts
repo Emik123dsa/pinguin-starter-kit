@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ISSUES_MODULE_INITIALIZER } from '@pinguin/core';
+import { StringUtils } from '@pinguin/utils';
 
+// Provide containers pages.
 import { DashboardLayoutComponent } from './containers/dashboard-layout';
-import { RoadmapPageComponent } from './containers/roadmap-page/roadmap-page.component';
+import { OverviewContainerComponent } from './containers/overview-container/overview-container.component';
 
 const routes: Routes = [
   {
@@ -10,28 +13,28 @@ const routes: Routes = [
     component: DashboardLayoutComponent,
     data: {
       title: 'Dashboard',
-      animation: 'DashboardLayout',
+      depth: 1,
       roles: [],
     },
     children: [
       {
+        path: StringUtils.EMPTY,
+        data: { title: 'Overview', depth: 2 },
+        component: OverviewContainerComponent,
+      },
+      {
         path: 'issues',
-        children: [
-          {
-            path: 'roadmap',
-            component: RoadmapPageComponent,
-            data: {
-              title: 'Issues Roadmap',
-              // TODO: implement depth of animation: 2,
-              animation: 'IssuesRoadmapPage',
-            },
-          },
-        ],
+        data: { title: 'Issues', depth: 2, preload: true },
+        canLoad: [ISSUES_MODULE_INITIALIZER],
+        loadChildren: () =>
+          import('@pinguin/feature-issues').then(
+            (module) => module.FeatureIssuesModule,
+          ),
       },
       {
         path: '**',
         pathMatch: 'full',
-        redirectTo: 'issues/roadmap?pageType=issues',
+        redirectTo: 'issues',
       },
     ],
   },

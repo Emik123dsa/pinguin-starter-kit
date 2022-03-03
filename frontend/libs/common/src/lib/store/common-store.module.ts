@@ -5,6 +5,7 @@ import {
   Optional,
   SkipSelf,
 } from '@angular/core';
+import { EffectsModule } from '@ngrx/effects';
 import { CommonModule } from '@angular/common';
 import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';
 
@@ -12,10 +13,8 @@ import { StoreModule } from '@ngrx/store';
 import { ReactiveComponentModule } from '@ngrx/component';
 
 import { WINDOW } from '../tokens';
-
 import { COMMON_FEATURE_KEY } from './common.constants';
 import { COMMON_FEATURE_CONFIG, COMMON_FEATURE_REDUCER } from './common.tokens';
-import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   imports: [

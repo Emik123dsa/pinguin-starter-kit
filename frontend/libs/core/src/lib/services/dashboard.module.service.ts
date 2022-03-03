@@ -1,55 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  first,
-  map,
-  mapTo,
-  catchError,
-  Observable,
-  of,
-  skipWhile,
-  tap,
-  withLatestFrom,
-  filter,
-  take,
-  pipe,
-  buffer,
-  distinctUntilChanged,
-} from 'rxjs';
+import { Observable } from 'rxjs';
 import { CanLoad, Route, UrlSegment } from '@angular/router';
 import { Injectable } from '@angular/core';
-
-import { DashboardModuleFacade } from '../facades';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardModuleService implements CanLoad {
-  /**
-   * Issue label total amount.
-   *
-   * @type {!Observable<number>}
-   */
-  issuesLabelTotal$!: Observable<number>;
-
-  /**
-   * Issues labels loading state.
-   *
-   * @type {!Observable<boolean>}
-   */
-  issuesLabelsLoading$!: Observable<boolean>;
-
-  /**
-   * Creates an instance of DashboardModuleService.
-   *
-   * @constructor
-   * @public
-   * @param {DashboardModuleFacade} facade
-   */
-  public constructor(public readonly facade: DashboardModuleFacade) {
-    this.issuesLabelTotal$ = facade.issuesLabelTotal$;
-    this.issuesLabelsLoading$ = this.facade.issuesLabelsLoading$;
-  }
-
   /**
    * Check out whether `note-labels` are being available,
    * before lazy module will be mounted.
@@ -63,13 +20,8 @@ export class DashboardModuleService implements CanLoad {
     route: Route,
     segments: Array<UrlSegment>,
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.issuesLabelsLoading$.pipe(
-      skipWhile((labelsLoading: boolean) => labelsLoading),
-      first(),
-      tap((): void => this.facade.loadAllIssuesLabels()),
-      withLatestFrom(this.issuesLabelTotal$),
-      map(([, labelTotal]: [boolean, number]) => !!labelTotal),
-      catchError(() => of(false)),
-    );
+    // Complete some runtime logic here, before dashboard will be initialized
+    // TODO: implement any `overview` checking out logic here.
+    return true;
   }
 }

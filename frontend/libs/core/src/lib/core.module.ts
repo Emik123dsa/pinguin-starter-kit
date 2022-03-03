@@ -18,6 +18,7 @@ import {
   API_GATEWAY_REQUEST_PROVIDERS,
   CORE_MODULE_PROVIDERS,
   DASHBOARD_MODULE_PROVIDERS,
+  ISSUES_MODULE_PROVIDERS,
 } from './providers';
 
 @NgModule({
@@ -58,7 +59,11 @@ import {
       // HINT: entirely the same like for RestAPI module.
       (),
   ],
-  providers: [CORE_MODULE_PROVIDERS, DASHBOARD_MODULE_PROVIDERS],
+  providers: [
+    CORE_MODULE_PROVIDERS,
+    DASHBOARD_MODULE_PROVIDERS,
+    ISSUES_MODULE_PROVIDERS,
+  ],
   exports: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

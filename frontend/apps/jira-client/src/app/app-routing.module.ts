@@ -19,9 +19,7 @@ const routingConfig: ExtraOptions = {
 const routes: Routes = [
   {
     path: 'home',
-    data: {
-      preload: false,
-    },
+    data: { preload: true },
     loadChildren: () =>
       import('@pinguin/feature-home').then(
         (module) => module.FeatureHomeModule,
@@ -29,9 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    data: {
-      preload: true,
-    },
+    data: { preload: true },
     canLoad: [DASHBOARD_MODULE_INITIALIZER],
     loadChildren: () =>
       import('@pinguin/feature-dashboard').then(
@@ -40,9 +36,7 @@ const routes: Routes = [
   },
   {
     path: StringUtils.EMPTY,
-    data: {
-      preload: false,
-    },
+    data: { preload: false },
     loadChildren: () =>
       import('@pinguin/feature-errors').then(
         (module) => module.FeatureErrorsModule,
@@ -51,7 +45,7 @@ const routes: Routes = [
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: 'error',
+    redirectTo: 'errors',
   },
 ];
 
