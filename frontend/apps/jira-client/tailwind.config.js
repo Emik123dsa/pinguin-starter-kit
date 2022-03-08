@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-const path = require('path');
+const { join } = require('path');
 
 const { createGlobPatternsForDependencies } = require('@nrwl/angular/tailwind');
 
@@ -14,11 +14,6 @@ const defaultPrimaryColors = {
   700: 'var(--color-primary-700)',
   800: 'var(--color-primary-800)',
   900: 'var(--color-primary-900)',
-
-  // Provide darken and lighten schemes.
-  dark: 'var(--color-primary-dark)',
-  light: 'var(--color-primary-light)',
-
   DEFAULT: 'var(--color-primary-500)',
 };
 
@@ -33,10 +28,6 @@ const defaultAccentColors = {
   700: 'var(--color-accent-700)',
   800: 'var(--color-accent-800)',
   900: 'var(--color-accent-900)',
-
-  // Provide darken and lighten schemes.
-  dark: 'var(--color-accent-dark)',
-  light: 'var(--color-accent-light)',
 
   DEFAULT: 'var(--color-secondary-500)',
 };
@@ -53,10 +44,6 @@ const defaultWarnColors = {
   800: 'var(--color-warn-800)',
   900: 'var(--color-warn-900)',
 
-  // Provide darken and lighten schemes.
-  dark: 'var(--color-warn-dark)',
-  light: 'var(--color-warn-light)',
-
   DEFAULT: 'var(--color-warn-500)',
 };
 
@@ -71,6 +58,9 @@ const defaultBackgroundColors = {
   700: 'var(--color-background-700)',
   800: 'var(--color-background-800)',
   900: 'var(--color-background-900)',
+
+  panel: 'var(--color-background-panel)',
+  backdrop: 'var(--color-background-backdrop)',
 
   // Provide darken and lighten schemes.
   darken: 'var(--color-background-darken)',
@@ -90,11 +80,6 @@ const defaultForegroundColors = {
   700: 'var(--color-foreground-700)',
   800: 'var(--color-foreground-800)',
   900: 'var(--color-foreground-900)',
-
-  // Provide darken and lighten schemes.
-  darken: 'var(--color-foreground-darken)',
-  lighten: 'var(--color-foreground-lighten)',
-
   DEFAULT: 'var(--color-foreground-500)',
 };
 
@@ -115,9 +100,10 @@ module.exports = {
 
   important: 'pinguin-client-root',
 
-  content: createGlobPatternsForDependencies(
-    path.join(__dirname, 'apps/*/**/*.{ts,html}'),
-  ),
+  content: [
+    join(__dirname, '**/**/*.{ts,html}'),
+    ...createGlobPatternsForDependencies(__dirname),
+  ],
 
   future: {
     standardFontWeights: true,
@@ -128,10 +114,10 @@ module.exports = {
 
   darkMode: 'class',
 
-  whitelist: ['dark-theme'],
+  whitelist: ['theme-dark'],
 
   theme: {
-    darkSelector: '.dark-theme',
+    darkSelector: '.theme-dark',
 
     screens: {
       sm: { 'min': '640px', 'max': '767px' },
@@ -183,9 +169,11 @@ module.exports = {
       DEFAULT: {
         prefers: {
           // Override runtime `prefers-color-scheme`:
+          'theme-color': 'light',
           'color-scheme': 'light',
-          'theme-color': 'white',
         },
+      },
+      '.theme.theme-light': {
         color: {
           primary: {
             50: '#653E00',
@@ -199,7 +187,7 @@ module.exports = {
             800: '#E1AADD',
             900: '#E9CCEE',
           },
-          secondary: {
+          accent: {
             50: '#FAFAFA',
             100: '#F5F5F5',
             200: '#EEEEEE',

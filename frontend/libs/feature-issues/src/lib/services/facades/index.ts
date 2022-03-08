@@ -1,1 +1,1 @@
-export * from './roadmap-issues.facade';
+export * from './issues-roadmap.facade';

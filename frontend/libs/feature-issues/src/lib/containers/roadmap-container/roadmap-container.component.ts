@@ -1,11 +1,23 @@
 import {
   ChangeDetectionStrategy,
+  ClassProvider,
   Component,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
 import { map, merge, Observable } from 'rxjs';
-import { RoadmapIssuesFacade } from '../../services/facades';
+import { IssuesRoadmapFacade } from '../../services/facades';
+
+/**
+ * Issues roadmap facade provided in view.
+ *
+ * @type {ClassProvider}
+ */
+const ISSUES_ROADMAP_FACADE_PROVIDER: ClassProvider = {
+  multi: false,
+  provide: IssuesRoadmapFacade,
+  useClass: IssuesRoadmapFacade,
+};
 
 @Component({
   selector: 'pinguin-issues-roadmap-container-page',
@@ -13,6 +25,7 @@ import { RoadmapIssuesFacade } from '../../services/facades';
   templateUrl: './roadmap-container.component.html',
   styleUrls: ['./roadmap-container.component.scss'],
   host: { 'class': 'pinguin-issues-roadmap-container-page' },
+  viewProviders: [ISSUES_ROADMAP_FACADE_PROVIDER],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -45,7 +58,7 @@ export class RoadmapContainerComponent implements OnInit {
    * @public
    * @param {RoadmapPageFacade} facade
    */
-  public constructor(private readonly facade: RoadmapIssuesFacade) {}
+  public constructor(private readonly facade: IssuesRoadmapFacade) {}
 
   public ngOnInit(): void {
     this.issuesFieldTotal$ = this.facade.issuesFieldTotal$;

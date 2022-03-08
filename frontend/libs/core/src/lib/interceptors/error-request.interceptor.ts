@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ErrorHandler, Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -12,7 +12,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ErrorRequestInterceptor implements HttpInterceptor {
+export class ErrorRequestInterceptor implements HttpInterceptor, ErrorHandler {
   /**
    * Handle http errors with {@link HttpClient} backend-client.
    * TODO: implement logger service for debugging unhandled client errors.
@@ -29,7 +29,7 @@ export class ErrorRequestInterceptor implements HttpInterceptor {
    * @param {?Observable<T>} [caught]
    * @returns {*} a handled error as reactive subject.
    */
-  protected handleHttpBackendError<T>(
+  public handleError<T>(
     error: HttpErrorResponse & T,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     caught?: Observable<T>,
@@ -71,6 +71,6 @@ export class ErrorRequestInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
-    return next.handle(request).pipe(catchError(this.handleHttpBackendError));
+    return next.handle(request).pipe(catchError(this.handleError));
   }
 }

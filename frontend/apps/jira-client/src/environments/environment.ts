@@ -38,6 +38,8 @@ export const environment: ClientEnvironmentOptions = {
       prefix: 'api',
       version: 'v1',
     },
+    bufferSize: 4,
+    refCount: true,
     retryAttempts: 3,
     errorAttempts: 1,
     queryParamMap: new Map([['proxy', 'true']]),

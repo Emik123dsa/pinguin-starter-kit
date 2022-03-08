@@ -1,6 +1,7 @@
 import { PlainObjectLiteral } from '@pinguin/utils';
-import { HttpParams } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ErrorHandler } from '@angular/core';
 
 /**
  * Reactive Api Gateway Service for generic entities.
@@ -15,7 +16,22 @@ import { Observable } from 'rxjs';
  * @abstract
  * @class ApiGatewayService
  */
-export abstract class ApiGatewayService {
+export abstract class ApiGatewayService implements ErrorHandler {
+  /**
+   * Handle http client errors with {@link HttpClient} backend-client.
+   *
+   * @protected
+   * @template T
+   * @param {(HttpErrorResponse & T)} error
+   * @param {?Observable<T>} [caught]
+   * @returns {*} a handled error as reactive subject.
+   */
+  public abstract handleError<T>(
+    error: HttpErrorResponse & T,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    caught?: Observable<T>,
+  ): Observable<never>;
+
   /**
    * GET reactive api service.
    *

@@ -21,7 +21,10 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": [
+      "../../types/*.d.ts"
+    ]
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

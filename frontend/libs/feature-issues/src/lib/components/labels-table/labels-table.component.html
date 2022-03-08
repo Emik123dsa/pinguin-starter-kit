@@ -1,0 +1,20 @@
+<section id="issues-labels-data" role="table">
+  <div class="issues-labels-data-content">
+    <div
+      fxLayout="column"
+      fxLayoutAlign="start center"
+      class="issues-labels-data-table"
+    >
+      <ng-container
+        *ngFor="
+          let label of labels;
+          let labelIndex = index;
+          first as isFirst;
+          last as isLast;
+          trackBy: trackByFn
+        "
+      >
+      </ng-container>
+    </div>
+  </div>
+</section>

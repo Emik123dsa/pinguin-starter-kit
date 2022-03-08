@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { QuicklinkModule } from 'ngx-quicklink';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
@@ -23,6 +24,7 @@ import { BrowserEventsModule } from './directives/events';
 
     // Provide router modules.
     RouterModule,
+    QuicklinkModule,
 
     // Provide http client modules.
     HttpClientModule,
@@ -60,6 +62,7 @@ import { BrowserEventsModule } from './directives/events';
 
     // Provide router modules.
     RouterModule,
+    QuicklinkModule,
 
     // Provide http client modules.
     HttpClientModule,

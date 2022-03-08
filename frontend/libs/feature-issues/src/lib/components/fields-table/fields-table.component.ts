@@ -1,13 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Dictionary } from '@ngrx/entity';
-import { IssuesFieldEntity } from '@pinguin/api';
-
-/**
- * Issues field entities of `Store` adapter.
- *
- * @typedef {IssuesFieldEntities}
- */
-type IssuesFieldEntities = Dictionary<IssuesFieldEntity>;
+import { IssuesFieldEntities } from '@pinguin/api';
 
 @Component({
   selector: 'pinguin-issues-fields-table',

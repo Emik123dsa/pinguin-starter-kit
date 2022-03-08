@@ -10,5 +10,9 @@ export interface ClientRestApiOptions extends ClientConnectionOptions {
   retryAttempts?: number;
   errorAttempts?: number;
 
+  // Override buffering config with `shareReplay` method.
+  refCount?: boolean;
+  bufferSize?: number;
+
   serializer?: (data: PlainObjectLiteral) => Optional<string>;
 }

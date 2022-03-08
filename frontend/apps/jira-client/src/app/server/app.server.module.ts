@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
@@ -17,6 +17,7 @@ import { AppComponent } from '@pinguin-client/app.component';
     ServerTransferStateModule,
     NoopAnimationsModule,
   ],
+  schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent],
 })
 export class AppServerModule {}

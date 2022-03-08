@@ -45,7 +45,7 @@ const routes: Routes = [
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: 'errors',
+    redirectTo: 'dashboard',
   },
 ];
 

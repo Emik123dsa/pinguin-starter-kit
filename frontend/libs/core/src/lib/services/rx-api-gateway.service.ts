@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 
 import {
+  ErrorHandler,
   Inject,
   Injectable,
   Optional as OptionalInject,
@@ -25,7 +26,7 @@ import { PlainObjectLiteral } from '@pinguin/utils';
 import { ClientEnvironment, ENVIRONMENT } from '@pinguin/environments';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'platform',
 })
 export class RxApiGatewayService extends ApiGatewayService {
   /**
@@ -59,7 +60,7 @@ export class RxApiGatewayService extends ApiGatewayService {
    * @param {?Observable<T>} [caught]
    * @returns {*} a handled error as reactive subject.
    */
-  protected handleHttpClientError<T>(
+  public override handleError<T>(
     error: HttpErrorResponse & T,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     caught?: Observable<T>,
@@ -120,9 +121,7 @@ export class RxApiGatewayService extends ApiGatewayService {
           ClientEnvironment.Production,
         ),
       })
-      .pipe(
-        catchError(this.handleHttpClientError as OperatorFunction<unknown, T>),
-      );
+      .pipe(catchError(this.handleError as OperatorFunction<unknown, T>));
   }
 
   /**
@@ -144,9 +143,7 @@ export class RxApiGatewayService extends ApiGatewayService {
           ClientEnvironment.Production,
         ),
       })
-      .pipe(
-        catchError(this.handleHttpClientError as OperatorFunction<unknown, T>),
-      );
+      .pipe(catchError(this.handleError as OperatorFunction<unknown, T>));
   }
 
   /**
@@ -168,9 +165,7 @@ export class RxApiGatewayService extends ApiGatewayService {
           ClientEnvironment.Production,
         ),
       })
-      .pipe(
-        catchError(this.handleHttpClientError as OperatorFunction<unknown, T>),
-      );
+      .pipe(catchError(this.handleError as OperatorFunction<unknown, T>));
   }
 
   /**
@@ -193,9 +188,7 @@ export class RxApiGatewayService extends ApiGatewayService {
           ClientEnvironment.Production,
         ),
       })
-      .pipe(
-        catchError(this.handleHttpClientError as OperatorFunction<unknown, T>),
-      );
+      .pipe(catchError(this.handleError as OperatorFunction<unknown, T>));
   }
 
   /**
@@ -214,8 +207,6 @@ export class RxApiGatewayService extends ApiGatewayService {
           ClientEnvironment.Production,
         ),
       })
-      .pipe(
-        catchError(this.handleHttpClientError as OperatorFunction<unknown, T>),
-      );
+      .pipe(catchError(this.handleError as OperatorFunction<unknown, T>));
   }
 }

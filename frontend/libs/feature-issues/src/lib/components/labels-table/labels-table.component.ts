@@ -1,13 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Dictionary } from '@ngrx/entity';
-import { IssuesLabelEntity } from '@pinguin/api';
 
-/**
- * Issues label entities of `Store` adapter.
- *
- * @typedef {IssuesLabelEntities}
- */
-type IssuesLabelEntities = Dictionary<IssuesLabelEntity>;
+import { IssuesLabelEntities, IssuesLabelEntity } from '@pinguin/api';
 
 @Component({
   selector: 'pinguin-issues-labels-table',
@@ -25,4 +18,16 @@ export class LabelsTableComponent {
     return this._labels;
   }
   private _labels!: IssuesLabelEntities;
+
+  /**
+   * Whether entity was tracked with their ids.
+   *
+   * @public
+   * @param {number} index
+   * @param {IssuesLabelEntity} entity
+   * @returns {number}
+   */
+  public trackByFn(index: number, entity: IssuesLabelEntity): number {
+    return entity.getId() || index;
+  }
 }

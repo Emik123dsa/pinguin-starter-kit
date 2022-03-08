@@ -4,7 +4,7 @@ import { CanLoad, Route, UrlSegment } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'platform',
 })
 export class DashboardModuleService implements CanLoad {
   /**

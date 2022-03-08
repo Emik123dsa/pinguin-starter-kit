@@ -2,8 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 
-import { QuicklinkModule } from 'ngx-quicklink';
-
 import { CoreModule } from '@pinguin/core';
 import { ClientCommonModule } from '@pinguin/common';
 import { SharedModule } from '@pinguin/shared';
@@ -31,12 +29,11 @@ import { APP_BASE_PROVIDERS } from './app-base.providers';
     // Provide common client module.
     ClientCommonModule.forRoot(),
 
-    // Provide routing client modules.
-    QuicklinkModule,
-    AppRoutingModule,
-
     // Provide shared client modules.
     SharedModule.forRoot(),
+
+    // Provide routing client modules.
+    AppRoutingModule,
 
     // Provide core essential module.
     CoreModule.forRoot(),

@@ -1,5 +1,5 @@
 import { HttpContextToken } from '@angular/common/http';
-import { FactoryProvider } from '@angular/core';
+import { FactoryProvider, Self } from '@angular/core';
 
 import { PlainObjectLiteral } from '@pinguin/utils';
 
@@ -51,6 +51,15 @@ export class ClientRestApiConfig extends ClientRestApiConfigRef {
     return new HttpContextToken(() => this.options.errorAttempts as number);
   }
 
+  // Override default `shareReplay` config, will be used for buffering API requests.
+  public override getRefCount(): boolean {
+    return this.options.refCount as boolean;
+  }
+
+  public override getBufferSize(): number {
+    return this.options.bufferSize as number;
+  }
+
   /**
    * Override default serialization for request body.
    *
@@ -91,6 +100,6 @@ function clientRestApiConfigProviderFactory(
 export const CLIENT_REST_API_CONFIG_PROVIDER: FactoryProvider = {
   provide: ClientRestApiConfigRef,
   useFactory: clientRestApiConfigProviderFactory,
-  deps: [CLIENT_REST_API_OPTIONS],
+  deps: [[new Self(), CLIENT_REST_API_OPTIONS]],
   multi: false,
 };

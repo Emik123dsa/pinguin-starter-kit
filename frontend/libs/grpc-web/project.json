@@ -6,7 +6,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/grpc-web"],
+      "outputs": [
+        "coverage/libs/grpc-web"
+      ],
       "options": {
         "jestConfig": "libs/grpc-web/jest.config.js",
         "passWithNoTests": true

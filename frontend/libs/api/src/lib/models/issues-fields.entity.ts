@@ -60,7 +60,7 @@ export class IssuesFieldEntity {
   }
 
   /**
-   * Clone `issues-fields` entity.
+   * Clone `issues-field` entity.
    *
    * @public
    * @returns {IssuesFieldEntity}

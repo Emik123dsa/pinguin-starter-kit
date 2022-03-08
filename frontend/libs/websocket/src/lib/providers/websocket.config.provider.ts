@@ -1,4 +1,4 @@
-import { FactoryProvider } from '@angular/core';
+import { FactoryProvider, Self } from '@angular/core';
 import { PlainObjectLiteral } from '@pinguin/utils';
 
 import { CLIENT_WEBSOCKET_OPTIONS } from '../tokens';
@@ -65,6 +65,6 @@ function clientWebSocketConfigProviderFactory(
 export const CLIENT_WEBSOCKET_CONFIG_PROVIDER: FactoryProvider = {
   provide: ClientWebSocketConfigRef,
   useFactory: clientWebSocketConfigProviderFactory,
-  deps: [CLIENT_WEBSOCKET_OPTIONS],
+  deps: [[new Self(), CLIENT_WEBSOCKET_OPTIONS]],
   multi: false,
 };

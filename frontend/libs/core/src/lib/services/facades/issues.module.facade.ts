@@ -12,7 +12,7 @@ import {
 } from '../../store';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'platform',
 })
 export class IssuesModuleFacade {
   /**

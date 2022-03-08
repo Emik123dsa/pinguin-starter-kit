@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { CommonStoreModule } from './store';
 
-import { WINDOW_PROVIDERS } from './providers';
+import { WEB_WORKER_PROVIDERS, WINDOW_PROVIDERS } from './providers';
 
 @NgModule({
   imports: [CommonModule, CommonStoreModule],
@@ -19,7 +19,7 @@ export class ClientCommonModule {
   public static forRoot(): ModuleWithProviders<ClientCommonModule> {
     return {
       ngModule: ClientCommonModule,
-      providers: [WINDOW_PROVIDERS],
+      providers: [WINDOW_PROVIDERS, WEB_WORKER_PROVIDERS],
     };
   }
 }

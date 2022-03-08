@@ -6,9 +6,14 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { Dictionary } from '@ngrx/entity';
-import { IssuesFieldEntity, IssuesLabelEntity } from '@pinguin/api';
+import {
+  IssuesFieldEntities,
+  IssuesFieldEntity,
+  IssuesLabelEntities,
+  IssuesLabelEntity,
+} from '@pinguin/api';
 
-import { RoadmapIssuesFacade } from '../../services/facades';
+import { IssuesRoadmapFacade } from '../../services/facades';
 
 @Component({
   selector: 'pinguin-issues-roadmap',
@@ -21,29 +26,29 @@ import { RoadmapIssuesFacade } from '../../services/facades';
 })
 export class RoadmapComponent implements OnInit {
   /**
-   * Issues Label Entities from the `Store`.
+   * Issues labels from the `Store`.
    *
    * @public
-   * @type {!Observable<Dictionary<IssuesLabelEntity>>}
+   * @type {!Observable<IssuesLabelEntities>}
    */
-  public issuesLabelEntities$!: Observable<Dictionary<IssuesLabelEntity>>;
+  public allIssuesLabels$!: Observable<IssuesLabelEntities>;
 
   /**
-   * Issues Field Entities from the `Store`.
+   * Issues fields from the `Store`.
    *
    * @public
-   * @type {!Observable<Dictionary<IssuesFieldEntity>>}
+   * @type {!Observable<IssuesFieldEntities>}
    */
-  public issuesFieldEntities$!: Observable<Dictionary<IssuesFieldEntity>>;
+  public allIssuesFields$!: Observable<IssuesFieldEntities>;
 
   /**
    * Creates an instance of IssuesRoadmapComponent.
    *
    * @constructor
    * @public
-   * @param {RoadmapIssuesFacade} facade
+   * @param {IssuesRoadmapFacade} facade
    */
-  public constructor(private readonly facade: RoadmapIssuesFacade) {}
+  public constructor(private readonly facade: IssuesRoadmapFacade) {}
 
   /**
    * Initialize issues fields entities.
@@ -51,7 +56,7 @@ export class RoadmapComponent implements OnInit {
    * @public
    */
   public ngOnInit(): void {
-    this.issuesFieldEntities$ = this.facade.issuesFieldEntities$;
-    this.issuesLabelEntities$ = this.facade.issuesLabelEntities$;
+    this.allIssuesFields$ = this.facade.allIssuesFields$;
+    this.allIssuesLabels$ = this.facade.allIssuesLabels$;
   }
 }

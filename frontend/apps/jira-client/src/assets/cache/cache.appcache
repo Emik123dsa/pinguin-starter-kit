@@ -1,0 +1,9 @@
+CACHE MANIFEST
+
+CACHE:
+/styles.css
+/favicon.ico
+index.html
+
+FALLBACK:
+/ /offline.html 

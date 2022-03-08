@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 import { Platform } from '@angular/cdk/platform';
+import { StringUtils } from '@pinguin/utils';
 
 @Component({
   selector: 'pinguin-container',
@@ -15,7 +16,7 @@ import { Platform } from '@angular/cdk/platform';
   host: {
     'class': 'pinguin-container',
     '[attr.id]': 'id',
-    '[class.pinguin-container-server]': '_isServer',
+    '[class.pinguin-container-server]': 'isServer',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,16 +27,19 @@ export class ContainerComponent {
   /**
    * Determines whether server is.
    */
-  protected readonly _isServer!: boolean;
+  public readonly isServer!: boolean;
 
   /**
    * Container id of container component.
    */
-  private _uniqueId = `pinguin-container-${ContainerComponent.nextUniqueId++}`;
+  private uniqueId = StringUtils.format(
+    'pinguin-container-%s',
+    ContainerComponent.nextUniqueId++,
+  );
 
   @Input()
   public set id(value: string) {
-    this._id = value || this._uniqueId;
+    this._id = value || this.uniqueId;
   }
   public get id() {
     return this._id;
@@ -48,7 +52,7 @@ export class ContainerComponent {
    * @param  {Platform} _platform
    * @memberof ContainerComponent
    */
-  public constructor(private readonly _platform: Platform) {
-    this._isServer = !this._platform.isBrowser;
+  public constructor(public readonly platform: Platform) {
+    this.isServer = !platform.isBrowser;
   }
 }

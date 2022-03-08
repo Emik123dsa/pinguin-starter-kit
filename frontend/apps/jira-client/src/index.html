@@ -8,7 +8,12 @@
 -->
 <!DOCTYPE html>
 <!-- HINT: (prefers-color-scheme: light) -->
-<html lang="en" dir="ltr" class="online day light-scheme">
+<html
+  lang="en"
+  dir="ltr"
+  class="day light-scheme"
+  manifest="/assets/cache/cache.appcache"
+>
   <head>
     <meta charset="utf-8" />
     <!-- Pinguin -->
@@ -37,10 +42,14 @@
       content="var(--prefers-theme-color)"
     />
   </head>
-  <body class="theme light-theme">
+  <body class="theme theme-light">
+    <!-- Whether client is online/offline mode, default: navigation.onLine -->
+    <div id="network" class="network-status online"></div>
+
     <div class="mat-app-background mat-typography">
       <pinguin-client-root></pinguin-client-root>
     </div>
+
     <noscript
       >Please enable JavaScript to continue using this application.</noscript
     >

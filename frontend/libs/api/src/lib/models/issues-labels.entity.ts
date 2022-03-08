@@ -35,7 +35,7 @@ export class IssuesLabelEntity {
   }
 
   /**
-   * Clone `issues-labels` entity.
+   * Clone `issues-label` entity.
    *
    * @public
    * @returns {IssuesLabelEntity}

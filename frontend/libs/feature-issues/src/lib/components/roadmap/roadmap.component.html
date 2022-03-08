@@ -4,14 +4,14 @@
       <div class="issues-labels-wrapper" role="rowheader">
         <ng-container
           *ngrxLet="
-            issuesLabelEntities$ as issuesLabelEntities;
+            allIssuesLabels$ as issuesLabels;
             let issuesLabelsError = $error;
             let issuesLabelsComplete = $complete
           "
         >
           <div id="issues-label-entities-table" class="issues-labels-table">
             <pinguin-issues-labels-table
-              [labels]="issuesLabelEntities"
+              [labels]="issuesLabels"
               *ngIf="!issuesLabelsError && !issuesLabelsComplete"
             ></pinguin-issues-labels-table>
           </div>
@@ -26,14 +26,14 @@
       <div class="issues-fields-wrapper" role="row">
         <ng-container
           *ngrxLet="
-            issuesFieldEntities$ as issuesFieldEntities;
+            allIssuesFields$ as issuesFields;
             let issuesFieldsError = $error;
             let issuesFieldsComplete = $complete
           "
         >
           <div id="issues-field-entities-table" class="issues-fields-table">
             <pinguin-issues-fields-table
-              [fields]="issuesFieldEntities"
+              [fields]="issuesFields"
               *ngIf="!issuesFieldsError && !issuesFieldsComplete"
             ></pinguin-issues-fields-table>
           </div>

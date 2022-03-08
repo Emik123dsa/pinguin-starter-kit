@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
+  IssuesService,
   ApiGatewayService,
   IssuesFieldEntity,
   IssuesLabelEntities,
-  IssuesService,
   IssuesLabelEntity,
   IssuesFieldEntities,
 } from '@pinguin/api';
@@ -11,7 +11,7 @@ import {
 import { Observable, of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'platform',
 })
 export class RxIssuesService extends IssuesService {
   /**

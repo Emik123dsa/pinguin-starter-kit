@@ -1,4 +1,4 @@
-import { FactoryProvider, Version } from '@angular/core';
+import { FactoryProvider, Self, Version } from '@angular/core';
 import {
   ClientEnvironmentOptions,
   CLIENT_ENVIRONMENT_OPTIONS,
@@ -44,6 +44,6 @@ function clientAppConfigProviderFactory(
 export const CLIENT_APP_CONFIG_PROVIDER: FactoryProvider = {
   provide: ClientApplicationConfigRef,
   useFactory: clientAppConfigProviderFactory,
-  deps: [CLIENT_ENVIRONMENT_OPTIONS],
+  deps: [[new Self(), CLIENT_ENVIRONMENT_OPTIONS]],
   multi: false,
 };

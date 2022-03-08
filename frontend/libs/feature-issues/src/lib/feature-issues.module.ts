@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 // Provide common store module.
 import { CommonStoreModule } from '@pinguin/common';
@@ -16,11 +15,9 @@ import { UiInputModule } from '@pinguin/ui-input';
 import { RoadmapComponent } from './components/roadmap';
 import { CardFormComponent } from './components/card-form';
 import { CardListComponent } from './components/card-list';
+import { CardDialogComponent } from './components/card-dialog';
 import { FieldsTableComponent } from './components/fields-table';
 import { LabelsTableComponent } from './components/labels-table';
-
-// Provide services facades.
-import { RoadmapIssuesFacade } from './services/facades';
 
 // Provide routing components.
 import { RoadmapContainerComponent } from './containers/roadmap-container';
@@ -28,20 +25,20 @@ import { FeatureIssuesRoutingModule } from './feature-issues-routing.module';
 
 // Feature store module.
 import { IssuesStoreModule } from './store';
+import { OverlayModule } from '@pinguin/overlay';
 
 @NgModule({
   imports: [
-    CommonModule,
-
-    // Provide store modules.
-    CommonStoreModule,
-    IssuesStoreModule,
+    // Provide shared module.
+    SharedModule.forRoot(),
+    OverlayModule.forRoot(),
 
     // Provide routing module.
     FeatureIssuesRoutingModule,
 
-    // Provide shared module.
-    SharedModule.forRoot(),
+    // Provide store modules.
+    CommonStoreModule,
+    IssuesStoreModule,
 
     // Provide UI-dynamic modules.
     UiCardModule,
@@ -49,10 +46,14 @@ import { IssuesStoreModule } from './store';
     UiButtonModule,
   ],
   declarations: [
+    // Provide container components.
     RoadmapContainerComponent,
+
+    // Provide components of feature.
     RoadmapComponent,
     CardFormComponent,
     CardListComponent,
+    CardDialogComponent,
     FieldsTableComponent,
     LabelsTableComponent,
   ],
