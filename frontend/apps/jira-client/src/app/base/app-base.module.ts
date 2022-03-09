@@ -15,6 +15,15 @@ import { AppRoutingModule } from '@pinguin-client/app-routing.module';
 
 import { APP_BASE_PROVIDERS } from './app-base.providers';
 
+/**
+ * Base module for bootstrapping application in
+ * browser or server runtime context.
+ *
+ * @export
+ * @class AppBaseModule
+ * @author Emil Shari <emil.shari87@gmail.com>
+ * @typedef {AppBaseModule}
+ */
 @NgModule({
   declarations: [AppComponent],
   imports: [

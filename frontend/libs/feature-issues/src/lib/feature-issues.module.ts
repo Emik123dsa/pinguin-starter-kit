@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 
-// Provide common store module.
-import { CommonStoreModule } from '@pinguin/common';
-
 // Provide shared module.
 import { SharedModule } from '@pinguin/shared';
 
@@ -31,13 +28,13 @@ import { OverlayModule } from '@pinguin/overlay';
   imports: [
     // Provide shared module.
     SharedModule.forRoot(),
+
     OverlayModule.forRoot(),
 
     // Provide routing module.
     FeatureIssuesRoutingModule,
 
     // Provide store modules.
-    CommonStoreModule,
     IssuesStoreModule,
 
     // Provide UI-dynamic modules.

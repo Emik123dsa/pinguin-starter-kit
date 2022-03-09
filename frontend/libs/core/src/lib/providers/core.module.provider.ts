@@ -2,16 +2,16 @@ import {
   APP_INITIALIZER,
   ExistingProvider,
   FactoryProvider,
-  forwardRef,
   Provider,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CoreEntityState } from '..';
+
+import { CoreEntityState } from '../store';
 import { CORE_MODULE_INITIALIZER } from '../tokens';
 
 export const CORE_MODULE_INITIALIZER_PROVIDER: ExistingProvider = {
   provide: APP_INITIALIZER,
-  useExisting: forwardRef(() => CORE_MODULE_INITIALIZER),
+  useExisting: CORE_MODULE_INITIALIZER,
   multi: true,
 };
 
@@ -28,7 +28,6 @@ function coreModuleInitializerFactory(): (
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return (store?: Store<CoreEntityState>): boolean => {
     // TODO: enable 'WebSocketStoreModule', maybe enable some remote services configs.
-
     return true;
   };
 }

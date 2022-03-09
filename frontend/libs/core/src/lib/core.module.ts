@@ -76,12 +76,12 @@ export class CoreModule {
     // We will prevent any re-initialization of core module.
     // Will be defined as a `Singleton` module in project runtime.
     if (this.internalModule) {
-      const fallbackValue: string = StringUtils.format(
+      const errorValue: string = StringUtils.format(
         '{name} has been already initialized as a module',
         CoreModule,
       );
 
-      throw new ReferenceError(fallbackValue);
+      throw new ReferenceError(errorValue);
     }
   }
 

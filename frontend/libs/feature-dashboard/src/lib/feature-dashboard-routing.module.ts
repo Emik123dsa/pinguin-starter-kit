@@ -9,13 +9,9 @@ import { OverviewContainerComponent } from './containers/overview-container/over
 
 const routes: Routes = [
   {
-    path: '',
+    path: StringUtils.EMPTY,
     component: DashboardLayoutComponent,
-    data: {
-      title: 'Dashboard',
-      depth: 1,
-      roles: [],
-    },
+    data: { title: 'Dashboard', depth: 1, roles: [] },
     children: [
       {
         path: StringUtils.EMPTY,

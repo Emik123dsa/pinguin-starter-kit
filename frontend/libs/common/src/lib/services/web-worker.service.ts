@@ -1,7 +1,8 @@
 import { Injectable, NgZone, OnDestroy } from '@angular/core';
-import { connectable, Observable, share, Subject, Subscription } from 'rxjs';
+import { Observable, share, Subject, Subscription } from 'rxjs';
 import { ShareConfig } from 'rxjs/internal/operators/share';
 import { WebWorkerFactory, WebWorkerHandler } from '../handlers';
+import { WebWorkerOptions } from '../interfaces';
 
 @Injectable({
   providedIn: 'platform',
@@ -15,6 +16,14 @@ export class WebWorkerService implements OnDestroy {
    * @type {Subscription}
    */
   private subscription: Subscription = new Subscription();
+
+  /**
+   * Get reactive connection of web worker instance.
+   *
+   * @private
+   * @type {!Observable<unknown>}
+   */
+  private connection$!: Observable<unknown>;
 
   /**
    * An instance of `WebWorker` handler, which will be used
@@ -45,15 +54,13 @@ export class WebWorkerService implements OnDestroy {
    * @param {string} scriptUrl
    * @param {?WorkerOptions} [options]
    */
-  public connect(scriptUrl: string, options?: WorkerOptions) {
+  public connect({ workerUrl }: WebWorkerOptions, options?: WorkerOptions) {
     const webWorker: Worker = this.webWorkerFactory.createWorker(
-      scriptUrl,
+      workerUrl,
       options,
     ) as Worker;
 
     this.webWorkerHandler = new WebWorkerHandler(this.ngZone, webWorker);
-
-    this.initHandler();
   }
 
   /**
@@ -61,20 +68,19 @@ export class WebWorkerService implements OnDestroy {
    *
    * @private
    */
-  private initHandler(): void {
-    const shareConfig: ShareConfig<unknown> = {
+  private init(): void {
+    const workerConfig: ShareConfig<unknown> = {
       connector: () => new Subject<unknown>(),
       resetOnError: true,
+      resetOnComplete: false,
       resetOnRefCountZero: false,
     };
 
-    const webWorkerHandler$ = connectable(
-      this.webWorkerHandler.handleWorkerConnection().pipe(share(shareConfig)),
-    );
+    this.connection$ = this.webWorkerHandler
+      .connection$()
+      .pipe(share(workerConfig));
 
-    this.subscription.add(webWorkerHandler$.subscribe());
-
-    <Subscription>webWorkerHandler$.connect();
+    this.subscription.add(this.connection$.subscribe());
   }
 
   /**

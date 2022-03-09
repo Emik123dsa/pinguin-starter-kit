@@ -1,59 +1,54 @@
 import {
   CUSTOM_ELEMENTS_SCHEMA,
-  Inject,
   NgModule,
   Optional,
   SkipSelf,
 } from '@angular/core';
-import { EffectsModule } from '@ngrx/effects';
-import { CommonModule } from '@angular/common';
-import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';
 
 import { StoreModule } from '@ngrx/store';
-import { ReactiveComponentModule } from '@ngrx/component';
+import { EffectsModule } from '@ngrx/effects';
 
-import { WINDOW } from '../tokens';
+import { StringUtils } from '@pinguin/utils';
+
 import { COMMON_FEATURE_KEY } from './common.constants';
 import { COMMON_FEATURE_CONFIG, COMMON_FEATURE_REDUCER } from './common.tokens';
 
 @NgModule({
   imports: [
-    // Common module for reactive component module.
-    CommonModule,
-
-    // Reactive component module.
-    ReactiveComponentModule,
-
     StoreModule.forFeature(
       COMMON_FEATURE_KEY,
       COMMON_FEATURE_REDUCER,
       COMMON_FEATURE_CONFIG,
     ),
-
     EffectsModule.forFeature(),
   ],
   declarations: [],
-  exports: [CommonModule, ReactiveComponentModule, StoreModule, EffectsModule],
+  exports: [StoreModule, EffectsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CommonStoreModule {
+  /**
+   * Creates an instance of CommonStoreModule.
+   *
+   * @constructor
+   * @public
+   * @param {CommonStoreModule} internalModule
+   * @param {ClientCommonHandler} commonHandler
+   */
   public constructor(
+    @Optional()
     @SkipSelf()
-    @Optional()
-    private readonly internalModule?: CommonStoreModule,
-    @Inject(ANIMATION_MODULE_TYPE)
-    @Optional()
-    private readonly animationMode?: object,
-    @Inject(WINDOW)
-    @Optional()
-    private readonly window?: Window & typeof globalThis,
+    private readonly internalModule: CommonStoreModule,
   ) {
-    // const render = renderFactory.createRenderer(window, null);
-    // render.listen(window, 'online', () => {
-    //   console.log('ONLINE');
-    // });
-    // render.listen(window, 'offline', () => {
-    //   console.log('OFFLINE');
-    // });
+    // We will prevent any re-initialization of common store module.
+    // Will be defined as a `Singleton` module in project runtime.
+    if (this.internalModule) {
+      const errorValue: string = StringUtils.format(
+        '{name} has been already initialized as a module',
+        CommonStoreModule,
+      );
+
+      throw new ReferenceError(errorValue);
+    }
   }
 }

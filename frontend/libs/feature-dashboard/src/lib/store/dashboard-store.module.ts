@@ -1,7 +1,6 @@
 import { NgModule, ModuleWithProviders, Type } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { CommonStoreModule } from '@pinguin/common';
 
 import { DASHBOARD_FEATURE_KEY } from './dashboard-store.constants';
 import {
@@ -13,7 +12,6 @@ import { DASHBOARD_FEATURE_CONFIG_PROVIDER } from './dashboard-store.providers';
 
 @NgModule({
   imports: [
-    CommonStoreModule,
     StoreModule.forFeature(
       DASHBOARD_FEATURE_KEY,
       DASHBOARD_FEATURE_REDUCER,
@@ -21,7 +19,7 @@ import { DASHBOARD_FEATURE_CONFIG_PROVIDER } from './dashboard-store.providers';
     ),
     EffectsModule.forFeature(new Array<Type<unknown>>()),
   ],
-  exports: [CommonStoreModule],
+  exports: [],
   providers: [],
 })
 export class DashboardStoreModule {

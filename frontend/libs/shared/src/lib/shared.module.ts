@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { QuicklinkModule } from 'ngx-quicklink';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
@@ -16,10 +15,12 @@ import { ContainerComponent } from './components/container';
 
 // Provide shared directives modules.
 import { BrowserEventsModule } from './directives/events';
+import { SharedStoreModule } from './shared-store.module';
+import { SharedFlexLayoutModule } from './shared-flex-layout.module';
 
 @NgModule({
   imports: [
-    //  Provide common module.
+    // Provide common module.
     CommonModule,
 
     // Provide router modules.
@@ -35,17 +36,11 @@ import { BrowserEventsModule } from './directives/events';
     FormsModule,
     ReactiveFormsModule,
 
+    // Provide store shared module.
+    SharedStoreModule,
+
     // Provide flex layout modules.
-    FlexLayoutModule.withConfig({
-      addFlexToParent: true,
-      useColumnBasisZero: true,
-      addOrientationBps: true,
-      disableDefaultBps: false,
-      detectLayoutDisplay: true,
-      disableVendorPrefixes: false,
-      serverLoaded: true,
-      mediaTriggerAutoRestore: true,
-    }),
+    SharedFlexLayoutModule,
 
     BrowserEventsModule,
   ],
@@ -73,8 +68,11 @@ import { BrowserEventsModule } from './directives/events';
     FormsModule,
     ReactiveFormsModule,
 
+    // Provide store shared module.
+    SharedStoreModule,
+
     // Provide flex layout modules.
-    FlexLayoutModule,
+    SharedFlexLayoutModule,
 
     // Provide components and layouts.
     WrapperLayoutComponent,
@@ -87,6 +85,13 @@ import { BrowserEventsModule } from './directives/events';
   schemas: [NO_ERRORS_SCHEMA],
 })
 export class SharedModule {
+  /**
+   * Initialize shared module with root provider.
+   *
+   * @public
+   * @static
+   * @returns {ModuleWithProviders<SharedModule>}
+   */
   public static forRoot(): ModuleWithProviders<SharedModule> {
     return {
       ngModule: SharedModule,

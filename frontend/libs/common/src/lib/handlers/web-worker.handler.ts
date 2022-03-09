@@ -35,12 +35,12 @@ export class WebWorkerHandler {
   /**
    * Handle message errors events inside of `WebWorker` internally.
    *
-   * @private
+   * @protected
    * @template T
    * @param {Subscriber<T>} observer
    * @returns {({ data }: any) => void}
    */
-  private handleMessageErrorEvent<T>(
+  protected handleMessageErrorEvent<T>(
     observer: Subscriber<T>,
   ): ({ data }: MessageEvent<T>) => void {
     const callback = (data: T) => {
@@ -55,12 +55,12 @@ export class WebWorkerHandler {
   /**
    * Handle message events inside of `WebWorker` handler.
    *
-   * @private
+   * @protected
    * @template T
    * @param {Subscriber<T>} observer
    * @returns {({ data }: any) => void}
    */
-  private handleMessageEvent<T>(
+  protected handleMessageEvent<T>(
     observer: Subscriber<T>,
   ): ({ data }: MessageEvent<T>) => void {
     const callback = (data: T) => {
@@ -74,12 +74,12 @@ export class WebWorkerHandler {
   /**
    * Handle all of the `WebWorker` internal errors event.
    *
-   * @private
+   * @protected
    * @template T
    * @param {Subscriber<T>} observer
    * @returns {(error: unknown) => void}
    */
-  private handleErrorEvent<T>(
+  protected handleErrorEvent<T>(
     observer: Subscriber<T>,
   ): (error: ErrorEvent) => void {
     const callback = (error: ErrorEvent) => {
@@ -123,70 +123,81 @@ export class WebWorkerHandler {
   }
 
   /**
+   * Create internal websocket connection.
+   *
+   * @private
+   * @template T
+   * @param {Subscriber<T>} observer
+   */
+  private createConnection<T>(observer: Subscriber<T>) {
+    this.ngZone.runOutsideAngular(() => {
+      const eventListeners: {
+        name: WebWorkerEventTypes;
+        handler: (event: MessageEvent<T> & ErrorEvent) => void;
+      }[] = Array.from(this.eventListenerMap, ([name, value]) => ({
+        name,
+        handler: value.handler(observer),
+      }));
+
+      /**
+       * Register all of the possible events
+       * inside `WebWorker` runtime, this helper will allow us
+       * to get rid of idea to handle same functions in the `removeEventListener`.
+       */
+      const registerEventListeners = () => {
+        for (const { name, handler } of eventListeners) {
+          this.webWorker.addEventListener(
+            name as WebWorkerEventTypes,
+            handler as (event: Event) => void,
+            false,
+          );
+        }
+      };
+
+      /**
+       * Unregister all of the registered event listeners.
+       * It will no longer listening, after service was hooked
+       * by method `ngOnDestroy`.
+       */
+      const unregisterEventListeners = () => {
+        for (const { name, handler } of eventListeners) {
+          this.webWorker.removeEventListener(
+            name as WebWorkerEventTypes,
+            handler as (event: Event) => void,
+            false,
+          );
+        }
+      };
+
+      /**
+       * Whether worker of browser was provided, we will no longer
+       * handle all of the worker messages in the case if `AppBrowserModule` will be destroyed.
+       */
+      const subscription: Subscription = this.ngZone.onStable
+        .pipe(take(1))
+        .subscribe(() => <void>registerEventListeners());
+
+      // Teardown logic inside of component service, we will no
+      // longer listener any browser worker event inside of the module.
+      return () => {
+        subscription.unsubscribe();
+        // Unregister exactly internal worker listeners.
+        <void>unregisterEventListeners();
+        this.webWorker.terminate();
+      };
+    });
+  }
+
+  /**
    * Handle worker connection messaging.
    *
    * @public
    * @template T
    * @returns {*}
    */
-  public handleWorkerConnection<T>(): Observable<T> {
+  public connection$<T>(): Observable<T> {
     return new Observable<T>((observer: Subscriber<T>) => {
-      this.ngZone.runOutsideAngular(() => {
-        const eventListeners: {
-          name: WebWorkerEventTypes;
-          handler: (event: MessageEvent<T> & ErrorEvent) => void;
-        }[] = Array.from(this.eventListenerMap, ([name, value]) => ({
-          name,
-          handler: value.handler(observer),
-        }));
-
-        /**
-         * Register all of the possible events
-         * inside `WebWorker` runtime, this helper will allow us
-         * to get rid of idea to handle same functions in the `removeEventListener`.
-         */
-        const registerEventListeners = () => {
-          for (const { name, handler } of eventListeners) {
-            this.webWorker.addEventListener(
-              name as WebWorkerEventTypes,
-              handler as (event: Event) => void,
-              false,
-            );
-          }
-        };
-
-        /**
-         * Unregister all of the registered event listeners.
-         * It will no longer listening, after service was hooked
-         * by method `ngOnDestroy`.
-         */
-        const unregisterEventListeners = () => {
-          for (const { name, handler } of eventListeners) {
-            this.webWorker.removeEventListener(
-              name as WebWorkerEventTypes,
-              handler as (event: Event) => void,
-              false,
-            );
-          }
-        };
-
-        /**
-         * Whether worker of browser was provided, we will no longer
-         * handle all of the worker messages in the case if `AppBrowserModule` will be destroyed.
-         */
-        const subscription: Subscription = this.ngZone.onStable
-          .pipe(take(1))
-          .subscribe(() => <void>registerEventListeners());
-
-        // Teardown logic inside of component service, we will no
-        // longer listener any browser worker event inside of the module.
-        return () => {
-          subscription.unsubscribe();
-          // Unregister exactly internal worker listeners.
-          <void>unregisterEventListeners();
-          this.webWorker.terminate();
-        };
-      });
+      return this.createConnection(observer);
     });
   }
 }

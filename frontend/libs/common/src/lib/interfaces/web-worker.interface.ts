@@ -9,7 +9,7 @@ import { WebWorkerEventTypes } from '../constants';
  * @typedef {WebWorkerOptions}
  */
 export interface WebWorkerOptions {
-  workerUrl: string;
+  workerUrl: URL;
 }
 
 /**

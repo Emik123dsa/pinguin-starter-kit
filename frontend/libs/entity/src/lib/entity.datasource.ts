@@ -11,6 +11,7 @@ import {
   Observable,
   of,
   shareReplay,
+  Subject,
   Subscription,
   switchMap,
   tap,
@@ -136,6 +137,10 @@ export class EntityDataSource<
         tap(() => this.loadingSubject.next(true)),
         switchMap(() => entityService$),
       ),
+      {
+        connector: () => new Subject<readonly E[]>(),
+        resetOnDisconnect: true,
+      },
     );
 
     // Subscribe to loadEntities$ service to handle multi-casting publisher.

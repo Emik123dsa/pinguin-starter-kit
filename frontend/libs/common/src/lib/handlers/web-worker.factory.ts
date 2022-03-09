@@ -24,12 +24,10 @@ export class WebWorkerFactory {
    * @returns {(Worker | null)}
    */
   public createWorker(
-    scriptUrl: string,
+    scriptUrl: URL,
     options?: WorkerOptions,
   ): Optional<Worker> {
-    return this.isWorkerAvailable()
-      ? new Worker(this.getWorkerUrl(scriptUrl), options)
-      : null;
+    return this.isWorkerAvailable() ? new Worker(scriptUrl, options) : null;
   }
 
   /**
@@ -44,17 +42,5 @@ export class WebWorkerFactory {
       typeof Worker !== 'undefined' &&
       Worker.prototype !== undefined
     );
-  }
-
-  /**
-   * Get worker url by `import.meta.url` path,
-   * otherwise factory can't load this worker locally.
-   *
-   * @private
-   * @param {string} scriptUrl
-   * @returns {*}
-   */
-  private getWorkerUrl(scriptUrl: string): URL {
-    return new URL(scriptUrl, import.meta.url);
   }
 }

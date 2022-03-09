@@ -1,2 +1,3 @@
 export * from './window.constants';
-export * from './web-worker-event.types';
+export * from './network-status.constants';
+export * from './web-worker-event.constants';

@@ -8,19 +8,14 @@ import {
 } from '@angular/core';
 import {
   concat,
-  concatMap,
-  Connectable,
-  connectable,
-  finalize,
+  distinctUntilChanged,
   first,
   interval,
   NEVER,
   Observable,
   share,
   Subject,
-  Subscription,
   switchMap,
-  switchMapTo,
   tap,
 } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -73,9 +68,9 @@ export class AppBrowserModule implements DoBootstrap {
     // HINT: Currently implemented only with console.time method.
     console.time('Browser application is stable. Elapsed');
 
-    this.applicationIsStable$(applicationRef, () => {
+    this.handleOnceApplicationIsStable(applicationRef, () => {
       console.timeEnd('Browser application is stable. Elapsed');
-    }).subscribe();
+    });
   }
 
   /**
@@ -85,24 +80,34 @@ export class AppBrowserModule implements DoBootstrap {
    * @param {ApplicationRef} applicationRef
    * @returns {*}
    */
-  private applicationIsStable$(
+  private handleOnceApplicationIsStable(
     applicationRef: ApplicationRef,
     callback: () => void,
-  ): Observable<number | boolean> {
-    const pollingInterval$: Connectable<number> = connectable(
-      interval(this.stablePollingInterval),
-    );
-    const isStable$: Observable<boolean> = applicationRef.isStable.pipe(
-      first((stable) => stable),
-      tap(callback),
+  ): void {
+    const pollingInterval$: Observable<number> = interval(
+      this.stablePollingInterval,
     );
 
-    return concat(isStable$, pollingInterval$, NEVER).pipe(
-      tap(() => pollingInterval$.connect()),
+    const isStable$: Observable<boolean | number> =
+      applicationRef.isStable.pipe(
+        first((stable) => stable),
+        tap(callback),
+        switchMap(() => pollingInterval$),
+      );
+
+    const onceIsStable$: Observable<number | boolean> = concat(
+      isStable$,
+      NEVER,
+    ).pipe(
       share({
         connector: () => new Subject<number | boolean>(),
         resetOnError: true,
+        resetOnComplete: false,
+        resetOnRefCountZero: false,
       }),
+      distinctUntilChanged(),
     );
+
+    onceIsStable$.subscribe();
   }
 }

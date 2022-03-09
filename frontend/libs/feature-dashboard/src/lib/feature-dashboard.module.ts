@@ -33,6 +33,13 @@ import { OverviewContainerComponent } from './containers/overview-container/over
   providers: [],
 })
 export class FeatureDashboardModule {
+  /**
+   * Creates an instance of FeatureDashboardModule.
+   *
+   * @constructor
+   * @public
+   * @param {ActivatedRoute} route
+   */
   public constructor(private readonly route: ActivatedRoute) {
     // Constructs dashboard client module.
     // TODO: should be implemented store$ initialization in constructor?
