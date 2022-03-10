@@ -6,14 +6,17 @@ import {
   Optional,
   SkipSelf,
 } from '@angular/core';
-import { StringUtils } from '@pinguin/utils';
 import { CommonModule } from '@angular/common';
+
+import { StringUtils } from '@pinguin/utils';
+
 import { CommonStoreModule } from './store';
 import {
   WINDOW_PROVIDERS,
   WEB_WORKER_PROVIDERS,
   COMMON_MODULE_PROVIDERS,
 } from './providers';
+
 import { ClientCommonHandler } from './handlers';
 
 @NgModule({
@@ -34,7 +37,7 @@ export class ClientCommonModule {
   public constructor(
     // Common handler is initialized as Module Run Block.
     @Self()
-    private readonly commonHandler: ClientCommonHandler,
+    private readonly clientCommonHandler: ClientCommonHandler,
     @SkipSelf()
     @Optional()
     private readonly internalModule: ClientCommonModule,

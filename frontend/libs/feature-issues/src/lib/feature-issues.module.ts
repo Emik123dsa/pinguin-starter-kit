@@ -9,7 +9,7 @@ import { UiButtonModule } from '@pinguin/ui-button';
 import { UiInputModule } from '@pinguin/ui-input';
 
 // Provide locale components.
-import { RoadmapComponent } from './components/roadmap';
+import { RoadmapTableComponent } from './components/roadmap-table';
 import { CardFormComponent } from './components/card-form';
 import { CardListComponent } from './components/card-list';
 import { CardDialogComponent } from './components/card-dialog';
@@ -47,7 +47,7 @@ import { OverlayModule } from '@pinguin/overlay';
     RoadmapContainerComponent,
 
     // Provide components of feature.
-    RoadmapComponent,
+    RoadmapTableComponent,
     CardFormComponent,
     CardListComponent,
     CardDialogComponent,

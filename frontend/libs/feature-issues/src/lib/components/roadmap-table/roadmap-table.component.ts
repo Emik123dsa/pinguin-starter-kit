@@ -5,26 +5,20 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { Dictionary } from '@ngrx/entity';
-import {
-  IssuesFieldEntities,
-  IssuesFieldEntity,
-  IssuesLabelEntities,
-  IssuesLabelEntity,
-} from '@pinguin/api';
+import { IssuesFieldEntities, IssuesLabelEntities } from '@pinguin/api';
 
 import { IssuesRoadmapFacade } from '../../services/facades';
 
 @Component({
-  selector: 'pinguin-issues-roadmap',
-  exportAs: 'pinguinIssuesRoadmap',
-  templateUrl: './roadmap.component.html',
-  styleUrls: ['./roadmap.component.scss'],
-  host: { 'class': 'pinguin-issues-roadmap' },
+  selector: 'pinguin-issues-roadmap-table',
+  exportAs: 'pinguinIssuesRoadmapTable',
+  templateUrl: './roadmap-table.component.html',
+  styleUrls: ['./roadmap-table.component.scss'],
+  host: { 'class': 'pinguin-issues-roadmap-table' },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RoadmapComponent implements OnInit {
+export class RoadmapTableComponent implements OnInit {
   /**
    * Issues labels from the `Store`.
    *

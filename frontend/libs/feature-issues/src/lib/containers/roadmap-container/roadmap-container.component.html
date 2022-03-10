@@ -1,4 +1,4 @@
-<section id="issues-roadmap-container" role="contentinfo" class="roadmap-page">
+<section role="group" class="issues-roadmap-container">
   <pinguin-layout-wrapper class="issues-roadmap-content-wrapper">
     <ng-container
       *ngIf="
@@ -13,7 +13,7 @@
 </section>
 
 <ng-template #issuesFieldsTemplate>
-  <pinguin-container class="roadmap-container">
+  <pinguin-container>
     <ng-container
       *ngrxLet="
         issuesFieldsValidated$;
@@ -23,9 +23,9 @@
       "
     >
       <ng-container *ngIf="issuesFieldsValidated">
-        <pinguin-issues-roadmap
+        <pinguin-issues-roadmap-table
           *ngIf="!issuesFieldsError && !issuesFieldsComplete"
-        ></pinguin-issues-roadmap>
+        ></pinguin-issues-roadmap-table>
       </ng-container>
 
       <!-- Whether any issues fields error found in template. -->

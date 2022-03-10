@@ -36,7 +36,7 @@ import { APP_BASE_PROVIDERS } from './app-base.providers';
     ClientConfigModule.forRoot(),
 
     // Provide common client module.
-    ClientCommonModule.forRoot(),
+    // ClientCommonModule.forRoot(),
 
     // Provide shared client modules.
     SharedModule.forRoot(),
