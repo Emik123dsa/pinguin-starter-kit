@@ -4,8 +4,8 @@ import { ISSUES_MODULE_INITIALIZER } from '@pinguin/core';
 import { StringUtils } from '@pinguin/utils';
 
 // Provide containers pages.
-import { DashboardLayoutComponent } from './containers/dashboard-layout';
-import { OverviewContainerComponent } from './containers/overview-container/overview-container.component';
+import { DashboardLayoutComponent } from './layouts/dashboard-layout';
+import { OverviewContainerComponent } from './containers/overview-container';
 
 const routes: Routes = [
   {

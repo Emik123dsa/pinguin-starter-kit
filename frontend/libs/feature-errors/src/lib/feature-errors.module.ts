@@ -4,11 +4,11 @@ import { SharedModule } from '@pinguin/shared';
 
 import { ErrorsRoutingModule } from './feature-errors-routing.module';
 
-import { ErrorsLayoutComponent } from './containers/errors-layout';
-import { NotFoundPageComponent } from './containers/not-found-page';
+import { ErrorsLayoutComponent } from './layouts/errors-layout';
+import { NotFoundContainerComponent } from './containers/not-found-container';
 
 @NgModule({
-  declarations: [ErrorsLayoutComponent, NotFoundPageComponent],
+  declarations: [ErrorsLayoutComponent, NotFoundContainerComponent],
   imports: [SharedModule.forRoot(), ErrorsRoutingModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

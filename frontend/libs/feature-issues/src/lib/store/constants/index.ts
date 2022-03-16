@@ -1,1 +1,1 @@
-export * from './roadmap-container-action.types';
+export * from './issues-roadmap-action.types';

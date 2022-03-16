@@ -1,1 +1,1 @@
-export * from './issues-card-list.component';
+export * from './card-list.component';

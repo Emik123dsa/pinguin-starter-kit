@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RoadmapContainerComponent } from './containers/roadmap-container';
+import { IssuesContainerComponent } from '@pinguin/feature-roadmap';
 
 const routes: Routes = [
   {

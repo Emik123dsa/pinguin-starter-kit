@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import {
   IssuesService,
   ApiGatewayService,
-  IssuesFieldEntity,
-  IssuesLabelEntities,
-  IssuesLabelEntity,
-  IssuesFieldEntities,
+  IssueFieldEntity,
+  IssueLabelEntities,
+  IssueLabelEntity,
+  IssueFieldEntities,
 } from '@pinguin/api';
 
 import { Observable, of } from 'rxjs';
@@ -30,14 +30,14 @@ export class RxIssuesService extends IssuesService {
    *
    * @public
    * @abstract
-   * @returns {Array<IssuesLabelEntity>}
+   * @returns {Array<IssueLabelEntity>}
    */
-  public override findAllLabels(): Observable<IssuesLabelEntities> {
+  public override findAllLabels(): Observable<IssueLabelEntities> {
     return of(
-      new Array<IssuesLabelEntity>(
-        new IssuesLabelEntity(1, 'Frontend'),
-        new IssuesLabelEntity(2, 'Security'),
-        new IssuesLabelEntity(3, 'Backend'),
+      new Array<IssueLabelEntity>(
+        new IssueLabelEntity(1, 'Frontend'),
+        new IssueLabelEntity(2, 'Security'),
+        new IssueLabelEntity(3, 'Backend'),
       ),
     );
   }
@@ -47,12 +47,12 @@ export class RxIssuesService extends IssuesService {
    *
    * @public
    * @abstract
-   * @returns {Array<IssuesLabelEntity>}
+   * @returns {Array<IssueLabelEntity>}
    */
-  public override findAllFields(): Observable<IssuesFieldEntities> {
+  public override findAllFields(): Observable<IssueFieldEntities> {
     return of(
-      new Array<IssuesFieldEntity>(
-        new IssuesFieldEntity(
+      new Array<IssueFieldEntity>(
+        new IssueFieldEntity(
           1,
           'Quick try on DB',
           'One morning, when Gregor Samsa woke from troubled dreams.',
@@ -60,7 +60,7 @@ export class RxIssuesService extends IssuesService {
           1641164400,
           1641164400,
         ),
-        new IssuesFieldEntity(
+        new IssueFieldEntity(
           2,
           'Quick try on DB',
           'One morning, when Gregor Samsa woke from troubled dreams.',

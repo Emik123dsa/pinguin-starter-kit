@@ -9,15 +9,10 @@ import { UiButtonModule } from '@pinguin/ui-button';
 import { UiInputModule } from '@pinguin/ui-input';
 
 // Provide locale components.
-import { RoadmapTableComponent } from './components/roadmap-table';
 import { CardFormComponent } from './components/card-form';
 import { CardListComponent } from './components/card-list';
 import { CardDialogComponent } from './components/card-dialog';
-import { FieldsTableComponent } from './components/fields-table';
-import { LabelsTableComponent } from './components/labels-table';
 
-// Provide routing components.
-import { RoadmapContainerComponent } from './containers/roadmap-container';
 import { FeatureIssuesRoutingModule } from './feature-issues-routing.module';
 
 // Feature store module.
@@ -43,16 +38,10 @@ import { OverlayModule } from '@pinguin/overlay';
     UiButtonModule,
   ],
   declarations: [
-    // Provide container components.
-    RoadmapContainerComponent,
-
     // Provide components of feature.
-    RoadmapTableComponent,
     CardFormComponent,
     CardListComponent,
     CardDialogComponent,
-    FieldsTableComponent,
-    LabelsTableComponent,
   ],
   providers: [],
 })

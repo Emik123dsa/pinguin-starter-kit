@@ -12,6 +12,7 @@
     "feature-errors": "libs/feature-errors",
     "feature-home": "libs/feature-home",
     "feature-issues": "libs/feature-issues",
+    "feature-roadmap": "libs/feature-roadmap",
     "forms": "libs/forms",
     "grpc-web": "libs/grpc-web",
     "jira-client": "apps/jira-client",

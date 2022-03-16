@@ -1,32 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ErrorsLayoutComponent } from './containers/errors-layout';
-import { NotFoundPageComponent } from './containers/not-found-page';
+import { StringUtils } from '@pinguin/utils';
+
+// Provide any layouts and container of `feature-errors`.
+import { ErrorsLayoutComponent } from './layouts/errors-layout';
+import { NotFoundContainerComponent } from './containers/not-found-container';
 
 const routes: Routes = [
   {
-    path: '',
+    path: StringUtils.EMPTY,
     component: ErrorsLayoutComponent,
-    data: {
-      title: '404',
-      depth: 1,
-      roles: null,
-    },
+    data: { title: '404', depth: 1, roles: null },
     children: [
       {
         path: '404',
-        component: NotFoundPageComponent,
-        data: {
-          title: '404 | Not Found',
-          depth: 3,
-          animation: 'NotFoundPage',
-        },
+        component: NotFoundContainerComponent,
+        data: { title: 'Not Found', depth: 3 },
       },
-      {
-        path: '**',
-        pathMatch: 'full',
-        redirectTo: '404',
-      },
+      { path: '**', pathMatch: 'full', redirectTo: '404' },
     ],
   },
 ];

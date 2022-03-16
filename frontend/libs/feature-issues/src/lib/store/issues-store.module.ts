@@ -1,13 +1,13 @@
 import { NgModule, Type } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 
-import { RoadmapContainerEffects } from './effects';
+import { IssuesRoadmapEffects } from './effects';
 
 @NgModule({
   imports: [
-    EffectsModule.forFeature(new Array<Type<unknown>>(RoadmapContainerEffects)),
+    EffectsModule.forFeature(new Array<Type<unknown>>(IssuesRoadmapEffects)),
   ],
   exports: [EffectsModule],
-  providers: [RoadmapContainerEffects],
+  providers: [IssuesRoadmapEffects],
 })
 export class IssuesStoreModule {}

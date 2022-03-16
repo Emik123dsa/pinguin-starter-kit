@@ -1,12 +1,12 @@
 import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
-import { IssuesFieldEntity } from '@pinguin/api';
+import { IssueFieldEntity } from '@pinguin/api';
 
 import { IssuesFieldsEntityState } from '../models';
 
-export const issuesFieldsEntityAdapter: EntityAdapter<IssuesFieldEntity> =
-  createEntityAdapter<IssuesFieldEntity>({
-    selectId: (entity: IssuesFieldEntity) => entity.getId(),
-    sortComparer: (entity: IssuesFieldEntity) => entity.getId(),
+export const issuesFieldsEntityAdapter: EntityAdapter<IssueFieldEntity> =
+  createEntityAdapter<IssueFieldEntity>({
+    selectId: (entity: IssueFieldEntity) => entity.getId(),
+    sortComparer: (entity: IssueFieldEntity) => entity.getId(),
   });
 
 export const initialIssuesFieldsEntityState: IssuesFieldsEntityState =

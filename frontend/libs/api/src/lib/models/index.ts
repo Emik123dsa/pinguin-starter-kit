@@ -1,2 +1,2 @@
-export * from './issues-fields.entity';
-export * from './issues-labels.entity';
+export * from './issue-field.entity';
+export * from './issue-label.entity';

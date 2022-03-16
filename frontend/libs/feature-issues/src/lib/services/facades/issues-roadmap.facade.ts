@@ -3,20 +3,20 @@ import { Store } from '@ngrx/store';
 import { Dictionary } from '@ngrx/entity';
 
 import {
-  IssuesFieldEntities,
-  IssuesFieldEntity,
-  IssuesLabelEntities,
-  IssuesLabelEntity,
+  IssueFieldEntities,
+  IssueFieldEntity,
+  IssueLabelEntities,
+  IssueLabelEntity,
 } from '@pinguin/api';
 import {
   CoreEntityState,
   selectAllIssuesFields,
   selectAllIssuesLabels,
-  selectIssuesFieldEntities,
+  selectIssueFieldEntities,
   selectIssuesFieldsLoaded,
   selectIssuesFieldsLoading,
   selectIssuesFieldTotal,
-  selectIssuesLabelEntities,
+  selectIssueLabelEntities,
 } from '@pinguin/core';
 import { Observable } from 'rxjs';
 
@@ -60,37 +60,37 @@ export class IssuesRoadmapFacade {
    * Issues label entities from the `Store` adapter.
    *
    * @public
-   * @type {Observable<Dictionary<IssuesLabelEntity>>}
+   * @type {Observable<Dictionary<IssueLabelEntity>>}
    */
-  public issuesLabelEntities$: Observable<Dictionary<IssuesLabelEntity>> =
-    this.store.select<Dictionary<IssuesLabelEntity>>(selectIssuesLabelEntities);
+  public issuesLabelEntities$: Observable<Dictionary<IssueLabelEntity>> =
+    this.store.select<Dictionary<IssueLabelEntity>>(selectIssueLabelEntities);
 
   /**
    * Issues labels from the `Store` adapter.
    *
    * @public
-   * @type {Observable<IssuesLabelEntities>}
+   * @type {Observable<IssueLabelEntities>}
    */
-  public allIssuesLabels$: Observable<IssuesLabelEntities> =
-    this.store.select<IssuesLabelEntities>(selectAllIssuesLabels);
+  public allIssuesLabels$: Observable<IssueLabelEntities> =
+    this.store.select<IssueLabelEntities>(selectAllIssuesLabels);
 
   /**
    * Issues field entities from the `Store` adapter.
    *
    * @public
-   * @type {Observable<Dictionary<IssuesFieldEntity>>}
+   * @type {Observable<Dictionary<IssueFieldEntity>>}
    */
-  public issuesFieldEntities$: Observable<Dictionary<IssuesFieldEntity>> =
-    this.store.select<Dictionary<IssuesFieldEntity>>(selectIssuesFieldEntities);
+  public issuesFieldEntities$: Observable<Dictionary<IssueFieldEntity>> =
+    this.store.select<Dictionary<IssueFieldEntity>>(selectIssueFieldEntities);
 
   /**
    * Issues fields from the `Store` adapter.
    *
    * @public
-   * @type {Observable<IssuesLabelEntities>}
+   * @type {Observable<IssueLabelEntities>}
    */
-  public allIssuesFields$: Observable<IssuesFieldEntities> =
-    this.store.select<IssuesFieldEntities>(selectAllIssuesFields);
+  public allIssuesFields$: Observable<IssueFieldEntities> =
+    this.store.select<IssueFieldEntities>(selectAllIssuesFields);
 
   /**
    * Creates an instance of IssuesRoadmapFacade.

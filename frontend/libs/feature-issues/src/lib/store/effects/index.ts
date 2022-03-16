@@ -1,1 +1,1 @@
-export * from './roadmap-container.effects';
+export * from './issues-roadmap.effects';
