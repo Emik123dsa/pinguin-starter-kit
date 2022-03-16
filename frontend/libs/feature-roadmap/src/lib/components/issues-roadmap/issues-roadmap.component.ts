@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,13 +6,16 @@ import {
 } from '@angular/core';
 import { IssueFieldEntities, IssueLabelEntities } from '@pinguin/api';
 import { IssuesRoadmapFacade } from '@pinguin/feature-issues';
+import { Observable } from 'rxjs';
+import { ISSUES_ROADMAP_FACADE_PROVIDER } from '../../providers';
 
 @Component({
   selector: 'pinguin-issues-roadmap',
-  exportAs: 'pinguinIssuesRoadmapTable',
+  exportAs: 'pinguinIssuesRoadmap',
   templateUrl: './issues-roadmap.component.html',
   styleUrls: ['./issues-roadmap.component.scss'],
   host: { 'class': 'pinguin-issues-roadmap' },
+  viewProviders: [ISSUES_ROADMAP_FACADE_PROVIDER],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -34,17 +36,10 @@ export class IssuesRoadmapComponent implements OnInit {
    */
   public allIssuesFields$!: Observable<IssueFieldEntities>;
 
-  /**
-   * Creates an instance of IssuesRoadmapComponent.
-   *
-   * @constructor
-   * @public
-   * @param {IssuesRoadmapFacade} facade
-   */
   public constructor(private readonly facade: IssuesRoadmapFacade) {}
 
   /**
-   * Initialize issues fields entities.
+   * Initialize facade entities of `roadmap`.
    *
    * @public
    */

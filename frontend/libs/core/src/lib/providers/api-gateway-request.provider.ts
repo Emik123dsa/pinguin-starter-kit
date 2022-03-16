@@ -8,7 +8,7 @@ import {
 
 import { RxApiGatewayService } from '../services';
 import { ApiGatewayRequestInterceptor } from '../interceptors';
-import { RxIssuesService } from '../services/rx-issues.service';
+import { RxIssueService } from '../services/rx-issue.service';
 
 // ClassProvider to constructs an api gateway request interceptor.
 export const API_GATEWAY_REQUEST_PROVIDER: ClassProvider = {
@@ -26,7 +26,7 @@ export const API_GATEWAY_SERVICE_PROVIDER: ClassProvider = {
 
 export const ISSUES_SERVICE_PROVIDER: ClassProvider = {
   provide: IssuesService,
-  useClass: RxIssuesService,
+  useClass: RxIssueService,
   multi: false,
 };
 

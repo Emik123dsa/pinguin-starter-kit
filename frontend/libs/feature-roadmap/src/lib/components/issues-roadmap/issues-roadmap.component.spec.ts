@@ -8,8 +8,9 @@ describe('IssuesRoadmapComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [IssuesRoadmapComponent],
-    }).compileComponents();
+      declarations: [ IssuesRoadmapComponent ]
+    })
+    .compileComponents();
   });
 
   beforeEach(() => {

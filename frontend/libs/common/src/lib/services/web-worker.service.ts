@@ -90,7 +90,7 @@ export class WebWorkerService implements OnDestroy {
    * @param {string} message
    */
   public sendMessage(message: string): void {
-    <void>this.webWorkerHandler.dispatchMessage(message);
+    <void>this.webWorkerHandler.postMessage(message);
   }
 
   /**

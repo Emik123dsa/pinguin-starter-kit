@@ -66,9 +66,7 @@ export class WebWorkerHandler {
     const callback = (data: T) => {
       observer.next(data);
     };
-    return ({ data }: MessageEvent<T>) => {
-      this.ngZone.run(() => callback(data));
-    };
+    return ({ data }: MessageEvent<T>) => this.ngZone.run(() => callback(data));
   }
 
   /**
@@ -87,9 +85,7 @@ export class WebWorkerHandler {
       observer.complete();
     };
 
-    return (error: ErrorEvent) => {
-      this.ngZone.run(() => callback(error));
-    };
+    return (error: ErrorEvent) => this.ngZone.run(() => callback(error));
   }
 
   /**
@@ -118,7 +114,7 @@ export class WebWorkerHandler {
    * @param {T} message
    * @param {?StructuredSerializeOptions} [options]
    */
-  public dispatchMessage<T>(message: T): void {
+  public postMessage<T>(message: T): void {
     this.webWorker.postMessage(message);
   }
 

@@ -4,7 +4,7 @@ import { SharedModule } from '@pinguin/shared';
 
 import { ErrorsRoutingModule } from './feature-errors-routing.module';
 
-import { ErrorsLayoutComponent } from './layouts/errors-layout';
+import { ErrorsLayoutComponent } from './layout/errors-layout';
 import { NotFoundContainerComponent } from './containers/not-found-container';
 
 @NgModule({

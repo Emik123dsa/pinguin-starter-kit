@@ -6,10 +6,8 @@ import {
   Optional,
   SkipSelf,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { StringUtils } from '@pinguin/utils';
-
+import { CommonModule } from '@angular/common';
 import { CommonStoreModule } from './store';
 import {
   WINDOW_PROVIDERS,

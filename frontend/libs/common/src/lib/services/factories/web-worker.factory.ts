@@ -19,15 +19,15 @@ export class WebWorkerFactory {
    * is available only in browser runtime environment.
    *
    * @public
-   * @param {string} scriptUrl
+   * @param {string} scriptURL
    * @param {WorkerOptions} [options={}]
    * @returns {(Worker | null)}
    */
   public createWorker(
-    scriptUrl: URL,
+    scriptURL: URL,
     options?: WorkerOptions,
   ): Optional<Worker> {
-    return this.isWorkerAvailable() ? new Worker(scriptUrl, options) : null;
+    return this.isWorkerAvailable() ? new Worker(scriptURL, options) : null;
   }
 
   /**

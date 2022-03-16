@@ -1,35 +1,25 @@
 import {
   ChangeDetectionStrategy,
-  ClassProvider,
   Component,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
 import { map, merge, Observable } from 'rxjs';
-import { IssuesRoadmapFacade } from '@pinguin/feature-issues';
 
-/**
- * Issues roadmap facade provided in view.
- *
- * @type {ClassProvider}
- */
-const ISSUES_ROADMAP_FACADE_PROVIDER: ClassProvider = {
-  multi: false,
-  provide: IssuesRoadmapFacade,
-  useClass: IssuesRoadmapFacade,
-};
+import { IssuesRoadmapFacade } from '@pinguin/feature-issues';
+import { ISSUES_ROADMAP_FACADE_PROVIDER } from '../../providers';
 
 @Component({
   selector: 'pinguin-issues-container',
   exportAs: 'pinguinIssuesContainer',
-  templateUrl: './issues-roadmap-container.component.html',
-  styleUrls: ['./issues-roadmap-container.component.scss'],
-  host: { 'class': 'pinguin-issues-roadmap-container' },
+  templateUrl: './issues-container.component.html',
+  styleUrls: ['./issues-container.component.scss'],
+  host: { 'class': 'pinguin-issues-container' },
   viewProviders: [ISSUES_ROADMAP_FACADE_PROVIDER],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IssuesRoadmapContainerComponent implements OnInit {
+export class IssuesContainerComponent implements OnInit {
   /**
    * Issues field total from the `Store` adapter.
    *

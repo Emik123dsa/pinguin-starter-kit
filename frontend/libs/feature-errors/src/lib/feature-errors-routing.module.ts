@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { StringUtils } from '@pinguin/utils';
 
 // Provide any layouts and container of `feature-errors`.
-import { ErrorsLayoutComponent } from './layouts/errors-layout';
+import { ErrorsLayoutComponent } from './layout/errors-layout';
 import { NotFoundContainerComponent } from './containers/not-found-container';
 
 const routes: Routes = [

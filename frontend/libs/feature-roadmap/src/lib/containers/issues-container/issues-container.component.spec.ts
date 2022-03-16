@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IssuesContainerComponent } from './issues-roadmap-container.component';
+import { IssuesContainerComponent } from './issues-container.component';
 
 describe('IssuesContainerComponent', () => {
   let component: IssuesContainerComponent;

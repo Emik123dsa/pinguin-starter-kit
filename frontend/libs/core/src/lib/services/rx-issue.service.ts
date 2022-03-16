@@ -13,9 +13,9 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'platform',
 })
-export class RxIssuesService extends IssuesService {
+export class RxIssueService extends IssuesService {
   /**
-   * Creates an instance of RxIssuesService.
+   * Creates an instance of RxIssueService.
    *
    * @constructor
    * @public
