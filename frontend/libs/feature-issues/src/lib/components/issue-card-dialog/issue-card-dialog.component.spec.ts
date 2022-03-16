@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IssuesCardFormComponent } from './card-form.component';
+import { IssueCardDialogComponent } from './issue-card-dialog.component';
 
-describe('IssuesCardFormComponent', () => {
-  let component: IssuesCardFormComponent;
-  let fixture: ComponentFixture<IssuesCardFormComponent>;
+describe('IssueCardDialogComponent', () => {
+  let component: IssueCardDialogComponent;
+  let fixture: ComponentFixture<IssueCardDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [IssuesCardFormComponent],
+      declarations: [IssueCardDialogComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IssuesCardFormComponent);
+    fixture = TestBed.createComponent(IssueCardDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

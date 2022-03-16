@@ -1,5 +1,5 @@
 import { ClassProvider } from '@angular/core';
-import { IssuesRoadmapFacade } from '@pinguin/feature-issues';
+import { IssuesRoadmapFacade } from '../services';
 
 /**
  * Issues roadmap facade provided in view.

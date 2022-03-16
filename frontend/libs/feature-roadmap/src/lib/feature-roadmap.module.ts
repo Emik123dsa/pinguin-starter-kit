@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
+
 import { SharedModule } from '@pinguin/shared';
-import { IssuesStoreModule } from '@pinguin/feature-issues';
-import { IssuesContainerComponent } from './containers/issues-container';
+
+// Provide internal components for `feature-roadmap`.
 import { IssuesFieldsTableComponent } from './components/issues-fields-table';
 import { IssuesLabelsTableComponent } from './components/issues-labels-table';
 import { IssuesRoadmapComponent } from './components/issues-roadmap/issues-roadmap.component';
 
 @NgModule({
-  imports: [SharedModule.forRoot(), IssuesStoreModule],
+  imports: [SharedModule.forRoot()],
   declarations: [
-    IssuesContainerComponent,
+    IssuesRoadmapComponent,
     IssuesFieldsTableComponent,
     IssuesLabelsTableComponent,
-    IssuesRoadmapComponent,
   ],
   exports: [
-    IssuesContainerComponent,
+    IssuesRoadmapComponent,
     IssuesFieldsTableComponent,
     IssuesLabelsTableComponent,
   ],

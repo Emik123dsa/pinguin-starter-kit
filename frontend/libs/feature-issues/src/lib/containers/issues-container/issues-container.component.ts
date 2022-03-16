@@ -6,8 +6,10 @@ import {
 } from '@angular/core';
 import { map, merge, Observable } from 'rxjs';
 
-import { IssuesRoadmapFacade } from '@pinguin/feature-issues';
-import { ISSUES_ROADMAP_FACADE_PROVIDER } from '../../providers';
+import {
+  IssuesRoadmapFacade,
+  ISSUES_ROADMAP_FACADE_PROVIDER,
+} from '@pinguin/feature-roadmap';
 
 @Component({
   selector: 'pinguin-issues-container',

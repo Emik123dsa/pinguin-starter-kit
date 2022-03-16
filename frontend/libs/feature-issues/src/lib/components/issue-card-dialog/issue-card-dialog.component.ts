@@ -5,12 +5,12 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'pinguin-issues-card-dialog',
-  exportAs: 'pinguinIssuesCardDialog',
-  host: { 'class': 'pinguin-issues-card-dialog' },
+  selector: 'pinguin-issue-card-dialog',
+  exportAs: 'pinguinIssueCardDialog',
+  host: { 'class': 'pinguin-issue-card-dialog' },
   templateUrl: './card-dialog.component.html',
   styleUrls: ['./card-dialog.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardDialogComponent {}
+export class IssueCardDialogComponent {}

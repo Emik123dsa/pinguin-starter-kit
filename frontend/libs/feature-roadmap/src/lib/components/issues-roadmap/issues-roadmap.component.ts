@@ -1,12 +1,14 @@
+import { Observable } from 'rxjs';
 import {
   ChangeDetectionStrategy,
   Component,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
+
 import { IssueFieldEntities, IssueLabelEntities } from '@pinguin/api';
-import { IssuesRoadmapFacade } from '@pinguin/feature-issues';
-import { Observable } from 'rxjs';
+
+import { IssuesRoadmapFacade } from '../../services';
 import { ISSUES_ROADMAP_FACADE_PROVIDER } from '../../providers';
 
 @Component({
