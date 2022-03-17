@@ -21,7 +21,17 @@
           "apps/jira-client/src/assets",
           "apps/jira-client/src/manifest.webmanifest"
         ],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "apps/jira-client/src/assets/stylesheets"
+          ]
+        },
         "styles": [
+          {
+            "input": "apps/jira-client/src/modules/global/tailwindcss/tailwindcss-module.scss",
+            "inject": true,
+            "bundleName": "tailwindcss-module"
+          },
           "apps/jira-client/src/styles.scss"
         ],
         "scripts": [],
@@ -83,16 +93,16 @@
       "configurations": {
         "production": {
           "browserTarget": "jira-client:build:production",
-          "proxyConfig": "apps/jira-client/proxy.conf.json"
+          "proxyConfig": "apps/jira-client/src/proxy.conf.json"
         },
         "development": {
           "browserTarget": "jira-client:build:development",
-          "proxyConfig": "apps/jira-client/proxy.conf.json"
+          "proxyConfig": "apps/jira-client/src/proxy.conf.json"
         },
         "hmr": {
           "browserTarget": "jira-client:build:hmr",
           "hmr": true,
-          "proxyConfig": "apps/jira-client/proxy.conf.json"
+          "proxyConfig": "apps/jira-client/src/proxy.conf.json"
         },
         "mock": {
           "browserTarget": "jira-client:build:mock"

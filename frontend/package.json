@@ -59,6 +59,8 @@
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/platform-server": "^13.2.2",
+    "@angular/platform-webworker": "^10.2.3",
+    "@angular/platform-webworker-dynamic": "^10.2.3",
     "@angular/router": "~13.1.0",
     "@angular/service-worker": "^13.2.2",
     "@ngrx/component": "^13.0.2",

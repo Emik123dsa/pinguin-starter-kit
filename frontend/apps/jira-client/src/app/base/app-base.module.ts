@@ -3,7 +3,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { CoreModule } from '@pinguin/core';
-import { ClientCommonModule } from '@pinguin/common';
 import { SharedModule } from '@pinguin/shared';
 import { RuntimeEnvironmentModule } from '@pinguin/environments';
 import { ClientConfigModule } from '@pinguin/config';

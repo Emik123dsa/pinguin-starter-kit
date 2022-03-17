@@ -1,0 +1,14 @@
+@import 'tailwindcss/base';
+@layer base {
+  // Override base global styles.
+}
+
+@import 'tailwindcss/components';
+@layer components {
+  // Override components global styles.
+}
+
+@import 'tailwindcss/utilities';
+@layer utilities {
+  // Override utilities global styles.
+}

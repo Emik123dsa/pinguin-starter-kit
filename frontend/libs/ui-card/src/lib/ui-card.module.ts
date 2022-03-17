@@ -5,9 +5,9 @@ import { CommonModule } from '@angular/common';
 import { UiCardComponent } from './ui-card.component';
 
 // Provide ui-card components.
-import { UiCardHeaderComponent } from './components/card-header';
-import { UiCardContentComponent } from './components/card-content';
-import { UiCardFooterComponent } from './components/card-footer';
+import { UiCardHeaderComponent } from './card-header';
+import { UiCardContentComponent } from './card-content';
+import { UiCardFooterComponent } from './card-footer';
 
 @NgModule({
   imports: [CommonModule],
@@ -18,7 +18,6 @@ import { UiCardFooterComponent } from './components/card-footer';
     UiCardFooterComponent,
   ],
   exports: [
-    CommonModule,
     UiCardComponent,
     UiCardHeaderComponent,
     UiCardContentComponent,

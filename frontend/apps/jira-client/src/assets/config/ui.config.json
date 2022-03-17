@@ -1,9 +1,4 @@
 {
-  "prefers-theme-color": "white",
-  "prefers-color-scheme": "light",
-  "themes": {
-    "default": "",
-    "dark": "/assets/config/dark.config.json",
-    "light": "/assets/config/light.config.json"
-  }
+  "theme-color": "black",
+  "prefers-color-scheme": "dark"
 }

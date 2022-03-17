@@ -1,4 +1,8 @@
-import { ModuleWithProviders, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import {
+  ModuleWithProviders,
+  NgModule,
+  CUSTOM_ELEMENTS_SCHEMA,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { InMemoryRestApiDataService } from './in-memory-api-data.service';
@@ -20,7 +24,7 @@ import { inMemoryRestApiOptionsFactory } from './in-memory-storage.providers';
     ),
   ],
   providers: [InMemoryRestApiDataService],
-  schemas: [NO_ERRORS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InMemoryStorageModule {
   public static forRoot(): ModuleWithProviders<InMemoryStorageModule> {

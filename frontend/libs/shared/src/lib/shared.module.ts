@@ -3,7 +3,11 @@ import { RouterModule } from '@angular/router';
 import { QuicklinkModule } from 'ngx-quicklink';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
-import { ModuleWithProviders, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import {
+  ModuleWithProviders,
+  NgModule,
+  CUSTOM_ELEMENTS_SCHEMA,
+} from '@angular/core';
 
 // Provide shared layouts.
 import { WrapperLayoutComponent } from './layout/wrapper';
@@ -15,6 +19,8 @@ import { ContainerComponent } from './components/container';
 
 // Provide shared directives modules.
 import { BrowserEventsModule } from './directives/events';
+
+import { SharedCdkModule } from './shared-cdk.module';
 import { SharedStoreModule } from './shared-store.module';
 import { SharedFlexLayoutModule } from './shared-flex-layout.module';
 
@@ -41,6 +47,8 @@ import { SharedFlexLayoutModule } from './shared-flex-layout.module';
 
     // Provide flex layout modules.
     SharedFlexLayoutModule,
+
+    SharedCdkModule,
 
     BrowserEventsModule,
   ],
@@ -74,6 +82,8 @@ import { SharedFlexLayoutModule } from './shared-flex-layout.module';
     // Provide flex layout modules.
     SharedFlexLayoutModule,
 
+    SharedCdkModule,
+
     // Provide components and layouts.
     WrapperLayoutComponent,
     ContainerComponent,
@@ -82,7 +92,7 @@ import { SharedFlexLayoutModule } from './shared-flex-layout.module';
 
     BrowserEventsModule,
   ],
-  schemas: [NO_ERRORS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SharedModule {
   /**

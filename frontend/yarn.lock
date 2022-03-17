@@ -544,6 +544,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular/platform-webworker-dynamic@npm:^10.2.3":
+  version: 10.2.5
+  resolution: "@angular/platform-webworker-dynamic@npm:10.2.5"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    "@angular/common": 10.2.5
+    "@angular/compiler": 10.2.5
+    "@angular/core": 10.2.5
+    "@angular/platform-browser": 10.2.5
+    "@angular/platform-webworker": 10.2.5
+  checksum: 8dcc36143c6a9462ccf7bd32af1c3fc2edc166550223218bcfe8f81d080c4830f9a0bddec82f394f80c382a3eea8d78481c32d88650141d2ee939ccf4ba0c137
+  languageName: node
+  linkType: hard
+
+"@angular/platform-webworker@npm:^10.2.3":
+  version: 10.2.5
+  resolution: "@angular/platform-webworker@npm:10.2.5"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    "@angular/common": 10.2.5
+    "@angular/core": 10.2.5
+    "@angular/platform-browser": 10.2.5
+  checksum: b47fa37ec36ae550e9d7d618fd72db5972d0daf1295286e58d837fa9766c97c0a8c20a0f96cdc04a7970e384d8bb2dec911cde2b66751b6bdcc20406bf2cb7b0
+  languageName: node
+  linkType: hard
+
 "@angular/router@npm:~13.1.0":
   version: 13.1.3
   resolution: "@angular/router@npm:13.1.3"
@@ -16044,6 +16072,8 @@ __metadata:
     "@angular/platform-browser": ~13.1.0
     "@angular/platform-browser-dynamic": ~13.1.0
     "@angular/platform-server": ^13.2.2
+    "@angular/platform-webworker": ^10.2.3
+    "@angular/platform-webworker-dynamic": ^10.2.3
     "@angular/router": ~13.1.0
     "@angular/service-worker": ^13.2.2
     "@angularclass/hmr": ^3.0.0

@@ -6,7 +6,7 @@ import { SharedModule } from '@pinguin/shared';
 import { OverlayModule } from '@pinguin/overlay';
 
 // Provide components and containers components.
-import { DashboardLayoutComponent } from './layouts/dashboard-layout';
+import { DashboardLayoutComponent } from './layout/dashboard-layout';
 
 import { DashboardStoreModule } from './store';
 

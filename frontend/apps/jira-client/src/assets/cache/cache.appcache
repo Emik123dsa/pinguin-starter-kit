@@ -3,6 +3,11 @@ CACHE MANIFEST
 CACHE:
 /styles.css
 /favicon.ico
+
+/assets/config/ui.config.json
+/assets/config/theme-dark.config.json
+/assets/config/theme-light.config.json
+
 index.html
     
 FALLBACK:

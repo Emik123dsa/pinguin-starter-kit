@@ -1,0 +1,33 @@
+@use '@angular/material' as mat-ui;
+@use 'core/typography/typography' as core-typography;
+
+$dark-primary: mat-ui.define-palette(mat-ui.$blue-palette);
+$dark-accent: mat-ui.define-palette(mat-ui.$light-green-palette);
+$dark-warn: mat-ui.define-palette(mat-ui.$light-green-palette);
+
+$dark-foreground: '';
+$dark-background: '';
+
+$theme-color: var(--theme-color) !default;
+$prefers-color-scheme: var(--prefers-color-scheme) !default;
+
+// is-dark: true,
+// foreground: $dark-color-foreground,
+// background: $dark-color-background
+
+$dark-theme: mat-ui.define-dark-theme(
+  (
+    color: (
+      primary: $dark-primary,
+      accent: $dark-accent,
+      warn: $dark-warn,
+    ),
+    typography: core-typography.$default-typography-config,
+  )
+);
+
+@mixin theming() {
+  .theme {
+    color-scheme: $prefers-color-scheme;
+  }
+}

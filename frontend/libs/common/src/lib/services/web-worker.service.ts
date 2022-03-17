@@ -43,8 +43,8 @@ export class WebWorkerService implements OnDestroy {
    * @param {WebWorkerFactory} webWorkerFactory
    */
   public constructor(
-    private readonly ngZone: NgZone,
     private readonly webWorkerFactory: WebWorkerFactory,
+    private readonly ngZone: NgZone,
   ) {}
 
   /**
@@ -68,7 +68,7 @@ export class WebWorkerService implements OnDestroy {
    *
    * @private
    */
-  private init(): void {
+  public init(): void {
     const workerConfig: ShareConfig<unknown> = {
       connector: () => new Subject<unknown>(),
       resetOnError: true,
@@ -89,8 +89,8 @@ export class WebWorkerService implements OnDestroy {
    * @public
    * @param {string} message
    */
-  public sendMessage(message: string): void {
-    <void>this.webWorkerHandler.postMessage(message);
+  public publishMessage(message: string): void {
+    <void>this.webWorkerHandler.sendMessage(message);
   }
 
   /**

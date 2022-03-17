@@ -63,9 +63,7 @@ export class WebWorkerHandler {
   protected handleMessageEvent<T>(
     observer: Subscriber<T>,
   ): ({ data }: MessageEvent<T>) => void {
-    const callback = (data: T) => {
-      observer.next(data);
-    };
+    const callback = (data: T) => observer.next(data);
     return ({ data }: MessageEvent<T>) => this.ngZone.run(() => callback(data));
   }
 
@@ -114,7 +112,7 @@ export class WebWorkerHandler {
    * @param {T} message
    * @param {?StructuredSerializeOptions} [options]
    */
-  public postMessage<T>(message: T): void {
+  public sendMessage<T>(message: T): void {
     this.webWorker.postMessage(message);
   }
 
@@ -174,7 +172,7 @@ export class WebWorkerHandler {
         .subscribe(() => <void>registerEventListeners());
 
       // Teardown logic inside of component service, we will no
-      // longer listener any browser worker event inside of the module.
+      // longer listen any browser worker event inside of the module.
       return () => {
         subscription.unsubscribe();
         // Unregister exactly internal worker listeners.

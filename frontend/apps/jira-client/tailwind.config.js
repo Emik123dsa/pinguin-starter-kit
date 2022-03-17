@@ -167,13 +167,21 @@ module.exports = {
 
     variables: {
       DEFAULT: {
-        prefers: {
-          // Override runtime `prefers-color-scheme`:
-          'theme-color': 'light',
-          'color-scheme': 'light',
+        'theme-color': 'dark',
+        'prefers-color-scheme': 'dark',
+        font: {
+          family: 'Montserrat, sans-serif',
+          weight: 400,
+          size: '1rem',
+        },
+        line: {
+          height: '1',
+        },
+        letter: {
+          spacing: 'normal',
         },
       },
-      '.theme.theme-light': {
+      '.theme-light': {
         color: {
           primary: {
             50: '#653E00',

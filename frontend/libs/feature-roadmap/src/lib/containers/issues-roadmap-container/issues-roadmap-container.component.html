@@ -1,0 +1,90 @@
+<section role="group" id="issues-roadmap">
+  <pinguin-layout-wrapper class="issues-roadmap-wrapper">
+    <ng-container
+      *ngIf="issuesFieldsLoading$ | ngrxPush as issuesFieldsLoading"
+      [ngTemplateOutlet]="issuesRoadmapLoadingTemplate"
+      [ngTemplateOutletContext]="{ $implicit: issuesFieldsLoading }"
+    >
+      <pinguin-container class="issues-roadmap-container">
+        <ng-container
+          *ngrxLet="
+            issuesFieldsValidated$ as issuesFieldsValidated;
+            let issuesFieldsError = $error;
+            let issuesFieldsComplete = $complete
+          "
+        >
+          <ng-container *ngIf="issuesFieldsValidated">
+            <ng-container
+              *ngIf="!issuesFieldsError && !issuesFieldsComplete"
+              [ngTemplateOutlet]="issuesRoadmapTemplate"
+            >
+            </ng-container>
+          </ng-container>
+
+          <!-- Whether any issues fields error found in template. -->
+          <ng-container *ngIf="issuesFieldsError"></ng-container>
+
+          <!-- Whether issues fields complete in template. -->
+          <ng-container *ngIf="issuesFieldsComplete"></ng-container>
+        </ng-container>
+      </pinguin-container>
+    </ng-container>
+  </pinguin-layout-wrapper>
+</section>
+
+<ng-template #issuesRoadmapLoadingTemplate let-loading>
+  <span>{{ loading | json }}</span>
+</ng-template>
+
+<ng-template #issuesRoadmapTemplate
+  ><div role="table" id="issues-roadmap">
+    <div class="issues-roadmap-content-wrapper">
+      <div class="issues-roadmap-container" role="rowgroup">
+        <div class="issues-labels-wrapper" role="rowheader">
+          <ng-container
+            *ngrxLet="
+              allIssuesLabels$ as issuesLabels;
+              let issuesLabelsError = $error;
+              let issuesLabelsComplete = $complete
+            "
+          >
+            <div id="issues-label-entities-table" class="issues-labels-table">
+              <pinguin-issues-labels-table
+                [labels]="issuesLabels"
+                *ngIf="!issuesLabelsError && !issuesLabelsComplete"
+              ></pinguin-issues-labels-table>
+            </div>
+
+            <!-- Unhandled issues label errors container. -->
+            <ng-container *ngIf="issuesLabelsError"></ng-container>
+
+            <!-- Unhandled issues labels completed container. -->
+            <ng-container *ngIf="issuesLabelsComplete"></ng-container>
+          </ng-container>
+        </div>
+        <div class="issues-fields-wrapper" role="row">
+          <ng-container
+            *ngrxLet="
+              allIssuesFields$ as issuesFields;
+              let issuesFieldsError = $error;
+              let issuesFieldsComplete = $complete
+            "
+          >
+            <div id="issues-field-entities-table" class="issues-fields-table">
+              <pinguin-issues-fields-table
+                [fields]="issuesFields"
+                *ngIf="!issuesFieldsError && !issuesFieldsComplete"
+              ></pinguin-issues-fields-table>
+            </div>
+
+            <!-- Unhandled issues label errors container. -->
+            <ng-container *ngIf="issuesFieldsError"></ng-container>
+
+            <!-- Unhandled issues fields completed container. -->
+            <ng-container *ngIf="issuesFieldsComplete"></ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

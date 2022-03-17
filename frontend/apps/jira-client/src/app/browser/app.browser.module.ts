@@ -4,7 +4,7 @@ import {
   ComponentRef,
   DoBootstrap,
   NgModule,
-  NO_ERRORS_SCHEMA,
+  CUSTOM_ELEMENTS_SCHEMA,
 } from '@angular/core';
 import {
   concat,
@@ -41,7 +41,7 @@ import { APP_BROWSER_PROVIDERS } from './app.browser.providers';
     }),
   ],
   providers: [APP_BROWSER_PROVIDERS],
-  schemas: [NO_ERRORS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [],
 })
 export class AppBrowserModule implements DoBootstrap {

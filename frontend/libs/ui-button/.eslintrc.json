@@ -27,8 +27,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "pinguin",
-            "style": "kebab-case"
+            "prefix": "pinguin"
           }
         ],
         "@angular-eslint/no-host-metadata-property": [
@@ -36,7 +35,7 @@
           {
             "allowStatic": true
           }
-        ]
+        ],
       }
     },
     {

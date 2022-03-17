@@ -1,7 +1,6 @@
 import { NgModule, Type } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
-
-import { IssuesRoadmapEffects } from './effects';
+import { IssuesRoadmapEffects } from '@pinguin/feature-roadmap';
 
 @NgModule({
   imports: [

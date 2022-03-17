@@ -5,7 +5,8 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'pinguin-ui-button',
+  selector: 'button[pinguin-ui-button]',
+  exportAs: 'pinguinUiButton',
   templateUrl: './ui-button.component.html',
   styleUrls: ['./ui-button.component.scss'],
   host: { 'class': 'pinguin-ui-button' },

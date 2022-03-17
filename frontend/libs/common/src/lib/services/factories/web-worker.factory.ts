@@ -2,7 +2,7 @@ import { Platform } from '@angular/cdk/platform';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'platform',
 })
 export class WebWorkerFactory {
   /**
@@ -19,15 +19,12 @@ export class WebWorkerFactory {
    * is available only in browser runtime environment.
    *
    * @public
-   * @param {string} scriptURL
+   * @param {string} baseUrl
    * @param {WorkerOptions} [options={}]
    * @returns {(Worker | null)}
    */
-  public createWorker(
-    scriptURL: URL,
-    options?: WorkerOptions,
-  ): Optional<Worker> {
-    return this.isWorkerAvailable() ? new Worker(scriptURL, options) : null;
+  public createWorker(baseUrl: URL, options?: WorkerOptions): Optional<Worker> {
+    return this.isWorkerAvailable() ? new Worker(baseUrl, options) : null;
   }
 
   /**

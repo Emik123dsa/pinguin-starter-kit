@@ -1,4 +1,8 @@
-import { ModuleWithProviders, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import {
+  ModuleWithProviders,
+  NgModule,
+  CUSTOM_ELEMENTS_SCHEMA,
+} from '@angular/core';
 import { ClientEnvironmentOptions } from './environment.interface';
 
 import {
@@ -18,7 +22,7 @@ import {
   exports: [],
   declarations: [],
   providers: [],
-  schemas: [NO_ERRORS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class RuntimeEnvironmentModule {
   /**

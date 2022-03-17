@@ -18,7 +18,10 @@ import { FeatureIssuesRoutingModule } from './feature-issues-routing.module';
 // Feature store module.
 import { IssuesStoreModule } from './store';
 import { OverlayModule } from '@pinguin/overlay';
-import { FeatureRoadmapModule } from '@pinguin/feature-roadmap';
+
+import { IssuesContainerComponent } from './containers/issues-container';
+import { IssueEditContainerComponent } from './containers/issue-edit-container';
+import { IssueDetailContainerComponent } from './containers/issue-detail-container';
 
 @NgModule({
   imports: [
@@ -29,8 +32,6 @@ import { FeatureRoadmapModule } from '@pinguin/feature-roadmap';
 
     // Provide store module.
     IssuesStoreModule,
-
-    FeatureRoadmapModule,
 
     // Provide routing module.
     FeatureIssuesRoutingModule,
@@ -45,6 +46,9 @@ import { FeatureRoadmapModule } from '@pinguin/feature-roadmap';
     IssueCardFormComponent,
     IssueCardDialogComponent,
     IssuesCardListComponent,
+    IssueDetailContainerComponent,
+    IssueEditContainerComponent,
+    IssuesContainerComponent,
   ],
   providers: [],
 })

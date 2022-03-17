@@ -1,11 +1,11 @@
-<div
-  fxFlexFill
-  fxLayout="column"
-  fxLayoutWrap="wrap"
-  fxLayoutAlign="center start"
->
-  <header role="contentinfo"></header>
-  <main role="cell">
+<div fxLayout="column wrap" fxLayoutAlign="center start">
+  <header fxFlex="grow" role="contentinfo"></header>
+  <main
+    role="cell"
+    fxFlexFill
+    fxLayout="row no-wrap"
+    fxLayoutAlign="center stretch"
+  >
     <div [@routeAnimation]="prepareOutletRoute(outlet)">
       <router-outlet
         #outlet="outlet"
@@ -15,5 +15,5 @@
       ></router-outlet>
     </div>
   </main>
-  <footer role="contentinfo"></footer>
+  <footer fxFlex="grow" role="contentinfo"></footer>
 </div>

@@ -1,19 +1,38 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {
-  FeatureRoadmapVersion,
-  IssuesContainerComponent,
-} from '@pinguin/feature-roadmap';
+import { IssuesRoadmapContainerComponent } from '@pinguin/feature-roadmap';
+import { StringUtils } from '@pinguin/utils';
+
+import { IssueDetailContainerComponent } from './containers/issue-detail-container';
+import { IssueEditContainerComponent } from './containers/issue-edit-container';
+import { IssuesContainerComponent } from './containers/issues-container';
 
 const routes: Routes = [
   {
-    path: FeatureRoadmapVersion.V1,
+    path: StringUtils.EMPTY,
+    component: IssuesContainerComponent,
+    data: { title: 'Issues', depth: 3 },
+  },
+  {
+    path: ':issueId',
+    component: IssueDetailContainerComponent,
+    data: { title: 'Issue', depth: 3 },
+    children: [
+      {
+        path: 'edit',
+        component: IssueEditContainerComponent,
+        data: { title: 'Edit', depth: 3 },
+      },
+    ],
+  },
+  {
+    path: 'v1',
     data: { title: 'Issues', depth: 3 },
     children: [
       {
         path: 'roadmap',
-        component: IssuesContainerComponent,
-        data: { title: 'Roadmap', version: FeatureRoadmapVersion.V1 },
+        component: IssuesRoadmapContainerComponent,
+        data: { title: 'Roadmap' },
       },
       {
         path: '**',
@@ -25,7 +44,7 @@ const routes: Routes = [
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: FeatureRoadmapVersion.V1,
+    redirectTo: 'v1',
   },
 ];
 
