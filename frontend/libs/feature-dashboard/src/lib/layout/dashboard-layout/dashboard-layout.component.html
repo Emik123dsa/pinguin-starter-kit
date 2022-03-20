@@ -1,13 +1,5 @@
-<div
-  fxLayout="column wrap"
-  fxFlexFill
-  fxLayoutGap="0"
-  fxLayoutAlign="center start"
->
-  <pinguin-layout-header
-    fxFlex="auto"
-    class="layout-header dashboard-layout-header"
-  ></pinguin-layout-header>
+<div fxLayout="column wrap" fxFlexFill fxLayoutAlign="center start">
+  <pinguin-layout-header fxFlex="auto" class="layout-header dashboard-layout-header"></pinguin-layout-header>
 
   <main fxFlex role="cell" class="layout-content dashboard-layout-content">
     <div [@routeAnimation]="prepareOutletRoute(outlet)">
@@ -15,8 +7,5 @@
     </div>
   </main>
 
-  <pinguin-layout-footer
-    fxFlex="auto"
-    class="footer dashboard-layout-footer"
-  ></pinguin-layout-footer>
+  <pinguin-layout-footer fxFlex="auto" class="footer dashboard-layout-footer"></pinguin-layout-footer>
 </div>

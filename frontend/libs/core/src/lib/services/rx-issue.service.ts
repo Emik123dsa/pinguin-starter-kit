@@ -26,7 +26,7 @@ export class RxIssueService extends IssuesService {
   }
 
   /**
-   * GET /api/v1/issues/{issueId}?/labels : get all labels of issues entity.
+   * GET /api/v1/issues/{issueId}/labels : get all labels of issues entity.
    *
    * @public
    * @abstract
@@ -43,7 +43,7 @@ export class RxIssueService extends IssuesService {
   }
 
   /**
-   * GET /api/v1/issues/{issueId}?/fields : get all labels of issues entity.
+   * GET /api/v1/issues/{issueId}/fields : get all labels of issues entity.
    *
    * @public
    * @abstract

@@ -1,24 +1,21 @@
+import { Platform } from '@angular/cdk/platform';
+import { isPlatformBrowser } from '@angular/common';
 import {
   APP_INITIALIZER,
   ClassProvider,
   ExistingProvider,
   FactoryProvider,
   forwardRef,
-  LOCALE_ID,
+  PLATFORM_ID,
   Provider,
+  Self,
 } from '@angular/core';
 import { ClientCommonHandler } from '../handlers';
 import { COMMON_MODULE_INITIALIZER } from '../tokens';
 
-export const COMMON_CLIENT_HANDLER_PROVIDER: ClassProvider = {
-  provide: ClientCommonHandler,
-  useClass: forwardRef(() => ClientCommonHandler),
-  multi: false,
-};
-
 export const COMMON_MODULE_INITIALIZER_PROVIDER: ExistingProvider = {
   provide: APP_INITIALIZER,
-  useExisting: COMMON_MODULE_INITIALIZER,
+  useExisting: forwardRef(() => COMMON_MODULE_INITIALIZER),
   multi: true,
 };
 
@@ -29,26 +26,21 @@ export const COMMON_MODULE_INITIALIZER_PROVIDER: ExistingProvider = {
     store: Store<CoreEntityState>,
   ) => boolean}
    */
-function commonModuleInitializerFactory(): (
-  clientCommonHandler: ClientCommonHandler,
-) => boolean {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  return (clientCommonHandler: ClientCommonHandler): boolean => {
-    // clientCommonHandler.init();
-    console.log(clientCommonHandler);
-    return true;
-  };
+function commonModuleInitializerFactory(
+  commonHandler: ClientCommonHandler,
+  platform: Platform,
+): (commonHandler: ClientCommonHandler, platformId: object) => void | boolean {
+  return (): void | boolean => platform.isBrowser && <void>commonHandler.init();
 }
 
 export const COMMON_MODULE_PROVIDER: FactoryProvider = {
   provide: COMMON_MODULE_INITIALIZER,
   useFactory: commonModuleInitializerFactory,
-  deps: [LOCALE_ID],
+  deps: [[new Self(), ClientCommonHandler], Platform],
   multi: false,
 };
 
 export const COMMON_MODULE_PROVIDERS: Provider[] = [
-  COMMON_CLIENT_HANDLER_PROVIDER,
   COMMON_MODULE_INITIALIZER_PROVIDER,
   COMMON_MODULE_PROVIDER,
 ];

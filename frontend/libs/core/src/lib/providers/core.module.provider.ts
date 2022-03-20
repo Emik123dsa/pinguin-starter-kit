@@ -3,6 +3,7 @@ import {
   ExistingProvider,
   FactoryProvider,
   Provider,
+  Self,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 
@@ -22,11 +23,11 @@ export const CORE_MODULE_INITIALIZER_PROVIDER: ExistingProvider = {
   store: Store<CoreEntityState>,
 ) => boolean}
  */
-function coreModuleInitializerFactory(): (
-  store: Store<CoreEntityState>,
-) => boolean {
+function coreModuleInitializerFactory(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  return (store?: Store<CoreEntityState>): boolean => {
+  store: Store<CoreEntityState>,
+): (store: Store<CoreEntityState>) => boolean {
+  return (): boolean => {
     // TODO: enable 'WebSocketStoreModule', maybe enable some remote services configs.
     return true;
   };
@@ -35,7 +36,7 @@ function coreModuleInitializerFactory(): (
 export const CORE_MODULE_PROVIDER: FactoryProvider = {
   provide: CORE_MODULE_INITIALIZER,
   useFactory: coreModuleInitializerFactory,
-  deps: [Store],
+  deps: [[new Self(), Store]],
   multi: false,
 };
 

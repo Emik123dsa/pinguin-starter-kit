@@ -74,6 +74,7 @@ export const environment: ClientEnvironmentOptions = {
       autoPause: true,
     }),
   ],
+  runtimeStoreMetaReducers: [],
 };
 
 /*

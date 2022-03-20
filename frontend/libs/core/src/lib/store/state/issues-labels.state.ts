@@ -3,17 +3,33 @@ import { IssueLabelEntity } from '@pinguin/api';
 
 import { IssuesLabelsEntityState } from '../models';
 
-function selectById(entity: IssueLabelEntity) {
+/**
+ * Select entities by id.
+ *
+ * @param {IssueLabelEntity} entity
+ * @returns {number}
+ */
+function selectLabelId(entity: IssueLabelEntity): number {
   return entity.getId();
 }
 
-function sortByName(a: IssueLabelEntity, b: IssueLabelEntity) {
-  return a.getName().localeCompare(b.getName());
+/**
+ * Sort entities by name.
+ *
+ * @param {IssueLabelEntity} aEntity
+ * @param {IssueLabelEntity} bEntity
+ * @returns {number}
+ */
+function sortByName(
+  aEntity: IssueLabelEntity,
+  bEntity: IssueLabelEntity,
+): number {
+  return aEntity.getName().localeCompare(bEntity.getName());
 }
 
 export const issuesLabelsEntityAdapter: EntityAdapter<IssueLabelEntity> =
   createEntityAdapter<IssueLabelEntity>({
-    selectId: selectById,
+    selectId: selectLabelId,
     sortComparer: sortByName,
   });
 

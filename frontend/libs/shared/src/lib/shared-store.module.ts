@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
@@ -8,6 +8,6 @@ import { ReactiveComponentModule } from '@ngrx/component';
   ],
   declarations: [],
   exports: [ReactiveComponentModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [],
 })
 export class SharedStoreModule {}

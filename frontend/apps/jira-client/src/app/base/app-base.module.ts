@@ -1,11 +1,12 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { Inject, LOCALE_ID, NgModule, Self } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 
 import { CoreModule } from '@pinguin/core';
 import { SharedModule } from '@pinguin/shared';
-import { RuntimeEnvironmentModule } from '@pinguin/environments';
+import { ClientCommonModule } from '@pinguin/common';
 import { ClientConfigModule } from '@pinguin/config';
+import { RuntimeEnvironmentModule } from '@pinguin/environments';
 
 import { environment } from '@pinguin-runtime/environment';
 
@@ -13,6 +14,7 @@ import { AppComponent } from '@pinguin-client/app.component';
 import { AppRoutingModule } from '@pinguin-client/app-routing.module';
 
 import { APP_BASE_PROVIDERS } from './app-base.providers';
+import { bootstrapLocaleModule } from './app-base-locale';
 
 /**
  * Base module for bootstrapping application in
@@ -35,7 +37,7 @@ import { APP_BASE_PROVIDERS } from './app-base.providers';
     ClientConfigModule.forRoot(),
 
     // Provide common client module.
-    // ClientCommonModule.forRoot(),
+    ClientCommonModule.forRoot(),
 
     // Provide shared client modules.
     SharedModule.forRoot(),
@@ -48,6 +50,21 @@ import { APP_BASE_PROVIDERS } from './app-base.providers';
   ],
   providers: [APP_BASE_PROVIDERS],
   exports: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [],
 })
-export class AppBaseModule {}
+export class AppBaseModule {
+  /**
+   * Creates an instance of AppBaseModule.
+   *
+   * @constructor
+   * @public
+   * @param {object} localeId
+   */
+  public constructor(
+    @Self()
+    @Inject(LOCALE_ID)
+    readonly localeId: object,
+  ) {
+    bootstrapLocaleModule(localeId);
+  }
+}

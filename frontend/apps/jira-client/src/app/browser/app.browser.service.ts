@@ -1,24 +1,19 @@
 import { Injectable } from '@angular/core';
-import {
-  BrowserService,
-  ClientCommonHandler,
-  WebWorkerService,
-} from '@pinguin/common';
+import { BrowserService } from '@pinguin/common';
 
 @Injectable({
-  providedIn: 'platform',
+  providedIn: 'root',
 })
 export class AppBrowserService extends BrowserService {
-  public constructor(
-   // private readonly clientCommonHandler: ClientCommonHandler,
+  public constructor() // private readonly clientCommonHandler: ClientCommonHandler,
 
-    //private readonly webWorkerService: WebWorkerService,
-  ) {
+  //private readonly webWorkerService: WebWorkerService,
+  {
     super();
   }
 
   public override ngBrowserInit(): void {
-//console.log(this.clientCommonHandler);
+    //console.log(this.clientCommonHandler);
     // Execute runtime whether
     // browser environment is enabled.
     // TODO: implement in common module, it will allow us to listen any user events.

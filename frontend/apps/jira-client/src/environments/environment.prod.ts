@@ -55,4 +55,5 @@ export const environment: ClientEnvironmentOptions = {
   },
   packages: [],
   runtimePlugins: [],
+  runtimeStoreMetaReducers: [],
 };

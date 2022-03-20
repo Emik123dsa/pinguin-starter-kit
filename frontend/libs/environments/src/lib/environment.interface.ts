@@ -1,4 +1,5 @@
 import { ModuleWithProviders, Type } from '@angular/core';
+import { Action, MetaReducer } from '@ngrx/store';
 import { ClientRestApiOptions } from '@pinguin/api';
 
 import { ClientApplicationOptions } from '@pinguin/config';
@@ -35,4 +36,8 @@ export interface ClientEnvironmentOptions {
   // for instance, under development hacking.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   runtimePlugins: Array<any[] | Type<any> | ModuleWithProviders<{}>>;
+
+  // Provide any meta reducers, including logging cascade lever.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  runtimeStoreMetaReducers: MetaReducer<{}, Action>[];
 }

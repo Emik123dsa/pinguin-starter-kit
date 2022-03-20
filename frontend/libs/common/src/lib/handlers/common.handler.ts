@@ -1,7 +1,7 @@
 import {
-  ApplicationRef,
   Inject,
   Injectable,
+  NgZone,
   OnDestroy,
   Optional,
   Renderer2,
@@ -12,10 +12,9 @@ import {
 import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';
 import {
   distinctUntilChanged,
-  fromEvent,
-  mapTo,
   merge,
   Observable,
+  Observer,
   of,
   share,
   Subject,
@@ -23,9 +22,11 @@ import {
 } from 'rxjs';
 import { WINDOW } from '../tokens';
 import { CLIENT_WINDOW, NetworkStatus } from '../constants';
+import { runInZone } from '@pinguin/utils';
+import { NetworkStatusEvent } from '../interfaces';
 
 @Injectable({
-  providedIn: 'platform',
+  providedIn: 'root',
 })
 export class ClientCommonHandler implements OnDestroy {
   /**
@@ -56,6 +57,7 @@ export class ClientCommonHandler implements OnDestroy {
    * @param {RendererFactory2} rendererFactory
    */
   public constructor(
+    private readonly ngZone: NgZone,
     @Optional()
     @Inject(WINDOW)
     private readonly window: Window & typeof globalThis,
@@ -64,14 +66,7 @@ export class ClientCommonHandler implements OnDestroy {
     private readonly animationMode: object,
     @Optional()
     private readonly rendererFactory: RendererFactory2,
-  ) {}
-
-  /**
-   * Description placeholder
-   *
-   * @private
-   */
-  public init(): void {
+  ) {
     const rendererOptions: RendererType2 = {
       id: CLIENT_WINDOW,
       data: {},
@@ -84,7 +79,14 @@ export class ClientCommonHandler implements OnDestroy {
       this.window,
       rendererOptions,
     );
+  }
 
+  /**
+   * Description placeholder
+   *
+   * @private
+   */
+  public init(): void {
     this.handleNetworkStatus((status: boolean) => {
       console.log(
         `Browser context was initialized with [networkStatus]: ${
@@ -102,17 +104,41 @@ export class ClientCommonHandler implements OnDestroy {
    * @returns {void) => void}
    */
   public handleNetworkStatus(callback: (status: boolean) => void): void {
-    this.renderer.listen(this.window, NetworkStatus.ONLINE, (event) => {
-      console.log(event);
-    });
+    const currentNetwork$: Observable<boolean> = of(
+      this.window.navigator.onLine,
+    );
 
-    const networkEvents$: Observable<boolean> = merge(
-      fromEvent<boolean>(this.window, NetworkStatus.OFFLINE).pipe(mapTo(false)),
+    const networkEvents$: Observable<boolean> = new Observable(
+      (observer: Observer<boolean>) => {
+        const onOnlineStatus = (event: NetworkStatusEvent) => {
+          event.preventDefault();
+          observer.next(true);
+        };
+
+        const onOfflineStatus = (event: NetworkStatusEvent) => {
+          event.preventDefault();
+          observer.next(false);
+        };
+
+        const networkHandlers: ReadonlyMap<
+          NetworkStatus,
+          (event: CustomEvent) => void
+        > = new Map([
+          [NetworkStatus.ONLINE, onOnlineStatus],
+          [NetworkStatus.OFFLINE, onOfflineStatus],
+        ]);
+
+        networkHandlers.forEach((handler, status) =>
+          this.renderer.listen(this.window, status, handler),
+        );
+
+        return () => observer.complete();
+      },
     );
 
     const networkStatus$: Observable<boolean> = merge(
-      networkEvents$,
-      of(this.window.navigator.onLine),
+      currentNetwork$,
+      networkEvents$.pipe(runInZone(this.ngZone)),
     ).pipe(
       share({
         connector: () => new Subject<boolean>(),

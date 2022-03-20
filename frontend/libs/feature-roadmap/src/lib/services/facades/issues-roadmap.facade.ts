@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Dictionary } from '@ngrx/entity';
 
 import {
@@ -12,11 +12,11 @@ import {
   CoreEntityState,
   selectAllIssuesFields,
   selectAllIssuesLabels,
-  selectIssueFieldEntities,
+  selectIssuesFieldEntities,
   selectIssuesFieldsLoaded,
   selectIssuesFieldsLoading,
   selectIssuesFieldTotal,
-  selectIssueLabelEntities,
+  selectIssuesLabelEntities,
 } from '@pinguin/core';
 import { Observable } from 'rxjs';
 
@@ -63,7 +63,7 @@ export class IssuesRoadmapFacade {
    * @type {Observable<Dictionary<IssueLabelEntity>>}
    */
   public issuesLabelEntities$: Observable<Dictionary<IssueLabelEntity>> =
-    this.store.select<Dictionary<IssueLabelEntity>>(selectIssueLabelEntities);
+    this.store.pipe(select(selectIssuesLabelEntities));
 
   /**
    * Issues labels from the `Store` adapter.
@@ -81,7 +81,7 @@ export class IssuesRoadmapFacade {
    * @type {Observable<Dictionary<IssueFieldEntity>>}
    */
   public issuesFieldEntities$: Observable<Dictionary<IssueFieldEntity>> =
-    this.store.select<Dictionary<IssueFieldEntity>>(selectIssueFieldEntities);
+    this.store.pipe(select(selectIssuesFieldEntities));
 
   /**
    * Issues fields from the `Store` adapter.
@@ -100,4 +100,22 @@ export class IssuesRoadmapFacade {
    * @param {Store<CoreEntityState>} store
    */
   public constructor(private readonly store: Store<CoreEntityState>) {}
+
+  /**
+   * Un memorize all issues fields from the cache manager.
+   *
+   * @public
+   */
+  public releaseAllIssuesFields(): void {
+    return selectAllIssuesFields.release();
+  }
+
+  /**
+   * Un memorize all issues labels from the cache manager.
+   *
+   * @public
+   */
+  public releaseAllIssuesLabels(): void {
+    return selectAllIssuesLabels.release();
+  }
 }

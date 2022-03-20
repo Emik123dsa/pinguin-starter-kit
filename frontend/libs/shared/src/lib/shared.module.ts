@@ -3,11 +3,7 @@ import { RouterModule } from '@angular/router';
 import { QuicklinkModule } from 'ngx-quicklink';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
-import {
-  ModuleWithProviders,
-  NgModule,
-  CUSTOM_ELEMENTS_SCHEMA,
-} from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 
 // Provide shared layouts.
 import { WrapperLayoutComponent } from './layout/wrapper';
@@ -92,7 +88,7 @@ import { SharedFlexLayoutModule } from './shared-flex-layout.module';
 
     BrowserEventsModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [],
 })
 export class SharedModule {
   /**

@@ -1,0 +1,38 @@
+<div id="issues-roadmap-content" role="contentinfo">
+  <div role="table" aria-label="Issues Roadmap" aria-rowcount="2" class="issues-roadmap-content-wrapper">
+    <div gdAreas="labels-header-row fields-row" gdAreas.lt-md="labels-header-row | fields-row" gdAuto="column dense"
+      gdRows="auto" gdColumns="auto" gdColumns.lt-md="auto auto" gdRows.lt-md="auto auto" gdAlignRows="start stretch"
+      class="issues-roadmap-content-container" role="rowgroup">
+      <div gdArea="labels-header-row" gdGridAlign="start center" class="issues-labels-wrapper" role="rowheader">
+        <ng-container
+          *ngrxLet="allIssuesLabels$; let issuesLabels; let issuesLabelsError = $error; let issuesLabelsComplete = $complete">
+          <div id="issues-label-entities-table" role="columnheader" aria-sort="none">
+            <pinguin-issues-labels-table [labels]="issuesLabels" *ngIf="!issuesLabelsError && !issuesLabelsComplete">
+            </pinguin-issues-labels-table>
+          </div>
+
+          <!-- Unhandled issues label errors container. -->
+          <ng-container *ngIf="issuesLabelsError"></ng-container>
+
+          <!-- Unhandled issues labels completed container. -->
+          <ng-container *ngIf="issuesLabelsComplete"></ng-container>
+        </ng-container>
+      </div>
+      <div gdArea="fields-row" gdGridAlign="start center" class="issues-fields-wrapper" aria-rowindex="2" role="row">
+        <ng-container
+          *ngrxLet="allIssuesFields$ as issuesFields; let issuesFieldsError = $error; let issuesFieldsComplete = $complete">
+          <div id="issues-field-entities-table" role="cell">
+            <pinguin-issues-fields-table [fields]="issuesFields" *ngIf="!issuesFieldsError && !issuesFieldsComplete">
+            </pinguin-issues-fields-table>
+          </div>
+
+          <!-- Unhandled issues fields errors container. -->
+          <ng-container *ngIf="issuesFieldsError"></ng-container>
+
+          <!-- Unhandled issues fields completed container. -->
+          <ng-container *ngIf="issuesFieldsComplete"></ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

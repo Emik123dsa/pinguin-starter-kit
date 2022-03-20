@@ -1,8 +1,10 @@
-<section aria-labelledby="not-found" role="banner">
+<section aria-labelledby="not-found-title" id="not-found-page" role="banner">
   <pinguin-layout-wrapper class="not-found-wrapper">
     <pinguin-container class="not-found-container">
       <ng-container *ngIf="title$ | async as title">
-        <h1 id="not-found" class="not-found-title">{{ title$ | async }}</h1>
+        <h1 id="not-found-title" class="not-found-title">
+          {{ title$ | async }}
+        </h1>
       </ng-container>
     </pinguin-container>
   </pinguin-layout-wrapper>

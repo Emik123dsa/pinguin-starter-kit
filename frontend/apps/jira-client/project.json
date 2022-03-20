@@ -3,6 +3,23 @@
   "root": "apps/jira-client",
   "sourceRoot": "apps/jira-client/src",
   "prefix": "pinguin",
+  "i18n": {
+    "sourceLocale": "en-US",
+    "locales": {
+      "en": {
+        "translation": "apps/jira-client/src/locale/messages.en.xlf",
+        "baseHref": "/"
+      },
+      "de": {
+        "translation": "apps/jira-client/src/locale/messages.de.xlf",
+        "baseHref": "/"
+      },
+      "ru": {
+        "translation": "apps/jira-client/src/locale/messages.ru.xlf",
+        "baseHref": "/"
+      }
+    }
+  },
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -10,7 +27,7 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/apps/jira-client",
+        "outputPath": "dist/jira-client/browser",
         "index": "apps/jira-client/src/index.html",
         "main": "apps/jira-client/src/main.ts",
         "polyfills": "apps/jira-client/src/polyfills.ts",
@@ -37,7 +54,15 @@
         "scripts": [],
         "serviceWorker": true,
         "ngswConfigPath": "apps/jira-client/ngsw-config.json",
-        "webWorkerTsConfig": "apps/jira-client/tsconfig.worker.json"
+        "webWorkerTsConfig": "apps/jira-client/tsconfig.worker.json",
+        "i18nMissingTranslation": "warning",
+        "localize": [
+          "en"
+          // This schema will be used only for development, 
+          // change in the production environment.
+          //, "de",
+          // "ru"
+        ]
       },
       "configurations": {
         "production": {
@@ -84,9 +109,54 @@
               "with": "apps/jira-client/src/environments/environment.mock.ts"
             }
           ]
+        },
+        "i18n-en": {
+          "baseHref": "/",
+          "localize": [
+            "en"
+          ],
+          "outputPath": "dist/jira-client/browser",
+          "i18nMissingTranslation": "error"
+        },
+        "i18n-de": {
+          "baseHref": "/",
+          "localize": [
+            "de"
+          ],
+          "outputPath": "dist/jira-client/browser",
+          "i18nMissingTranslation": "error"
+        },
+        "i18n-ru": {
+          "baseHref": "/",
+          "localize": [
+            "ru"
+          ],
+          "outputPath": "dist/jira-client/browser",
+          "i18nMissingTranslation": "error"
         }
       },
       "defaultConfiguration": "production"
+    },
+    "xliffmerge": {
+      "builder": "@ngx-i18nsupport/tooling:xliffmerge",
+      "options": {
+        "xliffmergeOptions": {
+          "i18nFormat": "xlf",
+          "srcDir": "apps/jira-client/src/locale",
+          "genDir": "apps/jira-client/src/locale",
+          "verbose": true,
+          "defaultLanguage": "en",
+          "autotranslate": [
+            "en"
+          ],
+          "apikey": "i18n",
+          "languages": [
+            "en",
+            "de",
+            "ru"
+          ]
+        }
+      }
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
@@ -106,6 +176,32 @@
         },
         "mock": {
           "browserTarget": "jira-client:build:mock"
+        },
+        "i18n-en": {
+          "browserTarget": "jira-client:build:i18n-en",
+          "proxyConfig": "apps/jira-client/src/proxy.conf.json"
+        },
+        "i18n-de": {
+          "browserTarget": "jira-client:build:i18n-de",
+          "proxyConfig": "apps/jira-client/src/proxy.conf.json"
+        },
+        "i18n-ru": {
+          "browserTarget": "jira-client:build:i18n-ru",
+          "proxyConfig": "apps/jira-client/src/proxy.conf.json"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "serve:ssr": {
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "jira-client:build:development",
+          "serverTarget": "jira-client:server:development"
+        },
+        "production": {
+          "browserTarget": "jira-client:build:production",
+          "serverTarget": "jira-client:server:production"
         }
       },
       "defaultConfiguration": "development"
@@ -135,6 +231,74 @@
         "passWithNoTests": true,
         "webWorkerTsConfig": "apps/jira-client/tsconfig.worker.json"
       }
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/jira-client/server",
+        "main": "apps/jira-client/src/ssr.server.ts",
+        "tsConfig": "apps/jira-client/tsconfig.server.json",
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "apps/jira-client/src/assets/stylesheets"
+          ]
+        },
+        "inlineStyleLanguage": "scss"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media",
+          "fileReplacements": [
+            {
+              "replace": "apps/jira-client/src/environments/environment.ts",
+              "with": "apps/jira-client/src/environments/environment.prod.ts"
+            }
+          ]
+        },
+        "development": {
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false
+        },
+        "hmr": {
+          "fileReplacements": [
+            {
+              "replace": "apps/jira-client/src/environments/environment.ts",
+              "with": "apps/jira-client/src/environments/environment.hmr.ts"
+            }
+          ]
+        },
+        "mock": {
+          "fileReplacements": [
+            {
+              "replace": "apps/jira-client/src/environments/environment.ts",
+              "with": "apps/jira-client/src/environments/environment.mock.ts"
+            }
+          ]
+        },
+        "i18n-en": {
+          "localize": [
+            "en"
+          ],
+          "outputPath": "dist/jira-client/browser",
+          "i18nMissingTranslation": "error"
+        },
+        "i18n-de": {
+          "localize": [
+            "de"
+          ],
+          "outputPath": "dist/jira-client/browser",
+          "i18nMissingTranslation": "error"
+        },
+        "i18n-ru": {
+          "localize": [
+            "ru"
+          ],
+          "outputPath": "dist/jira-client/browser",
+          "i18nMissingTranslation": "error"
+        }
+      },
+      "defaultConfiguration": "production"
     }
   },
   "tags": []

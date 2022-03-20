@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
+import { storeFreeze } from 'ngrx-store-freeze';
 import { StringUtils } from '@pinguin/utils';
 StringUtils;
 import {
@@ -57,7 +57,7 @@ export const environment: ClientEnvironmentOptions = {
       scheme: 'ws',
       hostname: 'localhost',
       port: 80,
-      prefix: 'stream',
+      prefix: 'event-bus',
       version: 'v1',
     },
     typeKey: 'type',
@@ -70,9 +70,12 @@ export const environment: ClientEnvironmentOptions = {
     // deserializer: (event: MessageEvent): PlainObjectLiteral =>
     //   JSON.parse(event.data),
   },
+
   packages: [],
+
   runtimePlugins: [
     InMemoryStorageModule,
+
     StoreDevtoolsModule.instrument({
       name: StringUtils.format(
         'pinguin-{0}-client',
@@ -84,24 +87,6 @@ export const environment: ClientEnvironmentOptions = {
         options: {
           undefined: true,
         },
-        // replacer: (key, value) => {
-        //   if (value instanceof Router) {
-        //     return undefined;
-        //   }
-        //   if (
-        //     key === 'router' &&
-        //     typeof value !== 'undefined' &&
-        //     typeof value !== 'function'
-        //   ) {
-        //     return {
-        //       url: value.state.url,
-        //       params: value.state.params,
-        //       queryParams: value.state.queryParams,
-        //     };
-        //   }
-
-        //   return value;
-        // },
       },
       features: {
         pause: false,
@@ -112,6 +97,8 @@ export const environment: ClientEnvironmentOptions = {
       autoPause: false,
     }),
   ],
+
+  runtimeStoreMetaReducers: [storeFreeze],
 };
 
 /*

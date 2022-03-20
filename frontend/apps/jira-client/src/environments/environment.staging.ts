@@ -53,6 +53,7 @@ export const environment: ClientEnvironmentOptions = {
     serializer: (data) => JSON.stringify(data),
     deserializer: (event: MessageEvent) => JSON.parse(event.data),
   },
+
   runtimePlugins: [
     StoreDevtoolsModule.instrument({
       name: StringUtils.format('pinguin-{0}-client', ClientEnvironment.Staging),
@@ -62,4 +63,6 @@ export const environment: ClientEnvironmentOptions = {
       autoPause: false,
     }),
   ],
+
+  runtimeStoreMetaReducers: [],
 };

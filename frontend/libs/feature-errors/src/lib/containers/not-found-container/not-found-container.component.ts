@@ -13,7 +13,7 @@ import { Observable, pluck, Subject, take, takeUntil } from 'rxjs';
   exportAs: 'pinguinNotFoundContainer',
   templateUrl: './not-found-container.component.html',
   styleUrls: ['./not-found-container.component.scss'],
-  host: { 'class': 'not-found-container' },
+  host: { 'class': 'not-found-page' },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

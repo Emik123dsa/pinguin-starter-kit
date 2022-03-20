@@ -30,8 +30,8 @@ const getSelectedIssueLabelId = (state: IssuesLabelsEntityState) =>
 
 export const selectCurrentIssueLabelId: MemoizedSelector<
   object,
-  Optional<number> | undefined,
-  DefaultProjectorFn<Optional<number> | undefined>
+  Optional<number>,
+  DefaultProjectorFn<Optional<number>>
 > = createSelector(issuesLabelsEntityState, getSelectedIssueLabelId);
 
 export const selectIssuesLabelsLoaded: MemoizedSelector<
@@ -55,7 +55,7 @@ export const selectAllIssuesLabels: MemoizedSelector<
   issuesLabelsEntitySelectors.selectAll,
 );
 
-export const selectIssueLabelEntities: MemoizedSelector<
+export const selectIssuesLabelEntities: MemoizedSelector<
   object,
   Dictionary<IssueLabelEntity>,
   DefaultProjectorFn<Dictionary<IssueLabelEntity>>
@@ -87,8 +87,8 @@ export const selectCurrentIssueLabel: MemoizedSelector<
   IssueLabelEntity | undefined,
   DefaultProjectorFn<IssueLabelEntity | undefined>
 > = createSelector(
-  selectIssueLabelEntities,
+  selectIssuesLabelEntities,
   selectCurrentIssueLabelId,
-  (issueLabelEntities, issueLabelId) =>
-    issueLabelEntities && issueLabelEntities[issueLabelId as number],
+  (issuesLabelEntities: Dictionary<IssueLabelEntity>, issueLabelId) =>
+    issuesLabelEntities && issuesLabelEntities[issueLabelId as number],
 );

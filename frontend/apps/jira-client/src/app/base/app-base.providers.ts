@@ -56,7 +56,7 @@ const APP_BROWSER_PROVIDER: FactoryProvider = {
 const APP_SERVER_PROVIDER: FactoryProvider = {
   provide: APP_SERVER_INITIALIZER,
   useFactory: serverInitializerProviderFactory,
-  deps: [BrowserService, PLATFORM_ID],
+  deps: [PLATFORM_ID],
   multi: false,
 };
 

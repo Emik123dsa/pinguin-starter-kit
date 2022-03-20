@@ -1,4 +1,7 @@
 {
     "makefile.extensionOutputFolder": "./.vscode",
-    "scss.lint.unknownAtRules": "ignore"
+    "scss.lint.unknownAtRules": "ignore",
+    "cSpell.words": [
+        "datasource"
+    ]
 }

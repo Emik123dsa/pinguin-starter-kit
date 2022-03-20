@@ -1,24 +1,13 @@
 <article id="pinguin-ui-card" class="card" role="rowgroup">
-  <div
-    fxFlexFill
-    fxLayout="column wrap"
-    fxLayoutAlign="center start"
-    class="card-container"
-  >
-    <ng-content
-      select="pinguin-ui-card-header,
+  <div fxFlexFill fxLayout="column wrap" fxLayoutAlign="center start" class="card-container">
+    <ng-content select="pinguin-ui-card-header,
                 [pinguin-ui-card-header],
-                [pinguinUiCardHeader]"
-    ></ng-content>
-    <ng-content
-      select="pinguin-ui-card-content,
+                [pinguinUiCardHeader]"></ng-content>
+    <ng-content select="pinguin-ui-card-content,
                 [pinguin-ui-card-content],
-                [pinguinUiCardContent]"
-    ></ng-content>
-    <ng-content
-      select="pinguin-ui-card-footer,
+                [pinguinUiCardContent]"></ng-content>
+    <ng-content select="pinguin-ui-card-footer,
                 [pinguin-ui-card-footer],
-                [pinguinUiCardFooter]"
-    ></ng-content>
+                [pinguinUiCardFooter]"></ng-content>
   </div>
 </article>

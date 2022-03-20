@@ -30,8 +30,8 @@ const getSelectedIssueFieldId = (state: IssuesFieldsEntityState) =>
 
 export const selectCurrentIssueFieldId: MemoizedSelector<
   object,
-  Optional<number> | undefined,
-  DefaultProjectorFn<Optional<number> | undefined>
+  Optional<number>,
+  DefaultProjectorFn<Optional<number>>
 > = createSelector(issuesFieldsEntityState, getSelectedIssueFieldId);
 
 export const selectIssuesFieldsLoaded: MemoizedSelector<
@@ -55,7 +55,7 @@ export const selectAllIssuesFields: MemoizedSelector<
   issuesFieldsEntitySelectors.selectAll,
 );
 
-export const selectIssueFieldEntities: MemoizedSelector<
+export const selectIssuesFieldEntities: MemoizedSelector<
   object,
   Dictionary<IssueFieldEntity>,
   DefaultProjectorFn<Dictionary<IssueFieldEntity>>
@@ -87,8 +87,8 @@ export const selectCurrentIssueField: MemoizedSelector<
   IssueFieldEntity | undefined,
   DefaultProjectorFn<IssueFieldEntity | undefined>
 > = createSelector(
-  selectIssueFieldEntities,
+  selectIssuesFieldEntities,
   selectCurrentIssueFieldId,
-  (issueFieldEntities, issueFieldId) =>
-    issueFieldEntities && issueFieldEntities[issueFieldId as number],
+  (issuesFieldEntities, issueFieldId) =>
+    issuesFieldEntities && issuesFieldEntities[issueFieldId as number],
 );

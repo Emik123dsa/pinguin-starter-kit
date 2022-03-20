@@ -41,7 +41,7 @@ import { APP_BROWSER_PROVIDERS } from './app.browser.providers';
     }),
   ],
   providers: [APP_BROWSER_PROVIDERS],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [],
   bootstrap: [],
 })
 export class AppBrowserModule implements DoBootstrap {
@@ -51,7 +51,7 @@ export class AppBrowserModule implements DoBootstrap {
    * @private
    * @type {number}
    */
-  private readonly stablePollingInterval: Readonly<number> = 1000;
+  private readonly pollingInterval: Readonly<number> = 1000;
 
   /**
    * Bootstrapping browser module.
@@ -84,9 +84,7 @@ export class AppBrowserModule implements DoBootstrap {
     applicationRef: ApplicationRef,
     callback: () => void,
   ): void {
-    const pollingInterval$: Observable<number> = interval(
-      this.stablePollingInterval,
-    );
+    const pollingInterval$: Observable<number> = interval(this.pollingInterval);
 
     const isStable$: Observable<boolean | number> =
       applicationRef.isStable.pipe(

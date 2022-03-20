@@ -12,7 +12,7 @@ interface NgHotModuleRef<T = unknown> extends NgModuleRef<T> {
   hot: { accept: () => void; dispose: (value: T) => void };
 }
 
-export const bootstrapModule = <T>(
+export const bootstrap = <T>(
   module: NgHotModuleRef,
   bootstrap: () => Promise<void | NgModuleRef<T>>,
 ) => {
