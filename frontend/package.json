@@ -43,7 +43,7 @@
     "commit": "git-cz",
     "prepare": "husky install",
     "xliffmerge": "xliffmerge --profile apps/jira-client/xliffmerge.json en de ru",
-    "extract-i18n": "nx extract-i18n --output-path apps/jira-client/src/locale --format=xlf --project=jira-client",
+    "extract-i18n": "nx extract-i18n --output-path apps/jira-client/src/locale --format=xlf --project=jira-client && xliffmerge",
     "extract-i18n:json": "nx extract-i18n jira-client --format=json --output-path apps/jira-client/src/assets/i18n",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"

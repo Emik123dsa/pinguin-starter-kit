@@ -1,9 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Inject,
   Input,
-  LOCALE_ID,
   ViewEncapsulation,
 } from '@angular/core';
 import { IssueLabelEntities, IssueLabelEntity } from '@pinguin/api';

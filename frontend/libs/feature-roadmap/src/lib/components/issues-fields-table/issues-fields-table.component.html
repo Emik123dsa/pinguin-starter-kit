@@ -1,18 +1,8 @@
 <div role="contentinfo" aria-controls="issues-fields-data-table">
   <div class="issues-fields-data-table-container">
-    <div
-      fxLayout="column"
-      fxLayoutAlign="start center"
-      class="issues-fields-data-table-content"
-    >
-      <table
-        id="issues-fields-data-table"
-        cdk-table
-        [dataSource]="dataSource"
-        [trackBy]="trackEntityById"
-        recycleRows
-        fixedLayout
-      >
+    <div fxLayout="column" fxLayoutAlign="start center" class="issues-fields-data-table-content">
+      <table id="issues-fields-data-table" cdk-table [dataSource]="dataSource" [trackBy]="trackEntityById" recycleRows
+        fixedLayout>
         <ng-container cdkColumnDef="id">
           <th cdk-header-cell *cdkHeaderCellDef></th>
           <td fxHide cdk-cell *cdkCellDef="let element">
