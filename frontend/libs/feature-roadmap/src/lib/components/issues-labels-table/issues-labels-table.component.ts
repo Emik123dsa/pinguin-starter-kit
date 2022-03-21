@@ -27,12 +27,12 @@ export class IssuesLabelsTableComponent {
 
   @Input()
   set labels(value: IssueLabelEntities) {
-    this._labels = value;
+    this.labelList = value;
   }
   get labels(): IssueLabelEntities {
-    return this._labels;
+    return this.labelList;
   }
-  private _labels!: IssueLabelEntities;
+  private labelList!: IssueLabelEntities;
 
   /**
    * Whether entity was tracked with their ids.

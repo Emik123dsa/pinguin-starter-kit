@@ -16,12 +16,12 @@ export class IssuesFieldsTableComponent {
 
   @Input()
   set fields(value: IssueFieldEntities) {
-    this._fields = value;
+    this.fieldList = value;
   }
   get fields(): IssueFieldEntities {
-    return this._fields;
+    return this.fieldList;
   }
-  private _fields!: IssueFieldEntities;
+  private fieldList!: IssueFieldEntities;
 
   /**
    * Whether entity was tracked with their ids.

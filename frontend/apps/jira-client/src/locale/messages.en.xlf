@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <file source-language="en" datatype="plaintext" original="ng2.template" target-language="en">
         <body>
             <trans-unit id="issuesLabelsTableHeaderTitle" datatype="html">
-                <source> Issues </source>
-                <target> Issues </target>
+                <source> issues </source>
+                <target state="final"> Issues </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">libs/feature-roadmap/src/lib/components/issues-labels-table/issues-labels-table.component.html</context>
-                    <context context-type="linenumber">23,25</context>
+                    <context context-type="linenumber">9,11</context>
                 </context-group>
                 <note priority="1" from="description">Title for the issues labels table
               header</note>

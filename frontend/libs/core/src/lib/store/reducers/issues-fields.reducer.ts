@@ -11,7 +11,6 @@ import {
 export const IssueFieldEntityReducer: ActionReducer<IssuesFieldsEntityState> =
   createReducer<IssuesFieldsEntityState>(
     initialIssuesFieldsEntityState,
-
     on(
       IssuesFieldsActions.loadAllIssuesFields,
       (state: IssuesFieldsEntityState) => {
@@ -21,7 +20,6 @@ export const IssueFieldEntityReducer: ActionReducer<IssuesFieldsEntityState> =
         });
       },
     ),
-
     on(
       IssuesFieldsActions.loadAllIssuesFieldsSuccess,
       (
@@ -36,7 +34,6 @@ export const IssueFieldEntityReducer: ActionReducer<IssuesFieldsEntityState> =
         });
       },
     ),
-
     on(
       IssuesFieldsActions.loadAllIssuesFieldsFailure,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
