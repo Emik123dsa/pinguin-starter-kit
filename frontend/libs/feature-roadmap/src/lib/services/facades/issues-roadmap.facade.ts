@@ -1,6 +1,22 @@
+import {
+  concatAll,
+  concatMap,
+  concatMapTo,
+  from,
+  mergeMap,
+  Observable,
+  of,
+  tap,
+  toArray,
+  withLatestFrom,
+} from 'rxjs';
+import {
+  IssuesFieldsFacade,
+  IssuesFieldsMapper,
+  IssuesLabelsFacade,
+  IssuesLabelsMapper,
+} from '@pinguin/feature-issues';
 import { Injectable } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { Dictionary } from '@ngrx/entity';
 
 import {
   IssueFieldEntities,
@@ -8,114 +24,58 @@ import {
   IssueLabelEntities,
   IssueLabelEntity,
 } from '@pinguin/api';
-import {
-  CoreEntityState,
-  selectAllIssuesFields,
-  selectAllIssuesLabels,
-  selectIssuesFieldEntities,
-  selectIssuesFieldsLoaded,
-  selectIssuesFieldsLoading,
-  selectIssuesFieldTotal,
-  selectIssuesLabelEntities,
-} from '@pinguin/core';
-import { Observable } from 'rxjs';
+import { Dictionary } from '@ngrx/entity';
 
 @Injectable({
-  providedIn: 'platform',
+  providedIn: 'any',
 })
 export class IssuesRoadmapFacade {
-  /**
-   * Issues fields loading state from the `Store` adapter.
-   *
-   * @public
-   * @readonly
-   * @type {Observable<boolean>}
-   */
-  public issuesFieldsLoading$: Observable<boolean> = this.store.select<boolean>(
-    selectIssuesFieldsLoading,
-  );
-
-  /**
-   * Issues fields loaded state from the `Store` adapter.
-   *
-   * @public
-   * @readonly
-   * @type {Observable<boolean>}
-   */
-  public issuesFieldsLoaded$: Observable<boolean> = this.store.select<boolean>(
-    selectIssuesFieldsLoaded,
-  );
-
-  /**
-   * Issues field total state from the `Store` adapter.
-   *
-   * @protected
-   * @type {Observable<number>}
-   */
-  public issuesFieldTotal$: Observable<number> = this.store.select<number>(
-    selectIssuesFieldTotal,
-  );
-
-  /**
-   * Issues label entities from the `Store` adapter.
-   *
-   * @public
-   * @type {Observable<Dictionary<IssueLabelEntity>>}
-   */
-  public issuesLabelEntities$: Observable<Dictionary<IssueLabelEntity>> =
-    this.store.pipe(select(selectIssuesLabelEntities));
-
-  /**
-   * Issues labels from the `Store` adapter.
-   *
-   * @public
-   * @type {Observable<IssueLabelEntities>}
-   */
-  public allIssuesLabels$: Observable<IssueLabelEntities> =
-    this.store.select<IssueLabelEntities>(selectAllIssuesLabels);
-
-  /**
-   * Issues field entities from the `Store` adapter.
-   *
-   * @public
-   * @type {Observable<Dictionary<IssueFieldEntity>>}
-   */
-  public issuesFieldEntities$: Observable<Dictionary<IssueFieldEntity>> =
-    this.store.pipe(select(selectIssuesFieldEntities));
-
-  /**
-   * Issues fields from the `Store` adapter.
-   *
-   * @public
-   * @type {Observable<IssueLabelEntities>}
-   */
-  public allIssuesFields$: Observable<IssueFieldEntities> =
-    this.store.select<IssueFieldEntities>(selectAllIssuesFields);
-
   /**
    * Creates an instance of IssuesRoadmapFacade.
    *
    * @constructor
    * @public
-   * @param {Store<CoreEntityState>} store
+   * @param {IssuesLabelsFacade} issuesLabelsFacade
+   * @param {IssuesLabelsMapper} issuesLabelsMapper
+   * @param {IssuesFieldsFacade} issuesFieldsFacade
+   * @param {IssuesFieldsMapper} issuesFieldsMapper
    */
-  public constructor(private readonly store: Store<CoreEntityState>) {}
+  public constructor(
+    private readonly issuesLabelsFacade: IssuesLabelsFacade,
+    private readonly issuesLabelsMapper: IssuesLabelsMapper,
+    private readonly issuesFieldsFacade: IssuesFieldsFacade,
+    private readonly issuesFieldsMapper: IssuesFieldsMapper,
+  ) {}
 
   /**
-   * Un memorize all issues fields from the cache manager.
+   * Issues fields from the `Store` adapter.
    *
    * @public
+   * @type {Observable<IssueFieldEntity[]>}
    */
-  public releaseAllIssuesFields(): void {
-    return selectAllIssuesFields.release();
-  }
+  public fields$: Observable<IssueFieldEntities> =
+    this.issuesFieldsFacade.all$.pipe<IssueFieldEntities>(
+      mergeMap((fields: IssueFieldEntities) => {
+        const labels$: Observable<Dictionary<IssueLabelEntity>> =
+          this.issuesLabelsFacade.entities$;
+        return this.issuesFieldsMapper.toEntities(fields, labels$);
+      }),
+    );
 
   /**
-   * Un memorize all issues labels from the cache manager.
+   * Issues labels from the `Store` adapter.
    *
    * @public
+   * @type {Observable<IssueFieldEntity[]>}
    */
-  public releaseAllIssuesLabels(): void {
-    return selectAllIssuesLabels.release();
-  }
+  public labels$: Observable<IssueLabelEntities> =
+    this.issuesLabelsFacade.all$.pipe(
+      mergeMap((labels) => {
+        const fields$: Observable<Dictionary<IssueFieldEntity>> =
+          this.issuesFieldsFacade.entities$;
+        const fieldIds$: Observable<Array<string | number>> =
+          this.issuesFieldsFacade.ids$;
+        return this.issuesLabelsMapper.toEntities(labels, fields$, fieldIds$);
+      }),
+    );
 }

@@ -6,13 +6,23 @@ import {
   HttpInterceptor,
   HttpErrorResponse,
   HttpStatusCode,
+  HttpContextToken,
+  HttpContext,
 } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, retry, tap, throwError } from 'rxjs';
+import { StringUtils } from '@pinguin/utils';
+import {
+  ApiGatewayErrorException,
+  ClientRestApiConfigRef,
+  UnknownApiErrorException,
+} from '@pinguin/api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ErrorRequestInterceptor implements HttpInterceptor, ErrorHandler {
+  public constructor(private readonly httpConfigRef: ClientRestApiConfigRef) {}
+
   /**
    * Handle http errors with {@link HttpClient} backend-client.
    * TODO: implement logger service for debugging unhandled client errors.
@@ -35,27 +45,22 @@ export class ErrorRequestInterceptor implements HttpInterceptor, ErrorHandler {
     caught?: Observable<T>,
   ): Observable<never> {
     return throwError((): Error | string => {
-      if (!error.ok) {
-        if (
-          Object.is(error.statusText, 'OK') &&
-          Object.is(error.status, HttpStatusCode.Ok)
-        ) {
-          // Throw error exception.
-          return new Error(error.statusText);
-        }
-
-        if (
-          Object.is(error.status, 0) &&
-          Object.is(error.statusText, 'Unknown Error')
-        ) {
-          // Throw unknown error exception.
-          return new Error(error.statusText);
-        }
+      if (StringUtils.isString(error)) {
+        return error;
       }
 
-      const fallbackErrorCode = 'Unknown Error Exception';
-      // Throw any error exception.
-      return error.error || fallbackErrorCode;
+      if (error.error instanceof ErrorEvent) {
+        // Throw unknown api error exception.
+        return new UnknownApiErrorException(error.error.message);
+      }
+
+      if (error.ok && Object.is(error.status, HttpStatusCode.Ok)) {
+        // Throw api gateway error exception.
+        return new ApiGatewayErrorException(error.message, error.status);
+      }
+
+      // Throw any api gateway error exception.
+      return error.error;
     });
   }
 
@@ -71,6 +76,22 @@ export class ErrorRequestInterceptor implements HttpInterceptor, ErrorHandler {
     request: HttpRequest<unknown>,
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
-    return next.handle(request).pipe(catchError(this.handleError));
+    const errorAttemptsContext: HttpContextToken<number> =
+      this.httpConfigRef.getErrorAttempts();
+    const errorAttempts: number = request.context.get(errorAttemptsContext);
+
+    const retryAttemptsContext: HttpContextToken<number> =
+      this.httpConfigRef.getRetryAttempts();
+    const retryAttempts: number = request.context.get(retryAttemptsContext);
+
+    return next.handle(request).pipe(
+      tap({
+        // Whether any error was occurred in the request after dispatching.
+        error: () =>
+          request.context.set(errorAttemptsContext, errorAttempts + 1),
+      }),
+      retry(retryAttempts),
+      catchError(this.handleError),
+    );
   }
 }

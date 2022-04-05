@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BrowserService } from '@pinguin/common';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'platform',
 })
 export class AppBrowserService extends BrowserService {
   public constructor() // private readonly clientCommonHandler: ClientCommonHandler,

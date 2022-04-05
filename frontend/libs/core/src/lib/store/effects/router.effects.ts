@@ -10,7 +10,9 @@ import {
 import { Observable, pluck, tap } from 'rxjs';
 import { RouterActions, RouterTypeActions } from '../actions';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class RouterEffects {
   /**
    * Creates an instance of RouteEffects.

@@ -2,14 +2,14 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="de" datatype="plaintext" original="ng2.template" target-language="de">
         <body>
-            <trans-unit id="issuesLabelsTableHeaderTitle" datatype="html">
-                <source> issues </source>
+            <trans-unit id="issuesLabelsTableColumnHeaderTitle" datatype="html">
+                <source> issues-labels-table.column-header-title </source>
                 <target state="new"> Die Probleme </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">libs/feature-roadmap/src/lib/components/issues-labels-table/issues-labels-table.component.html</context>
                     <context context-type="linenumber">9,11</context>
                 </context-group>
-                <note priority="1" from="description">Title for the issues labels table
+                <note priority="1" from="description">Title for the issues labels table column
               header</note>
                 <note priority="1" from="meaning">Issues Labels Table</note>
             </trans-unit>

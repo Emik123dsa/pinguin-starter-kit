@@ -1,8 +1,7 @@
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import {
   ChangeDetectionStrategy,
   Component,
-  OnDestroy,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
@@ -10,25 +9,25 @@ import {
 import { IssueFieldEntities, IssueLabelEntities } from '@pinguin/api';
 
 import { IssuesRoadmapFacade } from '../../services';
-import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'pinguin-issues-roadmap',
   exportAs: 'pinguinIssuesRoadmap',
   host: { 'class': 'issues-roadmap' },
+  viewProviders: [IssuesRoadmapFacade],
   templateUrl: './issues-roadmap.component.html',
   styleUrls: ['./issues-roadmap.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IssuesRoadmapComponent implements OnInit, OnDestroy {
+export class IssuesRoadmapComponent implements OnInit {
   /**
    * Issues labels from the `Store`.
    *
    * @public
    * @type {!Observable<IssueLabelEntities>}
    */
-  public allIssuesLabels$!: Observable<IssueLabelEntities>;
+  public issuesLabels$!: Observable<IssueLabelEntities>;
 
   /**
    * Issues fields from the `Store`.
@@ -36,16 +35,18 @@ export class IssuesRoadmapComponent implements OnInit, OnDestroy {
    * @public
    * @type {!Observable<IssueFieldEntities>}
    */
-  public allIssuesFields$!: Observable<IssueFieldEntities>;
+  public issuesFields$!: Observable<IssueFieldEntities>;
 
   /**
    * Creates an instance of IssuesRoadmapContainerComponent.
    *
    * @constructor
    * @public
-   * @param {IssuesRoadmapFacade} facade
+   * @param {IssuesRoadmapFacade} issuesRoadmapFacade
    */
-  public constructor(private readonly facade: IssuesRoadmapFacade) {}
+  public constructor(
+    private readonly issuesRoadmapFacade: IssuesRoadmapFacade,
+  ) {}
 
   /**
    * Initialize facade entities of `roadmap`.
@@ -53,17 +54,7 @@ export class IssuesRoadmapComponent implements OnInit, OnDestroy {
    * @public
    */
   public ngOnInit(): void {
-    this.allIssuesFields$ = this.facade.allIssuesFields$;
-    this.allIssuesLabels$ = this.facade.allIssuesLabels$;
-  }
-
-  /**
-   * Release entities fields after destroy hook.
-   *
-   * @public
-   */
-  public ngOnDestroy(): void {
-    this.facade.releaseAllIssuesFields();
-    this.facade.releaseAllIssuesLabels();
+    this.issuesLabels$ = this.issuesRoadmapFacade.labels$;
+    this.issuesFields$ = this.issuesRoadmapFacade.fields$;
   }
 }

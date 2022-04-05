@@ -1,4 +1,4 @@
-import * as format from 'string-format';
+import { StringUtils } from '@pinguin/utils';
 
 export abstract class BrowserService {
   /**
@@ -10,7 +10,7 @@ export abstract class BrowserService {
    */
   public ngBrowserInit(): void {
     throw new ReferenceError(
-      format('{name} was not implemented', BrowserService),
+      StringUtils.format('{name} was not implemented', BrowserService),
     );
   }
 }

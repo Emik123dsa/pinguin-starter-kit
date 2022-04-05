@@ -2,7 +2,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { QuicklinkModule } from 'ngx-quicklink';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import {
+  HttpClientJsonpModule,
+  HttpClientModule,
+  HttpClientXsrfModule,
+} from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
 // Provide shared layouts.
@@ -32,7 +36,7 @@ import { SharedFlexLayoutModule } from './shared-flex-layout.module';
     // Provide http client modules.
     HttpClientModule,
     HttpClientXsrfModule,
-    HttpClientXsrfModule,
+    HttpClientJsonpModule,
 
     // Provide forms modules.
     FormsModule,
@@ -66,7 +70,7 @@ import { SharedFlexLayoutModule } from './shared-flex-layout.module';
     // Provide http client modules.
     HttpClientModule,
     HttpClientXsrfModule,
-    HttpClientXsrfModule,
+    HttpClientJsonpModule,
 
     // Provide forms modules.
     FormsModule,

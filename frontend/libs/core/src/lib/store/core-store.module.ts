@@ -2,6 +2,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   NgModule,
   Optional,
+  Self,
   SkipSelf,
   Type,
 } from '@angular/core';
@@ -24,6 +25,8 @@ import {
 
 import { CORE_ENTITY_ROOT_REDUCER } from './core-store.tokens';
 import { coreEntityRootConfig } from './core-store.providers';
+import { configureBufferSize } from 'ngrx-undo';
+import { ClientRestApiConfigRef } from '@pinguin/api';
 
 @NgModule({
   declarations: [],
@@ -70,8 +73,9 @@ export class CoreStoreModule {
    * ```
    */
   public constructor(
-    @SkipSelf()
-    @Optional()
-    private readonly internalModule?: CoreStoreModule,
-  ) {}
+    @Self()
+    readonly configRef: ClientRestApiConfigRef,
+  ) {
+    configureBufferSize(configRef.getBufferSize());
+  }
 }

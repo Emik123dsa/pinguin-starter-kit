@@ -1,18 +1,18 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IssueFieldEntities, IssueFieldEntity } from '@pinguin/api';
-import { IssueFieldDataSource } from '../../data';
+import { IssuesFieldsDataSource } from '@pinguin/feature-issues';
 
 @Component({
   selector: 'pinguin-issues-fields-table',
   templateUrl: './issues-fields-table.component.html',
   styleUrls: ['./issues-fields-table.component.scss'],
 })
-export class IssuesFieldsTableComponent {
+export class IssuesFieldsTableComponent implements OnInit {
   static ngAcceptInputType_fields: IssueFieldEntities;
 
-  displayedColumns: string[] = ['id', 'labelIds'];
+  public displayedColumns: string[] = ['id', 'labelIds'];
 
-  dataSource: IssueFieldDataSource = new IssueFieldDataSource();
+  public dataSource!: IssuesFieldsDataSource;
 
   @Input()
   set fields(value: IssueFieldEntities) {
@@ -22,6 +22,11 @@ export class IssuesFieldsTableComponent {
     return this.fieldList;
   }
   private fieldList!: IssueFieldEntities;
+
+  public ngOnInit(): void {
+    this.dataSource = new IssuesFieldsDataSource();
+    this.dataSource.setFields(this.fieldList);
+  }
 
   /**
    * Whether entity was tracked with their ids.

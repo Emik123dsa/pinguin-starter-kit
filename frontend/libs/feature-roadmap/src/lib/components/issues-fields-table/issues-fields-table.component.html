@@ -4,16 +4,15 @@
       <table id="issues-fields-data-table" cdk-table [dataSource]="dataSource" [trackBy]="trackEntityById" recycleRows
         fixedLayout>
         <ng-container cdkColumnDef="id">
-          <th cdk-header-cell *cdkHeaderCellDef></th>
+          <th cdk-header-cell *cdkHeaderCellDef> </th>
           <td fxHide cdk-cell *cdkCellDef="let element">
-            {{ element.getId() }}
           </td>
           <td cdk-footer-cell *cdkFooterCellDef></td>
         </ng-container>
 
         <ng-container cdkColumnDef="labelIds">
-          <th cdk-header-cell *cdkHeaderCellDef></th>
-          <td cdk-cell *cdkCellDef="let element">{{ element.getSummary() }}</td>
+          <th cdk-header-cell *cdkHeaderCellDef> </th>
+          <td cdk-cell *cdkCellDef="let element"> {{ element.getTitle() }} </td>
           <td cdk-footer-cell *cdkFooterCellDef></td>
         </ng-container>
 

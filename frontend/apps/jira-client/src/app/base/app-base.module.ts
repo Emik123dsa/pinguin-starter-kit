@@ -2,6 +2,10 @@ import { Inject, LOCALE_ID, NgModule, Self } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 
+// TODO: logger module will no longer used here,
+// should be implemented custom logging facade.
+
+// import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { CoreModule } from '@pinguin/core';
 import { SharedModule } from '@pinguin/shared';
 import { ClientCommonModule } from '@pinguin/common';
@@ -12,9 +16,9 @@ import { environment } from '@pinguin-runtime/environment';
 
 import { AppComponent } from '@pinguin-client/app.component';
 import { AppRoutingModule } from '@pinguin-client/app-routing.module';
+import { bootstrapLocaleModule } from '@pinguin-client/app-locale.providers';
 
 import { APP_BASE_PROVIDERS } from './app-base.providers';
-import { bootstrapLocaleModule } from './app-base-locale';
 
 /**
  * Base module for bootstrapping application in
@@ -29,6 +33,12 @@ import { bootstrapLocaleModule } from './app-base-locale';
   declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: environment.app.id }),
+
+    /* LoggerModule.forRoot({
+      serverLoggingUrl: environment.api.baseUrl,
+      level: NgxLoggerLevel.DEBUG,
+      serverLogLevel: NgxLoggerLevel.ERROR,
+    }), */
 
     // Provide environment runtime module for application.
     RuntimeEnvironmentModule.forRoot(environment),

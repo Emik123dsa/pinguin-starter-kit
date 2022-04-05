@@ -1,11 +1,10 @@
-import { FactoryProvider, Inject } from '@angular/core';
-import { CLIENT_ENVIRONMENT_OPTIONS } from '@pinguin/environments';
+import { FactoryProvider, Inject, Self } from '@angular/core';
 
 import { InMemoryBackendConfigArgs } from 'angular-in-memory-web-api';
-import { IN_MEMORY_STORAGE_OPTIONS } from './in-memory-storage.tokens';
+import { IN_MEMORY_DATA_STORAGE_OPTIONS } from './in-memory-storage.tokens';
 
 // `in-memory-web-api` data config factory.
-export function inMemoryRestApiOptionsFactory(
+export function inMemoryDataStorageOptionsFactory(
   options?: InMemoryBackendConfigArgs,
 ): InMemoryBackendConfigArgs {
   return {
@@ -19,8 +18,8 @@ export function inMemoryRestApiOptionsFactory(
 }
 
 export const IN_MEMORY_STORAGE_OPTIONS_PROVIDER: FactoryProvider = {
-  provide: IN_MEMORY_STORAGE_OPTIONS,
-  useFactory: inMemoryRestApiOptionsFactory,
-  deps: [new Inject(CLIENT_ENVIRONMENT_OPTIONS)],
+  provide: IN_MEMORY_DATA_STORAGE_OPTIONS,
+  useFactory: inMemoryDataStorageOptionsFactory,
+  // deps: [[new Self()]],
   multi: false,
 };

@@ -1,28 +1,51 @@
+<ng-template #issuesFieldsTable let-fields>
+  <div class="issues-fields-wrapper">
+    <div id="issues-field-entities-table" role="cell">
+      <pinguin-issues-fields-table [fields]="fields">
+      </pinguin-issues-fields-table>
+    </div>
+  </div>
+</ng-template>
+
 <div role="contentinfo" aria-controls="issues-labels-data-table">
   <div class="issues-labels-data-table-container">
     <div fxLayout="column" fxLayoutAlign="start center" class="issues-labels-data-table-content">
-      <table id="issues-labels-data-table" cdk-table [dataSource]="dataSource" [trackBy]="trackEntityById" recycleRows
-        fixedLayout>
+      <table id="issues-labels-data-table" cdk-table [dataSource]="dataSource" [trackBy]="trackEntityById" fixedLayout>
         <ng-container cdkColumnDef="id">
-          <th i18n="
-              Issues Labels Table|Title for the issues labels table
-              header@@issuesLabelsTableHeaderTitle" cdk-header-cell *cdkHeaderCellDef>
-            issues
+          <th scope="col" fxHide cdk-header-cell *cdkHeaderCellDef>
           </th>
-          <td fxHide cdk-cell *cdkCellDef="let element">
+          <td scope="row" fxHide cdk-cell *cdkCellDef="let element">
             {{ element.getId() }}
           </td>
           <td cdk-footer-cell *cdkFooterCellDef></td>
         </ng-container>
 
         <ng-container cdkColumnDef="name">
-          <th cdk-header-cell *cdkHeaderCellDef></th>
-          <td cdk-cell *cdkCellDef="let element">{{ element.getName() }}</td>
+          <th scope="col"
+            i18n="Issues Labels Table|Title for the issues labels table column header@@issuesLabelsTableColumnHeaderTitle"
+            id="issues-labels-table-column-header-title" cdk-header-cell *cdkHeaderCellDef>
+            issues-labels-table.column-header-title
+          </th>
+          <td scope="row" cdk-cell *cdkCellDef="let element">
+            {{ element.getName() }}
+          </td>
+          <td cdk-footer-cell *cdkFooterCellDef></td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="fields">
+          <th scope="col" cdk-header-cell *cdkHeaderCellDef></th>
+          <td scope="row" cdk-cell *cdkCellDef="let element">
+            <ng-container *ngIf="element.getFieldIds()" [ngTemplateOutlet]="issuesFieldsTable"
+              [ngTemplateOutletContext]="{ $implicit: element.getFields() }">
+            </ng-container>
+          </td>
           <td cdk-footer-cell *cdkFooterCellDef></td>
         </ng-container>
 
         <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
         <tr cdk-row *cdkRowDef="let row; columns: displayedColumns"></tr>
+
+        <!-- TODO: should footer used here for mobile template -->
         <tr fxHide cdk-footer-row *cdkFooterRowDef="displayedColumns"></tr>
       </table>
     </div>

@@ -25,6 +25,7 @@ import { CollectionViewer } from '@angular/cdk/collections';
 
 import { EntityService } from './entity.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { ClientRestApiConfigRef } from '@pinguin/api';
 
 /**
  * Data source to provide what data should be rendered in the table. Note that the data source
@@ -93,6 +94,7 @@ export class EntityDataSource<
    */
   public constructor(
     private readonly entityService: S,
+    private readonly entityConfigRef: ClientRestApiConfigRef,
     // FIXME: figure out is it required to use here `ChangeDetectorRef` after finalize hook.
     private readonly changeDetectorRef?: ChangeDetectorRef,
   ) {
@@ -131,17 +133,10 @@ export class EntityDataSource<
    * @public
    */
   public load(): void {
-    const entityConfig: ShareReplayConfig = {
-      // Set initial `bufferSize` to load all entities.
-      bufferSize: 4,
-      refCount: true,
-      scheduler: asyncScheduler,
-    };
-
     const entityService$: Observable<readonly E[]> = this.entityService
       .findAll()
       .pipe(
-        shareReplay(entityConfig),
+        shareReplay(this.serviceEntityConfig),
         catchError(() => of(new Array<E>())),
         finalize(() => this.loadingSubject.next(false)),
       );
@@ -209,5 +204,21 @@ export class EntityDataSource<
     if (this.subscription && !this.subscription.closed) {
       this.subscription.unsubscribe();
     }
+  }
+
+  /**
+   * Service entity config for `sharedReplay` functionality.
+   *
+   * @private
+   * @readonly
+   * @type {ShareReplayConfig}
+   */
+  private get serviceEntityConfig(): ShareReplayConfig {
+    return {
+      // Set initial `bufferSize` to load all entities.
+      bufferSize: this.entityConfigRef.getBufferSize(),
+      refCount: this.entityConfigRef.getRefCount(),
+      scheduler: asyncScheduler,
+    };
   }
 }

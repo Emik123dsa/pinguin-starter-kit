@@ -5,7 +5,7 @@
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { StringUtils } from '@pinguin/utils';
-StringUtils;
+
 import {
   ClientEnvironment,
   ClientEnvironmentOptions,
@@ -38,7 +38,7 @@ export const environment: ClientEnvironmentOptions = {
       prefix: 'api',
       version: 'v1',
     },
-    bufferSize: 4,
+    bufferSize: 150,
     refCount: true,
     retryAttempts: 3,
     errorAttempts: 1,
@@ -74,8 +74,8 @@ export const environment: ClientEnvironmentOptions = {
   packages: [],
 
   runtimePlugins: [
-    InMemoryStorageModule,
-
+    // InMemoryStorageModule.forRoot(),
+ 
     StoreDevtoolsModule.instrument({
       name: StringUtils.format(
         'pinguin-{0}-client',

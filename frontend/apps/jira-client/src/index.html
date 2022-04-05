@@ -8,50 +8,37 @@
 -->
 <!DOCTYPE html>
 <!-- HINT: (prefers-color-scheme: light) -->
-<html
-  lang="en"
-  dir="ltr"
-  class="day light-scheme"
-  manifest="/assets/cache/cache.appcache"
->
-  <head>
-    <meta charset="utf-8" />
-    <!-- Pinguin Client -->
-    <title>Pinguin | Jira Client</title>
-    <meta name="robots" content="index, follow" />
-    <meta name="keywords" content="Keywords" />
-    <meta name="description" content="Description" />
-    <base href="/" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta
-      name="viewport"
-      content="user-scalable=no,initial-scale=1.0,maximum-scale=2.0,width=device-width,shrink-to-fit=no"
-    />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="manifest" href="manifest.webmanifest" />
-    <meta name="color-scheme" content="var(--prefers-color-scheme)" />
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: dark)"
-      content="var(--theme-color)"
-    />
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: light)"
-      content="var(--theme-color)"
-    />
-  </head>
-  <body class="theming theme-dark">
-    <!-- Whether client is online/offline mode, default: navigation.onLine -->
-    <div id="network" class="network-status online"></div>
+<html lang="en" dir="ltr" class="day light-scheme" prefix="og: http://ogp.me/ns#"
+  manifest="/assets/cache/cache.appcache">
 
-    <div class="mat-app-background mat-typography">
-      <pinguin-client-root></pinguin-client-root>
-    </div>
+<head>
+  <meta charset="utf-8" />
+  <!-- Pinguin Client -->
+  <title>Pinguin | Jira Client</title>
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="pinguin-starter-kit, jira-client" />
+  <meta name="description" content="Pinguin Starter Kit - Jira Client" />
+  <base href="/" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport"
+    content="user-scalable=no,initial-scale=1.0,maximum-scale=2.0,width=device-width,shrink-to-fit=no" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="color-scheme" content="var(--prefers-color-scheme)" />
+  <meta name="theme-color" media="(prefers-color-scheme: var(--prefers-color-scheme))" content="var(--theme-color)" />
+  <!-- <meta name="theme-color" media="(prefers-color-scheme: light)" content="var(--theme-color)" /> -->
+</head>
 
-    <noscript
-      >Please enable JavaScript to continue using this application.</noscript
-    >
-  </body>
+<body class="theming theme-dark">
+  <!-- Whether client is online/offline mode, default: navigation.onLine -->
+  <div id="network" class="network-status online"></div>
+
+  <div class="mat-app-background mat-typography">
+    <pinguin-client-root></pinguin-client-root>
+  </div>
+
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+</body>
+
 </html>

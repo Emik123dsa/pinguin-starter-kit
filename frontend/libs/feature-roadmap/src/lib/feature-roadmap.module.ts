@@ -11,18 +11,11 @@ import { IssuesRoadmapContainerComponent } from './containers/issues-roadmap-con
 
 @NgModule({
   imports: [SharedModule.forRoot()],
+  providers: [],
   declarations: [
     IssuesRoadmapComponent,
     IssuesFieldsTableComponent,
     IssuesLabelsTableComponent,
-
-    IssuesRoadmapContainerComponent,
-  ],
-  exports: [
-    IssuesRoadmapComponent,
-    IssuesFieldsTableComponent,
-    IssuesLabelsTableComponent,
-
     IssuesRoadmapContainerComponent,
   ],
 })

@@ -18,7 +18,7 @@ import { IssuesRoadmapActions } from '../actions';
 import { IssuesRoadmapContainerComponent } from '../../containers/issues-roadmap-container';
 
 @Injectable({
-  providedIn: 'platform',
+  providedIn: 'root',
 })
 export class IssuesRoadmapEffects {
   /**

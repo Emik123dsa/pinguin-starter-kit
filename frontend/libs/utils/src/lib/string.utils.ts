@@ -33,6 +33,18 @@ export class StringUtils {
   }
 
   /**
+   * Check whether the given value is string.
+   *
+   * @public
+   * @static
+   * @param {unknown} value
+   * @returns {value is string}
+   */
+  public static isString(value: unknown): value is string {
+    return typeof value === 'string';
+  }
+
+  /**
    * Init format extending prototype for `String.prototype`.
    *
    * @private `fn()` to initialize format string.

@@ -15067,6 +15067,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ngrx-undo@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "ngrx-undo@npm:8.0.0"
+  peerDependencies:
+    "@ngrx/store": ^8.0.0
+  checksum: 37f308e217e5d6104309642792a991b23109b79f053524117533d6d7bcb69ff479c64e80ba0b78e6779510dae3d7c5a92793a6c482286a92640722dd1cac2e38
+  languageName: node
+  linkType: hard
+
+"ngx-logger@npm:^5.0.9":
+  version: 5.0.9
+  resolution: "ngx-logger@npm:5.0.9"
+  dependencies:
+    tslib: ^2.3.0
+    vlq: ^1.0.0
+  peerDependencies:
+    rxjs: ">6.0.0"
+  checksum: 12a7cce31c368ea3d263a305b8a6e9080205abb4113acbb5cac02ba7ccd2ee28b4f0b7983c18e85d996dff280bc6247c229b8700d391de26bfe83ac3f2a65b3d
+  languageName: node
+  linkType: hard
+
 "ngx-quicklink@npm:^0.2.7":
   version: 0.2.7
   resolution: "ngx-quicklink@npm:0.2.7"
@@ -16321,6 +16342,8 @@ __metadata:
     lint-staged: ^12.3.3
     ng-packagr: ^13.0.0
     ngrx-store-freeze: ^0.2.4
+    ngrx-undo: ^8.0.0
+    ngx-logger: ^5.0.9
     ngx-quicklink: ^0.2.7
     postcss: ^8.4.6
     postcss-at-rules-variables: ^0.3.0
@@ -21608,6 +21631,13 @@ __metadata:
   version: 0.2.0
   resolution: "viewport-dimensions@npm:0.2.0"
   checksum: d15424d553e210c363c0907441bd559edc7c969a4962ebcc54b8db032e01f66381fb7912c7eba1aa664fb95701cb89aabe835a14e006c1da991ccd39f44862bd
+  languageName: node
+  linkType: hard
+
+"vlq@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "vlq@npm:1.0.1"
+  checksum: 67ab6dd35c787eaa02c0ff1a869dd07a230db08722fb6014adaaf432634808ddb070765f70958b47997e438c331790cfcf20902411b0d6453f1a2a5923522f55
   languageName: node
   linkType: hard
 

@@ -6,8 +6,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { IssuesRoadmapFacade } from '../../services';
-import { ISSUES_ROADMAP_FACADE_PROVIDER } from '../../providers';
+import { IssuesFieldsFacade } from '@pinguin/feature-issues';
 
 @Component({
   selector: 'pinguin-issues-roadmap-container',
@@ -15,7 +14,6 @@ import { ISSUES_ROADMAP_FACADE_PROVIDER } from '../../providers';
   templateUrl: './issues-roadmap-container.component.html',
   styleUrls: ['./issues-roadmap-container.component.scss'],
   host: { 'class': 'issues-roadmap-page' },
-  viewProviders: [ISSUES_ROADMAP_FACADE_PROVIDER],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -48,7 +46,7 @@ export class IssuesRoadmapContainerComponent implements OnInit {
    * @public
    * @param {IssuesRoadmapFacade} facade
    */
-  public constructor(private readonly facade: IssuesRoadmapFacade) {}
+  public constructor(private readonly issuesFieldsFacade: IssuesFieldsFacade) {}
 
   /**
    * Initialize facade entities of `roadmap`.
@@ -56,9 +54,9 @@ export class IssuesRoadmapContainerComponent implements OnInit {
    * @public
    */
   public ngOnInit(): void {
-    this.issuesFieldTotal$ = this.facade.issuesFieldTotal$;
-    this.issuesFieldsLoaded$ = this.facade.issuesFieldsLoaded$;
-    this.issuesFieldsLoading$ = this.facade.issuesFieldsLoading$;
+    this.issuesFieldTotal$ = this.issuesFieldsFacade.total$;
+    this.issuesFieldsLoaded$ = this.issuesFieldsFacade.loaded$;
+    this.issuesFieldsLoading$ = this.issuesFieldsFacade.loading$;
   }
 
   /**

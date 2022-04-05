@@ -15,10 +15,7 @@ import { ClientEnvironmentOptions } from './environment.interface';
 export const CLIENT_ENVIRONMENT_OPTIONS: InjectionToken<ClientEnvironmentOptions> =
   new InjectionToken(ENVIRONMENT_OPTIONS_CONSTANT, {
     providedIn: 'root',
-    factory: (): ClientEnvironmentOptions =>
-      ({
-        environment: ClientEnvironment.Staging,
-      } as ClientEnvironmentOptions),
+    factory: (): Optional<ClientEnvironmentOptions> => Object.create(null),
   });
 
 /**
@@ -30,7 +27,7 @@ export const CLIENT_ENVIRONMENT_OPTIONS: InjectionToken<ClientEnvironmentOptions
 export const ENVIRONMENT: InjectionToken<ClientEnvironment> =
   new InjectionToken(ENVIRONMENT_CONSTANT, {
     providedIn: 'platform',
-    factory: (): ClientEnvironment => {
-      return ClientEnvironment.Staging;
+    factory: (): Optional<ClientEnvironment> => {
+      return null;
     },
   });

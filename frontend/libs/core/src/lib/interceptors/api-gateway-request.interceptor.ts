@@ -13,6 +13,7 @@ import {
   BASE_API_HTTP_REQUEST_QUERY_PARAMS,
   BASE_API_URL,
 } from '@pinguin/api';
+import { ClientEnvironment, ENVIRONMENT } from '@pinguin/environments';
 
 @Injectable({
   providedIn: 'root',
@@ -27,18 +28,18 @@ export class ApiGatewayRequestInterceptor implements HttpInterceptor {
    * @memberof ApiGatewayRequestInterceptor
    */
   public constructor(
-    @Optional()
     @Self()
-    @Inject(BASE_API_URL)
-    private readonly _baseUrl: string,
-    @Optional()
+    @Inject(ENVIRONMENT)
+    private readonly environment: ClientEnvironment,
+    @Self() @Inject(BASE_API_URL) private readonly baseUrl: string,
     @Self()
+    @Optional()
     @Inject(BASE_API_HTTP_REQUEST_HEADERS)
-    private readonly _baseHttpHeaders: HttpHeaders,
-    @Optional()
+    private readonly baseHttpHeaders?: HttpHeaders,
     @Self()
+    @Optional()
     @Inject(BASE_API_HTTP_REQUEST_QUERY_PARAMS)
-    private readonly _baseHttpQueryParams: HttpParams,
+    private readonly baseHttpQueryParams?: HttpParams,
   ) {}
 
   /**
@@ -47,7 +48,7 @@ export class ApiGatewayRequestInterceptor implements HttpInterceptor {
    * @returns {string} base url
    */
   public getBaseUrl(): string {
-    return this._baseUrl;
+    return this.baseUrl;
   }
 
   /**
@@ -56,7 +57,7 @@ export class ApiGatewayRequestInterceptor implements HttpInterceptor {
    * @returns {HttpHeaders} as headers of http request.
    */
   public getBaseHttpHeaders(): HttpHeaders {
-    return this._baseHttpHeaders;
+    return this.baseHttpHeaders as HttpHeaders;
   }
 
   /**
@@ -65,7 +66,7 @@ export class ApiGatewayRequestInterceptor implements HttpInterceptor {
    * @returns {HttpParams} as query params of http request.
    */
   public getBaseHttpQueryParams(): HttpParams {
-    return this._baseHttpQueryParams;
+    return this.baseHttpQueryParams as HttpParams;
   }
 
   /**
@@ -76,10 +77,10 @@ export class ApiGatewayRequestInterceptor implements HttpInterceptor {
    * @return Observable<HttpEvent<unknown>>
    * @memberof ApiGatewayRequestInterceptor
    */
-  public intercept(
-    request: HttpRequest<unknown>,
+  public intercept<T>(
+    request: HttpRequest<T>,
     next: HttpHandler,
-  ): Observable<HttpEvent<unknown>> {
+  ): Observable<HttpEvent<T>> {
     let baseApiUrl: string;
     // Clone base api url from the request context.
     const baseUrl: string = this.getBaseUrl();
@@ -95,6 +96,11 @@ export class ApiGatewayRequestInterceptor implements HttpInterceptor {
       url: baseApiUrl,
       headers: this.getBaseHttpHeaders(),
       params: this.getBaseHttpQueryParams(),
+      withCredentials: Object.is(
+        this.environment,
+        ClientEnvironment.Production,
+      ),
+      responseType: 'json',
     });
 
     return next.handle(baseHttpRequest);

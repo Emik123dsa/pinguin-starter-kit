@@ -32,17 +32,17 @@ export class CommonStoreModule {
    *
    * @constructor
    * @public
-   * @param {CommonStoreModule} internalModule
+   * @param {CommonStoreModule} parentModule
    * @param {ClientCommonHandler} commonHandler
    */
   public constructor(
     @Optional()
     @SkipSelf()
-    private readonly internalModule: CommonStoreModule,
+    private readonly parentModule?: CommonStoreModule,
   ) {
     // We will prevent any re-initialization of common store module.
     // Will be defined as a `Singleton` module in project runtime.
-    if (this.internalModule) {
+    if (this.parentModule) {
       const errorValue: string = StringUtils.format(
         '{name} has been already initialized as a module',
         CommonStoreModule,

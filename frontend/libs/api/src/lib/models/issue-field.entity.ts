@@ -1,3 +1,6 @@
+import { StringUtils } from '@pinguin/utils';
+import { IssueLabelEntities, IssueLabelEntity } from './issue-label.entity';
+
 /**
  * Issue field entities.
  *
@@ -15,6 +18,14 @@ export type IssueFieldEntities = Array<IssueFieldEntity>;
  */
 export class IssueFieldEntity {
   /**
+   * Set initial labels of field entities.
+   *
+   * @private
+   * @type {IssueLabelEntities}
+   */
+  private labels!: IssueLabelEntities;
+
+  /**
    * Creates an instance of IssueFieldEntity.
    *
    * @constructor
@@ -29,7 +40,7 @@ export class IssueFieldEntity {
   public constructor(
     private id: number,
     private title: string,
-    private summary: string,
+    private summary: string = StringUtils.EMPTY,
     private labelIds: Array<number>,
     private startDate: number,
     private endDate: number,
@@ -37,6 +48,14 @@ export class IssueFieldEntity {
 
   public getId(): number {
     return this.id;
+  }
+
+  public getLabels(): IssueLabelEntities {
+    return this.labels;
+  }
+
+  public setLabels(value: IssueLabelEntities) {
+    this.labels = value;
   }
 
   public getTitle(): string {
@@ -49,6 +68,10 @@ export class IssueFieldEntity {
 
   public getLabelIds(): Array<number> {
     return this.labelIds;
+  }
+
+  public setLabelIds(value: Array<number>) {
+    this.labelIds = value;
   }
 
   public getStartDate(): number {

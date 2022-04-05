@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { VERSION } from '@pinguin/core';
+
 import {
   ChangeDetectionStrategy,
   Component,

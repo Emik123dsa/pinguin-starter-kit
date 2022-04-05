@@ -15,6 +15,9 @@ import { IssuesCardListComponent } from './components/issues-card-list';
 
 import { FeatureIssuesRoutingModule } from './feature-issues-routing.module';
 
+// Service issues module.
+import { IssuesServiceModule } from './services';
+
 // Feature store module.
 import { IssuesStoreModule } from './store';
 import { OverlayModule } from '@pinguin/overlay';
@@ -33,6 +36,7 @@ import { IssueDetailContainerComponent } from './containers/issue-detail-contain
     // Provide store module.
     IssuesStoreModule,
 
+    IssuesServiceModule,
     // Provide routing module.
     FeatureIssuesRoutingModule,
 

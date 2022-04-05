@@ -2,10 +2,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
+  OnInit,
   ViewEncapsulation,
 } from '@angular/core';
+
 import { IssueLabelEntities, IssueLabelEntity } from '@pinguin/api';
-import { IssueLabelDataSource } from '../../data';
+import { IssuesLabelsDataSource } from '@pinguin/feature-issues';
 
 @Component({
   selector: 'pinguin-issues-labels-table',
@@ -16,12 +18,8 @@ import { IssueLabelDataSource } from '../../data';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IssuesLabelsTableComponent {
+export class IssuesLabelsTableComponent implements OnInit {
   static ngAcceptInputType_labels: IssueLabelEntities;
-
-  displayedColumns: string[] = ['id', 'name'];
-
-  dataSource: IssueLabelDataSource = new IssueLabelDataSource();
 
   @Input()
   set labels(value: IssueLabelEntities) {
@@ -31,6 +29,15 @@ export class IssuesLabelsTableComponent {
     return this.labelList;
   }
   private labelList!: IssueLabelEntities;
+
+  public dataSource!: IssuesLabelsDataSource;
+
+  public displayedColumns: string[] = ['id', 'name', 'fields'];
+
+  public ngOnInit() {
+    this.dataSource = new IssuesLabelsDataSource();
+    this.dataSource.setLabels(this.labelList);
+  }
 
   /**
    * Whether entity was tracked with their ids.

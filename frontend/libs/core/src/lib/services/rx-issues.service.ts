@@ -11,9 +11,9 @@ import {
 import { Observable, of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'platform',
+  providedIn: 'root',
 })
-export class RxIssueService extends IssuesService {
+export class RxIssuesService extends IssuesService {
   /**
    * Creates an instance of RxIssueService.
    *
@@ -56,7 +56,7 @@ export class RxIssueService extends IssuesService {
           1,
           'Quick try on DB',
           'One morning, when Gregor Samsa woke from troubled dreams.',
-          [1, 3],
+          [2],
           1641164400,
           1641164400,
         ),
@@ -64,7 +64,15 @@ export class RxIssueService extends IssuesService {
           2,
           'Quick try on DB',
           'One morning, when Gregor Samsa woke from troubled dreams.',
-          [1, 3],
+          [2],
+          1641164400,
+          1641164400,
+        ),
+        new IssueFieldEntity(
+          3,
+          'Quick try on DB',
+          'One morning, when Gregor Samsa woke from troubled dreams.',
+          [3],
           1641164400,
           1641164400,
         ),

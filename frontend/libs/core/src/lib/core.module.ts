@@ -71,11 +71,11 @@ export class CoreModule {
   public constructor(
     @SkipSelf()
     @OptionalInject()
-    private readonly internalModule?: CoreModule,
+    private readonly parentModule?: CoreModule,
   ) {
     // We will prevent any re-initialization of core module.
     // Will be defined as a `Singleton` module in project runtime.
-    if (this.internalModule) {
+    if (this.parentModule) {
       const errorValue: string = StringUtils.format(
         '{name} has been already initialized as a module',
         CoreModule,
