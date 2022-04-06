@@ -4,14 +4,12 @@ import {
   ComponentRef,
   DoBootstrap,
   NgModule,
-  CUSTOM_ELEMENTS_SCHEMA,
 } from '@angular/core';
 import {
   concat,
   distinctUntilChanged,
   first,
   interval,
-  NEVER,
   Observable,
   share,
   Subject,
@@ -35,6 +33,7 @@ import { APP_BROWSER_PROVIDERS } from './app.browser.providers';
     environment.runtimePlugins,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
+      scope: '/',
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',
@@ -93,9 +92,8 @@ export class AppBrowserModule implements DoBootstrap {
         switchMap(() => pollingInterval$),
       );
 
-    const onceIsStable$: Observable<number | boolean> = concat(
+    const pollingIsStable$: Observable<number | boolean> = concat(
       isStable$,
-      NEVER,
     ).pipe(
       share({
         connector: () => new Subject<number | boolean>(),
@@ -106,6 +104,6 @@ export class AppBrowserModule implements DoBootstrap {
       distinctUntilChanged(),
     );
 
-    onceIsStable$.subscribe();
+    pollingIsStable$.subscribe();
   }
 }

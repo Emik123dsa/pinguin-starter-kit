@@ -1,4 +1,4 @@
-import { Inject, Injectable, Optional, Self } from '@angular/core';
+import { Inject, Injectable, Optional, Self, SkipSelf } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -13,7 +13,7 @@ import {
   BASE_API_HTTP_REQUEST_QUERY_PARAMS,
   BASE_API_URL,
 } from '@pinguin/api';
-import { ClientEnvironment, ENVIRONMENT } from '@pinguin/environments';
+import { addLeadingSlash } from '@pinguin/utils';
 
 @Injectable({
   providedIn: 'root',
@@ -28,16 +28,13 @@ export class ApiGatewayRequestInterceptor implements HttpInterceptor {
    * @memberof ApiGatewayRequestInterceptor
    */
   public constructor(
-    @Self()
-    @Inject(ENVIRONMENT)
-    private readonly environment: ClientEnvironment,
     @Self() @Inject(BASE_API_URL) private readonly baseUrl: string,
-    @Self()
     @Optional()
+    @SkipSelf()
     @Inject(BASE_API_HTTP_REQUEST_HEADERS)
     private readonly baseHttpHeaders?: HttpHeaders,
-    @Self()
     @Optional()
+    @SkipSelf()
     @Inject(BASE_API_HTTP_REQUEST_QUERY_PARAMS)
     private readonly baseHttpQueryParams?: HttpParams,
   ) {}
@@ -56,7 +53,7 @@ export class ApiGatewayRequestInterceptor implements HttpInterceptor {
    *
    * @returns {HttpHeaders} as headers of http request.
    */
-  public getBaseHttpHeaders(): HttpHeaders {
+  public getBaseHttpHeaders(headers: HttpHeaders): HttpHeaders {
     return this.baseHttpHeaders as HttpHeaders;
   }
 
@@ -65,7 +62,7 @@ export class ApiGatewayRequestInterceptor implements HttpInterceptor {
    *
    * @returns {HttpParams} as query params of http request.
    */
-  public getBaseHttpQueryParams(): HttpParams {
+  public getBaseHttpQueryParams(params: HttpParams): HttpParams {
     return this.baseHttpQueryParams as HttpParams;
   }
 
@@ -81,26 +78,22 @@ export class ApiGatewayRequestInterceptor implements HttpInterceptor {
     request: HttpRequest<T>,
     next: HttpHandler,
   ): Observable<HttpEvent<T>> {
-    let baseApiUrl: string;
+    let requestUrl: string;
+
     // Clone base api url from the request context.
     const baseUrl: string = this.getBaseUrl();
 
     if (baseUrl.indexOf(request.url) === -1) {
-      baseApiUrl = baseUrl + request.url;
+      requestUrl = baseUrl + addLeadingSlash(request.url);
     } else {
-      baseApiUrl = request.url;
+      requestUrl = request.url;
     }
 
     // Clone base http request to override current http handler.
     const baseHttpRequest: HttpRequest<unknown> = request.clone({
-      url: baseApiUrl,
-      headers: this.getBaseHttpHeaders(),
-      params: this.getBaseHttpQueryParams(),
-      withCredentials: Object.is(
-        this.environment,
-        ClientEnvironment.Production,
-      ),
-      responseType: 'json',
+      url: requestUrl,
+      params: this.getBaseHttpQueryParams(request.params),
+      headers: this.getBaseHttpHeaders(request.headers),
     });
 
     return next.handle(baseHttpRequest);

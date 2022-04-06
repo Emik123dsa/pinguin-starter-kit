@@ -1,4 +1,4 @@
-import { FactoryProvider } from '@angular/core';
+import { FactoryProvider, Self, SkipSelf } from '@angular/core';
 import { StoreConfig } from '@ngrx/store';
 
 import {
@@ -26,6 +26,6 @@ function dashboardFeatureConfigProviderFactory(
 export const DASHBOARD_FEATURE_CONFIG_PROVIDER: FactoryProvider = {
   provide: DASHBOARD_FEATURE_CONFIG,
   useFactory: dashboardFeatureConfigProviderFactory,
-  deps: [CLIENT_ENVIRONMENT_OPTIONS],
+  deps: [[new SkipSelf(), CLIENT_ENVIRONMENT_OPTIONS]],
   multi: false,
 };

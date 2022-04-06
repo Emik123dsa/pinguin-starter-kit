@@ -1,8 +1,4 @@
-import {
-  ModuleWithProviders,
-  NgModule,
-  CUSTOM_ELEMENTS_SCHEMA,
-} from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { ClientEnvironmentOptions } from './environment.interface';
 
 import {
@@ -19,10 +15,9 @@ import {
  */
 @NgModule({
   imports: [],
+  providers: [ENVIRONMENT_PROVIDER],
   exports: [],
-  declarations: [],
-  providers: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [],
 })
 export class RuntimeEnvironmentModule {
   /**
@@ -39,10 +34,7 @@ export class RuntimeEnvironmentModule {
   ): ModuleWithProviders<RuntimeEnvironmentModule> {
     return {
       ngModule: RuntimeEnvironmentModule,
-      providers: [
-        ENVIRONMENT_PROVIDER(options.environment),
-        CLIENT_ENVIRONMENT_OPTIONS_PROVIDER(options),
-      ],
+      providers: [CLIENT_ENVIRONMENT_OPTIONS_PROVIDER(options)],
     };
   }
 }

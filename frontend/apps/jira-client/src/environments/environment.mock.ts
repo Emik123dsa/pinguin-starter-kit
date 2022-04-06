@@ -16,7 +16,7 @@ import { VERSION } from '@pinguin/core';
 import {
   InMemoryRestApiDataService,
   inMemoryRestApiOptionsFactory,
-} from '@pinguin/memory-storage';
+} from '@pinguin/storage';
 
 // ClientEnvironmentOptions as an environment for development only.
 export const environment: ClientEnvironmentOptions = {

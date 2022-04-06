@@ -5,17 +5,17 @@
       gdAlignRows="start center" class="issues-roadmap-content-container" role="rowgroup">
       <div gdArea="labels-header-row" gdGridAlign="start center" class="issues-labels-wrapper" role="rowheader">
         <ng-container
-          *ngrxLet="issuesLabels$; let issuesLabels = $implicit; let issuesLabelsError = $error; let issuesLabelsComplete = $complete">
+          *ngrxLet="labels$; let labels = $implicit; let labelsError = $error; let labelsComplete = $complete">
           <div id="issues-label-entities-table" role="columnheader" aria-sort="none">
-            <pinguin-issues-labels-table [labels]="issuesLabels" *ngIf="!issuesLabelsError && !issuesLabelsComplete">
+            <pinguin-issues-labels-table [labels]="labels" *ngIf="!labelsError && !labelsComplete">
             </pinguin-issues-labels-table>
           </div>
 
           <!-- Unhandled issues labels errors container. -->
-          <ng-container *ngIf="issuesLabelsError"></ng-container>
+          <ng-container *ngIf="labelsError"></ng-container>
 
           <!-- Unhandled issues labels completed container. -->
-          <ng-container *ngIf="issuesLabelsComplete"></ng-container>
+          <ng-container *ngIf="labelsComplete"></ng-container>
         </ng-container>
       </div>
     </div>

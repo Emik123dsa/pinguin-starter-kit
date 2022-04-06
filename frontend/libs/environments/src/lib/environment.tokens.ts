@@ -14,8 +14,10 @@ import { ClientEnvironmentOptions } from './environment.interface';
  */
 export const CLIENT_ENVIRONMENT_OPTIONS: InjectionToken<ClientEnvironmentOptions> =
   new InjectionToken(ENVIRONMENT_OPTIONS_CONSTANT, {
-    providedIn: 'root',
-    factory: (): Optional<ClientEnvironmentOptions> => Object.create(null),
+    providedIn: 'platform',
+    factory: (): Optional<ClientEnvironmentOptions> => {
+      return Object.create(null);
+    },
   });
 
 /**

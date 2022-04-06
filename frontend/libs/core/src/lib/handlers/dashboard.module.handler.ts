@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class DashboardModuleService implements CanLoad {
+export class DashboardModuleHandler implements CanLoad {
   /**
    * Check out whether `note-labels` are being available,
    * before lazy module will be mounted.

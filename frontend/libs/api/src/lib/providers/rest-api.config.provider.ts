@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { HttpContextToken } from '@angular/common/http';
 import { FactoryProvider, Self } from '@angular/core';
 
@@ -17,8 +19,18 @@ function clientRestApiDefaultOptionsFactory(
   options: ClientRestApiOptions,
 ): ClientRestApiOptions {
   return {
-    serializer(data: PlainObjectLiteral): Optional<string> {
-      return JSON.stringify(data);
+    serializer(
+      data: PlainObjectLiteral,
+      replacer?: (...args: any[]) => void,
+      space?: string | number,
+    ): Optional<string> {
+      return JSON.stringify(data, replacer, space);
+    },
+    deserializer(
+      data: string,
+      reviver?: (...args: any[]) => void,
+    ): Optional<PlainObjectLiteral> {
+      return JSON.parse(data, reviver);
     },
     ...options,
   };
@@ -79,12 +91,46 @@ export class ClientRestApiConfig extends ClientRestApiConfigRef {
    * ```
    * @public
    * @override
-   * @returns {(data: any) => any}
-   */
-  public override getSerializer() {
-    return this.options.serializer as (
+   * @returns @returns {(
       data: PlainObjectLiteral,
-    ) => Optional<string>;
+    ) => Optional<string>}
+   */
+  public override getSerializer(): (
+    data: PlainObjectLiteral,
+    replacer?: (...args: any[]) => void,
+    space?: string | number,
+  ) => Optional<string> {
+    return this.options.serializer!;
+  }
+
+  /**
+   * Override default de-serialization for response body.
+   *
+   * # Example factory for serialization:
+   *
+   * ```typescript
+   *  function factory(
+   *    options: ClientRestApiOptions,
+   *  ): ClientRestApiOptions {
+   *  return {
+   *    deserializer(data: string): Optional<PlainObjectLiteral> {
+   *      return JSON.parse(data);
+   *    },
+   *     ...options,
+   *   };
+   * }
+   * ```
+   * @public
+   * @override
+   * @returns {(
+      data: string,
+    ) => Optional<PlainObjectLiteral>}
+   */
+  public override getDeserializer(): (
+    data: string,
+    reviver?: (...args: any[]) => void,
+  ) => Optional<PlainObjectLiteral> {
+    return this.options.deserializer!;
   }
 }
 

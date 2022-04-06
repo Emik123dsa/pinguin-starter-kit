@@ -1,11 +1,4 @@
-import {
-  CUSTOM_ELEMENTS_SCHEMA,
-  NgModule,
-  Optional,
-  Self,
-  SkipSelf,
-  Type,
-} from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, Self, Type } from '@angular/core';
 
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -58,24 +51,18 @@ import { ClientRestApiConfigRef } from '@pinguin/api';
 })
 export class CoreStoreModule {
   /**
-   * TODO: handle any internal browser events,
-   * will be refactored to the `common` module.
+   * Creates an instance of CoreStoreModule.
+   * Store module will be configured according to provided
+   * buffer size for the ngrx undo dispatching.
    *
-   * # Example:
-   * ```typescript
-   * const render = renderFactory.createRenderer(window, null);
-   * render.listen(window, 'online', () => {
-   *   console.log('ONLINE');
-   * });
-   * render.listen(window, 'offline', () => {
-   *   console.log('OFFLINE');
-   * });
-   * ```
+   * @constructor
+   * @public
+   * @param {ClientRestApiConfigRef} apiConfigRef
    */
   public constructor(
     @Self()
-    readonly configRef: ClientRestApiConfigRef,
+    readonly apiConfigRef: ClientRestApiConfigRef,
   ) {
-    configureBufferSize(configRef.getBufferSize());
+    configureBufferSize(apiConfigRef.getBufferSize());
   }
 }

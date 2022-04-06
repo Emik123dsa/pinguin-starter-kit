@@ -14,9 +14,9 @@ import { IssuesRoadmapFacade } from '../../services';
   selector: 'pinguin-issues-roadmap',
   exportAs: 'pinguinIssuesRoadmap',
   host: { 'class': 'issues-roadmap' },
-  viewProviders: [IssuesRoadmapFacade],
   templateUrl: './issues-roadmap.component.html',
   styleUrls: ['./issues-roadmap.component.scss'],
+  viewProviders: [IssuesRoadmapFacade],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -27,7 +27,7 @@ export class IssuesRoadmapComponent implements OnInit {
    * @public
    * @type {!Observable<IssueLabelEntities>}
    */
-  public issuesLabels$!: Observable<IssueLabelEntities>;
+  public labels$!: Observable<IssueLabelEntities>;
 
   /**
    * Issues fields from the `Store`.
@@ -35,18 +35,16 @@ export class IssuesRoadmapComponent implements OnInit {
    * @public
    * @type {!Observable<IssueFieldEntities>}
    */
-  public issuesFields$!: Observable<IssueFieldEntities>;
+  public fields$!: Observable<IssueFieldEntities>;
 
   /**
    * Creates an instance of IssuesRoadmapContainerComponent.
    *
    * @constructor
    * @public
-   * @param {IssuesRoadmapFacade} issuesRoadmapFacade
+   * @param {IssuesRoadmapFacade} roadmapFacade
    */
-  public constructor(
-    private readonly issuesRoadmapFacade: IssuesRoadmapFacade,
-  ) {}
+  public constructor(private readonly roadmapFacade: IssuesRoadmapFacade) {}
 
   /**
    * Initialize facade entities of `roadmap`.
@@ -54,7 +52,7 @@ export class IssuesRoadmapComponent implements OnInit {
    * @public
    */
   public ngOnInit(): void {
-    this.issuesLabels$ = this.issuesRoadmapFacade.labels$;
-    this.issuesFields$ = this.issuesRoadmapFacade.fields$;
+    this.labels$ = this.roadmapFacade.labels$;
+    this.fields$ = this.roadmapFacade.fields$;
   }
 }

@@ -1,10 +1,10 @@
 import { Store } from '@ngrx/store';
 import { ClassProvider, FactoryProvider, Provider, Self } from '@angular/core';
 
-import { ISSUES_MODULE_INITIALIZER } from '../tokens';
-import { IssuesModuleService } from '../services';
-import { IssuesModuleFacade } from '../services/facades';
 import { CoreEntityState } from '../store';
+import { IssuesModuleHandler } from '../handlers';
+import { ISSUES_MODULE_INITIALIZER } from '../tokens';
+import { IssuesModuleFacade } from '../services/facades';
 
 // Provide issues module facade.
 export const ISSUES_MODULE_FACADE_PROVIDER: FactoryProvider = {
@@ -17,7 +17,7 @@ export const ISSUES_MODULE_FACADE_PROVIDER: FactoryProvider = {
 // ClassProvider for dashboard initializer.
 export const ISSUES_MODULE_INITIALIZER_PROVIDER: ClassProvider = {
   provide: ISSUES_MODULE_INITIALIZER,
-  useClass: IssuesModuleService,
+  useClass: IssuesModuleHandler,
   multi: false,
 };
 

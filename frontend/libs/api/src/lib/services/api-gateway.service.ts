@@ -18,6 +18,64 @@ import { ErrorHandler } from '@angular/core';
  */
 export abstract class ApiGatewayService implements ErrorHandler {
   /**
+   * GET reactive api service.
+   *
+   * @template T of generic which will be formatted.
+   * @param path of path string of get request.
+   * @param [params] default params to payload.
+   * @returns an reactive instance of {@link HttpClient}.
+   */
+  public abstract get<T>(path: string, params?: HttpParams): Observable<T>;
+
+  /**
+   * POST reactive api service.
+   *
+   * @template T of generic which will be formatted.
+   * @param path of path string of get request.
+   * @param [body] default params to payload.
+   * @returns an reactive instance of {@link HttpClient}.
+   */
+  public abstract post<T>(
+    path: string,
+    body?: PlainObjectLiteral,
+  ): Observable<T>;
+
+  /**
+   * PUT reactive api service.
+   *
+   * @template T of generic which will be formatted.
+   * @param path of path string of get request.
+   * @param [body] default params to payload.
+   * @returns an reactive instance of {@link HttpClient}.
+   */
+  public abstract put<T>(
+    path: string,
+    body?: PlainObjectLiteral,
+  ): Observable<T>;
+
+  /**
+   * PATCH reactive api service.
+   *
+   * @template T of generic which will be formatted.
+   * @param path of path string of get request.
+   * @param [body] default params to payload.
+   * @returns an reactive instance of {@link HttpClient}.
+   */
+  public abstract patch<T>(
+    path: string,
+    body?: PlainObjectLiteral,
+  ): Observable<T>;
+
+  /**
+   * DELETE reactive api service.
+   *
+   * @template T of generic which will be formatted.
+   * @param path of path string of get request.
+   * @returns an reactive instance of {@link HttpClient}.
+   */
+  public abstract delete<T>(path: string): Observable<T>;
+
+  /**
    * Handle http client errors with {@link HttpClient} backend-client.
    *
    * @protected
@@ -31,60 +89,4 @@ export abstract class ApiGatewayService implements ErrorHandler {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     caught?: Observable<T>,
   ): Observable<never>;
-
-  /**
-   * GET reactive api service.
-   *
-   * @template T of generic which will be formatted.
-   * @param path of url string of get request.
-   * @param [params] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
-   */
-  public abstract get<T>(url: string, params?: HttpParams): Observable<T>;
-
-  /**
-   * POST reactive api service.
-   *
-   * @template T of generic which will be formatted.
-   * @param url of url string of get request.
-   * @param [params] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
-   */
-  public abstract post<T>(
-    url: string,
-    body?: PlainObjectLiteral,
-  ): Observable<T>;
-
-  /**
-   * PUT reactive api service.
-   *
-   * @template T of generic which will be formatted.
-   * @param url of url string of get request.
-   * @param [params] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
-   */
-  public abstract put<T>(url: string, body?: PlainObjectLiteral): Observable<T>;
-
-  /**
-   * PATCH reactive api service.
-   *
-   * @template T of generic which will be formatted.
-   * @param url of url string of get request.
-   * @param [params] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
-   */
-  public abstract patch<T>(
-    url: string,
-    body?: PlainObjectLiteral,
-  ): Observable<T>;
-
-  /**
-   * DELETE reactive api service.
-   *
-   * @template T of generic which will be formatted.
-   * @param url of url string of get request.
-   * @param [params] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
-   */
-  public abstract delete<T>(url: string): Observable<T>;
 }

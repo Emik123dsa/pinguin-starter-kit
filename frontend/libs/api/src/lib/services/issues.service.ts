@@ -1,5 +1,14 @@
+import { InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IssueFieldEntity, IssueLabelEntity } from '../models';
+
+export const ISSUES_SERVICE_CONFIG_PATH = new InjectionToken(
+  'ISSUES_SERVICE_CONFIG_PATH',
+  {
+    providedIn: 'root',
+    factory: () => '/data/assets/issues.config.json',
+  },
+);
 
 /**
  * Reactive issues service for entities:

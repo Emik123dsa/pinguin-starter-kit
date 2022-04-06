@@ -56,7 +56,7 @@ export class RxIssuesService extends IssuesService {
           1,
           'Quick try on DB',
           'One morning, when Gregor Samsa woke from troubled dreams.',
-          [2],
+          [1],
           1641164400,
           1641164400,
         ),

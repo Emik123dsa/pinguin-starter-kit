@@ -47,7 +47,7 @@ export class NotFoundContainerComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    if (this.destroySubject) {
+    if (!this.destroySubject.closed) {
       this.destroySubject.next();
       this.destroySubject.complete();
     }

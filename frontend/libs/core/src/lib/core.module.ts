@@ -15,6 +15,7 @@ import { ClientWebSocketModule } from '@pinguin/websocket';
 
 import { CoreStoreModule } from './store';
 import {
+  ERROR_REQUEST_PROVIDERS,
   API_GATEWAY_REQUEST_PROVIDERS,
   CORE_MODULE_PROVIDERS,
   DASHBOARD_MODULE_PROVIDERS,
@@ -97,7 +98,7 @@ export class CoreModule {
     // seems to be valuable.
     return {
       ngModule: CoreModule,
-      providers: [API_GATEWAY_REQUEST_PROVIDERS],
+      providers: [ERROR_REQUEST_PROVIDERS, API_GATEWAY_REQUEST_PROVIDERS],
     };
   }
 }

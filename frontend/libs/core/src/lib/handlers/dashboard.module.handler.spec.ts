@@ -2,10 +2,10 @@ import { TestBed } from '@angular/core/testing';
 
 import { DASHBOARD_MODULE_INITIALIZER } from '../tokens';
 import { DASHBOARD_MODULE_INITIALIZER_PROVIDER } from '../providers';
-import { IssuesModuleService } from './issues.module.service';
+import { DashboardModuleHandler } from './dashboard.module.handler';
 
-describe('IssuesModuleService', () => {
-  let service: IssuesModuleService;
+describe('DashboardModuleHandler', () => {
+  let service: DashboardModuleHandler;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -14,7 +14,7 @@ describe('IssuesModuleService', () => {
 
     service = TestBed.inject(
       DASHBOARD_MODULE_INITIALIZER,
-    ) as IssuesModuleService;
+    ) as DashboardModuleHandler;
   });
 
   it('should be created', () => {

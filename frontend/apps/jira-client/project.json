@@ -22,11 +22,10 @@
   },
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "@angular-builders/custom-webpack:browser",
+      "outputs": ["{options.outputPath}"],
       "options": {
+        "indexTransform": "tools/index-html-transform.ts",
         "outputPath": "dist/jira-client/browser",
         "index": "apps/jira-client/src/index.html",
         "main": "apps/jira-client/src/main.ts",
@@ -39,17 +38,23 @@
           "apps/jira-client/src/manifest.webmanifest"
         ],
         "stylePreprocessorOptions": {
-          "includePaths": [
-            "apps/jira-client/src/assets/stylesheets"
-          ]
+          "includePaths": ["apps/jira-client/src/assets/stylesheets"]
+        },
+        "optimization": {
+          "scripts": true,
+          "styles": {
+            "minify": true,
+            "inlineCritical": true
+          },
+          "fonts": true
         },
         "styles": [
+          "apps/jira-client/src/styles.scss",
           {
             "input": "apps/jira-client/src/modules/global/tailwindcss/tailwindcss-module.scss",
-            "inject": true,
+            "inject": false,
             "bundleName": "tailwindcss-module"
-          },
-          "apps/jira-client/src/styles.scss"
+          }
         ],
         "scripts": [],
         "serviceWorker": true,
@@ -58,10 +63,11 @@
         "i18nMissingTranslation": "warning",
         "localize": [
           "en"
-          // This schema will be used only for development, 
-          // change in the production environment.
-          //, "de",
-          // "ru"
+          /**
+           * TODO: resolve issues with localize translation.
+           * #Example:
+           * ["de", "ru"]
+           */
         ]
       },
       "configurations": {
@@ -84,7 +90,9 @@
               "with": "apps/jira-client/src/environments/environment.prod.ts"
             }
           ],
-          "outputHashing": "all"
+
+          "outputHashing": "all",
+          "extractLicenses": true
         },
         "development": {
           "buildOptimizer": false,
@@ -112,25 +120,19 @@
         },
         "i18n-en": {
           "baseHref": "/",
-          "localize": [
-            "en"
-          ],
+          "localize": ["en"],
           "outputPath": "dist/jira-client/browser",
           "i18nMissingTranslation": "error"
         },
         "i18n-de": {
           "baseHref": "/",
-          "localize": [
-            "de"
-          ],
+          "localize": ["de"],
           "outputPath": "dist/jira-client/browser",
           "i18nMissingTranslation": "error"
         },
         "i18n-ru": {
           "baseHref": "/",
-          "localize": [
-            "ru"
-          ],
+          "localize": ["ru"],
           "outputPath": "dist/jira-client/browser",
           "i18nMissingTranslation": "error"
         }
@@ -138,7 +140,7 @@
       "defaultConfiguration": "production"
     },
     "xliffmerge": {
-      "builder": "@ngx-i18nsupport/tooling:xliffmerge",
+      "executor": "@ngx-i18nsupport/tooling:xliffmerge",
       "options": {
         "xliffmergeOptions": {
           "i18nFormat": "xlf",
@@ -146,20 +148,22 @@
           "genDir": "apps/jira-client/src/locale",
           "verbose": true,
           "defaultLanguage": "en",
-          "autotranslate": [
-            "en"
-          ],
+          "autotranslate": ["en"],
           "apikey": "i18n",
           "languages": [
-            "en",
-            "de",
-            "ru"
+            "en"
+            /**
+             * TODO: resolve issues with localize translation.
+             * #Example:
+             * ["de", "ru"]
+             */
           ]
         }
       }
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@angular-builders/custom-webpack:dev-server",
+      "options": {},
       "configurations": {
         "production": {
           "browserTarget": "jira-client:build:production",
@@ -201,7 +205,8 @@
         },
         "production": {
           "browserTarget": "jira-client:build:production",
-          "serverTarget": "jira-client:server:production"
+          "serverTarget": "jira-client:server:production",
+          "proxyConfig": "apps/jira-client/src/proxy.conf.json"
         }
       },
       "defaultConfiguration": "development"
@@ -209,7 +214,8 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "jira-client:build"
+        "browserTarget": "jira-client:build",
+        "progress": true
       }
     },
     "lint": {
@@ -223,9 +229,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/jira-client"
-      ],
+      "outputs": ["coverage/apps/jira-client"],
       "options": {
         "jestConfig": "apps/jira-client/jest.config.js",
         "passWithNoTests": true,
@@ -239,15 +243,14 @@
         "main": "apps/jira-client/src/ssr.server.ts",
         "tsConfig": "apps/jira-client/tsconfig.server.json",
         "stylePreprocessorOptions": {
-          "includePaths": [
-            "apps/jira-client/src/assets/stylesheets"
-          ]
+          "includePaths": ["apps/jira-client/src/assets/stylesheets"]
         },
         "inlineStyleLanguage": "scss"
       },
       "configurations": {
         "production": {
           "outputHashing": "media",
+          "statsJson": true,
           "fileReplacements": [
             {
               "replace": "apps/jira-client/src/environments/environment.ts",
@@ -256,7 +259,10 @@
           ]
         },
         "development": {
-          "optimization": false,
+          "optimization": {
+            "styles": true,
+            "scripts": true
+          },
           "sourceMap": true,
           "extractLicenses": false
         },
@@ -277,23 +283,17 @@
           ]
         },
         "i18n-en": {
-          "localize": [
-            "en"
-          ],
+          "localize": ["en"],
           "outputPath": "dist/jira-client/browser",
           "i18nMissingTranslation": "error"
         },
         "i18n-de": {
-          "localize": [
-            "de"
-          ],
+          "localize": ["de"],
           "outputPath": "dist/jira-client/browser",
           "i18nMissingTranslation": "error"
         },
         "i18n-ru": {
-          "localize": [
-            "ru"
-          ],
+          "localize": ["ru"],
           "outputPath": "dist/jira-client/browser",
           "i18nMissingTranslation": "error"
         }

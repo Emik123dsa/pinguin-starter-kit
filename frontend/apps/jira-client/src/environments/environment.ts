@@ -13,7 +13,7 @@ import {
 
 import { VERSION } from '@pinguin/core';
 
-import { InMemoryStorageModule } from '@pinguin/memory-storage';
+import { InMemoryStorageModule } from '@pinguin/storage';
 
 // ClientEnvironmentOptions as an environment for development only.
 export const environment: ClientEnvironmentOptions = {
@@ -29,6 +29,10 @@ export const environment: ClientEnvironmentOptions = {
     }),
     name: 'pinguin-client',
     version: VERSION,
+    configUrl: '/assets/config/app.config.json',
+    // Here will be registered all of the modules (e.g. `lazy-loaded`).
+    // Every `lazy-loaded` module will be overridden or initialized in this context.
+    modules: new Map<string, string>([]),
   },
   api: {
     baseUrl: {
@@ -49,6 +53,9 @@ export const environment: ClientEnvironmentOptions = {
     ]),
 
     // Override default serializer for rest api handlers:
+    // TODO: implement WASM module for serializer and deserializer.
+    // HINT: this method allow this module to use any `crate`
+    // module of the WASM, hence => can increase performance of serializing or deserializing JSON context.
     // # Examples:
     // serializer: (data: PlainObjectLiteral) => JSON.stringify(data),
   },
@@ -75,7 +82,7 @@ export const environment: ClientEnvironmentOptions = {
 
   runtimePlugins: [
     // InMemoryStorageModule.forRoot(),
- 
+
     StoreDevtoolsModule.instrument({
       name: StringUtils.format(
         'pinguin-{0}-client',

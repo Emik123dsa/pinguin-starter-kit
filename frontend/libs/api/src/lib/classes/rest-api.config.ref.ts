@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PlainObjectLiteral } from '@pinguin/utils';
 import { HttpContextToken } from '@angular/common/http';
 import { AbstractConnectionConfig } from '@pinguin/common';
@@ -23,5 +24,13 @@ export abstract class ClientRestApiConfigRef extends AbstractConnectionConfig<Cl
   // Set default serializer for writing request body.
   public abstract getSerializer(): (
     data: PlainObjectLiteral,
+    replacer?: (...args: any[]) => void,
+    space?: string | number,
   ) => Optional<string>;
+
+  // Set default deserializer for writing response body.
+  public abstract getDeserializer(): (
+    data: string,
+    reviver?: (...args: any[]) => void,
+  ) => Optional<PlainObjectLiteral>;
 }

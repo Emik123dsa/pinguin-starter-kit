@@ -5,7 +5,6 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
   Data,
-  ParamMap,
 } from '@angular/router';
 import { RouterStateSerializer } from '@ngrx/router-store';
 

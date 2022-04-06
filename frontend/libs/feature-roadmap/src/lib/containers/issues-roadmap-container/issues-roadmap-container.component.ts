@@ -23,30 +23,30 @@ export class IssuesRoadmapContainerComponent implements OnInit {
    *
    * @type {!Observable<number>}
    */
-  public issuesFieldTotal$!: Observable<number>;
+  public fieldTotal$!: Observable<number>;
 
   /**
    * Issues fields loading state from the `Store` adapter.
    *
    * @type {!Observable<boolean>}
    */
-  public issuesFieldsLoading$!: Observable<boolean>;
+  public fieldsLoading$!: Observable<boolean>;
 
   /**
    * Issues fields loaded state from the `Store` adapter.
    *
    * @type {!Observable<boolean>}
    */
-  public issuesFieldsLoaded$!: Observable<boolean>;
+  public fieldsLoaded$!: Observable<boolean>;
 
   /**
    * Creates an instance of IssuesRoadmapContainerComponent.
    *
    * @constructor
    * @public
-   * @param {IssuesRoadmapFacade} facade
+   * @param {IssuesRoadmapFacade} fieldsFacade
    */
-  public constructor(private readonly issuesFieldsFacade: IssuesFieldsFacade) {}
+  public constructor(private readonly fieldsFacade: IssuesFieldsFacade) {}
 
   /**
    * Initialize facade entities of `roadmap`.
@@ -54,9 +54,9 @@ export class IssuesRoadmapContainerComponent implements OnInit {
    * @public
    */
   public ngOnInit(): void {
-    this.issuesFieldTotal$ = this.issuesFieldsFacade.total$;
-    this.issuesFieldsLoaded$ = this.issuesFieldsFacade.loaded$;
-    this.issuesFieldsLoading$ = this.issuesFieldsFacade.loading$;
+    this.fieldTotal$ = this.fieldsFacade.total$;
+    this.fieldsLoaded$ = this.fieldsFacade.loaded$;
+    this.fieldsLoading$ = this.fieldsFacade.loading$;
   }
 
   /**
@@ -66,11 +66,11 @@ export class IssuesRoadmapContainerComponent implements OnInit {
    * @readonly
    * @type {*}
    */
-  public get issuesFieldsValidated$(): Observable<boolean> {
-    const issuesFields$: Observable<boolean> = merge(
-      this.issuesFieldsLoaded$,
-      this.issuesFieldTotal$.pipe(map((total: number) => !!total)),
+  public get fieldsValidated$(): Observable<boolean> {
+    const fields$: Observable<boolean> = merge(
+      this.fieldsLoaded$,
+      this.fieldTotal$.pipe(map((total: number) => !!total)),
     );
-    return issuesFields$;
+    return fields$;
   }
 }

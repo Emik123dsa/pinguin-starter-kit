@@ -4,7 +4,7 @@ import { ClientRestApiOptions } from './interfaces';
 
 import {
   CLIENT_REST_API_CONFIG_PROVIDER,
-  BASE_API_GATEWAY_REQUEST_PROVIDER,
+  API_GATEWAY_REQUEST_INTERCEPTOR_PROVIDER,
 } from './providers';
 
 @NgModule({
@@ -19,7 +19,7 @@ export class ClientRestApiModule {
     return {
       ngModule: ClientRestApiModule,
       providers: [
-        BASE_API_GATEWAY_REQUEST_PROVIDER,
+        API_GATEWAY_REQUEST_INTERCEPTOR_PROVIDER,
         CLIENT_REST_API_CONFIG_PROVIDER,
       ],
     };

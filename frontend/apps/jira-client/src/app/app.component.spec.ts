@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ClientConfigModule } from '@pinguin/config';
 import { RuntimeEnvironmentModule } from '@pinguin/environments';
+
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';

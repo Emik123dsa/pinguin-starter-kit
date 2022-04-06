@@ -1,23 +1,23 @@
-import { FactoryProvider, Self, Version } from '@angular/core';
+import { FactoryProvider, SkipSelf, Version } from '@angular/core';
 import {
   ClientEnvironmentOptions,
   CLIENT_ENVIRONMENT_OPTIONS,
 } from '@pinguin/environments';
 
-import { ClientApplicationOptions } from '../interfaces';
-import { ClientApplicationConfigRef } from '../classes/app.config.ref';
+import { ClientAppOptions } from '../interfaces';
+import { ClientAppConfigRef } from '../classes/app.config.ref';
 
 /**
  * Client application config.
  */
-export class ClientApplicationConfig extends ClientApplicationConfigRef {
+export class ClientAppConfig extends ClientAppConfigRef {
   /**
-   * Constructs an instance of ClientApplicationConfigRef.
+   * Constructs an instance of ClientAppConfigRef.
    *
-   * @param  {ClientApplicationOptions} options
-   * @memberof ClientApplicationConfigRef
+   * @param  {ClientAppOptions} options
+   * @memberof ClientAppConfigRef
    */
-  public constructor(private readonly options: ClientApplicationOptions) {
+  public constructor(private readonly options: ClientAppOptions) {
     super();
   }
 
@@ -32,18 +32,26 @@ export class ClientApplicationConfig extends ClientApplicationConfigRef {
   public override getVersion(): Version {
     return this.options.version;
   }
+
+  public override getConfigUrl(): Optional<string> {
+    return this.options.configUrl || null;
+  }
+
+  public override getModules(): Optional<Map<string, string>> {
+    return this.options.modules || null;
+  }
 }
 
 function clientAppConfigProviderFactory(
   options: ClientEnvironmentOptions,
-): ClientApplicationConfigRef {
-  return new ClientApplicationConfig(options.app);
+): ClientAppConfigRef {
+  return new ClientAppConfig(options.app);
 }
 
 // FactoryProvider for client app config.
 export const CLIENT_APP_CONFIG_PROVIDER: FactoryProvider = {
-  provide: ClientApplicationConfigRef,
+  provide: ClientAppConfigRef,
   useFactory: clientAppConfigProviderFactory,
-  deps: [[new Self(), CLIENT_ENVIRONMENT_OPTIONS]],
+  deps: [[new SkipSelf(), CLIENT_ENVIRONMENT_OPTIONS]],
   multi: false,
 };

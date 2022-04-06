@@ -1,14 +1,10 @@
-import {
-  CUSTOM_ELEMENTS_SCHEMA,
-  ModuleWithProviders,
-  NgModule,
-} from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CLIENT_APP_CONFIG_PROVIDER } from './providers';
 
 @NgModule({
   imports: [CommonModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [],
   providers: [],
   exports: [],
 })

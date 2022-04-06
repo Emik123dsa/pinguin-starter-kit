@@ -1,23 +1,23 @@
-<ng-template #issuesRoadmapLoadingTemplate let-loading>
+<ng-template #roadmapLoadingTemplate let-loading>
   <span>{{ loading | json }}</span>
 </ng-template>
 
-<ng-template #issuesRoadmapLoadedTemplate>
+<ng-template #roadmapLoadedTemplate>
   <pinguin-container class="issues-roadmap-container">
     <ng-container *ngrxLet="
-        issuesFieldsValidated$ as issuesFieldsValidated;
-        let issuesFieldsError = $error;
-        let issuesFieldsComplete = $complete
+        fieldsValidated$ as fieldsValidated;
+        let fieldsError = $error;
+        let fieldsComplete = $complete
       ">
-      <ng-container *ngIf="issuesFieldsValidated">
-        <pinguin-issues-roadmap *ngIf="!issuesFieldsError && !issuesFieldsComplete"></pinguin-issues-roadmap>
+      <ng-container *ngIf="fieldsValidated">
+        <pinguin-issues-roadmap *ngIf="!fieldsError && !fieldsComplete"></pinguin-issues-roadmap>
       </ng-container>
 
       <!-- Whether any issues fields error found in template. -->
-      <ng-container *ngIf="issuesFieldsError"></ng-container>
+      <ng-container *ngIf="fieldsError"></ng-container>
 
       <!-- Whether issues fields complete in template. -->
-      <ng-container *ngIf="issuesFieldsComplete"></ng-container>
+      <ng-container *ngIf="fieldsComplete"></ng-container>
     </ng-container>
   </pinguin-container>
 </ng-template>
@@ -25,10 +25,9 @@
 <section role="contentinfo" id="issues-roadmap-page">
   <pinguin-layout-wrapper class="issues-roadmap-wrapper">
     <ng-container *ngIf="
-        issuesFieldsLoading$ | ngrxPush as issuesFieldsLoading;
-        else issuesRoadmapLoadedTemplate
-      " [ngTemplateOutlet]="issuesRoadmapLoadingTemplate"
-      [ngTemplateOutletContext]="{ $implicit: issuesFieldsLoading }">
+        fieldsLoading$ | ngrxPush as fieldsLoading;
+        else roadmapLoadedTemplate
+      " [ngTemplateOutlet]="roadmapLoadingTemplate" [ngTemplateOutletContext]="{ $implicit: fieldsLoading }">
     </ng-container>
   </pinguin-layout-wrapper>
 </section>

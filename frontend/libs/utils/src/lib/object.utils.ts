@@ -14,7 +14,7 @@ export class ObjectUtils {
    * @param {object} object
    * @returns {boolean}
    */
-  public static nonNull(value: object | undefined): boolean {
+  public static nonNull(value: unknown): boolean {
     return !this.isNull(value as object);
   }
 
@@ -24,7 +24,6 @@ export class ObjectUtils {
    * @public
    * @static
    * @param {object} object
-   * @returns {boolean}
    */
   public static isNull(value: NonNullable<object>): boolean {
     return Object.keys(value).length === 0 && value.constructor === Object;

@@ -45,6 +45,7 @@ import { IssueDetailContainerComponent } from './containers/issue-detail-contain
     UiInputModule,
     UiButtonModule,
   ],
+  providers: [],
   declarations: [
     // Provide components of feature.
     IssueCardFormComponent,
@@ -54,6 +55,5 @@ import { IssueDetailContainerComponent } from './containers/issue-detail-contain
     IssueEditContainerComponent,
     IssuesContainerComponent,
   ],
-  providers: [],
 })
 export class FeatureIssuesModule {}

@@ -45,6 +45,18 @@ export class StringUtils {
   }
 
   /**
+   * Check whether the given value is equaling to empty/null value.
+   *
+   * @public
+   * @static
+   * @param {unknown} value
+   * @returns {boolean}
+   */
+  public static isEmpty(value: unknown): value is null {
+    return value == null || value == StringUtils.EMPTY;
+  }
+
+  /**
    * Init format extending prototype for `String.prototype`.
    *
    * @private `fn()` to initialize format string.

@@ -5,13 +5,12 @@ import {
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { CommonStoreModule } from './store';
 import {
   WINDOW_PROVIDERS,
   WEB_WORKER_PROVIDERS,
   COMMON_MODULE_PROVIDERS,
 } from './providers';
-
+import { CommonStoreModule } from './store';
 import { ClientCommonHandler } from './handlers';
 
 @NgModule({

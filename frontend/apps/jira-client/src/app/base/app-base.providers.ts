@@ -3,6 +3,7 @@ import {
   FactoryProvider,
   PLATFORM_ID,
   Provider,
+  Self,
 } from '@angular/core';
 
 import { Observable } from 'rxjs';
@@ -49,7 +50,7 @@ export function serverInitializerProviderFactory(): () =>
 const APP_BROWSER_PROVIDER: FactoryProvider = {
   provide: APP_BROWSER_INITIALIZER,
   useFactory: browserInitializerProviderFactory,
-  deps: [BrowserService, PLATFORM_ID],
+  deps: [[new Self(), BrowserService], PLATFORM_ID],
   multi: false,
 };
 

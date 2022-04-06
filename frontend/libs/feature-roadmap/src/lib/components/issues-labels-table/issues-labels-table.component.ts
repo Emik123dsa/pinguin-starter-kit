@@ -21,6 +21,10 @@ import { IssuesLabelsDataSource } from '@pinguin/feature-issues';
 export class IssuesLabelsTableComponent implements OnInit {
   static ngAcceptInputType_labels: IssueLabelEntities;
 
+  public displayedColumns: string[] = ['id', 'name', 'fields'];
+
+  public dataSource!: IssuesLabelsDataSource;
+
   @Input()
   set labels(value: IssueLabelEntities) {
     this.labelList = value;
@@ -29,10 +33,6 @@ export class IssuesLabelsTableComponent implements OnInit {
     return this.labelList;
   }
   private labelList!: IssueLabelEntities;
-
-  public dataSource!: IssuesLabelsDataSource;
-
-  public displayedColumns: string[] = ['id', 'name', 'fields'];
 
   public ngOnInit() {
     this.dataSource = new IssuesLabelsDataSource();

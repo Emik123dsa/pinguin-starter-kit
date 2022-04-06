@@ -21,7 +21,7 @@ export class IssuesModuleFacade {
    * @public
    * @type {Observable<number>}
    */
-  public issuesLabelTotal$: Observable<number> = this.store.select<number>(
+  public labelTotal$: Observable<number> = this.store.select<number>(
     selectIssuesLabelTotal,
   );
 
@@ -31,7 +31,7 @@ export class IssuesModuleFacade {
    * @public
    * @type {Observable<boolean>}
    */
-  public issuesLabelsLoading$: Observable<boolean> = this.store.select<boolean>(
+  public labelsLoading$: Observable<boolean> = this.store.select<boolean>(
     selectIssuesLabelsLoading,
   );
 
@@ -50,7 +50,7 @@ export class IssuesModuleFacade {
    *
    * @public
    */
-  public loadAllIssuesLabels(): void {
+  public loadAllLabels(): void {
     const action: TypedAction<IssuesLabelsActionTypes> =
       IssuesLabelsActions.loadAllIssuesLabels();
 

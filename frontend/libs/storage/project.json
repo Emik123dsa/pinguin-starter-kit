@@ -1,16 +1,14 @@
 {
   "projectType": "library",
-  "root": "libs/memory-storage",
-  "sourceRoot": "libs/memory-storage/src",
+  "root": "libs/storage",
+  "sourceRoot": "libs/storage/src",
   "prefix": "pinguin",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/memory-storage"
-      ],
+      "outputs": ["coverage/libs/storage"],
       "options": {
-        "jestConfig": "libs/memory-storage/jest.config.js",
+        "jestConfig": "libs/storage/jest.config.js",
         "passWithNoTests": true
       }
     },
@@ -18,8 +16,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/memory-storage/src/**/*.ts",
-          "libs/memory-storage/src/**/*.html"
+          "libs/storage/src/**/*.ts",
+          "libs/storage/src/**/*.html"
         ]
       }
     }

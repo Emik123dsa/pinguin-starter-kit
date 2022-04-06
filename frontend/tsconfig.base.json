@@ -10,17 +10,12 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "ES2021",
-      "DOM"
-    ],
+    "lib": ["ES2021", "DOM"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@pinguin-client/*": [
-        "apps/jira-client/src/app/*"
-      ],
+      "@pinguin-client/*": ["apps/jira-client/src/app/*"],
       "@pinguin-runtime/environment": [
         "apps/jira-client/src/environments/environment.ts"
       ],
@@ -33,106 +28,38 @@
       "@pinguin-runtime/staging-environment": [
         "apps/jira-client/src/environments/environment.staging.ts"
       ],
-      "@pinguin/animations": [
-        "libs/animations/src/index.ts"
-      ],
-      "@pinguin/api": [
-        "libs/api/src/index.ts"
-      ],
-      "@pinguin/common": [
-        "libs/common/src/index.ts"
-      ],
-      "@pinguin/config": [
-        "libs/config/src/index.ts"
-      ],
-      "@pinguin/core": [
-        "libs/core/src/index.ts"
-      ],
-      "@pinguin/entity": [
-        "libs/entity/src/index.ts"
-      ],
-      "@pinguin/environments": [
-        "libs/environments/src/index.ts"
-      ],
-      "@pinguin/feature-dashboard": [
-        "libs/feature-dashboard/src/index.ts"
-      ],
-      "@pinguin/feature-errors": [
-        "libs/feature-errors/src/index.ts"
-      ],
-      "@pinguin/feature-home": [
-        "libs/feature-home/src/index.ts"
-      ],
-      "@pinguin/feature-issues": [
-        "libs/feature-issues/src/index.ts"
-      ],
-      "@pinguin/feature-roadmap": [
-        "libs/feature-roadmap/src/index.ts"
-      ],
-      "@pinguin/forms": [
-        "libs/forms/src/index.ts"
-      ],
-      "@pinguin/grpc-web": [
-        "libs/grpc-web/src/index.ts"
-      ],
-      "@pinguin/memory-storage": [
-        "libs/memory-storage/src/index.ts"
-      ],
-      "@pinguin/overlay": [
-        "libs/overlay/src/index.ts"
-      ],
-      "@pinguin/schemas": [
-        "libs/schemas/src/index.ts"
-      ],
-      "@pinguin/server": [
-        "libs/server/src/index.ts"
-      ],
-      "@pinguin/shared": [
-        "libs/shared/src/index.ts"
-      ],
-      "@pinguin/single-spa": [
-        "libs/single-spa/src/index.ts"
-      ],
-      "@pinguin/storage": [
-        "libs/storage/src/index.ts"
-      ],
-      "@pinguin/testing": [
-        "libs/testing/src/index.ts"
-      ],
-      "@pinguin/theme": [
-        "libs/theme/src/index.ts"
-      ],
-      "@pinguin/ui-button": [
-        "libs/ui-button/src/index.ts"
-      ],
-      "@pinguin/ui-button-toggle": [
-        "libs/ui-button-toggle/src/index.ts"
-      ],
-      "@pinguin/ui-card": [
-        "libs/ui-card/src/index.ts"
-      ],
-      "@pinguin/ui-forms": [
-        "libs/ui-forms/src/index.ts"
-      ],
-      "@pinguin/ui-input": [
-        "libs/ui-input/src/index.ts"
-      ],
-      "@pinguin/ui-snack-bar": [
-        "libs/ui-snack-bar/src/index.ts"
-      ],
-      "@pinguin/ui-toolbar": [
-        "libs/ui-toolbar/src/index.ts"
-      ],
-      "@pinguin/utils": [
-        "libs/utils/src/index.ts"
-      ],
-      "@pinguin/websocket": [
-        "libs/websocket/src/index.ts"
-      ]
+      "@pinguin/animations": ["libs/animations/src/index.ts"],
+      "@pinguin/api": ["libs/api/src/index.ts"],
+      "@pinguin/common": ["libs/common/src/index.ts"],
+      "@pinguin/config": ["libs/config/src/index.ts"],
+      "@pinguin/core": ["libs/core/src/index.ts"],
+      "@pinguin/entity": ["libs/entity/src/index.ts"],
+      "@pinguin/environments": ["libs/environments/src/index.ts"],
+      "@pinguin/feature-dashboard": ["libs/feature-dashboard/src/index.ts"],
+      "@pinguin/feature-errors": ["libs/feature-errors/src/index.ts"],
+      "@pinguin/feature-home": ["libs/feature-home/src/index.ts"],
+      "@pinguin/feature-issues": ["libs/feature-issues/src/index.ts"],
+      "@pinguin/feature-roadmap": ["libs/feature-roadmap/src/index.ts"],
+      "@pinguin/forms": ["libs/forms/src/index.ts"],
+      "@pinguin/grpc-web": ["libs/grpc-web/src/index.ts"],
+      "@pinguin/overlay": ["libs/overlay/src/index.ts"],
+      "@pinguin/schemas": ["libs/schemas/src/index.ts"],
+      "@pinguin/server": ["libs/server/src/index.ts"],
+      "@pinguin/shared": ["libs/shared/src/index.ts"],
+      "@pinguin/single-spa": ["libs/single-spa/src/index.ts"],
+      "@pinguin/storage": ["libs/storage/src/index.ts"],
+      "@pinguin/testing": ["libs/testing/src/index.ts"],
+      "@pinguin/theme": ["libs/theme/src/index.ts"],
+      "@pinguin/ui-button": ["libs/ui-button/src/index.ts"],
+      "@pinguin/ui-button-toggle": ["libs/ui-button-toggle/src/index.ts"],
+      "@pinguin/ui-card": ["libs/ui-card/src/index.ts"],
+      "@pinguin/ui-forms": ["libs/ui-forms/src/index.ts"],
+      "@pinguin/ui-input": ["libs/ui-input/src/index.ts"],
+      "@pinguin/ui-snack-bar": ["libs/ui-snack-bar/src/index.ts"],
+      "@pinguin/ui-toolbar": ["libs/ui-toolbar/src/index.ts"],
+      "@pinguin/utils": ["libs/utils/src/index.ts"],
+      "@pinguin/websocket": ["libs/websocket/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

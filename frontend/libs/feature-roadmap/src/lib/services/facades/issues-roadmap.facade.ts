@@ -26,25 +26,36 @@ import {
 } from '@pinguin/api';
 import { Dictionary } from '@ngrx/entity';
 
+/**
+ * Provide {@link IssuesRoadmapFacade} facade
+ * for resolving `ids` of entities.
+ *
+ * @export
+ * @class IssuesRoadmapFacade
+ * @typedef {IssuesRoadmapFacade}
+ */
 @Injectable({
-  providedIn: 'any',
+  providedIn: 'root',
 })
 export class IssuesRoadmapFacade {
   /**
    * Creates an instance of IssuesRoadmapFacade.
+   * It will automatically parse and synchronously resolve
+   * all of the issues ids of entities. Current facade will also help
+   * to get all entities without their `ids` in the `eager` mode.
    *
    * @constructor
    * @public
-   * @param {IssuesLabelsFacade} issuesLabelsFacade
-   * @param {IssuesLabelsMapper} issuesLabelsMapper
-   * @param {IssuesFieldsFacade} issuesFieldsFacade
-   * @param {IssuesFieldsMapper} issuesFieldsMapper
+   * @param {IssuesLabelsFacade} labelsFacade
+   * @param {IssuesLabelsMapper} labelsMapper
+   * @param {IssuesFieldsFacade} fieldsFacade
+   * @param {IssuesFieldsMapper} fieldsMapper
    */
   public constructor(
-    private readonly issuesLabelsFacade: IssuesLabelsFacade,
-    private readonly issuesLabelsMapper: IssuesLabelsMapper,
-    private readonly issuesFieldsFacade: IssuesFieldsFacade,
-    private readonly issuesFieldsMapper: IssuesFieldsMapper,
+    private readonly labelsFacade: IssuesLabelsFacade,
+    private readonly labelsMapper: IssuesLabelsMapper,
+    private readonly fieldsFacade: IssuesFieldsFacade,
+    private readonly fieldsMapper: IssuesFieldsMapper,
   ) {}
 
   /**
@@ -54,11 +65,11 @@ export class IssuesRoadmapFacade {
    * @type {Observable<IssueFieldEntity[]>}
    */
   public fields$: Observable<IssueFieldEntities> =
-    this.issuesFieldsFacade.all$.pipe<IssueFieldEntities>(
+    this.fieldsFacade.all$.pipe<IssueFieldEntities>(
       mergeMap((fields: IssueFieldEntities) => {
         const labels$: Observable<Dictionary<IssueLabelEntity>> =
-          this.issuesLabelsFacade.entities$;
-        return this.issuesFieldsMapper.toEntities(fields, labels$);
+          this.labelsFacade.entities$;
+        return this.fieldsMapper.toEntities(fields, labels$);
       }),
     );
 
@@ -68,14 +79,13 @@ export class IssuesRoadmapFacade {
    * @public
    * @type {Observable<IssueFieldEntity[]>}
    */
-  public labels$: Observable<IssueLabelEntities> =
-    this.issuesLabelsFacade.all$.pipe(
-      mergeMap((labels) => {
-        const fields$: Observable<Dictionary<IssueFieldEntity>> =
-          this.issuesFieldsFacade.entities$;
-        const fieldIds$: Observable<Array<string | number>> =
-          this.issuesFieldsFacade.ids$;
-        return this.issuesLabelsMapper.toEntities(labels, fields$, fieldIds$);
-      }),
-    );
+  public labels$: Observable<IssueLabelEntities> = this.labelsFacade.all$.pipe(
+    mergeMap((labels) => {
+      const fields$: Observable<Dictionary<IssueFieldEntity>> =
+        this.fieldsFacade.entities$;
+      const fieldIds$: Observable<Array<string | number>> =
+        this.fieldsFacade.ids$;
+      return this.labelsMapper.toEntities(labels, fields$, fieldIds$);
+    }),
+  );
 }

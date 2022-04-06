@@ -1,9 +1,5 @@
-import { inject, InjectionToken } from '@angular/core';
+import { InjectionToken } from '@angular/core';
 import { ActionReducerMap, StoreConfig } from '@ngrx/store';
-import {
-  ClientEnvironmentOptions,
-  CLIENT_ENVIRONMENT_OPTIONS,
-} from '@pinguin/environments';
 
 import { COMMON_FEATURE_KEY } from './common.constants';
 

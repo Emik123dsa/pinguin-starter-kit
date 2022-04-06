@@ -35,8 +35,11 @@ import { SharedFlexLayoutModule } from './shared-flex-layout.module';
 
     // Provide http client modules.
     HttpClientModule,
-    HttpClientXsrfModule,
     HttpClientJsonpModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-XSRF-TOKEN',
+    }),
 
     // Provide forms modules.
     FormsModule,
@@ -69,8 +72,8 @@ import { SharedFlexLayoutModule } from './shared-flex-layout.module';
 
     // Provide http client modules.
     HttpClientModule,
-    HttpClientXsrfModule,
     HttpClientJsonpModule,
+    HttpClientXsrfModule,
 
     // Provide forms modules.
     FormsModule,

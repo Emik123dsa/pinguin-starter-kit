@@ -2,17 +2,16 @@ import { ClassProvider, Provider } from '@angular/core';
 
 import {
   ApiGatewayService,
-  BASE_API_GATEWAY_REQUEST_INTERCEPTOR,
+  API_GATEWAY_REQUEST_INTERCEPTOR,
   IssuesService,
 } from '@pinguin/api';
 
-import { RxApiGatewayService } from '../services';
 import { ApiGatewayRequestInterceptor } from '../interceptors';
-import { RxIssuesService } from '../services/rx-issues.service';
+import { RxApiGatewayService, RxIssuesService } from '../services';
 
 // ClassProvider to constructs an api gateway request interceptor.
 export const API_GATEWAY_REQUEST_PROVIDER: ClassProvider = {
-  provide: BASE_API_GATEWAY_REQUEST_INTERCEPTOR,
+  provide: API_GATEWAY_REQUEST_INTERCEPTOR,
   useClass: ApiGatewayRequestInterceptor,
   multi: false,
 };

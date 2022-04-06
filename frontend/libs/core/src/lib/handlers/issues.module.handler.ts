@@ -2,52 +2,46 @@
 import {
   first,
   map,
-  mapTo,
   catchError,
   Observable,
   of,
   skipWhile,
   tap,
   withLatestFrom,
-  filter,
-  take,
-  pipe,
-  buffer,
-  distinctUntilChanged,
 } from 'rxjs';
 import { CanLoad, Route, UrlSegment } from '@angular/router';
 import { Injectable } from '@angular/core';
 
-import { IssuesModuleFacade } from './facades';
+import { IssuesModuleFacade } from '../services/facades';
 
 @Injectable({
   providedIn: 'root',
 })
-export class IssuesModuleService implements CanLoad {
+export class IssuesModuleHandler implements CanLoad {
   /**
    * Issue label total amount.
    *
    * @type {!Observable<number>}
    */
-  issuesLabelTotal$!: Observable<number>;
+  labelTotal$!: Observable<number>;
 
   /**
    * Issues labels loading state.
    *
    * @type {!Observable<boolean>}
    */
-  issuesLabelsLoading$!: Observable<boolean>;
+  labelsLoading$!: Observable<boolean>;
 
   /**
    * Creates an instance of DashboardModuleService.
    *
    * @constructor
    * @public
-   * @param {DashboardModuleFacade} facade
+   * @param {DashboardModuleFacade} issuesFacade
    */
-  public constructor(public readonly facade: IssuesModuleFacade) {
-    this.issuesLabelTotal$ = facade.issuesLabelTotal$;
-    this.issuesLabelsLoading$ = facade.issuesLabelsLoading$;
+  public constructor(readonly issuesFacade: IssuesModuleFacade) {
+    this.labelTotal$ = issuesFacade.labelTotal$;
+    this.labelsLoading$ = issuesFacade.labelsLoading$;
   }
 
   /**
@@ -63,11 +57,11 @@ export class IssuesModuleService implements CanLoad {
     route: Route,
     segments: Array<UrlSegment>,
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.issuesLabelsLoading$.pipe(
+    return this.labelsLoading$.pipe(
       skipWhile((labelsLoading: boolean) => labelsLoading),
       first(),
-      tap((): void => this.facade.loadAllIssuesLabels()),
-      withLatestFrom(this.issuesLabelTotal$),
+      tap((): void => this.issuesFacade.loadAllLabels()),
+      withLatestFrom(this.labelTotal$),
       map(([, labelTotal]: [boolean, number]) => !!labelTotal),
       catchError(() => of(false)),
     );

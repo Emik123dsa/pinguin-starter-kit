@@ -9,6 +9,8 @@ import {
   FactoryProvider,
   PLATFORM_ID,
   Provider,
+  Self,
+  SkipSelf,
 } from '@angular/core';
 
 import * as format from 'string-format';

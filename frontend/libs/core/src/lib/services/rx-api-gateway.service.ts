@@ -1,19 +1,13 @@
 import {
-  HttpBackend,
   HttpClient,
   HttpErrorResponse,
   HttpParams,
   HttpStatusCode,
 } from '@angular/common/http';
 
-import {
-  Inject,
-  Injectable,
-  Optional as OptionalInject,
-  Self,
-} from '@angular/core';
+import { Inject, Injectable, Self } from '@angular/core';
 
-import { catchError, Observable, OperatorFunction, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 import {
   ApiGatewayErrorException,
@@ -22,6 +16,7 @@ import {
   UnknownApiErrorException,
 } from '@pinguin/api';
 import { PlainObjectLiteral, StringUtils } from '@pinguin/utils';
+import { ClientEnvironment, ENVIRONMENT } from '@pinguin/environments';
 
 @Injectable({
   providedIn: 'root',
@@ -37,9 +32,128 @@ export class RxApiGatewayService extends ApiGatewayService {
    */
   public constructor(
     private readonly httpClient: HttpClient,
-    private readonly httpConfigRef: ClientRestApiConfigRef,
+    private readonly apiConfigRef: ClientRestApiConfigRef,
+    @Self() @Inject(ENVIRONMENT) readonly environment: ClientEnvironment,
   ) {
     super();
+  }
+
+  /**
+   * GET reactive api service.
+   *
+   * @template T of generic which will be formatted.
+   * @param path of path string of get request.
+   * @param [params] default params to payload.
+   * @returns an reactive instance of {@link HttpClient}.
+   */
+  public override get<T>(
+    path: string,
+    params: HttpParams = new HttpParams(),
+  ): Observable<T> {
+    return this.httpClient
+      .get<T>(path, {
+        params,
+        observe: 'body',
+        responseType: 'json',
+        withCredentials: Object.is(
+          this.environment,
+          ClientEnvironment.Production,
+        ),
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  /**
+   * POST reactive api service.
+   *
+   * @template T of generic which will be formatted.
+   * @param path of path string of get request.
+   * @param [body] default params to payload.
+   * @returns an reactive instance of {@link HttpClient}.
+   */
+  public override post<T>(
+    path: string,
+    body?: PlainObjectLiteral,
+  ): Observable<T> {
+    return this.httpClient
+      .post<T>(path, this.serialize(body), {
+        observe: 'body',
+        responseType: 'json',
+        withCredentials: Object.is(
+          this.environment,
+          ClientEnvironment.Production,
+        ),
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  /**
+   * PUT reactive api service.
+   *
+   * @template T of generic which will be formatted.
+   * @param path of path string of get request.
+   * @param [body] default params to payload.
+   * @returns an reactive instance of {@link HttpClient}.
+   */
+  public override put<T>(
+    path: string,
+    body?: PlainObjectLiteral,
+  ): Observable<T> {
+    return this.httpClient
+      .put<T>(path, this.serialize(body), {
+        observe: 'body',
+        responseType: 'json',
+        withCredentials: Object.is(
+          this.environment,
+          ClientEnvironment.Production,
+        ),
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  /**
+   * PATCH reactive api service.
+   *
+   * @template T of generic which will be formatted.
+   * @param path of path string of get request.
+   * @param [params] default params to payload.
+   * @returns an reactive instance of {@link HttpClient}.
+   */
+  public override patch<T>(
+    path: string,
+    params: HttpParams = new HttpParams(),
+  ): Observable<T> {
+    return this.httpClient
+      .patch<T>(path, {
+        params,
+        observe: 'body',
+        responseType: 'json',
+        withCredentials: Object.is(
+          this.environment,
+          ClientEnvironment.Production,
+        ),
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  /**
+   * DELETE reactive api service.
+   *
+   * @template T of generic which will be formatted.
+   * @param path of path string of get request.
+   * @returns an reactive instance of {@link HttpClient}.
+   */
+  public override delete<T>(path: string): Observable<T> {
+    return this.httpClient
+      .delete<T>(path, {
+        observe: 'body',
+        responseType: 'json',
+        withCredentials: Object.is(
+          this.environment,
+          ClientEnvironment.Production,
+        ),
+      })
+      .pipe(catchError(this.handleError));
   }
 
   /**
@@ -83,101 +197,10 @@ export class RxApiGatewayService extends ApiGatewayService {
    * @param {?PlainObjectLiteral} [body]
    * @returns {*}
    */
-  protected serialize(body?: PlainObjectLiteral): Optional<string> {
-    return this.httpConfigRef.getSerializer()(body as PlainObjectLiteral);
-  }
+  private serialize(body?: PlainObjectLiteral): Optional<string> {
+    const serializer: (data: PlainObjectLiteral) => Optional<string> =
+      this.apiConfigRef.getSerializer();
 
-  /**
-   * GET reactive api service.
-   *
-   * @template T of generic which will be formatted.
-   * @param path of url string of get request.
-   * @param [params] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
-   */
-  public override get<T>(
-    url: string,
-    params: HttpParams = new HttpParams(),
-  ): Observable<T> {
-    return this.httpClient
-      .get<T>(url, {
-        params,
-        observe: 'body',
-      })
-      .pipe(catchError(this.handleError as OperatorFunction<unknown, T>));
-  }
-
-  /**
-   * POST reactive api service.
-   *
-   * @template T of generic which will be formatted.
-   * @param url of url string of get request.
-   * @param [params] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
-   */
-  public override post<T>(
-    url: string,
-    body?: PlainObjectLiteral,
-  ): Observable<T> {
-    return this.httpClient
-      .post<T>(url, this.serialize(body), {
-        observe: 'body',
-      })
-      .pipe(catchError(this.handleError as OperatorFunction<unknown, T>));
-  }
-
-  /**
-   * PUT reactive api service.
-   *
-   * @template T of generic which will be formatted.
-   * @param url of url string of get request.
-   * @param [params] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
-   */
-  public override put<T>(
-    url: string,
-    body?: PlainObjectLiteral,
-  ): Observable<T> {
-    return this.httpClient
-      .put<T>(url, this.serialize(body), {
-        observe: 'body',
-      })
-      .pipe(catchError(this.handleError as OperatorFunction<unknown, T>));
-  }
-
-  /**
-   * PATCH reactive api service.
-   *
-   * @template T of generic which will be formatted.
-   * @param url of url string of get request.
-   * @param [params] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
-   */
-  public override patch<T>(
-    url: string,
-    params: HttpParams = new HttpParams(),
-  ): Observable<T> {
-    return this.httpClient
-      .patch<T>(url, {
-        params,
-        observe: 'body',
-      })
-      .pipe(catchError(this.handleError as OperatorFunction<unknown, T>));
-  }
-
-  /**
-   * DELETE reactive api service.
-   *
-   * @template T of generic which will be formatted.
-   * @param url of url string of get request.
-   * @param [params] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
-   */
-  public override delete<T>(url: string): Observable<T> {
-    return this.httpClient
-      .delete<T>(url, {
-        observe: 'body',
-      })
-      .pipe(catchError(this.handleError as OperatorFunction<unknown, T>));
+    return serializer.call(null, body as PlainObjectLiteral);
   }
 }

@@ -1,1 +1,17 @@
-{}
+{
+  "/docs/*": {
+    "target": "http://docs.localhost:4200/docs",
+    "secure": false,
+    "ws": false
+  },
+  "/event-bus/*": {
+    "target": "ws://event-bus.localhost:8080",
+    "secure": false,
+    "ws": true
+  },
+  "/command-bus/*": {
+    "target": "ws://command-bus.localhost:8080",
+    "secure": false,
+    "ws": false
+  }
+}

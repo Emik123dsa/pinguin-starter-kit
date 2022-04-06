@@ -5,13 +5,6 @@ import { BrowserService } from '@pinguin/common';
   providedIn: 'platform',
 })
 export class AppBrowserService extends BrowserService {
-  public constructor() // private readonly clientCommonHandler: ClientCommonHandler,
-
-  //private readonly webWorkerService: WebWorkerService,
-  {
-    super();
-  }
-
   public override ngBrowserInit(): void {
     //console.log(this.clientCommonHandler);
     // Execute runtime whether

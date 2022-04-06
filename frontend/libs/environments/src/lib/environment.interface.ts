@@ -2,7 +2,7 @@ import { ModuleWithProviders, Type } from '@angular/core';
 import { Action, MetaReducer } from '@ngrx/store';
 import { ClientRestApiOptions } from '@pinguin/api';
 
-import { ClientApplicationOptions } from '@pinguin/config';
+import { ClientAppOptions } from '@pinguin/config';
 
 import { ClientWebSocketOptions } from '@pinguin/websocket';
 
@@ -18,7 +18,7 @@ export interface ClientEnvironmentOptions {
   environment: ClientEnvironment;
 
   // Client application properties.
-  app: ClientApplicationOptions;
+  app: ClientAppOptions;
 
   // Base browser static variables.
   baseHref: string;

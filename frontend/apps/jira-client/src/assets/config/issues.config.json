@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "entityPath": "issues",
+  "dataUrl": "/assets/data",
+  "data": {
+    "labelsUrl": "issues-labels.data.json",
+    "fieldsUrl": "issues-fields.data.json"
+  },
+  "delay": 3000,
+  "timeout": 3000
+}
