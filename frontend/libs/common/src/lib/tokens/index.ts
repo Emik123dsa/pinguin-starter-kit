@@ -1,2 +1,2 @@
 export * from './window.token';
-export * from './common.module.token';
+export * from './common-module.token';

@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/client/errors/feature-not-found",
+  "sourceRoot": "libs/client/errors/feature-not-found/src",
+  "prefix": "pinguin",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/errors/feature-not-found"],
+      "options": {
+        "jestConfig": "libs/client/errors/feature-not-found/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/errors/feature-not-found/src/**/*.ts",
+          "libs/client/errors/feature-not-found/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -9,9 +9,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {
-  // constructor() {}
-
-  intercept(
+  public intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {

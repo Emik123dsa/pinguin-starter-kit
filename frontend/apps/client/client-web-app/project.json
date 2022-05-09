@@ -1,0 +1,379 @@
+{
+  "projectType": "application",
+  "root": "apps/client-web-app",
+  "sourceRoot": "apps/client-web-app/src",
+  "prefix": "pinguin",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss",
+      "changeDetection": "OnPush"
+    },
+    "@schematics/angular:application": {
+      "strict": true
+    }
+  },
+  "i18n": {
+    "sourceLocale": "en-US",
+    "locales": {
+      "en": {
+        "translation": "apps/client-web-app/src/locale/messages.en.xlf",
+        "baseHref": "/"
+      },
+      "de": {
+        "translation": "apps/client-web-app/src/locale/messages.de.xlf",
+        "baseHref": "/"
+      },
+      "ru": {
+        "translation": "apps/client-web-app/src/locale/messages.ru.xlf",
+        "baseHref": "/"
+      }
+    }
+  },
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/web-app/browser",
+        "index": "apps/client-web-app/src/index.html",
+        "main": "apps/client-web-app/src/main.browser.ts",
+        "polyfills": "apps/client-web-app/src/polyfills.ts",
+        "tsConfig": "apps/client-web-app/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/client-web-app/src/favicon.ico",
+          "apps/client-web-app/src/assets",
+          "apps/client-web-app/src/manifest.webmanifest"
+        ],
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/client-web-app/src/assets/stylesheets"]
+        },
+        "optimization": {
+          "scripts": true,
+          "styles": {
+            "minify": true,
+            "inlineCritical": true
+          },
+          "fonts": true
+        },
+        "styles": [
+          "apps/client-web-app/src/styles.scss",
+          {
+            "input": "apps/client-web-app/src/modules/global/tailwindcss/tailwindcss-module.scss",
+            "inject": false,
+            "bundleName": "tailwindcss-module"
+          }
+        ],
+        "scripts": [],
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/client-web-app/ngsw-config.json",
+        "webWorkerTsConfig": "apps/client-web-app/tsconfig.worker.json",
+        "i18nMissingTranslation": "warning",
+        "localize": ["en"],
+        "customWebpackConfig": {
+          "path": "apps/client-web-app/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "aot": true,
+          "budgets": [
+            {
+              "baseline": "1.5mb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "name": "vendor",
+              "type": "bundle"
+            },
+            {
+              "baseline": "5.5mb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "minimumError": "20%",
+              "minimumWarning": "10%",
+              "type": "allScript"
+            },
+            {
+              "baseline": "2.5mb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "type": "initial"
+            },
+            {
+              "baseline": "300kb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "name": "polyfills",
+              "type": "bundle"
+            },
+            {
+              "baseline": "350kb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "name": "styles",
+              "type": "bundle"
+            },
+            {
+              "baseline": "11mb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "type": "all"
+            },
+            {
+              "baseline": "8mb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "name": "main",
+              "type": "bundle"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb"
+            }
+          ],
+          "buildOptimizer": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/client-web-app/src/environments/environment.ts",
+              "with": "apps/client-web-app/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all",
+          "extractLicenses": true,
+          "customWebpackConfig": {
+            "path": "apps/client-web-app/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        },
+        "hmr": {
+          "fileReplacements": [
+            {
+              "replace": "apps/client-web-app/src/environments/environment.ts",
+              "with": "apps/client-web-app/src/environments/environment.hmr.ts"
+            }
+          ]
+        },
+        "mock": {
+          "aot": true,
+          "baseHref": "/",
+          "budgets": [
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb"
+            }
+          ],
+          "buildOptimizer": true,
+          "extractLicenses": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/client-web-app/src/environments/environment.ts",
+              "with": "apps/client-web-app/src/environments/environment.mock.ts"
+            }
+          ],
+          "namedChunks": false,
+          "optimization": {
+            "scripts": true,
+            "styles": true
+          },
+          "outputHashing": "all",
+          "serviceWorker": true,
+          "sourceMap": {
+            "hidden": true,
+            "scripts": true,
+            "styles": true
+          },
+          "vendorChunk": false
+        },
+        "i18n-en": {
+          "baseHref": "/",
+          "localize": ["en"],
+          "outputPath": "dist/web-app/browser",
+          "i18nMissingTranslation": "error"
+        },
+        "i18n-de": {
+          "baseHref": "/",
+          "localize": ["de"],
+          "outputPath": "dist/web-app/browser",
+          "i18nMissingTranslation": "error"
+        },
+        "i18n-ru": {
+          "baseHref": "/",
+          "localize": ["ru"],
+          "outputPath": "dist/web-app/browser",
+          "i18nMissingTranslation": "error"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "xliffmerge": {
+      "executor": "@ngx-i18nsupport/tooling:xliffmerge",
+      "options": {
+        "xliffmergeOptions": {
+          "i18nFormat": "xlf",
+          "srcDir": "apps/client-web-app/src/locale",
+          "genDir": "apps/client-web-app/src/locale",
+          "verbose": true,
+          "defaultLanguage": "en",
+          "autotranslate": ["en"],
+          "apikey": "i18n",
+          "languages": ["en"]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-server",
+      "options": {
+        "browserTarget": "client-web-app:build",
+        "publicHost": "http://localhost:4200",
+        "proxyConfig": "apps/client-web-app/src/proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "client-web-app:build:production"
+        },
+        "development": {
+          "browserTarget": "client-web-app:build:development"
+        },
+        "hmr": {
+          "browserTarget": "client-web-app:build:hmr",
+          "hmr": true
+        },
+        "mock": {
+          "browserTarget": "client-web-app:build:mock"
+        },
+        "i18n-en": {
+          "browserTarget": "client-web-app:build:i18n-en"
+        },
+        "i18n-de": {
+          "browserTarget": "client-web-app:build:i18n-de"
+        },
+        "i18n-ru": {
+          "browserTarget": "client-web-app:build:i18n-ru"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "serve:ssr": {
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "client-web-app:build:development",
+          "serverTarget": "client-web-app:server:development"
+        },
+        "production": {
+          "browserTarget": "client-web-app:build:production",
+          "serverTarget": "client-web-app:server:production"
+        }
+      },
+      "options": {
+        "browserTarget": "client-web-app:build",
+        "serverTarget": "client-web-app:server",
+        "proxyConfig": "apps/client-web-app/src/proxy.conf.json"
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "client-web-app:build",
+        "progress": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/client-web-app/src/**/*.ts",
+          "apps/client-web-app/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/client-web-app"],
+      "options": {
+        "jestConfig": "apps/client-web-app/jest.config.js",
+        "passWithNoTests": true,
+        "webWorkerTsConfig": "apps/client-web-app/tsconfig.worker.json"
+      }
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/web-app/server",
+        "main": "apps/client-web-app/src/ssr.server.ts",
+        "tsConfig": "apps/client-web-app/tsconfig.server.json",
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/client-web-app/src/assets/stylesheets"]
+        },
+        "inlineStyleLanguage": "scss"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media",
+          "statsJson": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/client-web-app/src/environments/environment.ts",
+              "with": "apps/client-web-app/src/environments/environment.prod.ts"
+            }
+          ]
+        },
+        "development": {
+          "optimization": {
+            "styles": true,
+            "scripts": true
+          },
+          "sourceMap": true,
+          "extractLicenses": false
+        },
+        "hmr": {
+          "fileReplacements": [
+            {
+              "replace": "apps/client-web-app/src/environments/environment.ts",
+              "with": "apps/client-web-app/src/environments/environment.hmr.ts"
+            }
+          ]
+        },
+        "mock": {
+          "fileReplacements": [
+            {
+              "replace": "apps/client-web-app/src/environments/environment.ts",
+              "with": "apps/client-web-app/src/environments/environment.mock.ts"
+            }
+          ]
+        },
+        "i18n-en": {
+          "localize": ["en"],
+          "outputPath": "dist/web-app/browser",
+          "i18nMissingTranslation": "error"
+        },
+        "i18n-de": {
+          "localize": ["de"],
+          "outputPath": "dist/web-app/browser",
+          "i18nMissingTranslation": "error"
+        },
+        "i18n-ru": {
+          "localize": ["ru"],
+          "outputPath": "dist/web-app/browser",
+          "i18nMissingTranslation": "error"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-mfe": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx serve web-app"]
+      }
+    }
+  },
+  "tags": ["client-web-app"]
+}

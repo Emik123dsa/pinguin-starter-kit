@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { StringUtils } from '@pinguin/utils';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ConfigServiceModule } from './config-service.module';
 
 /**
  * Abstract config service for specialized module context.
@@ -12,7 +12,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
  * @class ConfigService
  * @typedef {ConfigService}
  */
-@Injectable()
+@Injectable({
+  providedIn: ConfigServiceModule,
+})
 export abstract class ClientConfigService<T> implements OnDestroy {
   /**
    * Provide abstract `configUrl` in the case of
@@ -45,15 +47,14 @@ export abstract class ClientConfigService<T> implements OnDestroy {
    * @abstract
    */
   public loadConfig(): void {
-    if (StringUtils.isEmpty(this.configUrl)) {
-      throw new 
-    }
-
-    this.httpClient.jsonp(this.configUrl, 'callback').pipe(
-      map((data) => {
-        console.log(data);
-      }),
-    );
+    // if (StringUtils.isEmpty(this.configUrl)) {
+    //   throw new
+    // }
+    // this.httpClient.jsonp(this.configUrl, 'callback').pipe(
+    //   map((data) => {
+    //     console.log(data);
+    //   }),
+    // );
   }
 
   /**

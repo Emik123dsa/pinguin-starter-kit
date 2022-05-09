@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/client/issues/feature-shell",
+  "sourceRoot": "libs/client/issues/feature-shell/src",
+  "prefix": "pinguin",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/client/issues/feature-shell"],
+      "options": {
+        "project": "libs/client/issues/feature-shell/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/client/issues/feature-shell/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/client/issues/feature-shell/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/issues/feature-shell"],
+      "options": {
+        "jestConfig": "libs/client/issues/feature-shell/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/issues/feature-shell/src/**/*.ts",
+          "libs/client/issues/feature-shell/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

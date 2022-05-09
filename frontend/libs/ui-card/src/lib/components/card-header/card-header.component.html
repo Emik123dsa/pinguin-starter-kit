@@ -1,6 +1,12 @@
-<header class="card-header" id="pinguin-ui-card-header" role="heading">
-  <div class="card-header-container">
-    <div class="card-header-wrapper">
+<header class="pinguin-card-header" id="pinguin-card-header" role="rowgroup">
+  <div class="pinguin-card-header-container" role="row">
+    <div class="pinguin-card-header-title-group-content" role="rowheader">
+      <ng-content select="pinguin-card-header-title,pinguin-card-header-sub-title,
+                  [pinguin-card-header-sub-title], [pinguin-card-header-title],  
+                  [pinguinCardHeaderTitle], [pinguinCardHeaderSubTitle]">
+      </ng-content>
+    </div>
+    <div class="pinguin-card-header-content-wrapper" role="gridcell">
       <ng-content></ng-content>
     </div>
   </div>

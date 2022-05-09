@@ -1,0 +1,89 @@
+@use 'sass:map';
+@use '@angular/material' as mat-ui;
+
+@mixin color($config-or-theme: null) {
+  $color-config: mat-ui.get-color-config($config-or-theme);
+
+  $primary-palette: map.get($color-config, primary);
+  $accent-palette: map.get($color-config, accent);
+  $warn-palette: map.get($color-config, warn);
+
+  $background-palette: map.get($color-config, background);
+  $foreground-palette: map.get($color-config, foreground);
+
+  // Whether it was provided dark theme.
+  $is-dark-theme: map.get($color-config, is-dark);
+
+  *::selection {
+    color: mat-ui.get-color-from-palette(
+      $primary-palette,
+      'lighter'
+    ) !important;
+    background: mat-ui.get-color-from-palette(
+      $primary-palette,
+      'lighter'
+    ) !important;
+  }
+
+  html,
+  body {
+    color: mat-ui.get-color-from-palette($primary-palette, 'text') !important;
+    caret-color: mat-ui.get-color-from-palette(
+      $primary-palette,
+      'text'
+    ) !important;
+  }
+}
+
+@mixin typography($config-or-theme: null) {
+  $typography-config: mat-ui.get-typography-config($config-or-theme);
+
+  $font-family: mat-ui.font-family($typography-config);
+  $font-size: mat-ui.font-size($typography-config, 'body-1');
+  $font-family: mat-ui.font-family($config, 'body-1');
+  $font-weight: mat-ui.font-weight($config, 'body-1');
+  $line-height: mat.line-height($config, 'body-1');
+  $letter-spacing: mat.letter-spacing($config, 'body-1');
+
+  html,
+  body {
+    font-size: $font-size !important;
+    font-family: $font-family !important;
+    font-weight: $font-weight !important;
+    line-height: $line-height !important;
+    letter-spacing: $letter-spacing !important;
+  }
+}
+
+@mixin _density($config-or-theme: null) {
+  // Density for theme state.
+}
+
+@mixin theme($theme-or-color-config: null) {
+  $color-config: mat-ui.get-color-config($theme-or-color-config);
+
+  // Provide color config according to the mat-ui theme.
+  @if $color-config != null {
+    @include color($theme-or-color-config);
+  } @else {
+    @warn "Unknown color config #{$theme-or-color-config}.";
+  }
+
+  $density-config: mat-ui.get-density-config($theme-or-color-config);
+
+  // Provide density config according to the mat-ui theme.
+  @if $typography-config == null {
+    @include _density($theme-or-color-config);
+  } @else {
+    @warn "Unknown density config #{$theme-or-color-config}.";
+  }
+
+  $typography-config: mat-ui.get-typography-config($theme-or-color-config);
+
+  // Provide typography config according to the mat-ui theme.
+  @if $typography-config == null {
+    @include typography($theme-or-color-config);
+  } @else {
+    @warn "Unknown typography config #{$theme-or-color-config}.";
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "pinguin-client-web-app",
+  "name": "Pinguin Client Web App",
+  "description": "Pinguin Client Web Application",
+  "logoUrl": "/assets/images/logo.png",
+  "tags": {},
+  "modules": {
+    "issuesUrl": "/assets/config/issues.config.json"
+  }
+}

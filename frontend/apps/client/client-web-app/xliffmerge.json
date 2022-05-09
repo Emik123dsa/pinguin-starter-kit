@@ -1,0 +1,26 @@
+{
+  "xliffmergeOptions": {
+    "srcDir": "apps/web-app/src",
+    "genDir": "apps/web-app/src/locale",
+    "i18nFile": "locale/messages.xlf",
+    "i18nBaseFile": "messages",
+    "i18nFormat": "xlf",
+    "encoding": "UTF-8",
+    "defaultLanguage": "en-US",
+    "languages": ["en", "de", "Ru"],
+    "removeUnusedIds": true,
+    "supportNgxTranslate": false,
+    "ngxTranslateExtractionPattern": "@@|ngx-translate",
+    "useSourceAsTarget": true,
+    "targetPrefix": "",
+    "targetSuffix": "",
+    "beautifyOutput": false,
+    "preserveOrder": true,
+    "allowIdChange": false,
+    "autotranslate": false,
+    "apikey": "",
+    "apikeyfile": "",
+    "verbose": false,
+    "quiet": false
+  }
+}

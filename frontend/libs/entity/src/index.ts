@@ -1,1 +1,1 @@
-export * from './lib/entity.module';
+export * from './public-api';

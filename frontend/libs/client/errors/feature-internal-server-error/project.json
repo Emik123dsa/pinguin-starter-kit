@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/client/errors/feature-internal-server-error",
+  "sourceRoot": "libs/client/errors/feature-internal-server-error/src",
+  "prefix": "pinguin",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/errors/feature-internal-server-error"],
+      "options": {
+        "jestConfig": "libs/client/errors/feature-internal-server-error/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/errors/feature-internal-server-error/src/**/*.ts",
+          "libs/client/errors/feature-internal-server-error/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

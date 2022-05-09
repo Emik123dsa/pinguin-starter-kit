@@ -1,6 +1,18 @@
 {
-  "npmClient": "yarn",
   "packages": ["libs/*"],
-  "version": "0.0.0",
-  "useWorkspaces": true
+  "version": "independent",
+  "stream": true,
+  "useWorkspaces": true,
+  "npmClient": "yarn",
+  "command": {
+    "publish": {
+      "ignoreChanges": ["ignored-file", "*.md"],
+      "message": "chore(release): publish",
+      "conventionalCommits": true,
+      "yes": true
+    },
+    "bootstrap": {
+      "npmClientArgs": ["--no-package-lock"]
+    }
+  }
 }

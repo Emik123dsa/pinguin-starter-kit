@@ -2,7 +2,7 @@ import { ModuleWithProviders, Type } from '@angular/core';
 import { Action, MetaReducer } from '@ngrx/store';
 import { ClientRestApiOptions } from '@pinguin/api';
 
-import { ClientAppOptions } from '@pinguin/config';
+import { ClientApplicationOptions } from '@pinguin/config';
 
 import { ClientWebSocketOptions } from '@pinguin/websocket';
 
@@ -18,10 +18,10 @@ export interface ClientEnvironmentOptions {
   environment: ClientEnvironment;
 
   // Client application properties.
-  app: ClientAppOptions;
+  app: ClientApplicationOptions;
 
   // Base browser static variables.
-  baseHref: string;
+  baseUrl: string;
   baseDomain: Optional<string>;
 
   // Provide REST api client module.
@@ -30,14 +30,14 @@ export interface ClientEnvironmentOptions {
   // Provide WebSocket client module.
   websocket: ClientWebSocketOptions;
 
-  packages?: Array<object>;
+  versions?: Array<object>;
 
   // Modules will be executed in runtime environment,
   // for instance, under development hacking.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  runtimePlugins: Array<any[] | Type<any> | ModuleWithProviders<{}>>;
+  tools: Array<any[] | Type<any> | ModuleWithProviders<{}>>;
 
   // Provide any meta reducers, including logging cascade lever.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  runtimeStoreMetaReducers: MetaReducer<{}, Action>[];
+  metaReducers: MetaReducer<{}, Action>[];
 }

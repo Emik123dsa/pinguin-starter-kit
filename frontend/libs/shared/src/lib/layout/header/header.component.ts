@@ -9,10 +9,8 @@ import {
   exportAs: 'pinguinLayoutHeader',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  host: {
-    'class': 'pinguin-layout-header',
-  },
-  encapsulation: ViewEncapsulation.None,
+  host: { 'class': 'pinguin-layout-header' },
+
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderLayoutComponent {}

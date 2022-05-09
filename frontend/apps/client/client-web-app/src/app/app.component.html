@@ -1,0 +1,8 @@
+<ng-template #applicationTpl let-version>
+  <router-outlet>{{ version }}</router-outlet>
+  <router-outlet name="preloader-overlay"></router-outlet>
+</ng-template>
+
+<!-- Provide any useful context to the app template. -->
+<ng-container [ngTemplateOutlet]="applicationTpl" [ngTemplateOutletContext]="{ $implicit: version }">
+</ng-container>

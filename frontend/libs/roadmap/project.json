@@ -1,0 +1,28 @@
+{
+  "projectType": "library",
+  "root": "libs/roadmap",
+  "sourceRoot": "libs/roadmap/src",
+  "prefix": "pinguin",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/roadmap"
+      ],
+      "options": {
+        "jestConfig": "libs/roadmap/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/roadmap/src/**/*.ts",
+          "libs/roadmap/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/client/errors/feature-bad-request",
+  "sourceRoot": "libs/client/errors/feature-bad-request/src",
+  "prefix": "pinguin",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/errors/feature-bad-request"],
+      "options": {
+        "jestConfig": "libs/client/errors/feature-bad-request/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/errors/feature-bad-request/src/**/*.ts",
+          "libs/client/errors/feature-bad-request/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

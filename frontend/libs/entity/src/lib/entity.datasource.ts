@@ -5,27 +5,28 @@ import {
   catchError,
   Connectable,
   connectable,
-  distinctUntilChanged,
   filter,
   finalize,
   Observable,
   of,
   shareReplay,
   Subject,
-  Subscription,
-  switchMap,
   tap,
+  switchMap,
+  Subscription,
+  distinctUntilChanged,
 } from 'rxjs';
+
 import { ShareReplayConfig } from 'rxjs/internal/operators/shareReplay';
 
-import { Constructor } from '@pinguin/utils';
-
 import { DataSource } from '@angular/cdk/table';
+import { ChangeDetectorRef } from '@angular/core';
 import { CollectionViewer } from '@angular/cdk/collections';
 
-import { EntityService } from './entity.service';
-import { ChangeDetectorRef } from '@angular/core';
+import { Constructor } from '@pinguin/utils';
 import { ClientRestApiConfigRef } from '@pinguin/api';
+
+import { EntityService } from './entity.service';
 
 /**
  * Data source to provide what data should be rendered in the table. Note that the data source
@@ -113,10 +114,6 @@ export class EntityDataSource<
     collectionViewer: CollectionViewer,
   ): Observable<readonly E[]> {
     return this.entitiesSubject.asObservable();
-  }
-
-  public loadAll(): void {
-    // TODO: Override current load all entity method.
   }
 
   public loadByCriteria(): void {

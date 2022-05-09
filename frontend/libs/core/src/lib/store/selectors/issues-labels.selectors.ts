@@ -1,5 +1,4 @@
-import { EntityState, Dictionary } from '@ngrx/entity';
-import { EntitySelectors } from '@ngrx/entity/src/models';
+import { Dictionary } from '@ngrx/entity';
 
 import {
   createSelector,
@@ -9,86 +8,69 @@ import {
 
 import { IssueLabelEntity } from '@pinguin/api';
 
-import { IssuesLabelsEntityState } from '../models';
-import { issuesLabelsEntityAdapter } from '../state';
+import { IssuesLabelsState } from '../models';
+import { getIssuesState } from './issues.selectors';
+import {
+  selectIssuesLabelIds,
+  selectAllIssuesLabels,
+  selectIssuesLabelEntities,
+  selectIssuesLabelTotal,
+} from '../state';
 
-import { selectIssuesEntityState } from './issues.selectors';
-
-export const issuesLabelsEntitySelectors: EntitySelectors<
-  IssueLabelEntity,
-  EntityState<IssueLabelEntity>
-> = issuesLabelsEntityAdapter.getSelectors();
-
-export const issuesLabelsEntityState: MemoizedSelector<
+export const getIssuesLabelsState: MemoizedSelector<
   object,
-  IssuesLabelsEntityState,
-  DefaultProjectorFn<IssuesLabelsEntityState>
-> = createSelector(selectIssuesEntityState, (state) => state.labels);
+  IssuesLabelsState,
+  DefaultProjectorFn<IssuesLabelsState>
+> = createSelector(getIssuesState, (state) => state.labels);
 
-const getSelectedIssueLabelId = (state: IssuesLabelsEntityState) =>
+const getSelectedIssueLabelId = (state: IssuesLabelsState) =>
   state.selectedIssueLabelId;
 
-export const selectCurrentIssueLabelId: MemoizedSelector<
+export const getCurrentIssueLabelId: MemoizedSelector<
   object,
   Optional<number>,
   DefaultProjectorFn<Optional<number>>
-> = createSelector(issuesLabelsEntityState, getSelectedIssueLabelId);
+> = createSelector(getIssuesLabelsState, getSelectedIssueLabelId);
 
-export const selectIssuesLabelsLoaded: MemoizedSelector<
+export const getIssuesLabelsLoaded: MemoizedSelector<
   object,
   boolean,
   DefaultProjectorFn<boolean>
-> = createSelector(issuesLabelsEntityState, (state) => state.loaded);
+> = createSelector(getIssuesLabelsState, (state) => state.loaded);
 
-export const selectIssuesLabelsLoading: MemoizedSelector<
+export const getIssuesLabelsLoading: MemoizedSelector<
   object,
   boolean,
   DefaultProjectorFn<boolean>
-> = createSelector(issuesLabelsEntityState, (state) => state.loading);
+> = createSelector(getIssuesLabelsState, (state) => state.loading);
 
-export const selectAllIssuesLabels: MemoizedSelector<
+export const getAllIssuesLabels: MemoizedSelector<
   object,
   IssueLabelEntity[],
   DefaultProjectorFn<IssueLabelEntity[]>
-> = createSelector(
-  issuesLabelsEntityState,
-  issuesLabelsEntitySelectors.selectAll,
-);
+> = createSelector(getIssuesLabelsState, selectAllIssuesLabels);
 
-export const selectIssuesLabelEntities: MemoizedSelector<
+export const getIssuesLabelEntities: MemoizedSelector<
   object,
   Dictionary<IssueLabelEntity>,
   DefaultProjectorFn<Dictionary<IssueLabelEntity>>
-> = createSelector(
-  issuesLabelsEntityState,
-  issuesLabelsEntitySelectors.selectEntities,
-);
+> = createSelector(getIssuesLabelsState, selectIssuesLabelEntities);
 
-export const selectIssuesLabelIds: MemoizedSelector<
+export const getIssuesLabelIds: MemoizedSelector<
   object,
   string[] | number[],
   DefaultProjectorFn<string[] | number[]>
-> = createSelector(
-  issuesLabelsEntityState,
-  issuesLabelsEntitySelectors.selectIds,
-);
+> = createSelector(getIssuesLabelsState, selectIssuesLabelIds);
 
-export const selectIssuesLabelTotal: MemoizedSelector<
+export const getIssuesLabelTotal: MemoizedSelector<
   object,
   number,
   DefaultProjectorFn<number>
-> = createSelector(
-  issuesLabelsEntityState,
-  issuesLabelsEntitySelectors.selectTotal,
-);
+> = createSelector(getIssuesLabelsState, selectIssuesLabelTotal);
 
-export const selectCurrentIssueLabel: MemoizedSelector<
-  object,
-  IssueLabelEntity | undefined,
-  DefaultProjectorFn<IssueLabelEntity | undefined>
-> = createSelector(
-  selectIssuesLabelEntities,
-  selectCurrentIssueLabelId,
+export const getCurrentIssueLabel = createSelector(
+  getIssuesLabelEntities,
+  getCurrentIssueLabelId,
   (issuesLabelEntities: Dictionary<IssueLabelEntity>, issueLabelId) =>
-    issuesLabelEntities && issuesLabelEntities[issueLabelId as number],
+    issueLabelId && issuesLabelEntities[issueLabelId],
 );

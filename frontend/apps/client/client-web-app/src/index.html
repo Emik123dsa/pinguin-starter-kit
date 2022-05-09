@@ -1,0 +1,67 @@
+<!-- 
+   ______        _                   _          ___ _                       ___            __ 
+  / ____ \____  (_)___  ____ ___  __(_)___    _/_(_|_)________ _      _____/ (_)__  ____  / /_
+ / / __ `/ __ \/ / __ \/ __ `/ / / / / __ \ _/_// / / ___/ __ `/_____/ ___/ / / _ \/ __ \/ __/
+/ / /_/ / /_/ / / / / / /_/ / /_/ / / / / //_/ / / / /  / /_/ /_____/ /__/ / /  __/ / / / /_  
+\ \__,_/ .___/_/_/ /_/\__, /\__,_/_/_/ /_/_/__/ /_/_/   \__,_/      \___/_/_/\___/_/ /_/\__/  
+ \____/_/            /____/                /___/                                            
+-->
+<!DOCTYPE html>
+<!-- NOTE: (prefers-color-scheme: light) -->
+<html
+  lang="en"
+  dir="ltr"
+  class="day light-scheme"
+  prefix="content: http://purl.org/rss/1.0/modules/content/  
+  dc: http://purl.org/dc/terms/
+  foaf: http://xmlns.com/foaf/0.1/ 
+  og: http://ogp.me/ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema# 
+  schema: http://schema.org/ 
+  sioc: http://rdfs.org/sioc/ns# 
+  sioct: http://rdfs.org/sioc/types# 
+  skos: http://www.w3.org/2004/02/skos/core# 
+  xsd: http://www.w3.org/2001/XMLSchema#"
+  manifest="/assets/cache/cache.appcache"
+>
+  <head>
+    <meta charset="utf-8" />
+    <!-- Pinguin Client App -->
+    <title>Pinguin Client</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="pinguin-starter-kit, client-app" />
+    <meta name="description" content="Pinguin Starter Kit - Client" />
+    <base href="/" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="user-scalable=no,initial-scale=1.0,maximum-scale=2.0,width=device-width,shrink-to-fit=no,viewport-fit=cover"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png" />
+
+    <meta name="color-scheme" content="var(--prefers-color-scheme)" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: var(--prefers-color-scheme))"
+      content="var(--theme-color)"
+    />
+    <!-- <meta name="theme-color" media="(prefers-color-scheme: light)" content="var(--theme-color)" /> -->
+  </head>
+
+  <body class="theming theme-dark">
+    <!-- Whether client is online/offline mode, default: navigation.onLine -->
+    <div id="network" class="network-status online"></div>
+
+    <div class="mat-app-background mat-typography">
+      <pinguin-client-root>Loading...</pinguin-client-root>
+    </div>
+
+    <noscript>
+      Please enable JavaScript to continue using this application.
+    </noscript>
+  </body>
+</html>

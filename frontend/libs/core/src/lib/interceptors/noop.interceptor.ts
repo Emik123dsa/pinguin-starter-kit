@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { noop, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +15,6 @@ export class NoopInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+    return next.handle(request).pipe(tap({ error: noop }));
   }
 }

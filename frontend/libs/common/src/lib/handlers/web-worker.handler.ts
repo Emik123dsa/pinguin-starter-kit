@@ -33,6 +33,19 @@ export class WebWorkerHandler {
   }
 
   /**
+   * Handle worker connection messaging.
+   *
+   * @public
+   * @template T
+   * @returns {*}
+   */
+  public get connection$(): Observable<MessageEvent<unknown>> {
+    return new Observable<MessageEvent<unknown>>(
+      (observer: Subscriber<MessageEvent>) => this.connect(observer),
+    );
+  }
+
+  /**
    * Handle message errors events inside of `WebWorker` internally.
    *
    * @protected
@@ -112,8 +125,8 @@ export class WebWorkerHandler {
    * @param {T} message
    * @param {?StructuredSerializeOptions} [options]
    */
-  public sendMessage<T>(message: T): void {
-    this.webWorker.postMessage(message);
+  public dispatchEvent<T>(message: T): void {
+    return this.webWorker.postMessage(message);
   }
 
   /**
@@ -123,7 +136,7 @@ export class WebWorkerHandler {
    * @template T
    * @param {Subscriber<T>} observer
    */
-  private createConnection<T>(observer: Subscriber<T>) {
+  private connect<T>(observer: Subscriber<T>) {
     this.ngZone.runOutsideAngular(() => {
       const eventListeners: {
         name: WebWorkerEventTypes;
@@ -179,19 +192,6 @@ export class WebWorkerHandler {
         <void>unregisterEventListeners();
         this.webWorker.terminate();
       };
-    });
-  }
-
-  /**
-   * Handle worker connection messaging.
-   *
-   * @public
-   * @template T
-   * @returns {*}
-   */
-  public connection$<T>(): Observable<T> {
-    return new Observable<T>((observer: Subscriber<T>) => {
-      return this.createConnection(observer);
     });
   }
 }

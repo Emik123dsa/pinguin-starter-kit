@@ -1,6 +1,7 @@
 import { createFeatureSelector } from '@ngrx/store';
+import { ISSUES_FEATURE_KEY } from '../constants';
 
-import { IssuesEntityState } from '../models';
+import { IssuesState } from '../models';
 
-export const selectIssuesEntityState =
-  createFeatureSelector<IssuesEntityState>('issues');
+export const getIssuesState =
+  createFeatureSelector<IssuesState>(ISSUES_FEATURE_KEY);

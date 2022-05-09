@@ -1,5 +1,4 @@
-import { EntityState, Dictionary } from '@ngrx/entity';
-import { EntitySelectors } from '@ngrx/entity/src/models';
+import { Dictionary } from '@ngrx/entity';
 
 import {
   createSelector,
@@ -9,86 +8,67 @@ import {
 
 import { IssueFieldEntity } from '@pinguin/api';
 
-import { IssuesFieldsEntityState } from '../models';
-import { issuesFieldsEntityAdapter } from '../state';
+import { IssuesFieldsState } from '../models';
+import { getIssuesState } from './issues.selectors';
+import {
+  getSelectedIssueFieldId,
+  selectIssuesFieldIds,
+  selectAllIssuesFields,
+  selectIssuesFieldEntities,
+  selectIssuesFieldTotal,
+} from '../state';
 
-import { selectIssuesEntityState } from './issues.selectors';
-
-export const issuesFieldsEntitySelectors: EntitySelectors<
-  IssueFieldEntity,
-  EntityState<IssueFieldEntity>
-> = issuesFieldsEntityAdapter.getSelectors();
-
-export const issuesFieldsEntityState: MemoizedSelector<
+export const getIssuesFieldsState: MemoizedSelector<
   object,
-  IssuesFieldsEntityState,
-  DefaultProjectorFn<IssuesFieldsEntityState>
-> = createSelector(selectIssuesEntityState, (state) => state.fields);
+  IssuesFieldsState,
+  DefaultProjectorFn<IssuesFieldsState>
+> = createSelector(getIssuesState, (state) => state.fields);
 
-const getSelectedIssueFieldId = (state: IssuesFieldsEntityState) =>
-  state.selectedIssueFieldId;
-
-export const selectCurrentIssueFieldId: MemoizedSelector<
+export const getCurrentIssueFieldId: MemoizedSelector<
   object,
   Optional<number>,
   DefaultProjectorFn<Optional<number>>
-> = createSelector(issuesFieldsEntityState, getSelectedIssueFieldId);
+> = createSelector(getIssuesFieldsState, getSelectedIssueFieldId);
 
-export const selectIssuesFieldsLoaded: MemoizedSelector<
+export const getIssuesFieldsLoaded: MemoizedSelector<
   object,
   boolean,
   DefaultProjectorFn<boolean>
-> = createSelector(issuesFieldsEntityState, (state) => state.loaded);
+> = createSelector(getIssuesFieldsState, (state) => state.loaded);
 
-export const selectIssuesFieldsLoading: MemoizedSelector<
+export const getIssuesFieldsLoading: MemoizedSelector<
   object,
   boolean,
   DefaultProjectorFn<boolean>
-> = createSelector(issuesFieldsEntityState, (state) => state.loading);
+> = createSelector(getIssuesFieldsState, (state) => state.loading);
 
-export const selectAllIssuesFields: MemoizedSelector<
+export const getAllIssuesFields: MemoizedSelector<
   object,
   IssueFieldEntity[],
   DefaultProjectorFn<IssueFieldEntity[]>
-> = createSelector(
-  issuesFieldsEntityState,
-  issuesFieldsEntitySelectors.selectAll,
-);
+> = createSelector(getIssuesFieldsState, selectAllIssuesFields);
 
-export const selectIssuesFieldEntities: MemoizedSelector<
+export const getIssuesFieldEntities: MemoizedSelector<
   object,
   Dictionary<IssueFieldEntity>,
   DefaultProjectorFn<Dictionary<IssueFieldEntity>>
-> = createSelector(
-  issuesFieldsEntityState,
-  issuesFieldsEntitySelectors.selectEntities,
-);
+> = createSelector(getIssuesFieldsState, selectIssuesFieldEntities);
 
-export const selectIssuesFieldIds: MemoizedSelector<
+export const getIssuesFieldIds: MemoizedSelector<
   object,
   string[] | number[],
   DefaultProjectorFn<string[] | number[]>
-> = createSelector(
-  issuesFieldsEntityState,
-  issuesFieldsEntitySelectors.selectIds,
-);
+> = createSelector(getIssuesFieldsState, selectIssuesFieldIds);
 
-export const selectIssuesFieldTotal: MemoizedSelector<
+export const getIssuesFieldTotal: MemoizedSelector<
   object,
   number,
   DefaultProjectorFn<number>
-> = createSelector(
-  issuesFieldsEntityState,
-  issuesFieldsEntitySelectors.selectTotal,
-);
+> = createSelector(getIssuesFieldsState, selectIssuesFieldTotal);
 
-export const selectCurrentIssueField: MemoizedSelector<
-  object,
-  IssueFieldEntity | undefined,
-  DefaultProjectorFn<IssueFieldEntity | undefined>
-> = createSelector(
+export const getCurrentIssueField = createSelector(
   selectIssuesFieldEntities,
-  selectCurrentIssueFieldId,
+  getCurrentIssueFieldId,
   (issuesFieldEntities, issueFieldId) =>
-    issuesFieldEntities && issuesFieldEntities[issueFieldId as number],
+    issueFieldId && issuesFieldEntities[issueFieldId],
 );

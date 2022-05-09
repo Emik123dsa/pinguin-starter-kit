@@ -1,0 +1,20 @@
+<div fxLayout="column wrap" fxLayoutAlign="center start" fxFlexFill>
+  <header fxFlex="grow" role="contentinfo"></header>
+  <div   class=""></div>
+  <main
+    role="cell"
+    fxFlexFill
+    fxLayout="column wrap"
+    fxLayoutAlign="center center"
+  >
+    <div [@routeAnimation]="prepareOutletRoute(outlet)">
+      <router-outlet
+        #outlet="outlet"
+        (detach)="onDeatch($event)"
+        (activate)="handleActivateEvent($event)"
+        (deactivate)="handleDeactivateEvent($event)"
+      ></router-outlet>
+    </div>
+  </main>
+  <footer fxFlex="grow" role="contentinfo"></footer>
+</div>

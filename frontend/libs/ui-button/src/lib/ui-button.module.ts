@@ -7,6 +7,6 @@ import { UiButtonComponent } from './ui-button.component';
   imports: [CommonModule],
   declarations: [UiButtonDirective, UiButtonComponent],
   exports: [UiButtonDirective, UiButtonComponent],
-  schemas: [ ],
+  schemas: [],
 })
 export class UiButtonModule {}

@@ -1,5 +1,6 @@
+import { Entity } from '@pinguin/entity';
 import { StringUtils } from '@pinguin/utils';
-import { IssueLabelEntities, IssueLabelEntity } from './issue-label.entity';
+import { IssueLabelEntities } from './issue-label.entity';
 
 /**
  * Issue field entities.
@@ -16,7 +17,7 @@ export type IssueFieldEntities = Array<IssueFieldEntity>;
  * @class IssueFieldEntity
  * @typedef {IssueFieldEntity}
  */
-export class IssueFieldEntity {
+export class IssueFieldEntity extends Entity {
   /**
    * Set initial labels of field entities.
    *
@@ -38,13 +39,15 @@ export class IssueFieldEntity {
    * @param {string} endDate
    */
   public constructor(
-    private id: number,
+    public readonly id: number,
     private title: string,
     private summary: string = StringUtils.EMPTY,
     private labelIds: Array<number>,
     private startDate: number,
     private endDate: number,
-  ) {}
+  ) {
+    super();
+  }
 
   public getId(): number {
     return this.id;

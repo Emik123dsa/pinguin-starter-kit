@@ -9,19 +9,11 @@ import {
 } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
-// Provide shared layouts.
-import { WrapperLayoutComponent } from './layout/wrapper';
-import { FooterLayoutComponent } from './layout/footer';
-import { HeaderLayoutComponent } from './layout/header';
-
-// Provide shared components.
-import { ContainerComponent } from './components/container';
-
 // Provide shared directives modules.
 import { BrowserEventsModule } from './directives/events';
 
-import { SharedCdkModule } from './shared-cdk.module';
 import { SharedStoreModule } from './shared-store.module';
+import { SharedLayoutModule } from './shared-layout.module';
 import { SharedFlexLayoutModule } from './shared-flex-layout.module';
 
 @NgModule({
@@ -48,50 +40,36 @@ import { SharedFlexLayoutModule } from './shared-flex-layout.module';
     // Provide store shared module.
     SharedStoreModule,
 
-    // Provide flex layout modules.
+    // Provide layout modules.
+    SharedLayoutModule,
     SharedFlexLayoutModule,
-
-    SharedCdkModule,
 
     BrowserEventsModule,
   ],
-  declarations: [
-    WrapperLayoutComponent,
-    ContainerComponent,
-    HeaderLayoutComponent,
-    FooterLayoutComponent,
-  ],
-  providers: [],
+  declarations: [],
   exports: [
-    //  Provide common module.
+    // Export common module.
     CommonModule,
 
-    // Provide router modules.
+    // Export router modules.
     RouterModule,
     QuicklinkModule,
 
-    // Provide http client modules.
+    // Export http client modules.
     HttpClientModule,
     HttpClientJsonpModule,
     HttpClientXsrfModule,
 
-    // Provide forms modules.
+    // Export forms modules.
     FormsModule,
     ReactiveFormsModule,
 
-    // Provide store shared module.
+    // Export store shared module.
     SharedStoreModule,
 
-    // Provide flex layout modules.
+    // Export layout modules.
+    SharedLayoutModule,
     SharedFlexLayoutModule,
-
-    SharedCdkModule,
-
-    // Provide components and layouts.
-    WrapperLayoutComponent,
-    ContainerComponent,
-    HeaderLayoutComponent,
-    FooterLayoutComponent,
 
     BrowserEventsModule,
   ],
@@ -99,7 +77,7 @@ import { SharedFlexLayoutModule } from './shared-flex-layout.module';
 })
 export class SharedModule {
   /**
-   * Initialize shared module with root provider.
+   * Initialize shared module with root providers.
    *
    * @public
    * @static

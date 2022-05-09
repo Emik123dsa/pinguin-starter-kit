@@ -1,7 +1,11 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [CommonModule],
 })
-export class GRpcWebModule {}
+export class ClientGRpcWebModule {
+  public static forRoot(): ModuleWithProviders<ClientGRpcWebModule> {
+    return { ngModule: ClientGRpcWebModule, providers: [] };
+  }
+}

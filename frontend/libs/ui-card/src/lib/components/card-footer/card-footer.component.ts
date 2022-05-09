@@ -5,12 +5,12 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'pinguin-ui-card-footer',
-  exportAs: 'pinguinUiCardFooter',
-  host: { 'class': 'pinguin-ui-card-footer' },
+  selector: `pinguin-card-footer, [pinguin-card-footer], [pinguinCardFooter]`,
+  exportAs: 'pinguinCardFooter',
+  host: { 'class': 'pinguin-card-footer' },
   templateUrl: './card-footer.component.html',
   styleUrls: ['./card-footer.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiCardFooterComponent {}
+export class CardFooterComponent {}

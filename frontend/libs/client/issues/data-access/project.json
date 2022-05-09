@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/client/issues/data-access",
+  "sourceRoot": "libs/client/issues/data-access/src",
+  "prefix": "pinguin",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/client/issues/data-access"],
+      "options": {
+        "project": "libs/client/issues/data-access/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/client/issues/data-access/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/client/issues/data-access/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/issues/data-access"],
+      "options": {
+        "jestConfig": "libs/client/issues/data-access/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/issues/data-access/src/**/*.ts",
+          "libs/client/issues/data-access/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

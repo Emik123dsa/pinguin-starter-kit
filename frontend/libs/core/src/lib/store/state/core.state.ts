@@ -1,5 +1,5 @@
-import { initialIssuesEntityState } from './issues.state';
-import { RouterReducerState, CoreEntityState } from '../models';
+import { initialIssuesState } from './issues.state';
+import { RouterReducerState, CoreState } from '../models';
 import {
   ISSUES_FEATURE_KEY,
   ROUTER_FEATURE_KEY,
@@ -8,8 +8,8 @@ import {
 
 import { VERSION } from '../../version';
 
-export const initialCoreEntityState: CoreEntityState = {
-  [ROUTER_FEATURE_KEY]: Object.create(null) as RouterReducerState,
-  [ISSUES_FEATURE_KEY]: initialIssuesEntityState,
+export const initialCoreState: CoreState = {
+  [ROUTER_FEATURE_KEY]: {} as RouterReducerState,
+  [ISSUES_FEATURE_KEY]: initialIssuesState,
   [VERSION_FEATURE_KEY]: VERSION,
 };

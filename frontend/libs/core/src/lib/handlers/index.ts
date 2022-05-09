@@ -1,2 +1,2 @@
-export * from './dashboard.module.handler';
-export * from './issues.module.handler';
+export * from './dashboard-module.handler';
+export * from './issues-module.handler';

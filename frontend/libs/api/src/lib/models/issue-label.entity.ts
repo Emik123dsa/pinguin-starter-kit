@@ -1,4 +1,5 @@
-import { IssueFieldEntities, IssueFieldEntity } from './issue-field.entity';
+import { Entity } from '@pinguin/entity';
+import { IssueFieldEntities } from './issue-field.entity';
 
 /**
  * Issue label entities.
@@ -15,9 +16,9 @@ export type IssueLabelEntities = Array<IssueLabelEntity>;
  * @class IssueLabelEntity
  * @typedef {IssueLabelEntity}
  */
-export class IssueLabelEntity {
+export class IssueLabelEntity extends Entity {
   /**
-   * Fields ids of `IssueFieldEntity`.
+   * Field ids of `IssueFieldEntity`.
    *
    * @private
    * @type {!Array<number>}
@@ -37,10 +38,12 @@ export class IssueLabelEntity {
    *
    * @constructor
    * @public
-   * @param {string} id
-   * @param {string} name
+   * @param {string} id as primary id.
+   * @param {string} name as name of the label entity.
    */
-  public constructor(private id: number, private name: string) {}
+  public constructor(public readonly id: number, private name: string) {
+    super();
+  }
 
   // Get id of labels entity.
   public getId(): number {

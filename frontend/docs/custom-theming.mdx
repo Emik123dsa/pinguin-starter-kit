@@ -1,0 +1,122 @@
+An example of theming components:
+
+// app/lab-editor/file-tree/file-tree-theme.scss
+@mixin ml-file-tree-theme($theme) {
+
+$primary: map-get($theme, primary);
+$warn: map-get($theme, warn);
+$background: map-get($theme, background);
+$foreground: map-get($theme, foreground);
+
+.ml-file-list {
+    border-bottom: 1px solid mat-color($foreground, divider);
+}
+
+.ml-file-list-item {
+
+    &:hover, &:active, &:focus {
+      background-color: mat-color($background, hover);
+    }
+
+    &.selected {
+      background-color: mat-color($primary, lighter, 0.5);
+      color: mat-color($foreground, text);
+    }
+
+}
+}
+
+@import 'app/lab-editor/file-tree/file-tree-theme.scss';
+
+@include mat-core();
+
+$custom-theme-primary: mat-palette($mat-light-blue);
+$custom-theme-accent: mat-palette($mat-orange, A200, A100, A400);
+$custom-theme-warn: mat-palette($mat-red);
+
+$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+
+@mixin custom-theme($theme) {
+@include ml-file-tree-theme(theme);
+}
+
+@include angular-material-theme($custom-theme);
+@include custom-theme($custom-theme);
+
+
+# Based on this article: https://indepth.dev/posts/1347/custom-theme-for-angular-material-components-series-part-3-apply-theme
+
+@mixin sidenav-component-theme($config-or-theme) {
+  // retrieve variables from theme
+  // (all possible variables, use only what you really need)
+  $config: mat-get-color-config($config-or-theme);
+  $primary: map-get($config, primary);
+  $accent: map-get($config, accent);
+  $warn: map-get($config, warn);
+  $foreground: map-get($config, foreground);
+  $background: map-get($config, background);
+
+  .mat-drawer {
+    // let's take mat-toolbar's default theme
+    background-color: mat-color($background, app-bar);
+    color: mat-color($foreground, text);
+
+    $color-list: (
+      "primary": $primary,
+      "accent": $accent,
+      "warn": $warn,
+    );
+
+    // now, mat-toolbar's colored themes
+    @each $key, $val in $color-list {
+      &[color="#{$key}"] {
+        @include _mat-toolbar-color($val);
+        .mat-list-base {
+          .mat-list-item {
+            color: mat-color($val, default-contrast);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin dialog-component-theme($config-or-theme) {
+  // retrieve variables from theme
+  // (all possible variables, use only what you really need)
+  $config: mat-get-color-config($config-or-theme);
+  $primary: map-get($config, primary);
+  $accent: map-get($config, accent);
+  $warn: map-get($config, warn);
+  $foreground: map-get($config, foreground);
+  $background: map-get($config, background);
+  .custom-dialog {
+    .mat-dialog-container {
+      padding-top: 0px;
+      .mat-dialog-title {
+
+        // below is to make header take some space
+        padding: 12px 24px;
+        margin-bottom: 0;
+        margin-left: -24px;
+        margin-right: -24px;
+
+        // let's take mat-toolbar's default theme
+        background-color: mat-color($background, app-bar);
+        color: mat-color($foreground, text);
+
+        // now, mat-toolbar's colored themes
+        $color-list: (
+          "primary": $primary,
+          "accent": $accent,
+          "warn": $warn,
+        );
+        @each $key, $val in $color-list {
+          &[color="#{$key}"] {
+            @include _mat-toolbar-color($val);
+          }
+        }
+      }
+    }
+  }
+}

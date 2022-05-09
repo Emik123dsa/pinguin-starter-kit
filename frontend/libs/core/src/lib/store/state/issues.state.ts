@@ -1,14 +1,14 @@
-import { IssuesEntityState } from '../models';
+import { IssuesState } from '../models';
 
-import { initialIssuesLabelsEntityState } from './issues-labels.state';
-import { initialIssuesFieldsEntityState } from './issues-fields.state';
+import { initialIssuesLabelsState } from './issues-labels.state';
+import { initialIssuesFieldsState } from './issues-fields.state';
 
 /**
  * Initial issues state entity.
  *
- * @type {IssuesEntityState}
+ * @type {IssuesState}
  */
-export const initialIssuesEntityState: IssuesEntityState = {
-  labels: initialIssuesLabelsEntityState,
-  fields: initialIssuesFieldsEntityState,
+export const initialIssuesState: IssuesState = {
+  labels: initialIssuesLabelsState,
+  fields: initialIssuesFieldsState,
 };

@@ -4,7 +4,7 @@ const linkRegExp: RegExp = /<link rel="stylesheet" href="(styles.+)">/;
 
 function getAsyncLink(href: string): string {
   return `
-    <link rel="preload" href="${href}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="${href}" as="style" media="print" onload="this.onload=null;this.rel='stylesheet';this.media='all'">
     <noscript><link rel="stylesheet" href="${href}"></noscript>
     `;
 }

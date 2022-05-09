@@ -71,7 +71,6 @@ export class ClientCommonHandler implements OnDestroy {
       id: CLIENT_WINDOW,
       data: {},
       styles: new Array<string>(),
-      encapsulation: ViewEncapsulation.None,
     };
 
     // Whether render factory was created renderer instance to listen window events.

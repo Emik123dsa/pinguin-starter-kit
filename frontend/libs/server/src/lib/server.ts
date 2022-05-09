@@ -1,17 +1,22 @@
 import 'zone.js/node';
 import { join } from 'path';
+import { existsSync } from 'fs';
 
 import * as express from 'express';
-import { StringUtils } from '@pinguin/utils';
+
 import { Type } from '@angular/core';
 import { ngExpressEngine } from '@nguniversal/express-engine';
-import { existsSync } from 'fs';
-import { APP_SERVER_BASE_HREF_PROVIDER } from './providers';
+
+import {
+  APP_SERVER_BASE_HREF_PROVIDER,
+  APP_SERVER_REQUEST_PROVIDER,
+  APP_SERVER_RESPONSE_PROVIDER,
+} from './providers';
 
 export function app(serverModule: Type<object>): express.Express {
   const server: express.Express = express();
 
-  const distFolder = join(process.cwd(), 'dist/jira-client/browser');
+  const distFolder = join(process.cwd(), 'dist/web-app/browser');
 
   const indexHtml = existsSync(join(distFolder, 'index.original.html'))
     ? 'index.original.html'
@@ -37,7 +42,11 @@ export function app(serverModule: Type<object>): express.Express {
   server.get('*', (req: express.Request, res: express.Response) => {
     res.render(indexHtml, {
       req,
-      providers: [APP_SERVER_BASE_HREF_PROVIDER(req)],
+      providers: [
+        APP_SERVER_REQUEST_PROVIDER(req),
+        APP_SERVER_RESPONSE_PROVIDER(res),
+        APP_SERVER_BASE_HREF_PROVIDER,
+      ],
     });
   });
 
@@ -47,11 +56,6 @@ export function app(serverModule: Type<object>): express.Express {
 export function bootstrap(serverModule: Type<object>, port: number) {
   const server = app(serverModule);
   server.listen(port, () => {
-    console.log(
-      StringUtils.format(
-        'Server application has been started on the port: %s',
-        port,
-      ),
-    );
+    console.log(`Server application has been started on the port: ${port}`);
   });
 }

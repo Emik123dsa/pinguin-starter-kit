@@ -1,1 +1,1 @@
-export * from './rest-api.config.ref';
+export * from './rest-api-config.ref';

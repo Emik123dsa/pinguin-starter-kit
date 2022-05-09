@@ -27,7 +27,7 @@ export class ClientCommonModule {
    * @param {ClientCommonHandler} commonHandler
    */
   public constructor(
-    // HINT: Common handler is initialized as Module Run Block.
+    // NOTE: Common handler is initialized as Module Run Block.
     public readonly commonHandler: ClientCommonHandler,
   ) {}
 

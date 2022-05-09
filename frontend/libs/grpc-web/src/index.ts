@@ -1,1 +1,1 @@
-export * from './lib/grpc-web.module';
+export * from './public-api';

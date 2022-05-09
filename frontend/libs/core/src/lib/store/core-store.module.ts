@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule, Self, Type } from '@angular/core';
+import { NgModule, Self, Type } from '@angular/core';
 
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -22,7 +22,6 @@ import { configureBufferSize } from 'ngrx-undo';
 import { ClientRestApiConfigRef } from '@pinguin/api';
 
 @NgModule({
-  declarations: [],
   imports: [
     // Provide core store reducers for initialization.
     StoreModule.forRoot(CORE_ENTITY_ROOT_REDUCER, coreEntityRootConfig),
@@ -40,14 +39,8 @@ import { ClientRestApiConfigRef } from '@pinguin/api';
       serializer: CoreRouterStateSerializer,
     }),
   ],
-  providers: [
-    CoreRouterStateSerializer,
-    RouterEffects,
-    IssuesLabelsEffects,
-    IssuesFieldsEffects,
-  ],
-
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [],
+  declarations: [],
 })
 export class CoreStoreModule {
   /**

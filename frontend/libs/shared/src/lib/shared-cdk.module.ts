@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 // Provide `cdk` modules.
 import { A11yModule } from '@angular/cdk/a11y';
@@ -11,29 +10,20 @@ import { PortalModule } from '@angular/cdk/portal';
 import { ObserversModule } from '@angular/cdk/observers';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 
+const cdkModules = [
+  // A11yModule,
+  // OverlayModule,
+  // DragDropModule,
+  // PlatformModule,
+  // PortalModule,
+  // ObserversModule,
+  // CdkTableModule,
+  // CdkStepperModule,
+];
+
 @NgModule({
-  imports: [
-    CommonModule,
-    A11yModule,
-    OverlayModule,
-    DragDropModule,
-    PlatformModule,
-    PortalModule,
-    ObserversModule,
-    CdkTableModule,
-    CdkStepperModule,
-  ],
-  exports: [
-    CommonModule,
-    A11yModule,
-    OverlayModule,
-    DragDropModule,
-    PlatformModule,
-    PortalModule,
-    ObserversModule,
-    CdkTableModule,
-    CdkStepperModule,
-  ],
+  imports: [],
+  exports: [],
   schemas: [],
 })
 export class SharedCdkModule {}

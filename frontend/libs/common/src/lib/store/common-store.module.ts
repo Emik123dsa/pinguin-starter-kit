@@ -1,17 +1,15 @@
-import {
-  CUSTOM_ELEMENTS_SCHEMA,
-  NgModule,
-  Optional,
-  SkipSelf,
-} from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { StringUtils } from '@pinguin/utils';
 
-import { COMMON_FEATURE_KEY } from './common.constants';
-import { COMMON_FEATURE_CONFIG, COMMON_FEATURE_REDUCER } from './common.tokens';
+import { COMMON_FEATURE_KEY } from './common-store.constants';
+import {
+  COMMON_FEATURE_CONFIG,
+  COMMON_FEATURE_REDUCER,
+} from './common-store.tokens';
 
 @NgModule({
   imports: [
@@ -22,9 +20,7 @@ import { COMMON_FEATURE_CONFIG, COMMON_FEATURE_REDUCER } from './common.tokens';
     ),
     EffectsModule.forFeature(),
   ],
-  declarations: [],
-  exports: [StoreModule, EffectsModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [],
 })
 export class CommonStoreModule {
   /**

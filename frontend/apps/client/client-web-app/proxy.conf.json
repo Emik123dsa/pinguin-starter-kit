@@ -1,0 +1,27 @@
+{
+  "/docs/*": {
+    "target": "http://docs.localhost:4200/docs",
+    "secure": false,
+    "ws": false
+  },
+  "/event-bus/*": {
+    "target": "ws://rpc.localhost:8080",
+    "secure": false,
+    "ws": true
+  },
+  "/command-bus/*": {
+    "target": "ws://rpc.localhost:8080",
+    "secure": false,
+    "ws": true
+  },
+  "/message-bus/*": {
+    "target": "ws://messaging.localhost:8080",
+    "secure": false,
+    "ws": false
+  },
+  "/query-bus/*": {
+    "target": "http://query.localhost:8080/graphql",
+    "secure": false,
+    "ws": false
+  }
+}

@@ -1,7 +1,7 @@
 import { Version } from '@angular/core';
 import { routerReducer } from '@ngrx/router-store';
 
-import { IssuesEntityState } from './issues.model';
+import { IssuesState } from './issues.model';
 import {
   ROUTER_FEATURE_KEY,
   ISSUES_FEATURE_KEY,
@@ -11,8 +11,8 @@ import {
 // @internal `RouterReducerState`.
 export type RouterReducerState = typeof routerReducer;
 
-export interface CoreEntityState {
+export interface CoreState {
   readonly [ROUTER_FEATURE_KEY]?: RouterReducerState;
-  readonly [ISSUES_FEATURE_KEY]: IssuesEntityState;
-  readonly [VERSION_FEATURE_KEY]: Version;
+  readonly [ISSUES_FEATURE_KEY]: IssuesState;
+  readonly [VERSION_FEATURE_KEY]?: Version;
 }

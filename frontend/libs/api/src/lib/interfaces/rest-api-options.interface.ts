@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { PlainObjectLiteral } from '@pinguin/utils';
+import { ObjectLiteral } from '@pinguin/utils';
 import { ClientConnectionOptions } from '@pinguin/common';
 
 export interface ClientRestApiOptions extends ClientConnectionOptions {
@@ -16,13 +16,10 @@ export interface ClientRestApiOptions extends ClientConnectionOptions {
   bufferSize?: number;
 
   serializer?: (
-    data: PlainObjectLiteral,
-    replacer?: (...args: any[]) => void,
+    data: ObjectLiteral,
+    replacer?: Closure,
     space?: string | number,
   ) => Optional<string>;
 
-  deserializer?: (
-    data: string,
-    reviver?: (...args: any[]) => void,
-  ) => Optional<PlainObjectLiteral>;
+  deserializer?: (data: string, reviver?: Closure) => Optional<ObjectLiteral>;
 }

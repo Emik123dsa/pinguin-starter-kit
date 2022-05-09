@@ -15,7 +15,7 @@ import {
   ClientRestApiConfigRef,
   UnknownApiErrorException,
 } from '@pinguin/api';
-import { PlainObjectLiteral, StringUtils } from '@pinguin/utils';
+import { ObjectLiteral, StringUtils } from '@pinguin/utils';
 import { ClientEnvironment, ENVIRONMENT } from '@pinguin/environments';
 
 @Injectable({
@@ -71,10 +71,7 @@ export class RxApiGatewayService extends ApiGatewayService {
    * @param [body] default params to payload.
    * @returns an reactive instance of {@link HttpClient}.
    */
-  public override post<T>(
-    path: string,
-    body?: PlainObjectLiteral,
-  ): Observable<T> {
+  public override post<T>(path: string, body?: ObjectLiteral): Observable<T> {
     return this.httpClient
       .post<T>(path, this.serialize(body), {
         observe: 'body',
@@ -95,10 +92,7 @@ export class RxApiGatewayService extends ApiGatewayService {
    * @param [body] default params to payload.
    * @returns an reactive instance of {@link HttpClient}.
    */
-  public override put<T>(
-    path: string,
-    body?: PlainObjectLiteral,
-  ): Observable<T> {
+  public override put<T>(path: string, body?: ObjectLiteral): Observable<T> {
     return this.httpClient
       .put<T>(path, this.serialize(body), {
         observe: 'body',
@@ -194,13 +188,13 @@ export class RxApiGatewayService extends ApiGatewayService {
    * Serialize context request to the string.
    *
    * @private
-   * @param {?PlainObjectLiteral} [body]
+   * @param {?ObjectLiteral} [body]
    * @returns {*}
    */
-  private serialize(body?: PlainObjectLiteral): Optional<string> {
-    const serializer: (data: PlainObjectLiteral) => Optional<string> =
+  private serialize(body?: ObjectLiteral): Optional<string> {
+    const serializer: (data: ObjectLiteral) => Optional<string> =
       this.apiConfigRef.getSerializer();
 
-    return serializer.call(null, body as PlainObjectLiteral);
+    return serializer.call(null, body as ObjectLiteral);
   }
 }

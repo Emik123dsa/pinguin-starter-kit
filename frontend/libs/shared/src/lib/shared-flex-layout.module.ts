@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FlexLayoutModule, LayoutConfigOptions } from '@angular/flex-layout';
 
 const flexLayoutConfig: LayoutConfigOptions = {
@@ -18,6 +18,7 @@ const flexLayoutConfig: LayoutConfigOptions = {
     FlexLayoutModule.withConfig(flexLayoutConfig),
   ],
   exports: [FlexLayoutModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  declarations: [],
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class SharedFlexLayoutModule {}

@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
   HttpContextToken,
 } from '@angular/common/http';
-import { Observable, retry, tap } from 'rxjs';
+import { noop, Observable, retry, tap } from 'rxjs';
 
 import { ClientRestApiConfigRef } from '@pinguin/api';
 
@@ -43,9 +43,11 @@ export class ErrorRequestInterceptor
 
     return next.handle(request).pipe(
       tap({
+        next: noop,
         // Whether any error was occurred in the request after dispatching.
         error: () =>
           request.context.set(errorAttemptsContext, errorAttempts + 1),
+        complete: noop,
       }),
       retry(retryAttempts),
     );

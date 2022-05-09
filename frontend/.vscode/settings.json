@@ -2,6 +2,7 @@
     "makefile.extensionOutputFolder": "./.vscode",
     "scss.lint.unknownAtRules": "ignore",
     "cSpell.words": [
-        "datasource"
+        "datasource",
+        "Whitespaces"
     ]
 }

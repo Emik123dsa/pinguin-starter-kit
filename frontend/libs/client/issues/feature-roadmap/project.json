@@ -1,0 +1,43 @@
+{
+  "projectType": "library",
+  "root": "libs/client/issues/feature-roadmap",
+  "sourceRoot": "libs/client/issues/feature-roadmap/src",
+  "prefix": "pinguin",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/client/issues/feature-roadmap"],
+      "options": {
+        "project": "libs/client/issues/feature-roadmap/ng-package.json",
+        "tailwindConfig": "libs/client/issues/feature-roadmap/tailwind.config.js"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/client/issues/feature-roadmap/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/client/issues/feature-roadmap/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/issues/feature-roadmap"],
+      "options": {
+        "jestConfig": "libs/client/issues/feature-roadmap/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/issues/feature-roadmap/src/**/*.ts",
+          "libs/client/issues/feature-roadmap/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,6 +1,6 @@
 import { Version } from '@angular/core';
 
-export interface ClientAppOptions {
+export interface ClientApplicationOptions {
   id: string;
   name: string;
   version: Version;

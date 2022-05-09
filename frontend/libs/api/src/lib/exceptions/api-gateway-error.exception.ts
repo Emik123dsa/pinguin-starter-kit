@@ -5,7 +5,7 @@
  * @extends Error
  */
 export class ApiGatewayErrorException extends Error {
-  private static readonly ERROR_CODE = 'error.apiGateway';
+  private static readonly ERROR_CODE = 'error.apiGatewayError';
 
   public override message!: string;
 

@@ -39,8 +39,8 @@ export const environment: ClientEnvironmentOptions = {
     ]),
   },
   websocket: {} as ClientWebSocketOptions,
-  runtimePlugins: [],
-  packages: [],
+  tools: [],
+  versions: [],
 };
 
 /*

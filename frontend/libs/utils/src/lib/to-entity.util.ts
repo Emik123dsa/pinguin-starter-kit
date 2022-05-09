@@ -1,7 +1,9 @@
 import { map, Observable } from 'rxjs';
-import { Constructor, PlainObjectLiteralConstructor } from './constructor.util';
+import { Constructor } from './constructor.util';
 
-export const toEntity =
-  <T>(Class: Constructor<T> | PlainObjectLiteralConstructor) =>
+export const toEntity: <T>(
+  EntityClass: Constructor<T>,
+) => (source$: Observable<T>) => Observable<T> =
+  <T>(EntityClass: Constructor<T>) =>
   (source$: Observable<T>): Observable<T> =>
-    source$.pipe(map((data) => Object.assign(data, new Class())));
+    source$.pipe(map((data) => Object.assign(data, new EntityClass())));

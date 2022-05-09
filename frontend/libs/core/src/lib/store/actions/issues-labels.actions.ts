@@ -1,40 +1,40 @@
 import { TypedAction } from '@ngrx/store/src/models';
 import { createAction, props, ActionCreator, union } from '@ngrx/store';
 
-import { IssuesEntity } from '../models';
+import { IssuesLabelsPartialState } from '../models';
 import { IssuesLabelsActionTypes } from '../constants';
 
-const loadAllIssuesLabels: ActionCreator<
+const loadIssuesLabels: ActionCreator<
   IssuesLabelsActionTypes,
   () => TypedAction<IssuesLabelsActionTypes>
 > = createAction<IssuesLabelsActionTypes>(
-  IssuesLabelsActionTypes.LoadAllIssuesLabels,
+  IssuesLabelsActionTypes.LoadIssuesLabels,
 );
 
-const loadAllIssuesLabelsSuccess: ActionCreator<
-  IssuesLabelsActionTypes.LoadAllIssuesLabelsSuccess,
+const loadIssuesLabelsSuccess: ActionCreator<
+  IssuesLabelsActionTypes.LoadIssuesLabelsSuccess,
   (
-    props: Pick<IssuesEntity, 'labels'>,
-  ) => Pick<IssuesEntity, 'labels'> & TypedAction<IssuesLabelsActionTypes>
+    props: IssuesLabelsPartialState,
+  ) => IssuesLabelsPartialState & TypedAction<IssuesLabelsActionTypes>
 > = createAction(
-  IssuesLabelsActionTypes.LoadAllIssuesLabelsSuccess,
-  props<Pick<IssuesEntity, 'labels'>>(),
+  IssuesLabelsActionTypes.LoadIssuesLabelsSuccess,
+  props<IssuesLabelsPartialState>(),
 );
 
-const loadAllIssuesLabelsFailure: ActionCreator<
-  IssuesLabelsActionTypes.LoadAllIssuesLabelsFailure,
+const loadIssuesLabelsFailure: ActionCreator<
+  IssuesLabelsActionTypes.LoadIssuesLabelsFailure,
   (props: { error: unknown }) => {
     error: unknown;
-  } & TypedAction<IssuesLabelsActionTypes.LoadAllIssuesLabelsFailure>
+  } & TypedAction<IssuesLabelsActionTypes.LoadIssuesLabelsFailure>
 > = createAction(
-  IssuesLabelsActionTypes.LoadAllIssuesLabelsFailure,
+  IssuesLabelsActionTypes.LoadIssuesLabelsFailure,
   props<{ error: unknown }>(),
 );
 
 const issuesLabelsActions = union({
-  loadAllIssuesLabels,
-  loadAllIssuesLabelsSuccess,
-  loadAllIssuesLabelsFailure,
+  loadIssuesLabels,
+  loadIssuesLabelsSuccess,
+  loadIssuesLabelsFailure,
 });
 
 /**
@@ -45,15 +45,16 @@ const issuesLabelsActions = union({
  * @typedef {IssuesFieldsActions}
  */
 export class IssuesLabelsActions {
-  static get loadAllIssuesLabels() {
-    return loadAllIssuesLabels;
+  static get loadIssuesLabels() {
+    return loadIssuesLabels;
   }
 
-  static get loadAllIssuesLabelsSuccess() {
-    return loadAllIssuesLabelsSuccess;
+  static get loadIssuesLabelsSuccess() {
+    return loadIssuesLabelsSuccess;
   }
-  static get loadAllIssuesLabelsFailure() {
-    return loadAllIssuesLabelsFailure;
+
+  static get loadIssuesLabelsFailure() {
+    return loadIssuesLabelsFailure;
   }
 }
 

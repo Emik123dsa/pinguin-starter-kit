@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
 import { ClientRestApiConfigRef } from '@pinguin/api';
-import { PlainObjectLiteral, StringUtils } from '@pinguin/utils';
+import { ObjectLiteral, StringUtils } from '@pinguin/utils';
 import { HttpResponseDeserializer } from './http-response.deserializer';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function noopReviver(key: string, value: unknown): void {
   /* TODO: should be implemented noop reviver for deserializer. */
 }
@@ -46,8 +47,8 @@ export class JsonResponseDeserializer implements HttpResponseDeserializer {
 
     const deserializer: (
       data: string,
-      reviver?: ((...args: any[]) => void) | undefined,
-    ) => Optional<PlainObjectLiteral> = this.apiConfigRef.getDeserializer();
+      reviver?: Closure,
+    ) => Optional<ObjectLiteral> = this.apiConfigRef.getDeserializer();
 
     return deserializer.call(null, value, noopReviver) as T;
   }

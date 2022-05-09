@@ -5,12 +5,12 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'pinguin-ui-card-content',
-  exportAs: 'pinguinUiCardContent',
-  host: { 'class': 'pinguin-ui-card-content' },
+  selector: 'pinguin-card-content',
+  exportAs: 'pinguinCardContent',
+  host: { 'class': 'pinguin-card-content' },
   templateUrl: './card-content.component.html',
   styleUrls: ['./card-content.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiCardContentComponent {}
+export class CardContentComponent {}

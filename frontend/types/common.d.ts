@@ -12,7 +12,7 @@ declare type Optional<T> = T | null;
  * @typedef {Closure}
  * @template T = void
  */
-declare type Closure<T = void> = () => T;
+declare type Closure<T = void> = (...args: any[]) => T;
 
 declare global {
   /**

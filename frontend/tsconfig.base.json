@@ -15,37 +15,77 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@pinguin-client/*": ["apps/jira-client/src/app/*"],
-      "@pinguin-runtime/environment": [
-        "apps/jira-client/src/environments/environment.ts"
-      ],
-      "@pinguin-runtime/mock-environment": [
-        "apps/jira-client/src/environments/environment.mock.ts"
-      ],
-      "@pinguin-runtime/prod-environment": [
-        "apps/jira-client/src/environments/environment.prod.ts"
-      ],
-      "@pinguin-runtime/staging-environment": [
-        "apps/jira-client/src/environments/environment.staging.ts"
-      ],
       "@pinguin/animations": ["libs/animations/src/index.ts"],
       "@pinguin/api": ["libs/api/src/index.ts"],
+      "@pinguin/client-dashboard-feature-shell": [
+        "libs/client/dashboard/feature-shell/src/index.ts"
+      ],
+      "@pinguin/client-errors-feature-bad-request": [
+        "libs/client/errors/feature-bad-request/src/index.ts"
+      ],
+      "@pinguin/client-errors-feature-internal-server-error": [
+        "libs/client/errors/feature-internal-server-error/src/index.ts"
+      ],
+      "@pinguin/client-errors-feature-not-found": [
+        "libs/client/errors/feature-not-found/src/index.ts"
+      ],
+      "@pinguin/client-errors-feature-shell": [
+        "libs/client/errors/feature-shell/src/index.ts"
+      ],
+      "@pinguin/client-home-feature-shell": [
+        "libs/client/home/feature-shell/src/index.ts"
+      ],
+      "@pinguin/client-roadmap-data-access-issues": [
+        "libs/client/roadmap/data-access-issues/src/index.ts"
+      ],
+      "@pinguin/client-roadmap-feature-issues": [
+        "libs/client/roadmap/feature-issues/src/index.ts"
+      ],
+      "@pinguin/client-roadmap-feature-shell": [
+        "libs/client/roadmap/feature-shell/src/index.ts"
+      ],
+      "@pinguin/client-roadmap-util-testing": [
+        "libs/client/roadmap/util-testing/src/index.ts"
+      ],
+      "@pinguin/client-shell": ["libs/client/shell/src/index.ts"],
+      "@pinguin/client/data-access-issues": [
+        "libs/client/issues/data-access/src/index.ts"
+      ],
+      "@pinguin/client/feature-dashboard": [
+        "libs/client/feature-dashboard/src/index.ts"
+      ],
+      "@pinguin/client/feature-roadmap-issues": [
+        "libs/client/issues/feature-roadmap/src/index.ts"
+      ],
+      "@pinguin/client/feature-shell-issues": [
+        "libs/client/issues/feature-shell/src/index.ts"
+      ],
+      "@pinguin/client/roadmap": ["libs/client/roadmap/src/index.ts"],
+      "@pinguin/client/roadmap/data-access": [
+        "libs/client/roadmap/src/index.ts"
+      ],
+      "@pinguin/client/roadmap/feature-issues": [
+        "libs/client/roadmap/feature-issues/src/index.ts"
+      ],
       "@pinguin/common": ["libs/common/src/index.ts"],
       "@pinguin/config": ["libs/config/src/index.ts"],
       "@pinguin/core": ["libs/core/src/index.ts"],
+      "@pinguin/dashboard": ["libs/dashboard/src/index.ts"],
       "@pinguin/entity": ["libs/entity/src/index.ts"],
       "@pinguin/environments": ["libs/environments/src/index.ts"],
-      "@pinguin/feature-dashboard": ["libs/feature-dashboard/src/index.ts"],
-      "@pinguin/feature-errors": ["libs/feature-errors/src/index.ts"],
-      "@pinguin/feature-home": ["libs/feature-home/src/index.ts"],
-      "@pinguin/feature-issues": ["libs/feature-issues/src/index.ts"],
-      "@pinguin/feature-roadmap": ["libs/feature-roadmap/src/index.ts"],
+      "@pinguin/errors": ["libs/errors/src/index.ts"],
       "@pinguin/forms": ["libs/forms/src/index.ts"],
       "@pinguin/grpc-web": ["libs/grpc-web/src/index.ts"],
+      "@pinguin/home": ["libs/home/src/index.ts"],
+      "@pinguin/issues": ["libs/issues/src/index.ts"],
+      "@pinguin/layout": ["libs/layout/src/index.ts"],
       "@pinguin/overlay": ["libs/overlay/src/index.ts"],
+      "@pinguin/roadmap": ["libs/roadmap/src/index.ts"],
       "@pinguin/schemas": ["libs/schemas/src/index.ts"],
       "@pinguin/server": ["libs/server/src/index.ts"],
       "@pinguin/shared": ["libs/shared/src/index.ts"],
+      "@pinguin/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@pinguin/shell": ["libs/shell/src/index.ts"],
       "@pinguin/single-spa": ["libs/single-spa/src/index.ts"],
       "@pinguin/storage": ["libs/storage/src/index.ts"],
       "@pinguin/testing": ["libs/testing/src/index.ts"],
@@ -58,7 +98,20 @@
       "@pinguin/ui-snack-bar": ["libs/ui-snack-bar/src/index.ts"],
       "@pinguin/ui-toolbar": ["libs/ui-toolbar/src/index.ts"],
       "@pinguin/utils": ["libs/utils/src/index.ts"],
-      "@pinguin/websocket": ["libs/websocket/src/index.ts"]
+      "@pinguin/websocket": ["libs/websocket/src/index.ts"],
+      "@pinguin-web-client/*": ["apps/client/client-web-app/src/app/*"],
+      "@pinguin-web-client-runtime/environment": [
+        "apps/client/client-web-app/src/environments/environment.ts"
+      ],
+      "@pinguin-web-client-runtime/mock-environment": [
+        "apps/client/client-web-app/src/environments/environment.mock.ts"
+      ],
+      "@pinguin-web-client-runtime/prod-environment": [
+        "apps/client/client-web-app/src/environments/environment.prod.ts"
+      ],
+      "@pinguin-web-client-runtime/staging-environment": [
+        "apps/client/client-web-app/src/environments/environment.staging.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

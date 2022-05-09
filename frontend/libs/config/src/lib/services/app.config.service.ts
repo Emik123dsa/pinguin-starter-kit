@@ -1,6 +1,6 @@
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import { ClientAppOptions } from '../interfaces';
-import { ClientAppConfigRef } from '../classes';
+import { ClientApplicationOptions } from '../interfaces';
+import { ClientApplicationConfigRef } from '../classes';
 import { ClientConfigService } from './config.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -16,12 +16,12 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'platform',
 })
-export class ClientAppConfigService extends ClientConfigService<ClientAppOptions> {
+export class ClientApplicationConfigService extends ClientConfigService<ClientApplicationOptions> {
   override readonly configUrl = this.appConfigRef.getConfigUrl();
 
   public constructor(
     private readonly httpClient: HttpClient,
-    private readonly appConfigRef: ClientAppConfigRef,
+    private readonly appConfigRef: ClientApplicationConfigRef,
   ) {
     super();
   }

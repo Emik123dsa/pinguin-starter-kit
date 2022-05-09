@@ -1,5 +1,11 @@
 import { Injectable, NgZone, OnDestroy } from '@angular/core';
-import { Observable, share, Subject, Subscription } from 'rxjs';
+import {
+  distinctUntilChanged,
+  Observable,
+  share,
+  Subject,
+  Subscription,
+} from 'rxjs';
 import { ShareConfig } from 'rxjs/internal/operators/share';
 import { WebWorkerFactory, WebWorkerHandler } from '../handlers';
 import { WebWorkerOptions } from '../interfaces';
@@ -76,9 +82,10 @@ export class WebWorkerService implements OnDestroy {
       resetOnRefCountZero: false,
     };
 
-    this.connection$ = this.webWorkerHandler
-      .connection$()
-      .pipe(share(workerConfig));
+    this.connection$ = this.webWorkerHandler.connection$.pipe(
+      share(workerConfig),
+      distinctUntilChanged(),
+    );
 
     this.subscription.add(this.connection$.subscribe());
   }
@@ -89,8 +96,8 @@ export class WebWorkerService implements OnDestroy {
    * @public
    * @param {string} message
    */
-  public publishMessage(message: string): void {
-    <void>this.webWorkerHandler.sendMessage(message);
+  public publishEvent(message: string): void {
+    return this.webWorkerHandler.dispatchEvent(message);
   }
 
   /**

@@ -9,7 +9,7 @@ import {
   exportAs: 'pinguinLayoutFooter',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterLayoutComponent {}

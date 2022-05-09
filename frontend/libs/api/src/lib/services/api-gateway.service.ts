@@ -1,4 +1,4 @@
-import { PlainObjectLiteral } from '@pinguin/utils';
+import { ObjectLiteral } from '@pinguin/utils';
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ErrorHandler } from '@angular/core';
@@ -23,7 +23,7 @@ export abstract class ApiGatewayService implements ErrorHandler {
    * @template T of generic which will be formatted.
    * @param path of path string of get request.
    * @param [params] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
+   * @returns an reactive instance of generic object {@link T}.
    */
   public abstract get<T>(path: string, params?: HttpParams): Observable<T>;
 
@@ -33,12 +33,9 @@ export abstract class ApiGatewayService implements ErrorHandler {
    * @template T of generic which will be formatted.
    * @param path of path string of get request.
    * @param [body] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
+   * @returns an reactive instance of generic object {@link T}.
    */
-  public abstract post<T>(
-    path: string,
-    body?: PlainObjectLiteral,
-  ): Observable<T>;
+  public abstract post<T>(path: string, body?: ObjectLiteral): Observable<T>;
 
   /**
    * PUT reactive api service.
@@ -46,12 +43,9 @@ export abstract class ApiGatewayService implements ErrorHandler {
    * @template T of generic which will be formatted.
    * @param path of path string of get request.
    * @param [body] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
+   * @returns an reactive instance of generic object {@link T}.
    */
-  public abstract put<T>(
-    path: string,
-    body?: PlainObjectLiteral,
-  ): Observable<T>;
+  public abstract put<T>(path: string, body?: ObjectLiteral): Observable<T>;
 
   /**
    * PATCH reactive api service.
@@ -59,19 +53,16 @@ export abstract class ApiGatewayService implements ErrorHandler {
    * @template T of generic which will be formatted.
    * @param path of path string of get request.
    * @param [body] default params to payload.
-   * @returns an reactive instance of {@link HttpClient}.
+   * @returns an reactive instance of generic object {@link T}.
    */
-  public abstract patch<T>(
-    path: string,
-    body?: PlainObjectLiteral,
-  ): Observable<T>;
+  public abstract patch<T>(path: string, body?: ObjectLiteral): Observable<T>;
 
   /**
    * DELETE reactive api service.
    *
    * @template T of generic which will be formatted.
    * @param path of path string of get request.
-   * @returns an reactive instance of {@link HttpClient}.
+   * @returns an reactive instance of generic object {@link T}.
    */
   public abstract delete<T>(path: string): Observable<T>;
 

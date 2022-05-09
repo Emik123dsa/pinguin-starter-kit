@@ -1,7 +1,8 @@
-import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import { EntitySelectors } from '@ngrx/entity/src/models';
 import { IssueLabelEntity } from '@pinguin/api';
 
-import { IssuesLabelsEntityState } from '../models';
+import { IssuesLabelsState } from '../models';
 
 /**
  * Select entities by id.
@@ -27,16 +28,26 @@ function sortByName(
   return aEntity.getName().localeCompare(bEntity.getName());
 }
 
-export const issuesLabelsEntityAdapter: EntityAdapter<IssueLabelEntity> =
+export const issuesLabelsAdapter: EntityAdapter<IssueLabelEntity> =
   createEntityAdapter<IssueLabelEntity>({
     selectId: selectLabelId,
     sortComparer: sortByName,
   });
 
-export const initialIssuesLabelsEntityState: IssuesLabelsEntityState =
-  issuesLabelsEntityAdapter.getInitialState({
+export const initialIssuesLabelsState: IssuesLabelsState =
+  issuesLabelsAdapter.getInitialState({
     selectedIssueLabelId: null,
     loaded: false,
     loading: false,
     error: null,
   });
+
+export const {
+  selectIds: selectIssuesLabelIds,
+  selectAll: selectAllIssuesLabels,
+  selectTotal: selectIssuesLabelTotal,
+  selectEntities: selectIssuesLabelEntities,
+}: EntitySelectors<
+  IssueLabelEntity,
+  EntityState<IssueLabelEntity>
+> = issuesLabelsAdapter.getSelectors();

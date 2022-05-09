@@ -1,0 +1,30 @@
+html {
+  tab-size: 4;
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -ms-overflow-style: scrollbar;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color-adjust: exact;
+  line-height: inherit;
+  font-family: inherit;
+  font-feature-settings: normal;
+  -moz-font-feature-settings: normal;
+  -webkit-font-feature-settings: normal;
+}
+
+svg {
+  color-interpolation-filters: linearRGB;
+}
+
+@at-root {
+  @-ms-viewport {
+    width: device-width;
+  }
+}

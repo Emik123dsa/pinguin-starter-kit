@@ -1,41 +1,40 @@
 import { createAction, props, ActionCreator, union } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
 
-import { IssuesEntity } from '../models';
-
+import { IssuesFieldsPartialState } from '../models';
 import { IssuesFieldsActionTypes } from '../constants';
 
-const loadAllIssuesFields: ActionCreator<
+const loadIssuesFields: ActionCreator<
   IssuesFieldsActionTypes,
   () => TypedAction<IssuesFieldsActionTypes>
 > = createAction<IssuesFieldsActionTypes>(
-  IssuesFieldsActionTypes.LoadAllIssuesFields,
+  IssuesFieldsActionTypes.LoadIssuesFields,
 );
 
-const loadAllIssuesFieldsSuccess: ActionCreator<
-  IssuesFieldsActionTypes.LoadAllIssuesFieldsSuccess,
+const loadIssuesFieldsSuccess: ActionCreator<
+  IssuesFieldsActionTypes.LoadIssuesFieldsSuccess,
   (
-    props: Pick<IssuesEntity, 'fields'>,
-  ) => Pick<IssuesEntity, 'fields'> & TypedAction<IssuesFieldsActionTypes>
+    props: IssuesFieldsPartialState,
+  ) => IssuesFieldsPartialState & TypedAction<IssuesFieldsActionTypes>
 > = createAction(
-  IssuesFieldsActionTypes.LoadAllIssuesFieldsSuccess,
-  props<Pick<IssuesEntity, 'fields'>>(),
+  IssuesFieldsActionTypes.LoadIssuesFieldsSuccess,
+  props<IssuesFieldsPartialState>(),
 );
 
-const loadAllIssuesFieldsFailure: ActionCreator<
-  IssuesFieldsActionTypes.LoadAllIssuesFieldsFailure,
+const loadIssuesFieldsFailure: ActionCreator<
+  IssuesFieldsActionTypes.LoadIssuesFieldsFailure,
   (props: { error: unknown }) => {
     error: unknown;
-  } & TypedAction<IssuesFieldsActionTypes.LoadAllIssuesFieldsFailure>
+  } & TypedAction<IssuesFieldsActionTypes.LoadIssuesFieldsFailure>
 > = createAction(
-  IssuesFieldsActionTypes.LoadAllIssuesFieldsFailure,
+  IssuesFieldsActionTypes.LoadIssuesFieldsFailure,
   props<{ error: unknown }>(),
 );
 
 const issuesFieldsActions = union({
-  loadAllIssuesFields,
-  loadAllIssuesFieldsSuccess,
-  loadAllIssuesFieldsFailure,
+  loadIssuesFields,
+  loadIssuesFieldsSuccess,
+  loadIssuesFieldsFailure,
 });
 
 /**
@@ -46,16 +45,16 @@ const issuesFieldsActions = union({
  * @typedef {IssuesFieldsActions}
  */
 export class IssuesFieldsActions {
-  static get loadAllIssuesFields() {
-    return loadAllIssuesFields;
+  static get loadIssuesFields() {
+    return loadIssuesFields;
   }
 
-  static get loadAllIssuesFieldsSuccess() {
-    return loadAllIssuesFieldsSuccess;
+  static get loadIssuesFieldsSuccess() {
+    return loadIssuesFieldsSuccess;
   }
 
-  static get loadAllIssuesFieldsFailure() {
-    return loadAllIssuesFieldsFailure;
+  static get loadIssuesFieldsFailure() {
+    return loadIssuesFieldsFailure;
   }
 }
 

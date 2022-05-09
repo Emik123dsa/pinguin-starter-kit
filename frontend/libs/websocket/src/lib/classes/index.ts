@@ -1,1 +1,1 @@
-export * from './websocket.config.ref';
+export * from './websocket-config.ref';

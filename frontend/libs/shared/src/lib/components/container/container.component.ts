@@ -18,7 +18,7 @@ import { StringUtils } from '@pinguin/utils';
     '[attr.id]': 'id',
     '[class.pinguin-container-server]': 'isServer',
   },
-  encapsulation: ViewEncapsulation.None,
+
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContainerComponent {
@@ -39,12 +39,12 @@ export class ContainerComponent {
 
   @Input()
   public set id(value: string) {
-    this._id = value || this.uniqueId;
+    this.containerId = value || this.uniqueId;
   }
   public get id() {
-    return this._id;
+    return this.containerId;
   }
-  private _id!: string;
+  private containerId!: string;
 
   /**
    * Constructs an instance of ContainerComponent.

@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/client/home/feature-shell",
+  "sourceRoot": "libs/client/home/feature-shell/src",
+  "prefix": "pinguin",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/home/feature-shell"],
+      "options": {
+        "jestConfig": "libs/client/home/feature-shell/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/home/feature-shell/src/**/*.ts",
+          "libs/client/home/feature-shell/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

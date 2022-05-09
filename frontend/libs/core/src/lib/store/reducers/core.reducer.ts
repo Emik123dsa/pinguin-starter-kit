@@ -2,9 +2,9 @@ import { ActionReducerMap } from '@ngrx/store';
 import { routerReducer } from '@ngrx/router-store';
 
 import { versionReducer } from './version.reducer';
-import { issuesEntityReducer } from './issues.reducer';
+import { issuesReducer } from './issues.reducer';
 
-import { CoreEntityState } from '../models';
+import { CoreState } from '../models';
 import { CoreEntityActions } from '../actions';
 
 import {
@@ -13,17 +13,15 @@ import {
   VERSION_FEATURE_KEY,
 } from '../constants';
 
-export const coreEntityReducer: ActionReducerMap<
-  CoreEntityState,
-  CoreEntityActions
-> = {
-  [ROUTER_FEATURE_KEY]: routerReducer,
-  [ISSUES_FEATURE_KEY]: issuesEntityReducer,
-  [VERSION_FEATURE_KEY]: versionReducer,
-};
+export const coreEntityReducer: ActionReducerMap<CoreState, CoreEntityActions> =
+  {
+    [ROUTER_FEATURE_KEY]: routerReducer,
+    [ISSUES_FEATURE_KEY]: issuesReducer,
+    [VERSION_FEATURE_KEY]: versionReducer,
+  };
 
 export function coreEntityRootReducerFactory(): ActionReducerMap<
-  CoreEntityState,
+  CoreState,
   CoreEntityActions
 > {
   return coreEntityReducer;
